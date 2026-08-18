@@ -1,0 +1,23 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Models\Tenant;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+class WishlistItem extends Model
+{
+    protected $fillable = ['wishlist_id', 'product_variant_id'];
+
+    public function wishlist(): BelongsTo
+    {
+        return $this->belongsTo(Wishlist::class);
+    }
+
+    public function productVariant(): BelongsTo
+    {
+        return $this->belongsTo(ProductVariant::class);
+    }
+}

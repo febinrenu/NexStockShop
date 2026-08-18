@@ -1,0 +1,3309 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "TrippleShop",
+        "version": "0.0.1"
+    },
+    "servers": [
+        {
+            "url": "http://localhost/api"
+        }
+    ],
+    "paths": {
+        "/v1/central/auth/login": {
+            "post": {
+                "operationId": "central.auth.login",
+                "tags": [
+                    "Auth"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "email",
+                                    "password"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "token": {
+                                            "type": "string"
+                                        },
+                                        "admin": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "email": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "id",
+                                                "name",
+                                                "email"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "token",
+                                        "admin"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationException"
+                    }
+                }
+            }
+        },
+        "/v1/central/auth/logout": {
+            "post": {
+                "operationId": "central.auth.logout",
+                "tags": [
+                    "Auth"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "const": "Logged out."
+                                        }
+                                    },
+                                    "required": [
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "/v1/central/auth/me": {
+            "get": {
+                "operationId": "auth.me",
+                "tags": [
+                    "Auth"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "name",
+                                        "email"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "/v1/auth/login": {
+            "post": {
+                "operationId": "tenant.auth.login",
+                "tags": [
+                    "Auth"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "email",
+                                    "password"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "token": {
+                                            "type": "string"
+                                        },
+                                        "user": {
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "required": [
+                                        "token",
+                                        "user"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationException"
+                    }
+                }
+            }
+        },
+        "/v1/auth/logout": {
+            "post": {
+                "operationId": "tenant.auth.logout",
+                "tags": [
+                    "Auth"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "const": "Logged out."
+                                        }
+                                    },
+                                    "required": [
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "/v1/auth/invite": {
+            "post": {
+                "operationId": "auth.invite",
+                "tags": [
+                    "Auth"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "maxLength": 255
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "email"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "In production this is emailed to the invitee, never returned in\nthe response body \u2014 surfaced here only so the endpoint contract\nis testable without a mail transport wired up yet.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "user": {
+                                            "type": "array",
+                                            "items": {}
+                                        },
+                                        "setup_token": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "user",
+                                        "setup_token"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "An error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "description": "Error overview.",
+                                            "examples": [
+                                                "Only the store owner can invite staff."
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationException"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "/v1/auth/password-reset": {
+            "post": {
+                "operationId": "auth.passwordReset",
+                "tags": [
+                    "Auth"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "password": {
+                                        "type": "string",
+                                        "minLength": 8
+                                    }
+                                },
+                                "required": [
+                                    "password"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "const": "Password updated."
+                                        }
+                                    },
+                                    "required": [
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationException"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "/v1/central/billing/subscribe": {
+            "post": {
+                "operationId": "billing.subscribe",
+                "tags": [
+                    "Billing"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "tenant_id": {
+                                        "type": "string"
+                                    },
+                                    "plan_id": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "required": [
+                                    "tenant_id",
+                                    "plan_id"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "checkout_url": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "checkout_url"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationException"
+                    }
+                }
+            }
+        },
+        "/v1/central/billing/webhook": {
+            "post": {
+                "operationId": "billing.webhook",
+                "tags": [
+                    "Billing"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "received": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "required": [
+                                        "received"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "const": "Invalid webhook signature."
+                                        }
+                                    },
+                                    "required": [
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/brands": {
+            "get": {
+                "operationId": "brand.index",
+                "tags": [
+                    "Brand"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Brand"
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "data"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/cart": {
+            "get": {
+                "operationId": "cart.show",
+                "tags": [
+                    "Cart"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "guest_token": {
+                                                    "type": "string"
+                                                },
+                                                "currency": {
+                                                    "type": "string"
+                                                },
+                                                "items": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "$ref": "#/components/schemas/CartItem"
+                                                    }
+                                                },
+                                                "subtotal_minor": {
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "required": [
+                                                "id",
+                                                "guest_token",
+                                                "currency",
+                                                "items",
+                                                "subtotal_minor"
+                                            ]
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "items": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "minItems": 0,
+                                                    "maxItems": 0,
+                                                    "additionalItems": false
+                                                },
+                                                "subtotal_minor": {
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "required": [
+                                                "items",
+                                                "subtotal_minor"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "cart.destroy",
+                "tags": [
+                    "Cart"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "const": "Cart cleared."
+                                        }
+                                    },
+                                    "required": [
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/cart/items": {
+            "post": {
+                "operationId": "cart.addItem",
+                "tags": [
+                    "Cart"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "product_variant_id": {
+                                        "type": "integer"
+                                    },
+                                    "quantity": {
+                                        "type": "integer",
+                                        "minimum": 1
+                                    }
+                                },
+                                "required": [
+                                    "product_variant_id",
+                                    "quantity"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "guest_token": {
+                                                    "type": "string"
+                                                },
+                                                "currency": {
+                                                    "type": "string"
+                                                },
+                                                "items": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "$ref": "#/components/schemas/CartItem"
+                                                    }
+                                                },
+                                                "subtotal_minor": {
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "required": [
+                                                "id",
+                                                "guest_token",
+                                                "currency",
+                                                "items",
+                                                "subtotal_minor"
+                                            ]
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "items": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "minItems": 0,
+                                                    "maxItems": 0,
+                                                    "additionalItems": false
+                                                },
+                                                "subtotal_minor": {
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "required": [
+                                                "items",
+                                                "subtotal_minor"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationException"
+                    }
+                }
+            }
+        },
+        "/v1/cart/items/{itemId}": {
+            "patch": {
+                "operationId": "cart.updateItem",
+                "tags": [
+                    "Cart"
+                ],
+                "parameters": [
+                    {
+                        "name": "itemId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "quantity": {
+                                        "type": "integer",
+                                        "minimum": 1
+                                    }
+                                },
+                                "required": [
+                                    "quantity"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "guest_token": {
+                                                    "type": "string"
+                                                },
+                                                "currency": {
+                                                    "type": "string"
+                                                },
+                                                "items": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "$ref": "#/components/schemas/CartItem"
+                                                    }
+                                                },
+                                                "subtotal_minor": {
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "required": [
+                                                "id",
+                                                "guest_token",
+                                                "currency",
+                                                "items",
+                                                "subtotal_minor"
+                                            ]
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "items": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "minItems": 0,
+                                                    "maxItems": 0,
+                                                    "additionalItems": false
+                                                },
+                                                "subtotal_minor": {
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "required": [
+                                                "items",
+                                                "subtotal_minor"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationException"
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "cart.removeItem",
+                "tags": [
+                    "Cart"
+                ],
+                "parameters": [
+                    {
+                        "name": "itemId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "guest_token": {
+                                                    "type": "string"
+                                                },
+                                                "currency": {
+                                                    "type": "string"
+                                                },
+                                                "items": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "$ref": "#/components/schemas/CartItem"
+                                                    }
+                                                },
+                                                "subtotal_minor": {
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "required": [
+                                                "id",
+                                                "guest_token",
+                                                "currency",
+                                                "items",
+                                                "subtotal_minor"
+                                            ]
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "items": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "minItems": 0,
+                                                    "maxItems": 0,
+                                                    "additionalItems": false
+                                                },
+                                                "subtotal_minor": {
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "required": [
+                                                "items",
+                                                "subtotal_minor"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/categories": {
+            "get": {
+                "operationId": "category.index",
+                "tags": [
+                    "Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "string"
+                                                    },
+                                                    "parent_id": {
+                                                        "type": "string"
+                                                    },
+                                                    "slug": {
+                                                        "type": "string"
+                                                    },
+                                                    "name": {
+                                                        "type": [
+                                                            "string",
+                                                            "null"
+                                                        ]
+                                                    },
+                                                    "description": {
+                                                        "type": [
+                                                            "string",
+                                                            "null"
+                                                        ]
+                                                    }
+                                                },
+                                                "required": [
+                                                    "id",
+                                                    "parent_id",
+                                                    "slug",
+                                                    "name",
+                                                    "description"
+                                                ]
+                                            }
+                                        },
+                                        "locale": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "data",
+                                        "locale"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/checkout/session": {
+            "post": {
+                "operationId": "checkout.createSession",
+                "tags": [
+                    "Checkout"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "cart_id": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "required": [
+                                    "cart_id"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CheckoutSession"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationException"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/ModelNotFoundException"
+                    }
+                }
+            }
+        },
+        "/v1/checkout/session/{session}": {
+            "patch": {
+                "operationId": "checkout.updateSession",
+                "tags": [
+                    "Checkout"
+                ],
+                "parameters": [
+                    {
+                        "name": "session",
+                        "in": "path",
+                        "required": true,
+                        "description": "The session ID",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "status": {
+                                        "type": "string",
+                                        "enum": [
+                                            "address",
+                                            "shipping",
+                                            "payment",
+                                            "complete"
+                                        ]
+                                    },
+                                    "shipping_address_id": {
+                                        "type": "integer"
+                                    },
+                                    "shipping_method": {
+                                        "type": "string"
+                                    },
+                                    "payment_method": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CheckoutSession"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationException"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/ModelNotFoundException"
+                    }
+                }
+            }
+        },
+        "/v1/checkout/session/{session}/complete": {
+            "post": {
+                "operationId": "checkout.complete",
+                "tags": [
+                    "Checkout"
+                ],
+                "parameters": [
+                    {
+                        "name": "session",
+                        "in": "path",
+                        "required": true,
+                        "description": "The session ID",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Order"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "const": "Cart is empty."
+                                        }
+                                    },
+                                    "required": [
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/ModelNotFoundException"
+                    }
+                }
+            }
+        },
+        "/v1/customer/auth/register": {
+            "post": {
+                "operationId": "customerAuth.register",
+                "tags": [
+                    "CustomerAuth"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "maxLength": 255
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "minLength": 8
+                                    },
+                                    "preferred_locale": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ],
+                                        "enum": [
+                                            "en",
+                                            "ar",
+                                            null
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "password"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "token": {
+                                            "type": "string"
+                                        },
+                                        "customer": {
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "required": [
+                                        "token",
+                                        "customer"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationException"
+                    }
+                }
+            }
+        },
+        "/v1/customer/auth/login": {
+            "post": {
+                "operationId": "customerAuth.login",
+                "tags": [
+                    "CustomerAuth"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "email",
+                                    "password"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "token": {
+                                            "type": "string"
+                                        },
+                                        "customer": {
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "required": [
+                                        "token",
+                                        "customer"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationException"
+                    }
+                }
+            }
+        },
+        "/v1/customer/auth/logout": {
+            "post": {
+                "operationId": "customerAuth.logout",
+                "tags": [
+                    "CustomerAuth"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "const": "Logged out."
+                                        }
+                                    },
+                                    "required": [
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "/v1/customer/auth/password-reset": {
+            "post": {
+                "operationId": "customerAuth.passwordReset",
+                "tags": [
+                    "CustomerAuth"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "password": {
+                                        "type": "string",
+                                        "minLength": 8
+                                    }
+                                },
+                                "required": [
+                                    "password"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "const": "Password updated."
+                                        }
+                                    },
+                                    "required": [
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationException"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "/v1/me": {
+            "get": {
+                "operationId": "customerProfile.show",
+                "tags": [
+                    "CustomerProfile"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {}
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/AuthenticationException"
+                    }
+                }
+            },
+            "patch": {
+                "operationId": "customerProfile.update",
+                "tags": [
+                    "CustomerProfile"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "maxLength": 255
+                                    },
+                                    "phone": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ],
+                                        "maxLength": 32
+                                    },
+                                    "preferred_locale": {
+                                        "type": "string",
+                                        "enum": [
+                                            "en",
+                                            "ar"
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {}
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationException"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "/v1/central/platform/moderation-queue": {
+            "get": {
+                "operationId": "moderation.index",
+                "tags": [
+                    "Moderation"
+                ],
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "current_page": {
+                                            "type": "integer",
+                                            "minimum": 1
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/ModerationFlag"
+                                            }
+                                        },
+                                        "first_page_url": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "from": {
+                                            "type": [
+                                                "integer",
+                                                "null"
+                                            ],
+                                            "minimum": 1
+                                        },
+                                        "last_page_url": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "last_page": {
+                                            "type": "integer",
+                                            "minimum": 1
+                                        },
+                                        "links": {
+                                            "type": "array",
+                                            "description": "Generated paginator links.",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "url": {
+                                                        "type": [
+                                                            "string",
+                                                            "null"
+                                                        ]
+                                                    },
+                                                    "label": {
+                                                        "type": "string"
+                                                    },
+                                                    "active": {
+                                                        "type": "boolean"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "url",
+                                                    "label",
+                                                    "active"
+                                                ]
+                                            }
+                                        },
+                                        "next_page_url": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "path": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ],
+                                            "description": "Base path for paginator generated URLs."
+                                        },
+                                        "per_page": {
+                                            "type": "integer",
+                                            "description": "Number of items shown per page.",
+                                            "minimum": 0
+                                        },
+                                        "prev_page_url": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "to": {
+                                            "type": [
+                                                "integer",
+                                                "null"
+                                            ],
+                                            "description": "Number of the last item in the slice.",
+                                            "minimum": 1
+                                        },
+                                        "total": {
+                                            "type": "integer",
+                                            "description": "Total number of items being paginated.",
+                                            "minimum": 0
+                                        }
+                                    },
+                                    "required": [
+                                        "current_page",
+                                        "data",
+                                        "first_page_url",
+                                        "from",
+                                        "last_page_url",
+                                        "last_page",
+                                        "links",
+                                        "next_page_url",
+                                        "path",
+                                        "per_page",
+                                        "prev_page_url",
+                                        "to",
+                                        "total"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "/v1/central/platform/moderation-queue/{flag}/action": {
+            "post": {
+                "operationId": "moderation.action",
+                "tags": [
+                    "Moderation"
+                ],
+                "parameters": [
+                    {
+                        "name": "flag",
+                        "in": "path",
+                        "required": true,
+                        "description": "The flag ID",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "status": {
+                                        "type": "string",
+                                        "enum": [
+                                            "actioned",
+                                            "dismissed"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "status"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ModerationFlag"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationException"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/ModelNotFoundException"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "/v1/newsletter/subscribe": {
+            "post": {
+                "operationId": "newsletter.subscribe",
+                "tags": [
+                    "Newsletter"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    }
+                                },
+                                "required": [
+                                    "email"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NewsletterSubscriber"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationException"
+                    }
+                }
+            }
+        },
+        "/v1/newsletter/unsubscribe": {
+            "post": {
+                "operationId": "newsletter.unsubscribe",
+                "tags": [
+                    "Newsletter"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    }
+                                },
+                                "required": [
+                                    "email"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "const": "Unsubscribed."
+                                        }
+                                    },
+                                    "required": [
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationException"
+                    }
+                }
+            }
+        },
+        "/v1/orders": {
+            "get": {
+                "operationId": "order.index",
+                "tags": [
+                    "Order"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "current_page": {
+                                            "type": "integer",
+                                            "minimum": 1
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Order"
+                                            }
+                                        },
+                                        "first_page_url": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "from": {
+                                            "type": [
+                                                "integer",
+                                                "null"
+                                            ],
+                                            "minimum": 1
+                                        },
+                                        "last_page_url": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "last_page": {
+                                            "type": "integer",
+                                            "minimum": 1
+                                        },
+                                        "links": {
+                                            "type": "array",
+                                            "description": "Generated paginator links.",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "url": {
+                                                        "type": [
+                                                            "string",
+                                                            "null"
+                                                        ]
+                                                    },
+                                                    "label": {
+                                                        "type": "string"
+                                                    },
+                                                    "active": {
+                                                        "type": "boolean"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "url",
+                                                    "label",
+                                                    "active"
+                                                ]
+                                            }
+                                        },
+                                        "next_page_url": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "path": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ],
+                                            "description": "Base path for paginator generated URLs."
+                                        },
+                                        "per_page": {
+                                            "type": "integer",
+                                            "description": "Number of items shown per page.",
+                                            "minimum": 0
+                                        },
+                                        "prev_page_url": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "to": {
+                                            "type": [
+                                                "integer",
+                                                "null"
+                                            ],
+                                            "description": "Number of the last item in the slice.",
+                                            "minimum": 1
+                                        },
+                                        "total": {
+                                            "type": "integer",
+                                            "description": "Total number of items being paginated.",
+                                            "minimum": 0
+                                        }
+                                    },
+                                    "required": [
+                                        "current_page",
+                                        "data",
+                                        "first_page_url",
+                                        "from",
+                                        "last_page_url",
+                                        "last_page",
+                                        "links",
+                                        "next_page_url",
+                                        "path",
+                                        "per_page",
+                                        "prev_page_url",
+                                        "to",
+                                        "total"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "/v1/orders/{order}": {
+            "get": {
+                "operationId": "order.show",
+                "tags": [
+                    "Order"
+                ],
+                "parameters": [
+                    {
+                        "name": "order",
+                        "in": "path",
+                        "required": true,
+                        "description": "The order ID",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Order"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "An error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "description": "Error overview.",
+                                            "examples": [
+                                                ""
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/ModelNotFoundException"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "/v1/orders/{order}/tracking": {
+            "get": {
+                "operationId": "order.tracking",
+                "tags": [
+                    "Order"
+                ],
+                "parameters": [
+                    {
+                        "name": "order",
+                        "in": "path",
+                        "required": true,
+                        "description": "The order ID",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "order_number": {
+                                            "type": "string"
+                                        },
+                                        "status": {
+                                            "type": "string"
+                                        },
+                                        "history": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/OrderStatusHistory"
+                                            }
+                                        },
+                                        "shipment": {
+                                            "$ref": "#/components/schemas/Shipment"
+                                        }
+                                    },
+                                    "required": [
+                                        "order_number",
+                                        "status",
+                                        "history",
+                                        "shipment"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "An error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "description": "Error overview.",
+                                            "examples": [
+                                                ""
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/ModelNotFoundException"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "/v1/central/platform/settings": {
+            "get": {
+                "operationId": "platformSetting.index",
+                "tags": [
+                    "PlatformSetting"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {}
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/AuthenticationException"
+                    }
+                }
+            },
+            "patch": {
+                "operationId": "platformSetting.update",
+                "tags": [
+                    "PlatformSetting"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "settings": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "minItems": 1
+                                    }
+                                },
+                                "required": [
+                                    "settings"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {}
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationException"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "/v1/products": {
+            "get": {
+                "operationId": "product.index",
+                "tags": [
+                    "Product"
+                ],
+                "parameters": [
+                    {
+                        "name": "currency",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "schema": {
+                            "type": "string",
+                            "default": "-created_at"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "string"
+                                                    },
+                                                    "sku": {
+                                                        "type": "string"
+                                                    },
+                                                    "slug": {
+                                                        "type": "string"
+                                                    },
+                                                    "status": {
+                                                        "type": "string"
+                                                    },
+                                                    "is_featured": {
+                                                        "type": "string"
+                                                    },
+                                                    "locale": {
+                                                        "type": "string"
+                                                    },
+                                                    "name": {
+                                                        "type": [
+                                                            "string",
+                                                            "null"
+                                                        ]
+                                                    },
+                                                    "description": {
+                                                        "type": [
+                                                            "string",
+                                                            "null"
+                                                        ]
+                                                    },
+                                                    "category_id": {
+                                                        "type": "string"
+                                                    },
+                                                    "brand_id": {
+                                                        "type": "string"
+                                                    },
+                                                    "price": {
+                                                        "type": [
+                                                            "object",
+                                                            "null"
+                                                        ],
+                                                        "properties": {
+                                                            "currency": {
+                                                                "type": [
+                                                                    "string",
+                                                                    "null"
+                                                                ]
+                                                            },
+                                                            "amount_minor": {
+                                                                "type": [
+                                                                    "string",
+                                                                    "null"
+                                                                ]
+                                                            },
+                                                            "formatted": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "currency",
+                                                            "amount_minor",
+                                                            "formatted"
+                                                        ]
+                                                    },
+                                                    "discount_badge": {
+                                                        "type": "string"
+                                                    },
+                                                    "variants": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "string"
+                                                                },
+                                                                "sku": {
+                                                                    "type": "string"
+                                                                },
+                                                                "attributes": {
+                                                                    "type": "string"
+                                                                },
+                                                                "is_default": {
+                                                                    "type": "string"
+                                                                },
+                                                                "in_stock": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "price": {
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "id",
+                                                                "sku",
+                                                                "attributes",
+                                                                "is_default",
+                                                                "in_stock",
+                                                                "price"
+                                                            ]
+                                                        }
+                                                    }
+                                                },
+                                                "required": [
+                                                    "id",
+                                                    "sku",
+                                                    "slug",
+                                                    "status",
+                                                    "is_featured",
+                                                    "locale",
+                                                    "name",
+                                                    "description",
+                                                    "category_id",
+                                                    "brand_id",
+                                                    "price",
+                                                    "discount_badge",
+                                                    "variants"
+                                                ]
+                                            }
+                                        },
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "current_page": {
+                                                    "type": "integer"
+                                                },
+                                                "last_page": {
+                                                    "type": "integer"
+                                                },
+                                                "total": {
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "required": [
+                                                "current_page",
+                                                "last_page",
+                                                "total"
+                                            ]
+                                        },
+                                        "locale": {
+                                            "type": "string"
+                                        },
+                                        "currency": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "string"
+                                                },
+                                                {
+                                                    "type": "array",
+                                                    "items": {}
+                                                },
+                                                {
+                                                    "type": "null"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "data",
+                                        "meta",
+                                        "locale",
+                                        "currency"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/products/{product}": {
+            "get": {
+                "operationId": "product.show",
+                "tags": [
+                    "Product"
+                ],
+                "parameters": [
+                    {
+                        "name": "product",
+                        "in": "path",
+                        "required": true,
+                        "description": "The product ID",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "currency",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "sku": {
+                                            "type": "string"
+                                        },
+                                        "slug": {
+                                            "type": "string"
+                                        },
+                                        "status": {
+                                            "type": "string"
+                                        },
+                                        "is_featured": {
+                                            "type": "string"
+                                        },
+                                        "locale": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "description": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "category_id": {
+                                            "type": "string"
+                                        },
+                                        "brand_id": {
+                                            "type": "string"
+                                        },
+                                        "price": {
+                                            "type": [
+                                                "object",
+                                                "null"
+                                            ],
+                                            "properties": {
+                                                "currency": {
+                                                    "type": [
+                                                        "string",
+                                                        "null"
+                                                    ]
+                                                },
+                                                "amount_minor": {
+                                                    "type": [
+                                                        "string",
+                                                        "null"
+                                                    ]
+                                                },
+                                                "formatted": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "currency",
+                                                "amount_minor",
+                                                "formatted"
+                                            ]
+                                        },
+                                        "discount_badge": {
+                                            "type": "string"
+                                        },
+                                        "variants": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "string"
+                                                    },
+                                                    "sku": {
+                                                        "type": "string"
+                                                    },
+                                                    "attributes": {
+                                                        "type": "string"
+                                                    },
+                                                    "is_default": {
+                                                        "type": "string"
+                                                    },
+                                                    "in_stock": {
+                                                        "type": "boolean"
+                                                    },
+                                                    "price": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "id",
+                                                    "sku",
+                                                    "attributes",
+                                                    "is_default",
+                                                    "in_stock",
+                                                    "price"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "sku",
+                                        "slug",
+                                        "status",
+                                        "is_featured",
+                                        "locale",
+                                        "name",
+                                        "description",
+                                        "category_id",
+                                        "brand_id",
+                                        "price",
+                                        "discount_badge",
+                                        "variants"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/ModelNotFoundException"
+                    }
+                }
+            }
+        },
+        "/v1/reviews": {
+            "post": {
+                "operationId": "review.store",
+                "tags": [
+                    "Review"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "product_id": {
+                                        "type": "integer"
+                                    },
+                                    "rating": {
+                                        "type": "integer",
+                                        "minimum": 1,
+                                        "maximum": 5
+                                    },
+                                    "title": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ],
+                                        "maxLength": 255
+                                    },
+                                    "body": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ],
+                                        "maxLength": 5000
+                                    }
+                                },
+                                "required": [
+                                    "product_id",
+                                    "rating"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Review"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationException"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "/v1/search": {
+            "get": {
+                "operationId": "search.index",
+                "tags": [
+                    "Search"
+                ],
+                "parameters": [
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "minLength": 1
+                        }
+                    },
+                    {
+                        "name": "currency",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "string"
+                                                    },
+                                                    "sku": {
+                                                        "type": "string"
+                                                    },
+                                                    "slug": {
+                                                        "type": "string"
+                                                    },
+                                                    "status": {
+                                                        "type": "string"
+                                                    },
+                                                    "is_featured": {
+                                                        "type": "string"
+                                                    },
+                                                    "locale": {
+                                                        "type": "string"
+                                                    },
+                                                    "name": {
+                                                        "type": [
+                                                            "string",
+                                                            "null"
+                                                        ]
+                                                    },
+                                                    "description": {
+                                                        "type": [
+                                                            "string",
+                                                            "null"
+                                                        ]
+                                                    },
+                                                    "category_id": {
+                                                        "type": "string"
+                                                    },
+                                                    "brand_id": {
+                                                        "type": "string"
+                                                    },
+                                                    "price": {
+                                                        "type": [
+                                                            "object",
+                                                            "null"
+                                                        ],
+                                                        "properties": {
+                                                            "currency": {
+                                                                "type": [
+                                                                    "string",
+                                                                    "null"
+                                                                ]
+                                                            },
+                                                            "amount_minor": {
+                                                                "type": [
+                                                                    "string",
+                                                                    "null"
+                                                                ]
+                                                            },
+                                                            "formatted": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "currency",
+                                                            "amount_minor",
+                                                            "formatted"
+                                                        ]
+                                                    },
+                                                    "discount_badge": {
+                                                        "type": "string"
+                                                    },
+                                                    "variants": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "string"
+                                                                },
+                                                                "sku": {
+                                                                    "type": "string"
+                                                                },
+                                                                "attributes": {
+                                                                    "type": "string"
+                                                                },
+                                                                "is_default": {
+                                                                    "type": "string"
+                                                                },
+                                                                "in_stock": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "price": {
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "id",
+                                                                "sku",
+                                                                "attributes",
+                                                                "is_default",
+                                                                "in_stock",
+                                                                "price"
+                                                            ]
+                                                        }
+                                                    }
+                                                },
+                                                "required": [
+                                                    "id",
+                                                    "sku",
+                                                    "slug",
+                                                    "status",
+                                                    "is_featured",
+                                                    "locale",
+                                                    "name",
+                                                    "description",
+                                                    "category_id",
+                                                    "brand_id",
+                                                    "price",
+                                                    "discount_badge",
+                                                    "variants"
+                                                ]
+                                            }
+                                        },
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "current_page": {
+                                                    "type": "integer"
+                                                },
+                                                "last_page": {
+                                                    "type": "integer"
+                                                },
+                                                "total": {
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "required": [
+                                                "current_page",
+                                                "last_page",
+                                                "total"
+                                            ]
+                                        },
+                                        "query": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "string"
+                                                },
+                                                {
+                                                    "type": "array",
+                                                    "items": {}
+                                                },
+                                                {
+                                                    "type": "null"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "data",
+                                        "meta",
+                                        "query"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationException"
+                    }
+                }
+            }
+        },
+        "/v1/central/signup": {
+            "post": {
+                "operationId": "signup.signup",
+                "tags": [
+                    "Signup"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "business_name": {
+                                        "type": "string",
+                                        "maxLength": 255
+                                    },
+                                    "subdomain": {
+                                        "type": "string",
+                                        "pattern": "^[a-z0-9-]+$",
+                                        "maxLength": 63
+                                    },
+                                    "admin_name": {
+                                        "type": "string",
+                                        "maxLength": 255
+                                    },
+                                    "admin_email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "admin_password": {
+                                        "type": "string",
+                                        "minLength": 8
+                                    }
+                                },
+                                "required": [
+                                    "business_name",
+                                    "subdomain",
+                                    "admin_name",
+                                    "admin_email",
+                                    "admin_password"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tenant_id": {
+                                            "type": "string"
+                                        },
+                                        "domain": {
+                                            "type": "string"
+                                        },
+                                        "status": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "tenant_id",
+                                        "domain",
+                                        "status"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationException"
+                    }
+                }
+            }
+        },
+        "/v1/central/onboarding/{tenant}/theme": {
+            "post": {
+                "operationId": "signup.theme",
+                "tags": [
+                    "Signup"
+                ],
+                "parameters": [
+                    {
+                        "name": "tenant",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "template_id": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "business_description": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "primary_color": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ],
+                                        "maxLength": 9
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tenant_id": {
+                                            "type": "string"
+                                        },
+                                        "branding_theme": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "tenant_id",
+                                        "branding_theme"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationException"
+                    }
+                }
+            }
+        },
+        "/v1/central/onboarding/{tenant}/go-live": {
+            "post": {
+                "operationId": "signup.goLive",
+                "tags": [
+                    "Signup"
+                ],
+                "parameters": [
+                    {
+                        "name": "tenant",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tenant_id": {
+                                            "type": "string"
+                                        },
+                                        "status": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "tenant_id",
+                                        "status"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "const": "Add at least one product before going live."
+                                        }
+                                    },
+                                    "required": [
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/settings": {
+            "get": {
+                "operationId": "tenantSettings.show",
+                "tags": [
+                    "TenantSettings"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {},
+                                        "branding": {
+                                            "type": "object",
+                                            "properties": {
+                                                "logo_url": {},
+                                                "theme": {},
+                                                "primary_color": {}
+                                            },
+                                            "required": [
+                                                "logo_url",
+                                                "theme",
+                                                "primary_color"
+                                            ]
+                                        },
+                                        "default_locale": {},
+                                        "default_currency": {}
+                                    },
+                                    "required": [
+                                        "name",
+                                        "branding",
+                                        "default_locale",
+                                        "default_currency"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/wishlist": {
+            "get": {
+                "operationId": "wishlist.index",
+                "tags": [
+                    "Wishlist"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Wishlist"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/AuthenticationException"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "wishlist.store",
+                "tags": [
+                    "Wishlist"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "product_variant_id": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "required": [
+                                    "product_variant_id"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Wishlist"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/ValidationException"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "/v1/wishlist/{itemId}": {
+            "delete": {
+                "operationId": "wishlist.destroy",
+                "tags": [
+                    "Wishlist"
+                ],
+                "parameters": [
+                    {
+                        "name": "itemId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "const": "Removed."
+                                        }
+                                    },
+                                    "required": [
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/AuthenticationException"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Brand": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "minItems": 0,
+                "maxItems": 0,
+                "additionalItems": false,
+                "title": "Brand"
+            },
+            "CartItem": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "minItems": 0,
+                "maxItems": 0,
+                "additionalItems": false,
+                "title": "CartItem"
+            },
+            "CheckoutSession": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "minItems": 0,
+                "maxItems": 0,
+                "additionalItems": false,
+                "title": "CheckoutSession"
+            },
+            "ModerationFlag": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "flaggable_type": {
+                        "type": "string"
+                    },
+                    "flaggable_id": {
+                        "type": "string"
+                    },
+                    "tenant_id": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "reason": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "source": {
+                        "type": "string"
+                    },
+                    "actioned_by": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "actioned_at": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "date-time"
+                    },
+                    "created_at": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "date-time"
+                    }
+                },
+                "required": [
+                    "id",
+                    "flaggable_type",
+                    "flaggable_id",
+                    "tenant_id",
+                    "reason",
+                    "status",
+                    "source",
+                    "actioned_by",
+                    "actioned_at",
+                    "created_at",
+                    "updated_at"
+                ],
+                "title": "ModerationFlag"
+            },
+            "NewsletterSubscriber": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "minItems": 0,
+                "maxItems": 0,
+                "additionalItems": false,
+                "title": "NewsletterSubscriber"
+            },
+            "Order": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "minItems": 0,
+                "maxItems": 0,
+                "additionalItems": false,
+                "title": "Order"
+            },
+            "OrderStatusHistory": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "minItems": 0,
+                "maxItems": 0,
+                "additionalItems": false,
+                "title": "OrderStatusHistory"
+            },
+            "Review": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "minItems": 0,
+                "maxItems": 0,
+                "additionalItems": false,
+                "title": "Review"
+            },
+            "Shipment": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "minItems": 0,
+                "maxItems": 0,
+                "additionalItems": false,
+                "title": "Shipment"
+            },
+            "Wishlist": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "minItems": 0,
+                "maxItems": 0,
+                "additionalItems": false,
+                "title": "Wishlist"
+            }
+        },
+        "responses": {
+            "ValidationException": {
+                "description": "Validation error",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "description": "Errors overview."
+                                },
+                                "errors": {
+                                    "type": "object",
+                                    "description": "A detailed description of each field that failed validation.",
+                                    "additionalProperties": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "required": [
+                                "message",
+                                "errors"
+                            ]
+                        }
+                    }
+                }
+            },
+            "AuthenticationException": {
+                "description": "Unauthenticated",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "description": "Error overview."
+                                }
+                            },
+                            "required": [
+                                "message"
+                            ]
+                        }
+                    }
+                }
+            },
+            "ModelNotFoundException": {
+                "description": "Not found",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "description": "Error overview."
+                                }
+                            },
+                            "required": [
+                                "message"
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

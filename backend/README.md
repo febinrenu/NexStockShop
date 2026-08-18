@@ -1,0 +1,163 @@
+# TrippleShop 2.0 — Backend (Person A)
+
+Multi-tenant SaaS e-commerce backend: tenancy & platform core, three-guard
+authentication, the full commerce database schema, and the commerce API.
+This is the Person A workstream from the TrippleShop 2.0 project brief —
+the contract Persons B (storefront), C (dashboards/AI), and D (payments)
+build against.
+
+A full implementation plan (scope, architecture decisions, and the
+per-requirement coverage check) lives outside this repo as the
+`person_a_implementation_plan.pdf` deliverable; this README documents what
+is actually built here, in this codebase.
+
+## Stack
+
+- Laravel 11 (API-only — no Blade storefront views)
+- [`stancl/tenancy`](https://tenancyforlaravel.com/) — one MySQL database per tenant
+- Laravel Sanctum — token auth, three isolated guards
+- `spatie/laravel-permission` — role/permission layer for tenant-admin sub-roles
+- `dedoc/scramble` — OpenAPI contract generated from route/request code, committed to `docs/api/openapi.json`
+- `stripe/stripe-php` — subscription billing (platform charging tenants), behind a `PaymentGateway` interface
+- MySQL 8 / MariaDB
+
+## Architecture in one page
+
+**Two kinds of database.** A single **central** database holds
+`tenants`, `domains`, `plans`, `subscriptions`, platform super-admin
+users, `platform_settings`, and `moderation_flags`. Every tenant gets its
+**own** database — products, orders, customers, everything storefront —
+provisioned and migrated automatically when a tenant signs up.
+
+**How a request gets routed to the right database.** An incoming
+request's host header is matched against the central `domains` table by
+`stancl/tenancy`'s identification middleware. On a match, Laravel's
+default DB connection is swapped to that tenant's own database *before*
+any controller runs (`DatabaseTenancyBootstrapper`). Every tenant-scoped
+Eloquent model then reads/writes through the right database automatically
+— no manual `tenant_id` scoping on any query. Central models
+(`App\Models\Central\*`) are pinned to the central connection via the
+`CentralConnection` trait, so they can never resolve against a tenant
+database even from inside a tenant-scoped request.
+
+**Three isolated auth contexts**, all token-based (Sanctum), each with
+its own Eloquent provider:
+
+| Guard | Table | Lives in |
+|---|---|---|
+| `platform` | `users` | central DB |
+| `tenant` | `users` | each tenant's own DB |
+| `customer` | `customers` | each tenant's own DB |
+
+A token issued under one guard cannot authenticate against another —
+`Laravel\Sanctum\Guard::hasValidProvider()` checks the token's owning
+model against the guard's configured provider model, so a leaked shopper
+token is structurally incapable of hitting a tenant-admin or platform
+route. This is asserted directly by
+[`tests/Feature/GuardIsolationTest.php`](tests/Feature/GuardIsolationTest.php).
+Cross-tenant isolation (tenant A can never see tenant B's data) is
+asserted by
+[`tests/Feature/TenantIsolationTest.php`](tests/Feature/TenantIsolationTest.php),
+which provisions two real throwaway tenant databases and checks the
+catalog API by domain.
+
+**Tenant sub-roles.** Within the `tenant` guard, `spatie/laravel-permission`
+draws a real distinction between `owner` and `staff` — e.g. only an owner
+can invite new staff (`staff.invite` permission), checked via
+`$user->can(...)`, not just a cosmetic `role` column. Roles/permissions are
+seeded into each tenant's own database by
+[`database/seeders/TenantPermissionsSeeder.php`](database/seeders/TenantPermissionsSeeder.php),
+run once during signup and idempotent if re-run.
+
+**Localization.** Catalog/content endpoints resolve locale from
+`Accept-Language` (or `?lang=` for quick testing), defaulting to English.
+Translatable fields (product/category name + description) live in
+dedicated `*_translations` tables (locale + field + value per row)
+instead of duplicated columns per language.
+
+**Multi-currency.** Prices are a currency code plus a minor-unit integer
+amount — never a float — stored per product variant per currency.
+
+**Billing.** `POST /central/billing/subscribe` creates a Stripe Checkout
+session for a tenant/plan pair and an `incomplete` `Subscription` row;
+`POST /central/billing/webhook` (called by Stripe, verified by signature —
+no guard) advances that subscription through `active`/`past_due`/
+`cancelled` and writes `Invoice` rows on `invoice.paid`/`invoice.payment_failed`.
+All Stripe SDK usage is isolated behind `App\Contracts\Billing\PaymentGateway`
+— `BillingController` never talks to the Stripe SDK directly, which is
+what lets [`tests/Feature/Central/BillingTest.php`](tests/Feature/Central/BillingTest.php)
+assert the full webhook state-machine (checkout completed → active,
+payment failed → past_due, subscription deleted → cancelled) without a
+real network call.
+
+## Directory layout
+
+```
+app/Models/Central/      Tenant, Domain, Plan, Subscription, PlatformAdmin, PlatformSetting, ModerationFlag
+app/Models/Tenant/       Everything else — catalog, cart, checkout, orders, customer, reviews, newsletter
+app/Http/Controllers/Central/   Signup/onboarding, platform-admin auth, platform settings, moderation queue
+app/Http/Controllers/Tenant/    Tenant/customer auth, catalog, search, cart, checkout, orders, wishlist, reviews, newsletter
+routes/central.php              Central (platform) API — loaded once, host-agnostic prefix /api/v1/central
+routes/tenant.php               Tenant API entrypoint — auto-loaded by TenancyServiceProvider with tenancy middleware
+routes/tenant/commerce.php      The commerce endpoint surface, require()'d from routes/tenant.php
+database/migrations/            Central migrations (tenants, domains, plans, subscriptions, platform_settings, moderation_flags, ...)
+database/migrations/tenant/     Tenant migrations (catalog, cart, checkout, orders, customer, newsletter, ...)
+docs/api/openapi.json           Committed OpenAPI contract (regenerate with `php artisan scramble:export --path=docs/api/openapi.json`)
+docs/api/postman_collection.json  Postman collection generated from the same spec (regenerate with `npm run postman:export`)
+database/seeders/TenantPermissionsSeeder.php  owner/staff roles+permissions, run inside each tenant's own DB
+tests/TenantTestCase.php        Shared test harness: provisions a real throwaway tenant DB per test
+```
+
+## Local setup
+
+```bash
+composer install
+cp .env.example .env
+php artisan key:generate
+
+# Create the central database (name from .env's DB_DATABASE)
+mysql -uroot -e "CREATE DATABASE trippleshop_central;"
+
+php artisan migrate --force
+php artisan db:seed --force   # platform super-admin + starter plans
+```
+
+Sign up a tenant against the running app:
+
+```bash
+curl -X POST http://localhost:8000/api/v1/central/signup \
+  -H 'Content-Type: application/json' \
+  -d '{"business_name":"Acme Jewelers","subdomain":"acme","admin_name":"Jane","admin_email":"jane@acme.test","admin_password":"password123"}'
+```
+
+This provisions `acme.localhost`'s own database (migrated automatically)
+and creates its first owner account — no manual per-tenant setup step.
+
+## Testing
+
+```bash
+vendor/bin/pint --test        # code style
+vendor/bin/phpstan analyse    # static analysis (level 5, Larastan)
+vendor/bin/phpunit            # full suite, including the two isolation suites above
+```
+
+Every migration in this repo has been run against a real MySQL database
+before being committed — not just reviewed — which is what caught the
+real defects listed in the PR description (a virtual-column routing bug
+on custom `tenants` columns, and a config pointing at the base
+`stancl/tenancy` model instead of the app's subclass).
+
+## CI
+
+`.github/workflows/tests.yml` runs, on every PR, against a real MySQL
+service container: migrations, Pint, Larastan, an OpenAPI-contract
+drift check (fails the build if `docs/api/openapi.json` is stale relative
+to the actual routes), and the full PHPUnit suite — including both
+isolation suites, so a guard or tenant leak fails CI, not code review.
+
+The Postman collection is **not** gated by an automated drift check: the
+`openapi2postmanv2` generator embeds random item IDs and randomized
+Faker example bodies on every run, so a byte-diff would fail on every PR
+even with zero real changes. Regenerate it by hand with
+`npm run postman:export` when the OpenAPI spec changes and commit the
+result — same source of truth, just not CI-enforced.
