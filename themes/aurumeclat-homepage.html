@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>AurumÉclat — Crafted to Be Treasured</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          serif: ['"Playfair Display"', 'serif'],
+          sans: ['Inter', 'sans-serif'],
+        },
+        colors: {
+          brand: {
+            black: '#0F0D0A',
+            charcoal: '#1B1712',
+            gold: '#C9A15B',
+            goldDark: '#AD8748',
+            cream: '#F3ECDD',
+            burgundy: '#3D1A24',
+            burgundyLight: '#4E2530',
+          },
+        },
+        boxShadow: {
+          card: '0 4px 18px -6px rgba(0,0,0,0.35)',
+          cardHover: '0 16px 34px -10px rgba(0,0,0,0.5)',
+          navUp: '0 -4px 16px -6px rgba(0,0,0,0.4)',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  .font-logo { font-family: 'Playfair Display', serif; }
+  .eyebrow { letter-spacing: .16em; }
+  .nav-spaced { letter-spacing: .08em; }
+  ::-webkit-scrollbar { height: 6px; width: 6px; }
+  ::-webkit-scrollbar-thumb { background: #4a3f2d; border-radius: 999px; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  summary::-webkit-details-marker { display: none; }
+  summary { list-style: none; }
+</style>
+</head>
+<body class="bg-brand-black text-[#EDE6D6] antialiased">
+
+<!-- ============ TOP TRUST BAR (desktop only) ============ -->
+<div class="hidden md:block bg-black text-white/70 text-[11.5px] border-b border-white/5">
+  <div class="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between">
+    <span class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-brand-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg>Private Appointments <span class="text-white/40">— Book Your Time</span></span>
+    <span class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-brand-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3l6 6-6 6M12 3l6 6-6 6" transform="scale(0.7) translate(4,3)"/><rect x="7" y="7" width="10" height="10" transform="rotate(45 12 12)"/></svg>IGI Certified Diamonds <span class="text-white/40">— Authenticity Guaranteed</span></span>
+    <span class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-brand-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Lifetime Polishing <span class="text-white/40">— Complimentary Forever</span></span>
+    <span class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-brand-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg>Free Insured Shipping <span class="text-white/40">— On All Orders</span></span>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="sticky top-0 z-50 bg-brand-black/95 backdrop-blur border-b border-white/5">
+  <div class="hidden md:flex max-w-7xl mx-auto px-4 py-4 items-center">
+    <div class="flex items-center gap-5 text-xs text-white/70 w-1/4">
+      <span class="flex items-center gap-1">USD $ <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></span>
+      <span class="flex items-center gap-1.5 hover:text-brand-gold transition cursor-pointer"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11.5A7 7 0 105 9.5C5 14.5 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Find a Boutique</span>
+    </div>
+    <a href="#" class="flex-1 flex flex-col items-center leading-none">
+      <svg class="w-3 h-3 text-brand-gold mb-1.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></svg>
+      <span class="font-logo text-2xl lg:text-3xl tracking-[0.12em] text-white">AURUM<span class="text-brand-gold">É</span>CLAT</span>
+      <span class="text-[9px] eyebrow text-white/50 mt-1">FINE JEWELRY</span>
+    </a>
+    <div class="flex items-center gap-5 justify-end w-1/4 text-white/80">
+      <button aria-label="Search" class="hover:text-brand-gold transition"><svg class="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></button>
+      <button aria-label="Wishlist" class="hover:text-brand-gold transition"><svg class="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg></button>
+      <button aria-label="Account" class="hover:text-brand-gold transition"><svg class="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg></button>
+      <button aria-label="Cart" class="relative hover:text-brand-gold transition">
+        <svg class="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 8V6a6 6 0 0112 0v2M4 8h16l-1.2 12.1a2 2 0 01-2 1.9H7.2a2 2 0 01-2-1.9L4 8z"/></svg>
+        <span class="absolute -top-1.5 -right-1.5 bg-brand-gold text-black text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- mobile row -->
+  <div class="md:hidden flex items-center gap-3 px-4 py-3.5">
+    <button id="menuBtn" class="p-1 -ml-1 text-white" aria-label="Open menu">
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+    <a href="#" class="flex-1 flex flex-col items-center leading-none">
+      <span class="font-logo text-base tracking-[0.1em] text-white">AURUM<span class="text-brand-gold">É</span>CLAT</span>
+      <span class="text-[7.5px] eyebrow text-white/50 mt-0.5">FINE JEWELRY</span>
+    </a>
+    <button aria-label="Search" class="p-1 text-white"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></button>
+    <button aria-label="Cart" class="relative p-1 text-white">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 8V6a6 6 0 0112 0v2M4 8h16l-1.2 12.1a2 2 0 01-2 1.9H7.2a2 2 0 01-2-1.9L4 8z"/></svg>
+      <span class="absolute -top-0.5 -right-0.5 bg-brand-gold text-black text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+    </button>
+  </div>
+
+  <!-- mobile nav drawer -->
+  <div id="mobileNav" class="md:hidden hidden flex-col px-4 py-2 text-sm font-medium text-white/85 divide-y divide-white/10 border-t border-white/10">
+    <a href="#" class="py-2.5">New Arrivals</a>
+    <a href="#" class="py-2.5">Rings</a>
+    <a href="#" class="py-2.5">Necklaces</a>
+    <a href="#" class="py-2.5">Earrings</a>
+    <a href="#" class="py-2.5">Bracelets</a>
+    <a href="#" class="py-2.5">Bridal</a>
+    <a href="#" class="py-2.5">Custom Design</a>
+    <a href="#" class="py-2.5">Diamonds</a>
+    <a href="#" class="py-2.5">Gold Coins</a>
+    <a href="#" class="py-2.5 text-brand-gold">Collections</a>
+  </div>
+
+  <!-- nav row (desktop) -->
+  <nav class="hidden md:block border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-center gap-7 text-[11.5px] font-medium text-white/75 nav-spaced h-11">
+      <a href="#" class="hover:text-brand-gold transition">NEW ARRIVALS</a>
+      <a href="#" class="hover:text-brand-gold transition">RINGS</a>
+      <a href="#" class="hover:text-brand-gold transition">NECKLACES</a>
+      <a href="#" class="hover:text-brand-gold transition">EARRINGS</a>
+      <a href="#" class="hover:text-brand-gold transition">BRACELETS</a>
+      <a href="#" class="hover:text-brand-gold transition">BRIDAL</a>
+      <a href="#" class="hover:text-brand-gold transition">CUSTOM DESIGN</a>
+      <a href="#" class="hover:text-brand-gold transition">DIAMONDS</a>
+      <a href="#" class="hover:text-brand-gold transition">GOLD COINS</a>
+      <a href="#" class="hover:text-brand-gold transition">COLLECTIONS</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="relative overflow-hidden bg-gradient-to-br from-[#1B1712] to-[#0F0D0A]">
+  <div class="max-w-7xl mx-auto px-4 py-12 md:py-16 grid md:grid-cols-2 gap-8 items-center">
+    <div class="relative z-10">
+      <h1 class="font-logo text-4xl sm:text-5xl md:text-[52px] leading-[1.12] mb-4">
+        <span class="text-white">Crafted to Be</span><br/>
+        <span class="text-brand-gold">Treasured</span>
+      </h1>
+      <p class="text-white/60 max-w-sm mb-2 text-sm md:text-base">Timeless designs. Ethical sourcing.</p>
+      <p class="text-white/60 max-w-sm mb-7 text-sm md:text-base">Heirloom quality, for a lifetime.</p>
+      <div class="flex flex-wrap items-center gap-3">
+        <a href="#bestsellers" class="inline-flex items-center gap-2 bg-brand-gold hover:bg-brand-goldDark transition text-black font-semibold px-6 py-3 text-xs nav-spaced">SHOP FINE JEWELRY</a>
+        <a href="#" class="inline-flex items-center gap-2 border border-white/40 text-white font-semibold px-6 py-3 text-xs nav-spaced hover:bg-white/10 transition">BOOK PRIVATE APPOINTMENT</a>
+      </div>
+      <div class="hidden md:flex items-center gap-6 mt-10 pt-6 border-t border-white/10 text-[11px] text-white/60">
+        <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-brand-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>18K &amp; 22K Solid Gold</span>
+        <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-brand-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="7" y="7" width="10" height="10" transform="rotate(45 12 12)"/></svg>IGI / GIA Certified</span>
+        <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-brand-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6.5 7-11.5A7 7 0 105 9.5C5 14.5 12 21 12 21z"/><path d="M9 10l2 2 4-4"/></svg>Lifetime Service Promise</span>
+      </div>
+    </div>
+
+    <div class="relative flex justify-center">
+      <svg viewBox="0 0 380 460" class="w-full max-w-sm">
+        <defs>
+          <radialGradient id="skinGrad" cx="40%" cy="30%" r="80%">
+            <stop offset="0%" stop-color="#D9A876"/>
+            <stop offset="100%" stop-color="#B67D50"/>
+          </radialGradient>
+        </defs>
+        <rect width="380" height="460" fill="#171310"/>
+        <!-- silhouette profile bust -->
+        <path d="M170 60q45 0 55 45 5 22-5 40 20 10 25 35v180h-160V180q3-30 25-42-8-20-3-42 10-46 63-46z" fill="url(#skinGrad)"/>
+        <!-- hair -->
+        <path d="M120 90q-15 40 5 80 10-10 8-30 15 20 40 15-20-30-10-65-20-15-43 0z" fill="#2B1C12"/>
+        <path d="M225 95q18 35 5 80-25 5-30-20 5 25-15 35 5-45-15-70 30-35 55-25z" fill="#2B1C12"/>
+        <!-- earring -->
+        <ellipse cx="140" cy="205" rx="10" ry="16" fill="none" stroke="#C9A15B" stroke-width="2.5"/>
+        <circle cx="140" cy="228" r="6" fill="#C9A15B"/>
+        <!-- necklace -->
+        <path d="M120 260q50 35 100 0" fill="none" stroke="#C9A15B" stroke-width="2.5"/>
+        <circle cx="170" cy="295" r="10" fill="#7A1F2B"/>
+        <circle cx="170" cy="295" r="10" fill="none" stroke="#E8C97A" stroke-width="2"/>
+        <!-- shoulder garment -->
+        <path d="M60 460v-90q30-40 110-40t110 40v90z" fill="#3D1A24"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="md:hidden flex items-center justify-center gap-2 pb-6">
+    <span class="w-6 h-1.5 rounded-full bg-brand-gold"></span>
+    <span class="w-1.5 h-1.5 rounded-full bg-white/20"></span>
+    <span class="w-1.5 h-1.5 rounded-full bg-white/20"></span>
+  </div>
+
+  <!-- mobile quick icons -->
+  <div class="md:hidden max-w-7xl mx-auto px-4 pb-8">
+    <div class="grid grid-cols-4 gap-3 bg-white/5 rounded-xl py-4">
+      <div class="flex flex-col items-center gap-1.5"><svg class="w-6 h-6 text-brand-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg><span class="text-[9.5px] text-white/70 text-center">Gold Rate</span></div>
+      <div class="flex flex-col items-center gap-1.5"><svg class="w-6 h-6 text-brand-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="7" y="7" width="10" height="10" transform="rotate(45 12 12)"/></svg><span class="text-[9.5px] text-white/70 text-center">Diamonds</span></div>
+      <div class="flex flex-col items-center gap-1.5"><svg class="w-6 h-6 text-brand-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 19l7-7 3 3-7 7-3-3zM18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/></svg><span class="text-[9.5px] text-white/70 text-center">Custom Design</span></div>
+      <div class="flex flex-col items-center gap-1.5"><svg class="w-6 h-6 text-brand-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg><span class="text-[9.5px] text-white/70 text-center">Bridal</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INFO BAR (4 cards) ============ -->
+<section class="bg-brand-cream text-[#241C12]">
+  <div class="max-w-7xl mx-auto px-4 py-6 grid grid-cols-1 md:grid-cols-4 gap-4">
+    <div class="bg-white rounded-xl p-4 relative shadow-card">
+      <p class="text-sm font-semibold mb-2">Today's Gold Rate</p>
+      <div class="flex items-center justify-between text-xs mb-1"><span>24K (999)</span><span class="font-bold text-base">$2,362 /oz</span></div>
+      <div class="flex items-center justify-between text-xs mb-2 text-[#7a6a58]"><span>22K (916)</span><span class="font-semibold">$2,168 /oz</span></div>
+      <svg viewBox="0 0 100 24" class="w-full h-6 mb-2"><polyline points="0,18 15,15 30,17 45,10 60,12 75,6 100,4" fill="none" stroke="#BC5B39" stroke-width="2"/></svg>
+      <a href="#" class="text-[11px] font-semibold text-brand-goldDark hover:opacity-70 transition">VIEW LIVE GOLD RATE →</a>
+    </div>
+    <div class="bg-white rounded-xl p-4 shadow-card">
+      <p class="text-sm font-semibold mb-2">Certified Diamonds</p>
+      <p class="text-xs text-[#7a6a58] mb-1">IGI / GIA Certified</p>
+      <p class="text-xs text-[#7a6a58] mb-1">Conflict-Free</p>
+      <p class="text-xs text-[#7a6a58] mb-3">100% Natural</p>
+      <svg viewBox="0 0 60 40" class="w-10 h-7"><rect x="20" y="8" width="20" height="20" transform="rotate(45 30 18)" fill="none" stroke="#AD8748" stroke-width="2"/></svg>
+    </div>
+    <div class="bg-gradient-to-br from-brand-gold to-brand-goldDark rounded-xl p-4 shadow-card text-black">
+      <p class="text-sm font-bold mb-1">Custom Design<br/>Consultation</p>
+      <p class="text-xs mb-4 text-black/70">Bring your dream to life</p>
+      <a href="#" class="text-[11px] font-bold inline-flex items-center gap-1">BOOK CONSULTATION →</a>
+    </div>
+    <div class="bg-white rounded-xl p-4 shadow-card">
+      <p class="text-sm font-semibold mb-2">Bridal &amp; Wedding</p>
+      <p class="text-xs text-[#7a6a58] mb-4">Celebrate forever</p>
+      <a href="#" class="text-[11px] font-semibold text-brand-goldDark hover:opacity-70 transition">EXPLORE BRIDAL →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SHOP BY SIGNATURE COLLECTION ============ -->
+<section class="bg-brand-cream text-[#241C12] pb-10">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex flex-col items-center text-center mb-6">
+      <svg class="w-3 h-3 text-brand-goldDark mb-2" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></svg>
+      <h2 class="eyebrow text-sm md:text-base font-semibold">SHOP BY SIGNATURE COLLECTION</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+      <a href="#" class="group relative rounded-lg overflow-hidden aspect-[4/5] bg-gradient-to-br from-[#3a3a3a] to-[#111] flex items-end justify-center pb-4">
+        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition"></div>
+        <svg class="absolute top-1/3 w-10 h-10 text-white/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="15" r="6"/><path d="M9 9l3-6 3 6"/></svg>
+        <span class="relative z-10 text-white text-[10px] md:text-xs font-semibold eyebrow">DIAMOND RINGS</span>
+      </a>
+      <a href="#" class="group relative rounded-lg overflow-hidden aspect-[4/5] bg-gradient-to-br from-[#4a2018] to-[#1a0d0a] flex items-end justify-center pb-4">
+        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition"></div>
+        <svg class="absolute top-1/3 w-10 h-10 text-brand-gold/80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="15" r="6"/><path d="M9 9l3-6 3 6"/></svg>
+        <span class="relative z-10 text-white text-[10px] md:text-xs font-semibold eyebrow">BRIDAL SETS</span>
+      </a>
+      <a href="#" class="group relative rounded-lg overflow-hidden aspect-[4/5] bg-gradient-to-br from-[#232323] to-[#0a0a0a] flex items-end justify-center pb-4">
+        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition"></div>
+        <svg class="absolute top-1/3 w-10 h-10 text-brand-gold/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3v6M8 9h8l-4 12z"/></svg>
+        <span class="relative z-10 text-white text-[10px] md:text-xs font-semibold eyebrow">NECKLACES</span>
+      </a>
+      <a href="#" class="group relative rounded-lg overflow-hidden aspect-[4/5] bg-gradient-to-br from-[#1e3a2f] to-[#0a1a14] flex items-end justify-center pb-4">
+        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition"></div>
+        <svg class="absolute top-1/3 w-10 h-10 text-emerald-300/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><ellipse cx="9" cy="8" rx="3" ry="4"/><ellipse cx="15" cy="8" rx="3" ry="4"/><path d="M9 12v3M15 12v3"/></svg>
+        <span class="relative z-10 text-white text-[10px] md:text-xs font-semibold eyebrow">EARRINGS</span>
+      </a>
+      <a href="#" class="group relative rounded-lg overflow-hidden aspect-[4/5] bg-gradient-to-br from-[#8C6B3F] to-[#4a3a24] flex items-end justify-center pb-4">
+        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition"></div>
+        <svg class="absolute top-1/3 w-10 h-10 text-white/80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="4"/></svg>
+        <span class="relative z-10 text-white text-[10px] md:text-xs font-semibold eyebrow">BANGLES</span>
+      </a>
+      <a href="#" class="group relative rounded-lg overflow-hidden aspect-[4/5] bg-gradient-to-br from-[#232323] to-[#0a0a0a] flex items-end justify-center pb-4">
+        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition"></div>
+        <svg class="absolute top-1/3 w-10 h-10 text-brand-gold/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="15" r="6"/><path d="M9 9l3-6 3 6"/></svg>
+        <span class="relative z-10 text-white text-[10px] md:text-xs font-semibold eyebrow">MEN'S JEWELRY</span>
+      </a>
+      <a href="#" class="group relative rounded-lg overflow-hidden aspect-[4/5] bg-gradient-to-br from-[#3D1A24] to-[#1a0a0e] flex items-end justify-center pb-4">
+        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition"></div>
+        <svg class="absolute top-1/3 w-10 h-10 text-white/80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="7" cy="12" r="3"/><circle cx="12" cy="8" r="3"/><circle cx="17" cy="12" r="3"/></svg>
+        <span class="relative z-10 text-white text-[10px] md:text-xs font-semibold eyebrow">PEARLS</span>
+      </a>
+      <a href="#" class="group relative rounded-lg overflow-hidden aspect-[4/5] bg-gradient-to-br from-[#1e2a4a] to-[#0a0e1a] flex items-end justify-center pb-4">
+        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition"></div>
+        <svg class="absolute top-1/3 w-10 h-10 text-blue-300/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="7" y="7" width="10" height="10" transform="rotate(45 12 12)"/></svg>
+        <span class="relative z-10 text-white text-[10px] md:text-xs font-semibold eyebrow">GEMSTONES</span>
+      </a>
+    </div>
+    <div class="flex justify-center mt-6">
+      <a href="#" class="inline-flex items-center gap-2 bg-brand-black hover:bg-black transition text-white font-semibold px-7 py-3 text-xs eyebrow">EXPLORE ALL COLLECTIONS</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BESTSELLING PIECES ============ -->
+<section id="bestsellers" class="bg-brand-black py-10">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex items-end justify-between mb-5">
+      <div>
+        <p class="eyebrow text-[10px] text-brand-gold font-semibold mb-1">CURATED BESTSELLERS</p>
+        <h2 class="font-logo text-2xl md:text-3xl text-white">Bestselling Pieces</h2>
+      </div>
+      <a href="#" class="text-xs font-semibold text-white/70 hover:text-brand-gold transition flex items-center gap-1">VIEW ALL
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-5">
+      <div class="group bg-brand-charcoal rounded-xl p-3 hover:shadow-cardHover transition">
+        <div class="relative bg-[#100e0a] rounded-lg aspect-square flex items-center justify-center overflow-hidden mb-2.5">
+          <button class="absolute top-2 right-2 text-white/40 hover:text-brand-gold transition z-10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg></button>
+          <svg viewBox="0 0 100 100" class="w-14 h-14"><circle cx="50" cy="60" r="18" fill="none" stroke="#C9A15B" stroke-width="4"/><rect x="42" y="20" width="16" height="14" transform="rotate(45 50 27)" fill="#E8DCC0"/></svg>
+        </div>
+        <p class="text-xs md:text-sm font-semibold text-white leading-snug mb-0.5">Solitaire Diamond Ring</p>
+        <p class="text-[10px] text-white/50 mb-1.5">18K White Gold</p>
+        <div class="flex items-center justify-between">
+          <p class="font-bold text-sm text-brand-gold">$2,450</p>
+          <button class="w-7 h-7 bg-white/10 hover:bg-brand-gold hover:text-black transition rounded-md flex items-center justify-center text-white"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8V6a6 6 0 0112 0v2M4 8h16l-1.2 12.1a2 2 0 01-2 1.9H7.2a2 2 0 01-2-1.9L4 8z"/></svg></button>
+        </div>
+        <div class="text-amber-400 text-[10px] mt-1.5">★★★★★ <span class="text-white/40">(128)</span></div>
+      </div>
+
+      <div class="group bg-brand-charcoal rounded-xl p-3 hover:shadow-cardHover transition">
+        <div class="relative bg-[#100e0a] rounded-lg aspect-square flex items-center justify-center overflow-hidden mb-2.5">
+          <button class="absolute top-2 right-2 text-white/40 hover:text-brand-gold transition z-10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg></button>
+          <svg viewBox="0 0 100 100" class="w-14 h-14"><path d="M35 30q15 20 30 0" stroke="#E8C97A" stroke-width="2" fill="none"/><circle cx="50" cy="60" r="10" fill="none" stroke="#E8C97A" stroke-width="3"/><circle cx="50" cy="42" r="5" fill="#E8C97A"/></svg>
+        </div>
+        <p class="text-xs md:text-sm font-semibold text-white leading-snug mb-0.5">Halo Diamond Necklace</p>
+        <p class="text-[10px] text-white/50 mb-1.5">18K Yellow Gold</p>
+        <div class="flex items-center justify-between">
+          <p class="font-bold text-sm text-brand-gold">$1,850</p>
+          <button class="w-7 h-7 bg-white/10 hover:bg-brand-gold hover:text-black transition rounded-md flex items-center justify-center text-white"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8V6a6 6 0 0112 0v2M4 8h16l-1.2 12.1a2 2 0 01-2 1.9H7.2a2 2 0 01-2-1.9L4 8z"/></svg></button>
+        </div>
+        <div class="text-amber-400 text-[10px] mt-1.5">★★★★★ <span class="text-white/40">(93)</span></div>
+      </div>
+
+      <div class="group bg-brand-charcoal rounded-xl p-3 hover:shadow-cardHover transition">
+        <div class="relative bg-[#100e0a] rounded-lg aspect-square flex items-center justify-center overflow-hidden mb-2.5">
+          <button class="absolute top-2 right-2 text-white/40 hover:text-brand-gold transition z-10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg></button>
+          <svg viewBox="0 0 100 100" class="w-14 h-14"><ellipse cx="38" cy="45" rx="7" ry="10" fill="#3F9E6D" stroke="#E8C97A" stroke-width="1.5"/><ellipse cx="62" cy="45" rx="7" ry="10" fill="#3F9E6D" stroke="#E8C97A" stroke-width="1.5"/><path d="M38 55v20M62 55v20" stroke="#E8C97A" stroke-width="1.5"/></svg>
+        </div>
+        <p class="text-xs md:text-sm font-semibold text-white leading-snug mb-0.5">Emerald Drop Earrings</p>
+        <p class="text-[10px] text-white/50 mb-1.5">18K Gold</p>
+        <div class="flex items-center justify-between">
+          <p class="font-bold text-sm text-brand-gold">$2,150</p>
+          <button class="w-7 h-7 bg-white/10 hover:bg-brand-gold hover:text-black transition rounded-md flex items-center justify-center text-white"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8V6a6 6 0 0112 0v2M4 8h16l-1.2 12.1a2 2 0 01-2 1.9H7.2a2 2 0 01-2-1.9L4 8z"/></svg></button>
+        </div>
+        <div class="text-amber-400 text-[10px] mt-1.5">★★★★★ <span class="text-white/40">(76)</span></div>
+      </div>
+
+      <div class="group bg-brand-charcoal rounded-xl p-3 hover:shadow-cardHover transition">
+        <div class="relative bg-[#100e0a] rounded-lg aspect-square flex items-center justify-center overflow-hidden mb-2.5">
+          <button class="absolute top-2 right-2 text-white/40 hover:text-brand-gold transition z-10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg></button>
+          <svg viewBox="0 0 100 100" class="w-16 h-16"><ellipse cx="50" cy="50" rx="34" ry="14" fill="none" stroke="#E8DCC0" stroke-width="6"/></svg>
+        </div>
+        <p class="text-xs md:text-sm font-semibold text-white leading-snug mb-0.5">Tennis Bracelet</p>
+        <p class="text-[10px] text-white/50 mb-1.5">18K White Gold</p>
+        <div class="flex items-center justify-between">
+          <p class="font-bold text-sm text-brand-gold">$3,250</p>
+          <button class="w-7 h-7 bg-white/10 hover:bg-brand-gold hover:text-black transition rounded-md flex items-center justify-center text-white"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8V6a6 6 0 0112 0v2M4 8h16l-1.2 12.1a2 2 0 01-2 1.9H7.2a2 2 0 01-2-1.9L4 8z"/></svg></button>
+        </div>
+        <div class="text-amber-400 text-[10px] mt-1.5">★★★★★ <span class="text-white/40">(64)</span></div>
+      </div>
+
+      <div class="group bg-brand-charcoal rounded-xl p-3 hover:shadow-cardHover transition">
+        <div class="relative bg-[#100e0a] rounded-lg aspect-square flex items-center justify-center overflow-hidden mb-2.5">
+          <button class="absolute top-2 right-2 text-white/40 hover:text-brand-gold transition z-10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg></button>
+          <svg viewBox="0 0 100 100" class="w-14 h-14"><circle cx="50" cy="50" r="26" fill="#E8C97A"/><circle cx="50" cy="50" r="26" fill="none" stroke="#AD8748" stroke-width="2"/><text x="50" y="56" font-family="Playfair Display, serif" font-size="16" fill="#4a3a1c" text-anchor="middle">A</text></svg>
+        </div>
+        <p class="text-xs md:text-sm font-semibold text-white leading-snug mb-0.5">Gold Coin (22K)</p>
+        <p class="text-[10px] text-white/50 mb-1.5">10g · 916 Gold</p>
+        <div class="flex items-center justify-between">
+          <p class="font-bold text-sm text-brand-gold">$680</p>
+          <button class="w-7 h-7 bg-white/10 hover:bg-brand-gold hover:text-black transition rounded-md flex items-center justify-center text-white"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8V6a6 6 0 0112 0v2M4 8h16l-1.2 12.1a2 2 0 01-2 1.9H7.2a2 2 0 01-2-1.9L4 8z"/></svg></button>
+        </div>
+        <div class="text-amber-400 text-[10px] mt-1.5">★★★★★ <span class="text-white/40">(41)</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5-COLUMN FEATURE STRIP ============ -->
+<section class="bg-brand-charcoal py-10 border-y border-white/5">
+  <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-5 gap-6 items-center text-center">
+    <div>
+      <h3 class="font-logo text-lg text-white mb-1.5">The Bridal Edit</h3>
+      <p class="text-xs text-white/50 mb-3">Celebrate your forever</p>
+      <a href="#" class="text-[11px] eyebrow font-semibold text-brand-gold hover:opacity-70 transition">EXPLORE</a>
+    </div>
+    <div>
+      <h3 class="font-logo text-lg text-white mb-1.5">Timeless Heirlooms</h3>
+      <p class="text-xs text-white/50 mb-3">Made to be passed down</p>
+      <a href="#" class="text-[11px] eyebrow font-semibold text-brand-gold hover:opacity-70 transition">DISCOVER</a>
+    </div>
+    <div class="hidden md:flex flex-col items-center">
+      <div class="w-16 h-16 rounded-full border border-brand-gold/50 flex items-center justify-center mb-2">
+        <span class="font-logo text-2xl text-brand-gold">A</span>
+      </div>
+      <p class="eyebrow text-[9px] text-white/40 max-w-[120px]">CRAFTED WITH PASSION<br/>ROOTED IN HERITAGE</p>
+    </div>
+    <div>
+      <h3 class="font-logo text-lg text-white mb-1.5">Custom Crafted for You</h3>
+      <p class="text-xs text-white/50 mb-3">Your vision, our artistry</p>
+      <a href="#" class="text-[11px] eyebrow font-semibold text-brand-gold hover:opacity-70 transition">START DESIGN</a>
+    </div>
+    <div>
+      <h3 class="font-logo text-lg text-white mb-1.5">Certified Purity &amp; Authenticity</h3>
+      <p class="text-xs text-white/50 mb-3">Trust in every detail</p>
+      <a href="#" class="text-[11px] eyebrow font-semibold text-brand-gold hover:opacity-70 transition">LEARN MORE</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2-COLUMN BANNER ============ -->
+<section class="max-w-7xl mx-auto px-4 py-10">
+  <div class="grid md:grid-cols-2 gap-4 md:gap-6">
+    <div class="relative rounded-2xl overflow-hidden min-h-[220px] p-7 flex flex-col justify-center bg-[#151210]">
+      <svg viewBox="0 0 400 260" class="absolute inset-0 w-full h-full opacity-40" preserveAspectRatio="xMidYMid slice">
+        <rect width="400" height="260" fill="#151210"/>
+        <circle cx="200" cy="130" r="60" fill="none" stroke="#C9A15B" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <path d="M200 70l14 40h-28z" fill="none" stroke="#C9A15B" stroke-width="1.5"/>
+      </svg>
+      <div class="relative z-10">
+        <h3 class="font-logo text-2xl text-white mb-1.5">Design Your Piece</h3>
+        <p class="text-sm text-brand-gold mb-2">Make it uniquely yours</p>
+        <p class="text-xs text-white/60 max-w-xs mb-5">From concept to creation, we craft jewelry as unique as your story.</p>
+        <a href="#" class="inline-flex items-center gap-2 bg-brand-gold hover:bg-brand-goldDark transition text-black font-semibold px-6 py-3 text-xs eyebrow w-fit">START CUSTOM DESIGN</a>
+      </div>
+    </div>
+
+    <div class="relative rounded-2xl overflow-hidden min-h-[220px] p-7 flex flex-col justify-center bg-brand-cream text-[#241C12]">
+      <svg viewBox="0 0 400 260" class="absolute inset-0 w-full h-full opacity-60" preserveAspectRatio="xMidYMid slice">
+        <rect width="400" height="260" fill="#F3ECDD"/>
+        <rect x="240" y="60" width="120" height="150" rx="6" fill="#E3D8BE"/>
+        <rect x="255" y="90" width="90" height="50" rx="4" fill="#D0C1A0"/>
+      </svg>
+      <div class="relative z-10">
+        <h3 class="font-logo text-2xl mb-2">Book a Private Appointment</h3>
+        <p class="text-xs text-[#5a4a3a] mb-1">One-on-one. In-store or virtual.</p>
+        <ul class="text-xs text-[#5a4a3a] space-y-1 mb-5 mt-2">
+          <li class="flex items-center gap-1.5"><svg class="w-3 h-3 text-brand-goldDark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l4 4L19 6"/></svg>Personalized Styling</li>
+          <li class="flex items-center gap-1.5"><svg class="w-3 h-3 text-brand-goldDark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l4 4L19 6"/></svg>Diamond Education</li>
+          <li class="flex items-center gap-1.5"><svg class="w-3 h-3 text-brand-goldDark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l4 4L19 6"/></svg>Custom Creations</li>
+        </ul>
+        <a href="#" class="inline-flex items-center gap-2 bg-brand-black hover:bg-black transition text-white font-semibold px-6 py-3 text-xs eyebrow w-fit">BOOK APPOINTMENT</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEW ARRIVALS (carousel) ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-10">
+  <div class="flex items-center justify-between mb-4">
+    <h2 class="eyebrow text-sm md:text-base font-semibold">NEW ARRIVALS</h2>
+    <a href="#" class="text-xs font-semibold text-brand-gold hover:opacity-70 transition">VIEW ALL</a>
+  </div>
+  <div class="relative">
+    <button id="naPrev" class="hidden md:flex absolute -left-4 top-1/3 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white border border-black/10 shadow-card items-center justify-center hover:bg-gray-50 transition"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <div id="naScroll" class="flex gap-3 md:gap-4 overflow-x-auto no-scrollbar snap-x scroll-smooth">
+      <div class="shrink-0 w-36 sm:w-40 bg-white rounded-xl p-3 snap-start shadow-card">
+        <div class="bg-gray-50 rounded-lg aspect-square flex items-center justify-center mb-2"><svg viewBox="0 0 80 80" class="w-12 h-12"><circle cx="40" cy="34" r="12" fill="#EDE4CE" stroke="#C9A15B" stroke-width="1.5"/><path d="M40 46v30" stroke="#C9A15B" stroke-width="2"/></svg></div>
+        <p class="text-[11px] font-semibold leading-snug mb-1">Pearl Pendant Necklace</p>
+        <p class="text-[10px] text-gray-500 mb-1">18K Gold</p>
+        <p class="font-bold text-xs">$750</p>
+      </div>
+      <div class="shrink-0 w-36 sm:w-40 bg-white rounded-xl p-3 snap-start shadow-card">
+        <div class="bg-gray-50 rounded-lg aspect-square flex items-center justify-center mb-2"><svg viewBox="0 0 80 80" class="w-12 h-12"><circle cx="40" cy="45" r="14" fill="none" stroke="#E38FA0" stroke-width="4"/><rect x="34" y="20" width="12" height="10" transform="rotate(45 40 25)" fill="#E38FA0"/></svg></div>
+        <p class="text-[11px] font-semibold leading-snug mb-1">Pink Sapphire Ring</p>
+        <p class="text-[10px] text-gray-500 mb-1">18K Rose Gold</p>
+        <p class="font-bold text-xs">$1,280</p>
+      </div>
+      <div class="shrink-0 w-36 sm:w-40 bg-white rounded-xl p-3 snap-start shadow-card">
+        <div class="bg-gray-50 rounded-lg aspect-square flex items-center justify-center mb-2"><svg viewBox="0 0 80 80" class="w-12 h-12"><rect x="30" y="20" width="8" height="8" transform="rotate(45 34 24)" fill="#DCEEFB" stroke="#4AA8E0" stroke-width="1"/><rect x="46" y="20" width="8" height="8" transform="rotate(45 50 24)" fill="#DCEEFB" stroke="#4AA8E0" stroke-width="1"/><path d="M34 28v30M50 28v30" stroke="#AD8748" stroke-width="1.5"/></svg></div>
+        <p class="text-[11px] font-semibold leading-snug mb-1">Diamond Stud Earrings</p>
+        <p class="text-[10px] text-gray-500 mb-1">18K White Gold</p>
+        <p class="font-bold text-xs">$980</p>
+      </div>
+      <div class="shrink-0 w-36 sm:w-40 bg-white rounded-xl p-3 snap-start shadow-card">
+        <div class="bg-gray-50 rounded-lg aspect-square flex items-center justify-center mb-2"><svg viewBox="0 0 80 80" class="w-12 h-12"><ellipse cx="40" cy="40" rx="24" ry="10" fill="none" stroke="#E8DCC0" stroke-width="5"/></svg></div>
+        <p class="text-[11px] font-semibold leading-snug mb-1">Baguette Diamond Band</p>
+        <p class="text-[10px] text-gray-500 mb-1">18K Gold</p>
+        <p class="font-bold text-xs">$1,650</p>
+      </div>
+      <div class="shrink-0 w-36 sm:w-40 bg-white rounded-xl p-3 snap-start shadow-card">
+        <div class="bg-gray-50 rounded-lg aspect-square flex items-center justify-center mb-2"><svg viewBox="0 0 80 80" class="w-12 h-12"><ellipse cx="40" cy="34" rx="10" ry="13" fill="none" stroke="#C9A15B" stroke-width="3"/><ellipse cx="40" cy="52" rx="20" ry="8" fill="none" stroke="#C9A15B" stroke-width="3"/></svg></div>
+        <p class="text-[11px] font-semibold leading-snug mb-1">Cushion Cut Ring</p>
+        <p class="text-[10px] text-gray-500 mb-1">18K Gold</p>
+        <p class="font-bold text-xs">$2,980</p>
+      </div>
+    </div>
+    <button id="naNext" class="hidden md:flex absolute -right-4 top-1/3 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white border border-black/10 shadow-card items-center justify-center hover:bg-gray-50 transition"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></button>
+  </div>
+</section>
+
+<!-- ============ TRUST BAR ============ -->
+<section class="bg-brand-charcoal border-y border-white/5 py-8">
+  <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-5 gap-5">
+    <div class="flex items-center gap-2.5">
+      <svg class="w-6 h-6 text-brand-gold shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="7" y="7" width="10" height="10" transform="rotate(45 12 12)"/></svg>
+      <div><p class="font-semibold text-xs md:text-sm text-white">IGI / GIA Certified</p><p class="text-[10px] md:text-xs text-white/50">100% Genuine</p></div>
+    </div>
+    <div class="flex items-center gap-2.5">
+      <svg class="w-6 h-6 text-brand-gold shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
+      <div><p class="font-semibold text-xs md:text-sm text-white">18K &amp; 22K Solid Gold</p><p class="text-[10px] md:text-xs text-white/50">Hallmarked Jewelry</p></div>
+    </div>
+    <div class="flex items-center gap-2.5">
+      <svg class="w-6 h-6 text-brand-gold shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg>
+      <div><p class="font-semibold text-xs md:text-sm text-white">Secure Insured Delivery</p><p class="text-[10px] md:text-xs text-white/50">Safe &amp; Discreet</p></div>
+    </div>
+    <div class="flex items-center gap-2.5">
+      <svg class="w-6 h-6 text-brand-gold shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6.5 7-11.5A7 7 0 105 9.5C5 14.5 12 21 12 21z"/><path d="M9 10l2 2 4-4"/></svg>
+      <div><p class="font-semibold text-xs md:text-sm text-white">Lifetime Service</p><p class="text-[10px] md:text-xs text-white/50">Polish · Resize · Repair</p></div>
+    </div>
+    <div class="hidden md:flex items-center gap-2.5">
+      <svg class="w-6 h-6 text-brand-gold shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4v6h6M20 20v-6h-6"/><path d="M5.5 15a8 8 0 0013.9 3.5M18.5 9A8 8 0 004.6 5.5"/></svg>
+      <div><p class="font-semibold text-sm text-white">Easy Returns</p><p class="text-xs text-white/50">30-Day Policy</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="max-w-7xl mx-auto px-4 py-10">
+  <h2 class="eyebrow text-sm md:text-base font-semibold text-center mb-6">WHAT OUR CLIENTS SAY</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+    <div class="bg-brand-charcoal rounded-xl p-5">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-9 h-9 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold font-bold text-sm">P</div>
+        <p class="text-sm font-semibold text-white">Priya S.</p>
+      </div>
+      <div class="text-amber-400 text-xs mb-2">★★★★★</div>
+      <p class="text-sm text-white/60">"The craftsmanship is extraordinary. My ring is more beautiful than I imagined."</p>
+    </div>
+    <div class="bg-brand-charcoal rounded-xl p-5">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-9 h-9 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold font-bold text-sm">A</div>
+        <p class="text-sm font-semibold text-white">Arjun S.</p>
+      </div>
+      <div class="text-amber-400 text-xs mb-2">★★★★★</div>
+      <p class="text-sm text-white/60">"AurumÉclat made our engagement moment truly unforgettable."</p>
+    </div>
+    <div class="bg-brand-charcoal rounded-xl p-5">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-9 h-9 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold font-bold text-sm">N</div>
+        <p class="text-sm font-semibold text-white">Nisha R.</p>
+      </div>
+      <div class="text-amber-400 text-xs mb-2">★★★★★</div>
+      <p class="text-sm text-white/60">"The team was patient, kind and helped us design the perfect necklace."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AURUMÉCLAT CLUB ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-10">
+  <div class="bg-brand-burgundy rounded-2xl p-6 md:p-8">
+    <h2 class="font-logo text-xl md:text-2xl text-white mb-1.5">AurumÉclat Club</h2>
+    <p class="text-sm text-white/70 mb-5 max-w-md">Join our exclusive membership for special privileges.</p>
+    <div class="grid grid-cols-3 gap-5 mb-6 max-w-lg">
+      <div class="flex flex-col items-center gap-1.5 text-center">
+        <svg class="w-6 h-6 text-brand-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 7h-9M14 17H5M17 3v8M8 13v8"/><circle cx="17" cy="7" r="3"/><circle cx="8" cy="17" r="3"/></svg>
+        <span class="text-[11px] text-white/80">Early Access<br/>New Collections</span>
+      </div>
+      <div class="flex flex-col items-center gap-1.5 text-center">
+        <svg class="w-6 h-6 text-brand-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M3 12h18M12 8V6a2 2 0 114 0v2"/></svg>
+        <span class="text-[11px] text-white/80">VIP<br/>Invitations</span>
+      </div>
+      <div class="flex flex-col items-center gap-1.5 text-center">
+        <svg class="w-6 h-6 text-brand-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
+        <span class="text-[11px] text-white/80">Complimentary<br/>Services</span>
+      </div>
+    </div>
+    <button class="bg-brand-gold hover:bg-brand-goldDark transition text-black font-semibold px-7 py-3 text-xs eyebrow">JOIN THE CLUB</button>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-black text-white/60 pt-10 pb-6 border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="mb-8 text-center md:text-left">
+      <a href="#" class="inline-flex flex-col items-center md:items-start leading-none mb-2">
+        <span class="font-logo text-xl tracking-[0.1em] text-white">AURUM<span class="text-brand-gold">É</span>CLAT</span>
+      </a>
+      <p class="text-xs text-white/40">A legacy of elegance since 1892.</p>
+      <p class="text-xs text-white/40">Ethically sourced, meticulously crafted.</p>
+    </div>
+
+    <!-- desktop footer columns -->
+    <div class="hidden md:grid md:grid-cols-5 gap-8 pb-8 border-b border-white/10">
+      <div>
+        <h4 class="text-white font-semibold mb-3 text-sm eyebrow">BOUTIQUE</h4>
+        <ul class="space-y-2 text-sm text-white/50">
+          <li>123 Heritage Lane<br/>New York, NY 10021</li>
+          <li>+1 (212) 555-0192</li>
+          <li>hello@aurumeclat.com</li>
+          <li><a href="#" class="inline-block mt-1 text-brand-gold hover:opacity-70 transition text-xs eyebrow font-semibold">BOOK AN APPOINTMENT</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3 text-sm eyebrow">CUSTOMER CARE</h4>
+        <ul class="space-y-2 text-sm text-white/50">
+          <li><a href="#" class="hover:text-white transition">FAQs</a></li>
+          <li><a href="#" class="hover:text-white transition">Shipping &amp; Delivery</a></li>
+          <li><a href="#" class="hover:text-white transition">Returns &amp; Exchanges</a></li>
+          <li><a href="#" class="hover:text-white transition">Ring Size Guide</a></li>
+          <li><a href="#" class="hover:text-white transition">Track Your Order</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3 text-sm eyebrow">THE MAISON</h4>
+        <ul class="space-y-2 text-sm text-white/50">
+          <li><a href="#" class="hover:text-white transition">Our Story</a></li>
+          <li><a href="#" class="hover:text-white transition">Craftsmanship</a></li>
+          <li><a href="#" class="hover:text-white transition">Ethical Sourcing</a></li>
+          <li><a href="#" class="hover:text-white transition">Press &amp; Media</a></li>
+          <li><a href="#" class="hover:text-white transition">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3 text-sm eyebrow">SERVICES</h4>
+        <ul class="space-y-2 text-sm text-white/50">
+          <li><a href="#" class="hover:text-white transition">Custom Jewelry</a></li>
+          <li><a href="#" class="hover:text-white transition">Engraving</a></li>
+          <li><a href="#" class="hover:text-white transition">Jewelry Care</a></li>
+          <li><a href="#" class="hover:text-white transition">Gift Packaging</a></li>
+          <li><a href="#" class="hover:text-white transition">Lifetime Warranty</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3 text-sm eyebrow">JOIN THE MAISON</h4>
+        <p class="text-xs text-white/50 mb-3">Be the first to know about new collections &amp; exclusive offers.</p>
+        <form class="flex gap-2" onsubmit="event.preventDefault(); this.reset(); alert('Subscribed!');">
+          <input type="email" required placeholder="Enter your email" class="flex-1 min-w-0 px-3 py-2 rounded-lg bg-white/5 border border-white/15 outline-none text-xs text-white placeholder:text-white/40" />
+          <button class="w-9 h-9 shrink-0 bg-brand-gold hover:bg-brand-goldDark transition rounded-lg flex items-center justify-center">
+            <svg class="w-4 h-4 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- mobile accordion -->
+    <div class="md:hidden divide-y divide-white/10 border-y border-white/10 mb-6">
+      <details class="py-3">
+        <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold text-white eyebrow">CUSTOMER CARE <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></summary>
+        <ul class="mt-2 space-y-2 text-sm text-white/50 pl-1"><li><a href="#">FAQs</a></li><li><a href="#">Shipping &amp; Delivery</a></li><li><a href="#">Returns &amp; Exchanges</a></li><li><a href="#">Track Your Order</a></li></ul>
+      </details>
+      <details class="py-3">
+        <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold text-white eyebrow">THE MAISON <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></summary>
+        <ul class="mt-2 space-y-2 text-sm text-white/50 pl-1"><li><a href="#">Our Story</a></li><li><a href="#">Craftsmanship</a></li><li><a href="#">Ethical Sourcing</a></li><li><a href="#">Careers</a></li></ul>
+      </details>
+      <details class="py-3">
+        <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold text-white eyebrow">SERVICES <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></summary>
+        <ul class="mt-2 space-y-2 text-sm text-white/50 pl-1"><li><a href="#">Custom Jewelry</a></li><li><a href="#">Engraving</a></li><li><a href="#">Jewelry Care</a></li><li><a href="#">Lifetime Warranty</a></li></ul>
+      </details>
+      <details class="py-3">
+        <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold text-white eyebrow">BOUTIQUE INFO <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></summary>
+        <p class="mt-2 text-sm text-white/50 pl-1">123 Heritage Lane, New York, NY 10021<br/>+1 (212) 555-0192<br/>hello@aurumeclat.com</p>
+      </details>
+    </div>
+
+    <div class="md:hidden mb-6 text-center">
+      <p class="text-sm font-semibold text-white mb-3 eyebrow">FOLLOW US</p>
+      <div class="flex items-center justify-center gap-3">
+        <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center" aria-label="Instagram"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+        <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center" aria-label="Facebook"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.25-1.5 1.55-1.5H17V3.7C16.7 3.65 15.7 3.6 14.5 3.6c-2.4 0-4 1.45-4 4.15V10H7.8v3.1h2.7V21h3z"/></svg></a>
+        <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center" aria-label="Pinterest"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-3.6 19.3c0-.8 0-1.8.2-2.6l1.4-6c-.35-.7-.35-1.75-.35-1.75 0-1.6.95-2.8 2.1-2.8 1 0 1.5.75 1.5 1.65 0 1-.65 2.5-1 3.9-.3 1.15.6 2.1 1.75 2.1 2.1 0 3.7-2.2 3.7-5.4 0-2.8-2-4.8-4.9-4.8-3.35 0-5.3 2.5-5.3 5.1a10 10 0 006.9 9.6A10 10 0 0012 2z"/></svg></a>
+        <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center" aria-label="YouTube"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12s0-3.2-.4-4.7a2.8 2.8 0 00-2-2C17.9 5 12 5 12 5s-5.9 0-7.6.3a2.8 2.8 0 00-2 2C2 8.8 2 12 2 12s0 3.2.4 4.7a2.8 2.8 0 002 2C6.1 19 12 19 12 19s5.9 0 7.6-.3a2.8 2.8 0 002-2C22 15.2 22 12 22 12z"/></svg></a>
+        <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center" aria-label="TikTok"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.4 2.2 1.9 3.6 4 3.8v2.7c-1.4 0-2.7-.4-3.9-1.2v6.2a5.4 5.4 0 11-4.6-5.4v2.8a2.7 2.7 0 102.7 2.7V3h1.8z"/></svg></a>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-white/10 text-xs text-white/35">
+      <p>© 2026 AurumÉclat Fine Jewelry. All rights reserved.</p>
+      <div class="hidden md:flex items-center gap-3">
+        <a href="#" class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition" aria-label="Instagram"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+        <a href="#" class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition" aria-label="Facebook"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.25-1.5 1.55-1.5H17V3.7C16.7 3.65 15.7 3.6 14.5 3.6c-2.4 0-4 1.45-4 4.15V10H7.8v3.1h2.7V21h3z"/></svg></a>
+        <a href="#" class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition" aria-label="Pinterest"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-3.6 19.3c0-.8 0-1.8.2-2.6l1.4-6c-.35-.7-.35-1.75-.35-1.75 0-1.6.95-2.8 2.1-2.8 1 0 1.5.75 1.5 1.65 0 1-.65 2.5-1 3.9-.3 1.15.6 2.1 1.75 2.1 2.1 0 3.7-2.2 3.7-5.4 0-2.8-2-4.8-4.9-4.8-3.35 0-5.3 2.5-5.3 5.1a10 10 0 006.9 9.6A10 10 0 0012 2z"/></svg></a>
+        <a href="#" class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition" aria-label="YouTube"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12s0-3.2-.4-4.7a2.8 2.8 0 00-2-2C17.9 5 12 5 12 5s-5.9 0-7.6.3a2.8 2.8 0 00-2 2C2 8.8 2 12 2 12s0 3.2.4 4.7a2.8 2.8 0 002 2C6.1 19 12 19 12 19s5.9 0 7.6-.3a2.8 2.8 0 002-2C22 15.2 22 12 22 12z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- spacer so content isn't hidden behind fixed mobile bottom nav -->
+<div class="h-16 md:hidden" aria-hidden="true"></div>
+
+<!-- ============ MOBILE BOTTOM NAV (app-style) ============ -->
+<nav class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-black border-t border-white/10 shadow-navUp" style="padding-bottom: env(safe-area-inset-bottom);">
+  <div class="grid grid-cols-5">
+    <a href="#" class="flex flex-col items-center justify-center gap-1 py-2.5 text-brand-gold">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-8 9 8M5 10v10h14V10"/></svg>
+      <span class="text-[10px] font-semibold">Home</span>
+    </a>
+    <a href="#" class="flex flex-col items-center justify-center gap-1 py-2.5 text-white/45 hover:text-brand-gold transition">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      <span class="text-[10px] font-medium">Collections</span>
+    </a>
+    <a href="#" class="flex flex-col items-center justify-center gap-1 py-2.5 text-white/45 hover:text-brand-gold transition">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg>
+      <span class="text-[10px] font-medium">Wishlist</span>
+    </a>
+    <a href="#" class="flex flex-col items-center justify-center gap-1 py-2.5 text-white/45 hover:text-brand-gold transition">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8V6a6 6 0 0112 0v2M4 8h16l-1.2 12.1a2 2 0 01-2 1.9H7.2a2 2 0 01-2-1.9L4 8z"/></svg>
+      <span class="text-[10px] font-medium">Cart</span>
+    </a>
+    <a href="#" class="flex flex-col items-center justify-center gap-1 py-2.5 text-white/45 hover:text-brand-gold transition">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+      <span class="text-[10px] font-medium">Account</span>
+    </a>
+  </div>
+</nav>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileNav = document.getElementById('mobileNav');
+  menuBtn.addEventListener('click', () => {
+    mobileNav.classList.toggle('hidden');
+    mobileNav.classList.toggle('flex');
+  });
+
+  const naScroll = document.getElementById('naScroll');
+  document.getElementById('naPrev').addEventListener('click', () => naScroll.scrollBy({ left: -200, behavior: 'smooth' }));
+  document.getElementById('naNext').addEventListener('click', () => naScroll.scrollBy({ left: 200, behavior: 'smooth' }));
+</script>
+
+</body>
+</html>

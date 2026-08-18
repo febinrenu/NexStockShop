@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deals — NexStock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+<main class="container" style="display:flex;flex-direction:column;gap:clamp(32px,4vw,48px);">
+  <div class="hero" style="background:linear-gradient(118deg,#0B1F3F,#123A78);color:#fff;padding:clamp(28px,4vw,52px);display:flex;flex-wrap:wrap;align-items:center;gap:28px;">
+    <div style="flex:1.4 1 300px;">
+      <div class="eyebrow" style="color:#7FA8E8;" id="dl-eyebrow"></div>
+      <h1 id="dl-hero" style="font-size:clamp(32px,4.2vw,52px);line-height:1.04;margin-bottom:14px;"></h1>
+      <p id="dl-sub" style="margin:0 0 24px;font-size:15px;line-height:1.6;color:#B9C8E2;max-width:440px;"></p>
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+        <span style="font-size:12.5px;color:#B9C8E2;font-weight:600;" id="dl-endsin"></span>
+        <div id="dl-countdown" style="display:flex;gap:8px;"></div>
+      </div>
+    </div>
+    <div style="flex:1 1 240px;height:280px;border-radius:18px;overflow:hidden;" id="dl-heroimg"></div>
+  </div>
+  <section>
+    <div class="section-head"><div><div class="eyebrow" style="color:#B03A2E;" id="dl-flasheyebrow"></div><h2 id="dl-flashtitle"></h2></div><a href="shop.html" id="dl-seeall"></a></div>
+    <div class="grid grid-auto" id="dl-grid"></div>
+  </section>
+  <div class="grid" style="grid-template-columns:repeat(auto-fit, minmax(260px,1fr));" id="dl-coupons"></div>
+</main>
+<div id="site-footer"></div>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+mountChrome('deals');
+const D = t('deals'); const ar = isAr();
+$('dl-eyebrow').textContent = D.eyebrow;
+$('dl-hero').innerHTML = `${D.heroA} <span class="serif" style="color:#8FB4F2;">${D.heroB}</span>`;
+$('dl-sub').textContent = D.heroSub; $('dl-endsin').textContent = D.endsIn;
+$('dl-heroimg').innerHTML = ph(2, ar?'حملة تخفيضات':'Sale campaign');
+$('dl-flasheyebrow').textContent = D.flashEyebrow; $('dl-flashtitle').textContent = D.flashTitle; $('dl-seeall').textContent = D.seeAll;
+
+const dealProducts = PRODUCTS.filter(p=>p.deal);
+$('dl-grid').innerHTML = dealProducts.map(p => productCard(p, {wish:true, showSold:true})).join('');
+
+$('dl-coupons').innerHTML = D.coupons.map(c => `<div class="card" style="background:${c[4]};color:${c[5]};border:1.5px dashed ${c[5]};padding:26px;display:flex;flex-direction:column;gap:10px;">
+  <div style="font-size:11px;letter-spacing:0.16em;font-weight:700;text-transform:uppercase;opacity:0.7;">${c[0]}</div>
+  <div style="font-size:24px;font-weight:900;">${c[1]}</div><div style="font-size:12.5px;opacity:0.75;">${c[2]}</div>
+  <div style="margin-top:6px;display:flex;align-items:center;gap:10px;">
+    <span style="background:rgba(0,0,0,0.08);border-radius:8px;padding:7px 14px;font-size:13px;font-weight:900;letter-spacing:0.14em;">${c[3]}</span>
+    <span onclick="navigator.clipboard && navigator.clipboard.writeText('${c[3]}'); showToast(D.copied);" style="font-size:12px;font-weight:800;text-decoration:underline;cursor:pointer;">${D.copy}</span>
+  </div></div>`).join('');
+
+// live countdown to a fixed target set at page load (2d 14h 36m from now)
+const target = new Date(Date.now() + (2*24*60+14*60+36)*60000);
+function tick(){
+  const diff = Math.max(0, target - new Date());
+  const days = Math.floor(diff/86400000), hours = Math.floor(diff/3600000)%24, mins = Math.floor(diff/60000)%60;
+  $('dl-countdown').innerHTML = [[days,D.units[0]],[hours,D.units[1]],[mins,D.units[2]]].map(c=>`<span style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.16);border-radius:12px;padding:10px 14px;text-align:center;min-width:58px;">
+    <span style="display:block;font-size:20px;font-weight:900;">${String(c[0]).padStart(2,'0')}</span><span style="display:block;font-size:10.5px;letter-spacing:0.1em;color:#8FB4F2;text-transform:uppercase;">${c[1]}</span></span>`).join('');
+}
+tick(); setInterval(tick, 60000);
+</script>
+</body>
+</html>

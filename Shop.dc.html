@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>
+body { margin:0; background:#F4F2ED; color:#12151A; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; -webkit-font-smoothing:antialiased; }
+a { color:#1E5FD6; text-decoration:none; }
+a:hover { color:#0B1F3F; }
+</style>
+</helmet>
+<dc-import name="StoreHeader" lang="{{ lang }}" active="shop" cart-count="{{ cartCount }}" on-set-lang="{{ setLang }}" hint-size="100%,220px"></dc-import>
+<main dir="{{ dir }}" style="max-width:1320px; margin:0 auto; padding:clamp(16px,3vw,28px) clamp(16px,4vw,32px) 60px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif;">
+  <div style="font-size:12.5px; color:#8A857A; margin-bottom:18px;"><a href="NexStock%20Store.dc.html" style="color:#8A857A;">{{ t.home }}</a> / <span style="color:#12151A; font-weight:600;">{{ t.shop }}</span></div>
+  <div style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:14px; margin-bottom:24px;">
+    <div>
+      <h1 style="margin:0 0 6px; font-size:clamp(28px,3.4vw,40px); font-weight:900; letter-spacing:-0.02em;">{{ t.title }} <span style="font-family:'Instrument Serif','IBM Plex Sans Arabic',serif; font-style:italic; font-weight:400; color:#1E5FD6;">{{ t.titleAccent }}</span></h1>
+      <div style="font-size:13.5px; color:#8A857A;">{{ t.count }}</div>
+    </div>
+    <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+      <span style="font-size:13px; color:#8A857A;">{{ t.sortBy }}</span>
+      <sc-for list="{{ sorts }}" as="s" hint-placeholder-count="3">
+        <button onClick="{{ s.pick }}" style="background:{{ s.bg }}; color:{{ s.fg }}; border:1px solid {{ s.bd }}; border-radius:999px; padding:8px 16px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:12.5px; font-weight:700; cursor:pointer;">{{ s.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+  <div style="display:flex; flex-wrap:wrap; gap:24px; align-items:flex-start;">
+    <aside style="flex:1 1 230px; max-width:300px; min-width:220px; display:flex; flex-direction:column; gap:16px;">
+      <div style="background:#FDFCFA; border:1px solid #E7E3DA; border-radius:18px; padding:20px;">
+        <div style="font-size:12px; letter-spacing:0.14em; font-weight:800; text-transform:uppercase; color:#8A857A; margin-bottom:14px;">{{ t.categories }}</div>
+        <div style="display:flex; flex-direction:column; gap:4px;">
+          <sc-for list="{{ cats }}" as="c" hint-placeholder-count="8">
+            <div onClick="{{ c.pick }}" style="display:flex; align-items:center; justify-content:space-between; padding:9px 12px; border-radius:10px; cursor:pointer; font-size:13.5px; font-weight:{{ c.weight }}; color:{{ c.color }}; background:{{ c.bg }};" style-hover="background:#F1EEE7;">
+              <span>{{ c.name }}</span><span style="font-size:11.5px; color:#B0AA9B;">{{ c.n }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="background:#FDFCFA; border:1px solid #E7E3DA; border-radius:18px; padding:20px;">
+        <div style="font-size:12px; letter-spacing:0.14em; font-weight:800; text-transform:uppercase; color:#8A857A; margin-bottom:14px;">{{ t.price }}</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <sc-for list="{{ priceBands }}" as="p" hint-placeholder-count="4">
+            <label style="display:flex; align-items:center; gap:10px; font-size:13px; cursor:pointer; color:#3B3830;"><input type="checkbox" style="accent-color:#1E5FD6; width:16px; height:16px;">{{ p }}</label>
+          </sc-for>
+        </div>
+      </div>
+      <div style="background:#FDFCFA; border:1px solid #E7E3DA; border-radius:18px; padding:20px;">
+        <div style="font-size:12px; letter-spacing:0.14em; font-weight:800; text-transform:uppercase; color:#8A857A; margin-bottom:14px;">{{ t.brands }}</div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          <sc-for list="{{ brandChips }}" as="b" hint-placeholder-count="8">
+            <span style="border:1px solid #E3DFD4; border-radius:999px; padding:6px 13px; font-size:12px; font-weight:700; color:#5C594F; cursor:pointer;" style-hover="border-color:#1E5FD6; color:#1E5FD6;">{{ b }}</span>
+          </sc-for>
+        </div>
+      </div>
+      <div style="background:#0B1F3F; color:#fff; border-radius:18px; padding:22px;">
+        <div style="font-size:11px; letter-spacing:0.16em; font-weight:700; color:#7FA8E8; text-transform:uppercase; margin-bottom:8px;">{{ t.dealEyebrow }}</div>
+        <div style="font-size:18px; font-weight:800; letter-spacing:-0.01em; line-height:1.2; margin-bottom:14px;">{{ t.dealTitle }}</div>
+        <a href="Deals.dc.html" style="display:inline-block; background:#fff; color:#0B1F3F; border-radius:999px; padding:9px 20px; font-size:12.5px; font-weight:800;">{{ t.dealCta }}</a>
+      </div>
+    </aside>
+    <div style="flex:3 1 480px; min-width:0;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:14px;">
+        <sc-for list="{{ products }}" as="p" hint-placeholder-count="9">
+          <div style="background:#FDFCFA; border:1px solid #E7E3DA; border-radius:18px; padding:12px; display:flex; flex-direction:column; gap:10px; position:relative;" style-hover="box-shadow:0 16px 40px rgba(11,31,63,0.12); transform:translateY(-4px); border-color:#D8D2C4;">
+            <sc-if value="{{ p.badge }}" hint-placeholder-val="{{ false }}">
+              <span style="position:absolute; top:20px; inset-inline-start:20px; z-index:2; background:{{ p.badgeBg }}; color:#fff; font-size:11px; font-weight:800; padding:4px 9px; border-radius:999px;">{{ p.badge }}</span>
+            </sc-if>
+            <a href="Product%20Details.dc.html" style="display:block; height:170px; border-radius:12px; overflow:hidden; background:#F1EEE7;">
+              <image-slot id="{{ p.slot }}" shape="rounded" radius="12" placeholder="{{ p.ph }}"></image-slot>
+            </a>
+            <div style="display:flex; flex-direction:column; gap:6px; padding:2px 4px 4px;">
+              <div style="font-size:11px; font-weight:700; color:#B0AA9B; text-transform:uppercase; letter-spacing:0.06em;">{{ p.cat }}</div>
+              <a href="Product%20Details.dc.html" style="font-size:13.5px; font-weight:700; line-height:1.35; min-height:36px; color:#12151A;">{{ p.name }}</a>
+              <div style="font-size:12px; color:#8A857A;"><span style="color:#C89B3C;">★</span> {{ p.rating }} · {{ p.reviews }}</div>
+              <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:2px;">
+                <div>
+                  <div style="font-size:15px; font-weight:900;">{{ p.priceFmt }}</div>
+                  <sc-if value="{{ p.oldFmt }}" hint-placeholder-val="{{ false }}"><div style="font-size:11.5px; color:#B0AA9B; text-decoration:line-through;">{{ p.oldFmt }}</div></sc-if>
+                </div>
+                <button onClick="{{ addToCart }}" style="width:36px; height:36px; border-radius:12px; border:none; background:#12151A; color:#fff; font-size:17px; cursor:pointer; flex-shrink:0;" style-hover="background:#1E5FD6;">+</button>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex; justify-content:center; gap:8px; margin-top:32px;">
+        <sc-for list="{{ pages }}" as="pg" hint-placeholder-count="4">
+          <span style="min-width:38px; height:38px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800; cursor:pointer; background:{{ pg.bg }}; color:{{ pg.fg }}; border:1px solid {{ pg.bd }};" style-hover="border-color:#1E5FD6;">{{ pg.label }}</span>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</main>
+<dc-import name="StoreFooter" lang="{{ lang }}" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { cart: 0, lang: (typeof localStorage !== 'undefined' && localStorage.getItem('nexstock-lang')) || 'en', sort: 0, cat: 0 };
+  renderVals() {
+    const lang = this.state.lang; const ar = lang === 'ar';
+    const f = (x) => 'CFA ' + x.toLocaleString('en-US');
+    const T = {
+      en: { home: 'Home', shop: 'Shop', title: 'All', titleAccent: 'products', count: '128 products · updated daily', sortBy: 'Sort:', categories: 'Categories', price: 'Price (CFA)', brands: 'Brands', dealEyebrow: 'Limited time', dealTitle: 'Up to 45% off this week', dealCta: 'See deals →',
+        sorts: ['Popular', 'Newest', 'Price ↓'], catAll: 'All Products',
+        bands: ['Under 50,000', '50,000 – 200,000', '200,000 – 500,000', 'Over 500,000'] },
+      ar: { home: 'الرئيسية', shop: 'المتجر', title: 'كل', titleAccent: 'المنتجات', count: '128 منتجاً · يُحدَّث يومياً', sortBy: 'ترتيب:', categories: 'الفئات', price: 'السعر (CFA)', brands: 'العلامات التجارية', dealEyebrow: 'لفترة محدودة', dealTitle: 'خصومات حتى 45% هذا الأسبوع', dealCta: '← تصفح العروض',
+        sorts: ['الأكثر شيوعاً', 'الأحدث', 'السعر ↓'], catAll: 'كل المنتجات',
+        bands: ['أقل من 50,000', '50,000 – 200,000', '200,000 – 500,000', 'أكثر من 500,000'] }
+    }[lang];
+    const catEn = ['All Products','Smartphones & Gadgets','Laptops & Computers','TVs, Audio & Video','Home Appliances','Groceries & Essentials','Health & Beauty','Fashion & Accessories','Toys & Kids','Sports & Outdoors'];
+    const catAr = ['كل المنتجات','الهواتف الذكية','الحواسيب المحمولة','التلفزيونات والصوتيات','الأجهزة المنزلية','البقالة والمستلزمات','الصحة والجمال','الأزياء والإكسسوارات','ألعاب الأطفال','الرياضة والهواء الطلق'];
+    const counts = [128, 24, 18, 15, 20, 16, 12, 10, 8, 5];
+    const cats = catEn.map((n, i) => ({ name: ar ? catAr[i] : n, n: counts[i], pick: () => this.setState({ cat: i }), weight: this.state.cat === i ? 800 : 600, color: this.state.cat === i ? '#1E5FD6' : '#3B3830', bg: this.state.cat === i ? '#E3EBFA' : 'transparent' }));
+    const sorts = T.sorts.map((label, i) => ({ label, pick: () => this.setState({ sort: i }), bg: this.state.sort === i ? '#12151A' : '#FDFCFA', fg: this.state.sort === i ? '#fff' : '#5C594F', bd: this.state.sort === i ? '#12151A' : '#E3DFD4' }));
+    const data = [
+      { name: 'Apple iPhone 15 · 128GB Blue', cat: ar?'هواتف':'Phones', price: 499000, old: 579000, badge: '-14%', badgeBg: '#12151A', rating: '4.8', reviews: 128, ph: 'iPhone 15 photo' },
+      { name: 'Samsung Galaxy S24 Ultra 5G', cat: ar?'هواتف':'Phones', price: 745000, badge: false, rating: '4.7', reviews: 96, ph: 'Galaxy S24 photo' },
+      { name: 'MacBook Air M2 · 13-inch', cat: ar?'حواسيب':'Laptops', price: 999000, badge: false, rating: '4.9', reviews: 88, ph: 'MacBook photo' },
+      { name: 'Dell Inspiron 15 3530', cat: ar?'حواسيب':'Laptops', price: 420000, old: 460000, badge: '-9%', badgeBg: '#12151A', rating: '4.6', reviews: 64, ph: 'Dell laptop photo' },
+      { name: 'Apple Watch Series 9 · 41mm', cat: ar?'ساعات':'Watches', price: 279000, badge: false, rating: '4.9', reviews: 72, ph: 'Apple Watch photo' },
+      { name: 'Sony WH-CH720N Headphones', cat: ar?'صوتيات':'Audio', price: 89000, old: 126000, badge: '-31%', badgeBg: '#B03A2E', rating: '4.6', reviews: 68, ph: 'Headphones photo' },
+      { name: 'Canon EOS R50 Mirrorless', cat: ar?'كاميرات':'Cameras', price: 695000, badge: false, rating: '4.7', reviews: 54, ph: 'Canon camera photo' },
+      { name: 'Hisense 55" 4K Smart TV', cat: ar?'تلفزيونات':'TVs', price: 399000, badge: ar?'جديد':'NEW', badgeBg: '#1E5FD6', rating: '4.5', reviews: 41, ph: '4K TV photo' },
+      { name: 'Philips Air Fryer HD9270', cat: ar?'أجهزة منزلية':'Home', price: 149000, badge: false, rating: '4.7', reviews: 59, ph: 'Air fryer photo' },
+      { name: 'JBL Charge 5 Speaker', cat: ar?'صوتيات':'Audio', price: 129000, badge: false, rating: '4.8', reviews: 77, ph: 'JBL speaker photo' },
+      { name: 'Dyson V15 Detect Vacuum', cat: ar?'أجهزة منزلية':'Home', price: 399000, badge: ar?'جديد':'NEW', badgeBg: '#1E5FD6', rating: '4.8', reviews: 45, ph: 'Dyson vacuum photo' },
+      { name: 'Oppo Enco Air3 Pro Earbuds', cat: ar?'صوتيات':'Audio', price: 59000, old: 74000, badge: '-20%', badgeBg: '#B03A2E', rating: '4.5', reviews: 63, ph: 'Earbuds photo' }
+    ];
+    const products = data.map((p, i) => ({ ...p, slot: 'shop-' + (i + 1), priceFmt: f(p.price), oldFmt: p.old ? f(p.old) : false }));
+    const pages = ['1','2','3','…','11'].map((label, i) => ({ label, bg: i === 0 ? '#12151A' : '#FDFCFA', fg: i === 0 ? '#fff' : '#5C594F', bd: i === 0 ? '#12151A' : '#E3DFD4' }));
+    return {
+      lang, dir: ar ? 'rtl' : 'ltr', t: T, cats, sorts, products, pages,
+      priceBands: T.bands, brandChips: ['Apple','Samsung','Sony','HP','Xiaomi','Canon','Philips','Dyson','JBL','Oppo'],
+      cartCount: this.state.cart,
+      addToCart: () => this.setState(s => ({ cart: s.cart + 1 })),
+      setLang: (l) => { try { localStorage.setItem('nexstock-lang', l); } catch(e) {} this.setState({ lang: l }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

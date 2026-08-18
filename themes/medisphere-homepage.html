@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>MediSphere — Care Delivered With Confidence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Inter', 'sans-serif'] },
+        colors: {
+          brand: {
+            teal: '#0E8074',
+            tealDark: '#0A6459',
+            tealDeep: '#0B2B28',
+            tealLight: '#E6F5F3',
+            green: '#EAF7EE',
+            red: '#DC2626',
+            blue: '#EAF2FB',
+          },
+        },
+        boxShadow: {
+          card: '0 4px 14px -4px rgba(11, 43, 40, 0.10)',
+          cardHover: '0 12px 26px -8px rgba(11, 43, 40, 0.18)',
+          navUp: '0 -4px 14px -6px rgba(11,43,40,0.14)',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  ::-webkit-scrollbar { height: 6px; width: 6px; }
+  ::-webkit-scrollbar-thumb { background: #cdeae5; border-radius: 999px; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .star-rating { letter-spacing: 1px; }
+  summary::-webkit-details-marker { display: none; }
+  summary { list-style: none; }
+</style>
+</head>
+<body class="bg-white text-[#122421] antialiased">
+
+<!-- ============ TOP UTILITY BAR (desktop only) ============ -->
+<div class="hidden md:block bg-brand-teal text-white text-[12px]">
+  <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-center gap-8">
+    <span class="flex items-center gap-1.5 whitespace-nowrap"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v2a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 1h2a2 2 0 012 1.7c.1 1 .3 2 .7 2.9a2 2 0 01-.4 2.1L7 9.1a16 16 0 006 6l1.4-1.4a2 2 0 012.1-.4c.9.4 1.9.6 2.9.7a2 2 0 011.7 2z"/></svg>24/7 Pharmacist Support</span>
+    <span class="flex items-center gap-1.5 whitespace-nowrap"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>Prescription Refills</span>
+    <span class="flex items-center gap-1.5 whitespace-nowrap"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Same-Day Delivery in Select Areas</span>
+    <span class="flex items-center gap-1.5 whitespace-nowrap"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v2a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 1h2a2 2 0 012 1.7c.1 1 .3 2 .7 2.9a2 2 0 01-.4 2.1L7 9.1a16 16 0 006 6l1.4-1.4a2 2 0 012.1-.4c.9.4 1.9.6 2.9.7a2 2 0 011.7 2z"/></svg>1800-123-6677</span>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100">
+  <div class="hidden md:flex max-w-7xl mx-auto px-4 py-3.5 items-center gap-6">
+    <a href="#" class="flex items-center gap-2 shrink-0">
+      <svg class="w-9 h-9" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" fill="#E6F5F3"/><path d="M11 6h2v5h5v2h-5v5h-2v-5H6v-2h5z" fill="#0E8074"/></svg>
+      <span class="leading-tight">
+        <span class="block font-extrabold text-lg text-[#122421] -mb-1">MediSphere</span>
+        <span class="block text-[10px] text-brand-teal font-semibold">Pharmacy &amp; Wellness</span>
+      </span>
+    </a>
+
+    <div class="flex flex-1 max-w-lg">
+      <div class="flex w-full border border-gray-200 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-brand-teal/25">
+        <input type="text" placeholder="Search medicines, wellness products, devices..." class="w-full px-4 py-2.5 text-sm outline-none placeholder:text-gray-400" />
+        <button class="bg-brand-teal hover:bg-brand-tealDark transition text-white px-5 flex items-center justify-center" aria-label="Search">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <button class="flex items-center gap-1.5 text-sm font-medium text-[#122421] shrink-0">
+      Deliver to
+      <span class="flex items-center gap-1 font-semibold text-brand-teal"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s7-6.5 7-11.5A7 7 0 105 9.5C5 14.5 12 21 12 21z"/></svg>560001 Bangalore</span>
+      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+
+    <div class="flex items-center gap-5 ml-auto md:ml-0 text-[12.5px] text-[#122421] shrink-0">
+      <a href="#" class="flex flex-col items-center gap-1 hover:text-brand-teal transition">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+        Account
+      </a>
+      <a href="#" class="flex flex-col items-center gap-1 hover:text-brand-teal transition">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg>
+        Wishlist
+      </a>
+      <a href="#" class="relative flex flex-col items-center gap-1 hover:text-brand-teal transition">
+        <span class="relative">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 8V6a6 6 0 0112 0v2M4 8h16l-1.2 12.1a2 2 0 01-2 1.9H7.2a2 2 0 01-2-1.9L4 8z"/></svg>
+          <span class="absolute -top-1.5 -right-2 bg-brand-red text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center">2</span>
+        </span>
+        Cart
+      </a>
+    </div>
+  </div>
+
+  <!-- mobile row -->
+  <div class="md:hidden">
+    <div class="flex items-center gap-3 px-4 py-3">
+      <button id="menuBtn" class="p-1 -ml-1" aria-label="Open menu">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <a href="#" class="flex items-center gap-1.5 flex-1">
+        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" fill="#E6F5F3"/><path d="M11 6h2v5h5v2h-5v5h-2v-5H6v-2h5z" fill="#0E8074"/></svg>
+        <span class="font-extrabold text-base text-[#122421]">MediSphere</span>
+      </a>
+      <button aria-label="Search" class="p-1"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></button>
+      <button aria-label="Wishlist" class="p-1"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg></button>
+      <a href="#" class="relative p-1">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 8V6a6 6 0 0112 0v2M4 8h16l-1.2 12.1a2 2 0 01-2 1.9H7.2a2 2 0 01-2-1.9L4 8z"/></svg>
+        <span class="absolute -top-0.5 -right-0.5 bg-brand-red text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center">2</span>
+      </a>
+    </div>
+    <div class="px-4 pb-2">
+      <button class="flex items-center gap-1.5 text-xs font-medium text-[#122421]">
+        Deliver to <span class="font-semibold text-brand-teal">560001 Bangalore</span>
+        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+    </div>
+    <div class="px-4 pb-3">
+      <div class="flex w-full border border-gray-200 rounded-lg overflow-hidden">
+        <input type="text" placeholder="Search medicines, products..." class="w-full px-3.5 py-2 text-sm outline-none placeholder:text-gray-400" />
+        <button class="bg-brand-teal text-white px-4 flex items-center justify-center">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- mobile nav drawer -->
+  <div id="mobileNav" class="md:hidden hidden flex-col px-4 py-2 text-sm font-medium text-[#122421] divide-y divide-gray-100 border-t border-gray-100">
+    <a href="#" class="py-2.5">Medicines</a>
+    <a href="#" class="py-2.5">Wellness</a>
+    <a href="#" class="py-2.5">Personal Care</a>
+    <a href="#" class="py-2.5">Baby Care</a>
+    <a href="#" class="py-2.5">Medical Devices</a>
+    <a href="#" class="py-2.5">Vitamins</a>
+    <a href="#" class="py-2.5">Lab Tests</a>
+    <a href="#" class="py-2.5 text-brand-red font-semibold">Deals</a>
+    <a href="#" class="py-2.5 text-brand-teal font-semibold">Upload Prescription</a>
+  </div>
+
+  <!-- department nav bar (desktop) -->
+  <nav class="hidden md:block border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 flex items-center gap-6 text-[13px] font-medium text-[#3a4a47] h-11">
+      <button class="flex items-center gap-2 shrink-0">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        All Categories
+        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <span class="w-px h-4 bg-gray-200"></span>
+      <a href="#" class="hover:text-brand-teal transition whitespace-nowrap">Medicines</a>
+      <a href="#" class="hover:text-brand-teal transition whitespace-nowrap">Wellness</a>
+      <a href="#" class="hover:text-brand-teal transition whitespace-nowrap">Personal Care</a>
+      <a href="#" class="hover:text-brand-teal transition whitespace-nowrap">Baby Care</a>
+      <a href="#" class="hover:text-brand-teal transition whitespace-nowrap">Medical Devices</a>
+      <a href="#" class="hover:text-brand-teal transition whitespace-nowrap">Vitamins</a>
+      <a href="#" class="hover:text-brand-teal transition whitespace-nowrap">Lab Tests</a>
+      <a href="#" class="flex items-center gap-1.5 whitespace-nowrap">Deals <span class="bg-brand-red text-white text-[9px] font-bold px-1.5 py-0.5 rounded">HOT</span></a>
+      <a href="#" class="ml-auto flex items-center gap-1.5 bg-brand-teal hover:bg-brand-tealDark transition text-white px-3.5 py-1.5 rounded-lg whitespace-nowrap text-xs font-semibold">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 8l5-5 5 5M5 21h14"/></svg>
+        Upload Prescription
+      </a>
+    </div>
+  </nav>
+</header>
+
+<!-- ============ HERO + SIDEBAR + PANELS ============ -->
+<section class="max-w-7xl mx-auto px-4 py-4 md:py-6">
+  <div class="grid lg:grid-cols-[220px_1fr_270px] gap-5">
+
+    <!-- sidebar (desktop only) -->
+    <aside class="hidden lg:block bg-white border border-gray-100 rounded-xl p-4 h-fit shadow-card">
+      <h3 class="font-bold text-sm mb-3">Shop by Need</h3>
+      <ul class="text-sm text-[#2b3b38] divide-y divide-gray-50">
+        <li><a href="#" class="flex items-center gap-2 py-2.5 hover:text-brand-teal transition"><svg class="w-4 h-4 text-brand-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l7 4v6c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6z"/></svg>Cold &amp; Flu</a></li>
+        <li><a href="#" class="flex items-center gap-2 py-2.5 hover:text-brand-teal transition"><svg class="w-4 h-4 text-brand-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg>Pain Relief</a></li>
+        <li><a href="#" class="flex items-center gap-2 py-2.5 hover:text-brand-teal transition"><svg class="w-4 h-4 text-brand-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 2v4M15 2v4M6 8h12l-1 12a2 2 0 01-2 2H9a2 2 0 01-2-2z"/></svg>Diabetes Care</a></li>
+        <li><a href="#" class="flex items-center gap-2 py-2.5 hover:text-brand-teal transition"><svg class="w-4 h-4 text-brand-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.8 8.6c0-2.6-2.1-4.6-4.7-4.6-1.6 0-3 .8-3.9 2-.9-1.2-2.3-2-3.9-2-2.6 0-4.7 2-4.7 4.6 0 5 8.6 10.4 8.6 10.4s8.6-5.4 8.6-10.4z"/></svg>Heart Health</a></li>
+        <li><a href="#" class="flex items-center gap-2 py-2.5 hover:text-brand-teal transition"><svg class="w-4 h-4 text-brand-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M8 12a4 4 0 018 0"/></svg>Skin Care</a></li>
+        <li><a href="#" class="flex items-center gap-2 py-2.5 hover:text-brand-teal transition"><svg class="w-4 h-4 text-brand-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg>Baby Essentials</a></li>
+      </ul>
+      <a href="#" class="text-xs font-semibold text-brand-teal hover:text-brand-tealDark transition inline-block mt-2">View All &gt;</a>
+    </aside>
+
+    <!-- hero -->
+    <div class="relative bg-brand-tealLight rounded-2xl overflow-hidden p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
+      <div class="flex-1">
+        <h1 class="font-extrabold text-2xl sm:text-3xl md:text-[34px] leading-tight mb-3">
+          <span class="text-[#122421]">Care Delivered</span><br/>
+          <span class="text-brand-teal">With Confidence</span>
+        </h1>
+        <p class="text-sm md:text-base text-[#4b5a57] max-w-sm mb-6">Genuine medicines, expert guidance and fast delivery to your doorstep.</p>
+        <div class="flex flex-wrap items-center gap-3">
+          <a href="#recommended" class="inline-flex items-center gap-2 bg-brand-teal hover:bg-brand-tealDark transition text-white font-semibold px-6 py-2.5 md:py-3 rounded-lg text-sm">Shop Medicines</a>
+          <a href="#" class="hidden md:inline-flex items-center gap-2 bg-white border-2 border-[#122421] text-[#122421] font-semibold px-6 py-3 rounded-lg hover:bg-[#122421] hover:text-white transition text-sm">Book Consultation</a>
+        </div>
+      </div>
+      <div class="relative shrink-0">
+        <svg viewBox="0 0 280 260" class="w-full max-w-[240px]">
+          <ellipse cx="140" cy="245" rx="110" ry="12" fill="#D6ECE8"/>
+          <!-- doctor -->
+          <circle cx="140" cy="70" r="34" fill="#E7C9A8"/>
+          <path d="M108 95q32 20 64 0v20q-32 20-64 0z" fill="#fff"/>
+          <path d="M95 130q45-30 90 0l6 105H89z" fill="#fff" stroke="#E4E9E4" stroke-width="2"/>
+          <path d="M125 130h30v20l-15 10-15-10z" fill="#0E8074"/>
+          <path d="M95 130l-15 40 20 8 12-35M185 130l15 40-20 8-12-35" fill="#fff" stroke="#E4E9E4" stroke-width="2"/>
+          <circle cx="126" cy="66" r="3" fill="#3d2b1f"/><circle cx="154" cy="66" r="3" fill="#3d2b1f"/>
+          <path d="M128 80q12 8 24 0" stroke="#8a5a3a" stroke-width="2" fill="none"/>
+          <!-- stethoscope -->
+          <path d="M115 130q0 30 25 30t25-30" stroke="#3a4a47" stroke-width="4" fill="none"/>
+          <circle cx="140" cy="163" r="7" fill="#3a4a47"/>
+          <!-- medicine box -->
+          <rect x="45" y="190" width="46" height="46" rx="4" fill="#fff" stroke="#0E8074" stroke-width="2"/>
+          <path d="M60 213h16M68 205v16" stroke="#0E8074" stroke-width="3"/>
+          <!-- bottle -->
+          <rect x="195" y="185" width="30" height="50" rx="4" fill="#0E8074"/>
+          <rect x="202" y="175" width="16" height="12" rx="2" fill="#0A6459"/>
+          <!-- blister pack -->
+          <rect x="100" y="200" width="50" height="24" rx="4" fill="#fff" stroke="#ddd" stroke-width="1.5"/>
+          <circle cx="110" cy="212" r="5" fill="#E6F5F3" stroke="#0E8074"/><circle cx="125" cy="212" r="5" fill="#E6F5F3" stroke="#0E8074"/><circle cx="140" cy="212" r="5" fill="#E6F5F3" stroke="#0E8074"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- right panels (desktop) -->
+    <div class="hidden lg:flex flex-col gap-4">
+      <div class="bg-white border border-gray-100 rounded-2xl p-5 shadow-card">
+        <h3 class="font-bold text-sm mb-1">Upload Prescription</h3>
+        <p class="text-xs text-gray-500 mb-3">Get medicines delivered to your home</p>
+        <div class="border-2 border-dashed border-gray-200 rounded-xl py-6 flex flex-col items-center justify-center gap-1.5 mb-3 hover:border-brand-teal transition cursor-pointer">
+          <svg class="w-6 h-6 text-brand-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 16V7M8 11l4-4 4 4"/><path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+          <p class="text-xs font-medium text-center text-[#3a4a47]">Click to upload<br/>or drag &amp; drop</p>
+        </div>
+        <p class="text-center text-[11px] text-gray-400 mb-3">or</p>
+        <button class="w-full bg-brand-teal hover:bg-brand-tealDark transition text-white text-xs font-semibold py-2.5 rounded-lg">Quick Refill</button>
+      </div>
+      <div class="bg-brand-green border border-green-100 rounded-2xl p-5">
+        <h3 class="font-bold text-sm mb-1">Order in 30 Minutes</h3>
+        <p class="text-xs text-gray-500 mb-4">Quick delivery in selected areas</p>
+        <svg viewBox="0 0 100 60" class="w-20 h-12 mb-3"><circle cx="30" cy="48" r="8" fill="none" stroke="#0E8074" stroke-width="3"/><circle cx="70" cy="48" r="8" fill="none" stroke="#0E8074" stroke-width="3"/><path d="M15 48h15l6-18h20l10 18h6" stroke="#0E8074" stroke-width="3" fill="none" stroke-linecap="round"/><rect x="50" y="20" width="14" height="10" rx="3" fill="#0E8074"/></svg>
+        <button class="w-full bg-brand-teal hover:bg-brand-tealDark transition text-white text-xs font-semibold py-2.5 rounded-lg">Check Now</button>
+      </div>
+    </div>
+
+    <!-- mobile quick actions replacing right panels -->
+    <div class="lg:hidden grid grid-cols-4 gap-3 text-center">
+      <a href="#" class="flex flex-col items-center gap-1.5">
+        <div class="w-12 h-12 rounded-full bg-brand-tealLight flex items-center justify-center"><svg class="w-5 h-5 text-brand-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 16V7M8 11l4-4 4 4"/><path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg></div>
+        <span class="text-[10px] font-medium">Upload Rx</span>
+      </a>
+      <a href="#" class="flex flex-col items-center gap-1.5">
+        <div class="w-12 h-12 rounded-full bg-brand-tealLight flex items-center justify-center"><svg class="w-5 h-5 text-brand-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4v6h6M20 20v-6h-6"/><path d="M5.5 15a8 8 0 0013.9 3.5M18.5 9A8 8 0 004.6 5.5"/></svg></div>
+        <span class="text-[10px] font-medium">Quick Refill</span>
+      </a>
+      <a href="#" class="flex flex-col items-center gap-1.5">
+        <div class="w-12 h-12 rounded-full bg-brand-tealLight flex items-center justify-center"><svg class="w-5 h-5 text-brand-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 2v4M15 2v4M6 8h12l-1 12a2 2 0 01-2 2H9a2 2 0 01-2-2z"/></svg></div>
+        <span class="text-[10px] font-medium">Lab Tests</span>
+      </a>
+      <a href="#" class="flex flex-col items-center gap-1.5">
+        <div class="w-12 h-12 rounded-full bg-brand-tealLight flex items-center justify-center"><svg class="w-5 h-5 text-brand-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 01-9 8.4A8.9 8.9 0 018 19l-5 1 1-4.4A8.4 8.4 0 0112.5 3a8.4 8.4 0 018.5 8.5z"/></svg></div>
+        <span class="text-[10px] font-medium">Consult Doctor</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST BAR ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-8">
+  <div class="bg-white border border-gray-100 rounded-xl shadow-card px-4 md:px-6 py-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
+    <div class="flex items-center gap-2.5">
+      <svg class="w-6 h-6 text-brand-teal shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12l4 4L19 6"/></svg>
+      <div><p class="font-semibold text-xs md:text-sm">100% Genuine</p><p class="text-[10px] md:text-xs text-gray-500">Products</p></div>
+    </div>
+    <div class="flex items-center gap-2.5">
+      <svg class="w-6 h-6 text-brand-teal shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+      <div><p class="font-semibold text-xs md:text-sm">Licensed</p><p class="text-[10px] md:text-xs text-gray-500">Pharmacists</p></div>
+    </div>
+    <div class="flex items-center gap-2.5">
+      <svg class="w-6 h-6 text-brand-teal shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg>
+      <div><p class="font-semibold text-xs md:text-sm">Temperature-Safe</p><p class="text-[10px] md:text-xs text-gray-500">Delivery</p></div>
+    </div>
+    <div class="flex items-center gap-2.5">
+      <svg class="w-6 h-6 text-brand-teal shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+      <div><p class="font-semibold text-xs md:text-sm">Secure</p><p class="text-[10px] md:text-xs text-gray-500">Payments</p></div>
+    </div>
+    <div class="hidden lg:flex items-center gap-2.5">
+      <svg class="w-6 h-6 text-brand-teal shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4v6h6M20 20v-6h-6"/><path d="M5.5 15a8 8 0 0013.9 3.5M18.5 9A8 8 0 004.6 5.5"/></svg>
+      <div><p class="font-semibold text-sm">Easy Returns</p><p class="text-xs text-gray-500">&amp; Refunds</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POPULAR HEALTH CATEGORIES ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-10">
+  <div class="flex items-center justify-between mb-4">
+    <h2 class="font-extrabold text-lg md:text-xl">Popular Health Categories</h2>
+    <a href="#" class="text-xs md:text-sm font-semibold text-brand-teal hover:text-brand-tealDark transition">View All</a>
+  </div>
+  <div class="grid grid-cols-4 md:grid-cols-8 gap-3 md:gap-4 text-center">
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-full aspect-square rounded-xl bg-gray-50 flex items-center justify-center group-hover:shadow-cardHover transition"><svg class="w-8 h-8 text-brand-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg></div>
+      <span class="text-[10.5px] md:text-xs font-medium">Prescription Medicines</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-full aspect-square rounded-xl bg-gray-50 flex items-center justify-center group-hover:shadow-cardHover transition"><svg class="w-8 h-8 text-brand-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="7" y="4" width="10" height="17" rx="3"/><path d="M9 4V2h6v2"/></svg></div>
+      <span class="text-[10.5px] md:text-xs font-medium">Vitamins &amp; Supplements</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-full aspect-square rounded-xl bg-gray-50 flex items-center justify-center group-hover:shadow-cardHover transition"><svg class="w-8 h-8 text-brand-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="8" y="3" width="8" height="18" rx="3"/><path d="M8 9h8"/></svg></div>
+      <span class="text-[10.5px] md:text-xs font-medium">Personal Care</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-full aspect-square rounded-xl bg-gray-50 flex items-center justify-center group-hover:shadow-cardHover transition"><svg class="w-8 h-8 text-brand-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg></div>
+      <span class="text-[10.5px] md:text-xs font-medium">Baby Care</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-full aspect-square rounded-xl bg-gray-50 flex items-center justify-center group-hover:shadow-cardHover transition"><svg class="w-8 h-8 text-brand-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 2v4M15 2v4M6 8h12l-1 12a2 2 0 01-2 2H9a2 2 0 01-2-2z"/></svg></div>
+      <span class="text-[10.5px] md:text-xs font-medium">Diabetes Care</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-full aspect-square rounded-xl bg-gray-50 flex items-center justify-center group-hover:shadow-cardHover transition"><svg class="w-8 h-8 text-brand-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="6" width="16" height="12" rx="2"/><circle cx="12" cy="12" r="3"/></svg></div>
+      <span class="text-[10.5px] md:text-xs font-medium">Medical Devices</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-full aspect-square rounded-xl bg-gray-50 flex items-center justify-center group-hover:shadow-cardHover transition"><svg class="w-8 h-8 text-brand-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6.5 7-11.5A7 7 0 105 9.5C5 14.5 12 21 12 21z"/><path d="M9 10l2 2 4-4"/></svg></div>
+      <span class="text-[10.5px] md:text-xs font-medium">Immunity Support</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-full aspect-square rounded-xl bg-gray-50 flex items-center justify-center group-hover:shadow-cardHover transition"><svg class="w-8 h-8 text-brand-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="7" r="4"/><path d="M5 21c0-4.5 3.5-7 7-7s7 2.5 7 7"/></svg></div>
+      <span class="text-[10.5px] md:text-xs font-medium">Senior Care</span>
+    </a>
+  </div>
+</section>
+
+<!-- ============ SHOP BY SYMPTOM ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-10">
+  <h2 class="font-extrabold text-lg md:text-xl mb-4">Shop by Symptom</h2>
+  <div class="flex items-center gap-3 overflow-x-auto no-scrollbar pb-1">
+    <a href="#" class="flex items-center gap-1.5 bg-brand-tealLight text-[#0A6459] text-xs md:text-sm font-medium px-4 py-2 rounded-full whitespace-nowrap hover:bg-brand-teal hover:text-white transition"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l7 4v6c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6z"/></svg>Cold &amp; Cough</a>
+    <a href="#" class="flex items-center gap-1.5 bg-brand-tealLight text-[#0A6459] text-xs md:text-sm font-medium px-4 py-2 rounded-full whitespace-nowrap hover:bg-brand-teal hover:text-white transition"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2c3 4 6 8 6 12a6 6 0 01-12 0c0-4 3-8 6-12z"/></svg>Fever</a>
+    <a href="#" class="flex items-center gap-1.5 bg-brand-tealLight text-[#0A6459] text-xs md:text-sm font-medium px-4 py-2 rounded-full whitespace-nowrap hover:bg-brand-teal hover:text-white transition"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg>Pain Relief</a>
+    <a href="#" class="flex items-center gap-1.5 bg-brand-tealLight text-[#0A6459] text-xs md:text-sm font-medium px-4 py-2 rounded-full whitespace-nowrap hover:bg-brand-teal hover:text-white transition"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9 9h.01M15 9h.01M8 15c1.5 1.5 6.5 1.5 8 0"/></svg>Allergy</a>
+    <a href="#" class="flex items-center gap-1.5 bg-brand-tealLight text-[#0A6459] text-xs md:text-sm font-medium px-4 py-2 rounded-full whitespace-nowrap hover:bg-brand-teal hover:text-white transition"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 3a5 5 0 000 10 5 5 0 000 8h8a5 5 0 000-8 5 5 0 000-10z"/></svg>Digestion</a>
+    <a href="#" class="flex items-center gap-1.5 bg-brand-tealLight text-[#0A6459] text-xs md:text-sm font-medium px-4 py-2 rounded-full whitespace-nowrap hover:bg-brand-teal hover:text-white transition"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/></svg>Sleep Support</a>
+    <a href="#" class="flex items-center gap-1.5 bg-brand-tealLight text-[#0A6459] text-xs md:text-sm font-medium px-4 py-2 rounded-full whitespace-nowrap hover:bg-brand-teal hover:text-white transition"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg>Women's Care</a>
+    <a href="#" class="flex items-center gap-1.5 bg-brand-tealLight text-[#0A6459] text-xs md:text-sm font-medium px-4 py-2 rounded-full whitespace-nowrap hover:bg-brand-teal hover:text-white transition"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M8 12a4 4 0 018 0"/></svg>Skin Treatment</a>
+  </div>
+</section>
+
+<!-- ============ RECOMMENDED FOR YOU ============ -->
+<section id="recommended" class="max-w-7xl mx-auto px-4 pb-10">
+  <div class="flex items-center justify-between mb-4">
+    <h2 class="font-extrabold text-lg md:text-xl">Recommended For You</h2>
+    <a href="#" class="text-xs md:text-sm font-semibold text-brand-teal hover:text-brand-tealDark transition">View All</a>
+  </div>
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-3 md:gap-4">
+    <div class="group bg-white border border-gray-100 rounded-xl p-3 hover:shadow-cardHover transition">
+      <div class="relative bg-gray-50 rounded-lg aspect-square flex items-center justify-center overflow-hidden mb-2">
+        <span class="absolute top-1.5 right-1.5 bg-brand-red text-white text-[9px] font-bold w-9 h-9 rounded-full flex items-center justify-center z-10 leading-none text-center">26%<br/>OFF</span>
+        <svg viewBox="0 0 100 100" class="w-14 h-14"><rect x="35" y="25" width="30" height="50" rx="4" fill="#2E7D46"/><rect x="40" y="18" width="20" height="10" rx="3" fill="#1F5C33"/></svg>
+      </div>
+      <p class="text-[11px] md:text-xs font-semibold leading-snug mb-0.5">HealthVit Multivitamin Tablets</p>
+      <p class="text-[10px] text-gray-500 mb-1">60 Tablets</p>
+      <p class="font-bold text-xs md:text-sm">₹499 <span class="text-gray-400 font-medium line-through text-[10px]">₹675</span></p>
+      <div class="star-rating text-amber-400 text-[10px] flex items-center gap-1 my-1">★★★★<span class="text-amber-200">★</span><span class="text-gray-400 font-sans ml-1">4.6 (2.1k)</span></div>
+      <button class="w-full bg-brand-teal hover:bg-brand-tealDark transition text-white text-[10px] md:text-xs font-semibold py-1.5 rounded-lg">Add to Cart</button>
+    </div>
+
+    <div class="group bg-white border border-gray-100 rounded-xl p-3 hover:shadow-cardHover transition">
+      <div class="relative bg-gray-50 rounded-lg aspect-square flex items-center justify-center overflow-hidden mb-2">
+        <span class="absolute top-1.5 right-1.5 bg-brand-red text-white text-[9px] font-bold w-9 h-9 rounded-full flex items-center justify-center z-10 leading-none text-center">27%<br/>OFF</span>
+        <svg viewBox="0 0 100 100" class="w-16 h-16"><rect x="25" y="35" width="50" height="34" rx="6" fill="#232323"/><rect x="32" y="42" width="36" height="18" rx="2" fill="#4AA8E0"/></svg>
+      </div>
+      <p class="text-[11px] md:text-xs font-semibold leading-snug mb-0.5">Omron HEM-7120 BP Monitor</p>
+      <p class="text-[10px] text-gray-500 mb-1">1 Unit</p>
+      <p class="font-bold text-xs md:text-sm">₹2,199 <span class="text-gray-400 font-medium line-through text-[10px]">₹2,999</span></p>
+      <div class="star-rating text-amber-400 text-[10px] flex items-center gap-1 my-1">★★★★<span class="text-amber-200">★</span><span class="text-gray-400 font-sans ml-1">4.7 (1.3k)</span></div>
+      <button class="w-full bg-brand-teal hover:bg-brand-tealDark transition text-white text-[10px] md:text-xs font-semibold py-1.5 rounded-lg">Add to Cart</button>
+    </div>
+
+    <div class="group bg-white border border-gray-100 rounded-xl p-3 hover:shadow-cardHover transition">
+      <div class="relative bg-gray-50 rounded-lg aspect-square flex items-center justify-center overflow-hidden mb-2">
+        <span class="absolute top-1.5 right-1.5 bg-brand-red text-white text-[9px] font-bold w-9 h-9 rounded-full flex items-center justify-center z-10 leading-none text-center">33%<br/>OFF</span>
+        <svg viewBox="0 0 100 100" class="w-14 h-14"><rect x="45" y="20" width="10" height="55" rx="5" fill="#fff" stroke="#ddd" stroke-width="1.5"/><rect x="42" y="70" width="16" height="10" rx="3" fill="#4AA8E0"/></svg>
+      </div>
+      <p class="text-[11px] md:text-xs font-semibold leading-snug mb-0.5">Dr. Morepen Digital Thermometer</p>
+      <p class="text-[10px] text-gray-500 mb-1">1 Unit</p>
+      <p class="font-bold text-xs md:text-sm">₹199 <span class="text-gray-400 font-medium line-through text-[10px]">₹299</span></p>
+      <div class="star-rating text-amber-400 text-[10px] flex items-center gap-1 my-1">★★★★<span class="text-gray-300">★</span><span class="text-gray-400 font-sans ml-1">4.5 (880)</span></div>
+      <button class="w-full bg-brand-teal hover:bg-brand-tealDark transition text-white text-[10px] md:text-xs font-semibold py-1.5 rounded-lg">Add to Cart</button>
+    </div>
+
+    <div class="group bg-white border border-gray-100 rounded-xl p-3 hover:shadow-cardHover transition">
+      <div class="relative bg-gray-50 rounded-lg aspect-square flex items-center justify-center overflow-hidden mb-2">
+        <span class="absolute top-1.5 right-1.5 bg-brand-red text-white text-[9px] font-bold w-9 h-9 rounded-full flex items-center justify-center z-10 leading-none text-center">20%<br/>OFF</span>
+        <svg viewBox="0 0 100 100" class="w-14 h-14"><rect x="35" y="25" width="30" height="50" rx="8" fill="#F7DFA0"/><rect x="40" y="18" width="20" height="10" rx="3" fill="#E8C56A"/></svg>
+      </div>
+      <p class="text-[11px] md:text-xs font-semibold leading-snug mb-0.5">Johnson's Baby Lotion</p>
+      <p class="text-[10px] text-gray-500 mb-1">200ml</p>
+      <p class="font-bold text-xs md:text-sm">₹199 <span class="text-gray-400 font-medium line-through text-[10px]">₹249</span></p>
+      <div class="star-rating text-amber-400 text-[10px] flex items-center gap-1 my-1">★★★★<span class="text-amber-200">★</span><span class="text-gray-400 font-sans ml-1">4.6 (950)</span></div>
+      <button class="w-full bg-brand-teal hover:bg-brand-tealDark transition text-white text-[10px] md:text-xs font-semibold py-1.5 rounded-lg">Add to Cart</button>
+    </div>
+
+    <div class="group bg-white border border-gray-100 rounded-xl p-3 hover:shadow-cardHover transition">
+      <div class="relative bg-gray-50 rounded-lg aspect-square flex items-center justify-center overflow-hidden mb-2">
+        <span class="absolute top-1.5 right-1.5 bg-brand-red text-white text-[9px] font-bold w-9 h-9 rounded-full flex items-center justify-center z-10 leading-none text-center">39%<br/>OFF</span>
+        <svg viewBox="0 0 100 100" class="w-12 h-16"><rect x="38" y="18" width="24" height="60" rx="6" fill="#7B3F98"/><rect x="42" y="10" width="16" height="10" rx="3" fill="#5F2F76"/></svg>
+      </div>
+      <p class="text-[11px] md:text-xs font-semibold leading-snug mb-0.5">Volini Pain Relief Gel</p>
+      <p class="text-[10px] text-gray-500 mb-1">30g</p>
+      <p class="font-bold text-xs md:text-sm">₹129 <span class="text-gray-400 font-medium line-through text-[10px]">₹212</span></p>
+      <div class="star-rating text-amber-400 text-[10px] flex items-center gap-1 my-1">★★★★<span class="text-gray-300">★</span><span class="text-gray-400 font-sans ml-1">4.5 (960)</span></div>
+      <button class="w-full bg-brand-teal hover:bg-brand-tealDark transition text-white text-[10px] md:text-xs font-semibold py-1.5 rounded-lg">Add to Cart</button>
+    </div>
+
+    <div class="group bg-white border border-gray-100 rounded-xl p-3 hover:shadow-cardHover transition">
+      <div class="relative bg-gray-50 rounded-lg aspect-square flex items-center justify-center overflow-hidden mb-2">
+        <span class="absolute top-1.5 right-1.5 bg-brand-red text-white text-[9px] font-bold w-9 h-9 rounded-full flex items-center justify-center z-10 leading-none text-center">29%<br/>OFF</span>
+        <svg viewBox="0 0 100 100" class="w-14 h-14"><rect x="35" y="22" width="30" height="55" rx="6" fill="#4AA8E0"/><rect x="40" y="14" width="20" height="10" rx="3" fill="#3D74C9"/></svg>
+      </div>
+      <p class="text-[11px] md:text-xs font-semibold leading-snug mb-0.5">Cetaphil Gentle Skin Cleanser</p>
+      <p class="text-[10px] text-gray-500 mb-1">125ml</p>
+      <p class="font-bold text-xs md:text-sm">₹299 <span class="text-gray-400 font-medium line-through text-[10px]">₹421</span></p>
+      <div class="star-rating text-amber-400 text-[10px] flex items-center gap-1 my-1">★★★★<span class="text-amber-200">★</span><span class="text-gray-400 font-sans ml-1">4.7 (1.9k)</span></div>
+      <button class="w-full bg-brand-teal hover:bg-brand-tealDark transition text-white text-[10px] md:text-xs font-semibold py-1.5 rounded-lg">Add to Cart</button>
+    </div>
+
+    <div class="group bg-white border border-gray-100 rounded-xl p-3 hover:shadow-cardHover transition">
+      <div class="relative bg-gray-50 rounded-lg aspect-square flex items-center justify-center overflow-hidden mb-2">
+        <span class="absolute top-1.5 right-1.5 bg-brand-red text-white text-[9px] font-bold w-9 h-9 rounded-full flex items-center justify-center z-10 leading-none text-center">39%<br/>OFF</span>
+        <svg viewBox="0 0 100 100" class="w-14 h-16"><rect x="33" y="18" width="34" height="60" rx="6" fill="#3a3a3a"/><rect x="38" y="26" width="24" height="14" rx="2" fill="#F0C647"/></svg>
+      </div>
+      <p class="text-[11px] md:text-xs font-semibold leading-snug mb-0.5">MuscleBlaze Whey Protein</p>
+      <p class="text-[10px] text-gray-500 mb-1">1kg</p>
+      <p class="font-bold text-xs md:text-sm">₹1,899 <span class="text-gray-400 font-medium line-through text-[10px]">₹3,113</span></p>
+      <div class="star-rating text-amber-400 text-[10px] flex items-center gap-1 my-1">★★★★<span class="text-amber-200">★</span><span class="text-gray-400 font-sans ml-1">4.8 (2.4k)</span></div>
+      <button class="w-full bg-brand-teal hover:bg-brand-tealDark transition text-white text-[10px] md:text-xs font-semibold py-1.5 rounded-lg">Add to Cart</button>
+    </div>
+
+    <div class="group bg-white border border-gray-100 rounded-xl p-3 hover:shadow-cardHover transition">
+      <div class="relative bg-gray-50 rounded-lg aspect-square flex items-center justify-center overflow-hidden mb-2">
+        <span class="absolute top-1.5 right-1.5 bg-brand-red text-white text-[9px] font-bold w-9 h-9 rounded-full flex items-center justify-center z-10 leading-none text-center">29%<br/>OFF</span>
+        <svg viewBox="0 0 100 100" class="w-16 h-14"><rect x="20" y="35" width="60" height="34" rx="6" fill="#fff" stroke="#ddd" stroke-width="1.5"/><rect x="26" y="42" width="48" height="20" fill="#DCEEFB"/></svg>
+      </div>
+      <p class="text-[11px] md:text-xs font-semibold leading-snug mb-0.5">Accu-Chek Active Test Strips</p>
+      <p class="text-[10px] text-gray-500 mb-1">50 Strips</p>
+      <p class="font-bold text-xs md:text-sm">₹799 <span class="text-gray-400 font-medium line-through text-[10px]">₹1,125</span></p>
+      <div class="star-rating text-amber-400 text-[10px] flex items-center gap-1 my-1">★★★★<span class="text-amber-200">★</span><span class="text-gray-400 font-sans ml-1">4.6 (1.1k)</span></div>
+      <button class="w-full bg-brand-teal hover:bg-brand-tealDark transition text-white text-[10px] md:text-xs font-semibold py-1.5 rounded-lg">Add to Cart</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3 PROMO BANNERS ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-10">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+    <div class="bg-brand-blue rounded-2xl p-6 flex items-center justify-between overflow-hidden relative min-h-[140px]">
+      <div class="relative z-10">
+        <h3 class="font-extrabold text-base md:text-lg text-[#1B2A4D]">Free Health Check<br/>Campaign</h3>
+        <p class="text-xs text-[#3a4256] mt-1 mb-3">Stay Healthy, Stay Happy</p>
+        <a href="#" class="inline-flex items-center gap-1.5 text-xs font-bold bg-[#1D5FE0] text-white px-4 py-2 rounded-lg">Book Now</a>
+      </div>
+      <svg viewBox="0 0 100 100" class="w-20 h-20 shrink-0"><circle cx="50" cy="35" r="16" fill="#E7C9A8"/><path d="M30 90q4-32 20-32t20 32z" fill="#fff"/><path d="M40 58h20v8H40z" fill="#0E8074"/></svg>
+    </div>
+
+    <div class="bg-brand-green rounded-2xl p-6 flex items-center justify-between overflow-hidden relative min-h-[140px]">
+      <div class="relative z-10">
+        <h3 class="font-extrabold text-base md:text-lg text-[#1E6B44]">Immunity Essentials</h3>
+        <p class="text-xs text-[#3a7a55] mt-1">Top picks to keep your immunity strong</p>
+        <p class="text-[11px] text-brand-teal font-semibold mb-3">Up to 30% Off</p>
+        <a href="#" class="inline-flex items-center gap-1.5 text-xs font-bold bg-brand-teal text-white px-4 py-2 rounded-lg">Shop Now</a>
+      </div>
+      <svg viewBox="0 0 100 100" class="w-20 h-20 shrink-0"><rect x="30" y="35" width="16" height="45" rx="4" fill="#8FBF3F"/><rect x="52" y="30" width="16" height="50" rx="4" fill="#F7B733"/></svg>
+    </div>
+
+    <div class="bg-brand-tealLight rounded-2xl p-6 flex items-center justify-between overflow-hidden relative min-h-[140px]">
+      <div class="relative z-10">
+        <h3 class="font-extrabold text-base md:text-lg text-[#B03352]">Baby &amp; Mom Care</h3>
+        <p class="text-xs text-[#c25a72] mt-1">Gentle care for your little ones</p>
+        <p class="text-[11px] text-brand-red font-semibold mb-3">Up to 25% Off</p>
+        <a href="#" class="inline-flex items-center gap-1.5 text-xs font-bold bg-[#DC2626] text-white px-4 py-2 rounded-lg">Shop Now</a>
+      </div>
+      <svg viewBox="0 0 100 100" class="w-20 h-20 shrink-0"><circle cx="45" cy="35" r="15" fill="#E7C9A8"/><path d="M25 85q4-30 20-30t20 30z" fill="#F4B8C6"/><circle cx="70" cy="60" r="12" fill="#E7C9A8"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HEALTH SERVICES ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-10">
+  <h2 class="font-extrabold text-lg md:text-xl mb-4">Health Services</h2>
+  <div class="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
+    <div class="bg-white border border-gray-100 rounded-xl p-4 text-center hover:shadow-card transition">
+      <div class="w-12 h-12 rounded-full bg-brand-tealLight flex items-center justify-center mx-auto mb-2.5"><svg class="w-6 h-6 text-brand-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg></div>
+      <p class="text-xs md:text-sm font-semibold mb-1">Online Doctor Consultation</p>
+      <p class="text-[10px] md:text-xs text-gray-500 mb-2">Talk to certified doctors</p>
+      <a href="#" class="text-[11px] font-semibold text-brand-teal">Book Now →</a>
+    </div>
+    <div class="bg-white border border-gray-100 rounded-xl p-4 text-center hover:shadow-card transition">
+      <div class="w-12 h-12 rounded-full bg-brand-tealLight flex items-center justify-center mx-auto mb-2.5"><svg class="w-6 h-6 text-brand-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="9" y="3" width="6" height="6" rx="1"/><path d="M12 9v10M8 19h8"/></svg></div>
+      <p class="text-xs md:text-sm font-semibold mb-1">Book Lab Test At Home</p>
+      <p class="text-[10px] md:text-xs text-gray-500 mb-2">Accurate tests at your doorstep</p>
+      <a href="#" class="text-[11px] font-semibold text-brand-teal">Book Now →</a>
+    </div>
+    <div class="bg-white border border-gray-100 rounded-xl p-4 text-center hover:shadow-card transition">
+      <div class="w-12 h-12 rounded-full bg-brand-tealLight flex items-center justify-center mx-auto mb-2.5"><svg class="w-6 h-6 text-brand-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 16V7M8 11l4-4 4 4"/><path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg></div>
+      <p class="text-xs md:text-sm font-semibold mb-1">Upload Prescription</p>
+      <p class="text-[10px] md:text-xs text-gray-500 mb-2">We'll take care of the rest</p>
+      <a href="#" class="text-[11px] font-semibold text-brand-teal">Upload Now →</a>
+    </div>
+    <div class="bg-white border border-gray-100 rounded-xl p-4 text-center hover:shadow-card transition">
+      <div class="w-12 h-12 rounded-full bg-brand-tealLight flex items-center justify-center mx-auto mb-2.5"><svg class="w-6 h-6 text-brand-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4v6h6M20 20v-6h-6"/><path d="M5.5 15a8 8 0 0013.9 3.5M18.5 9A8 8 0 004.6 5.5"/></svg></div>
+      <p class="text-xs md:text-sm font-semibold mb-1">Refill Reminder</p>
+      <p class="text-[10px] md:text-xs text-gray-500 mb-2">Never run out of your medicines</p>
+      <a href="#" class="text-[11px] font-semibold text-brand-teal">Set Reminder →</a>
+    </div>
+    <div class="bg-white border border-gray-100 rounded-xl p-4 text-center hover:shadow-card transition">
+      <div class="w-12 h-12 rounded-full bg-brand-tealLight flex items-center justify-center mx-auto mb-2.5"><svg class="w-6 h-6 text-brand-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s7-6.5 7-11.5A7 7 0 105 9.5C5 14.5 12 21 12 21z"/><path d="M9 10l2 2 4-4"/></svg></div>
+      <p class="text-xs md:text-sm font-semibold mb-1">Wellness Programs</p>
+      <p class="text-[10px] md:text-xs text-gray-500 mb-2">Stay healthy with expert guidance</p>
+      <a href="#" class="text-[11px] font-semibold text-brand-teal">Explore →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BEST SELLERS (carousel) ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-10">
+  <div class="flex items-center justify-between mb-4">
+    <h2 class="font-extrabold text-lg md:text-xl">Best Sellers</h2>
+    <a href="#" class="text-xs md:text-sm font-semibold text-brand-teal hover:text-brand-tealDark transition">View All</a>
+  </div>
+  <div class="relative">
+    <button id="bsPrev" class="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white border border-gray-200 shadow-card items-center justify-center hover:bg-gray-50 transition"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <div id="bsScroll" class="flex gap-3 md:gap-4 overflow-x-auto no-scrollbar snap-x scroll-smooth">
+      <div class="shrink-0 w-32 sm:w-40 bg-white border border-gray-100 rounded-xl p-3 snap-start">
+        <div class="bg-gray-50 rounded-lg aspect-square flex items-center justify-center mb-2"><svg viewBox="0 0 80 80" class="w-12 h-12"><rect x="30" y="15" width="20" height="50" rx="4" fill="#3D74C9"/></svg></div>
+        <p class="text-[11px] font-semibold leading-snug mb-1">Disprin Tablet</p>
+        <p class="font-bold text-xs">₹110 <span class="text-gray-400 font-medium line-through text-[9px]">₹150</span></p>
+        <div class="star-rating text-amber-400 text-[10px]">★★★★<span class="text-amber-200">★</span> <span class="text-gray-400">4.5</span></div>
+      </div>
+      <div class="shrink-0 w-32 sm:w-40 bg-white border border-gray-100 rounded-xl p-3 snap-start">
+        <div class="bg-gray-50 rounded-lg aspect-square flex items-center justify-center mb-2"><svg viewBox="0 0 80 80" class="w-12 h-12"><rect x="26" y="18" width="28" height="45" rx="6" fill="#E8942E"/></svg></div>
+        <p class="text-[11px] font-semibold leading-snug mb-1">Dabur Honey 500g</p>
+        <p class="font-bold text-xs">₹175 <span class="text-gray-400 font-medium line-through text-[9px]">₹225</span></p>
+        <div class="star-rating text-amber-400 text-[10px]">★★★★<span class="text-amber-200">★</span> <span class="text-gray-400">4.6</span></div>
+      </div>
+      <div class="shrink-0 w-32 sm:w-40 bg-white border border-gray-100 rounded-xl p-3 snap-start">
+        <div class="bg-gray-50 rounded-lg aspect-square flex items-center justify-center mb-2"><svg viewBox="0 0 80 80" class="w-12 h-12"><rect x="24" y="14" width="32" height="52" rx="6" fill="#3a3a3a"/></svg></div>
+        <p class="text-[11px] font-semibold leading-snug mb-1">Ensure Vanilla 400g</p>
+        <p class="font-bold text-xs">₹745 <span class="text-gray-400 font-medium line-through text-[9px]">₹899</span></p>
+        <div class="star-rating text-amber-400 text-[10px]">★★★★<span class="text-amber-200">★</span> <span class="text-gray-400">4.6</span></div>
+      </div>
+      <div class="shrink-0 w-32 sm:w-40 bg-white border border-gray-100 rounded-xl p-3 snap-start">
+        <div class="bg-gray-50 rounded-lg aspect-square flex items-center justify-center mb-2"><svg viewBox="0 0 80 80" class="w-12 h-12"><rect x="26" y="16" width="28" height="48" rx="4" fill="#4AA8E0"/></svg></div>
+        <p class="text-[11px] font-semibold leading-snug mb-1">Orthomol Immun 30</p>
+        <p class="font-bold text-xs">₹2,199 <span class="text-gray-400 font-medium line-through text-[9px]">₹2,999</span></p>
+        <div class="star-rating text-amber-400 text-[10px]">★★★★<span class="text-amber-200">★</span> <span class="text-gray-400">4.7</span></div>
+      </div>
+      <div class="shrink-0 w-32 sm:w-40 bg-white border border-gray-100 rounded-xl p-3 snap-start">
+        <div class="bg-gray-50 rounded-lg aspect-square flex items-center justify-center mb-2"><svg viewBox="0 0 80 80" class="w-12 h-12"><rect x="28" y="16" width="24" height="48" rx="10" fill="#fff" stroke="#ddd" stroke-width="1.5"/></svg></div>
+        <p class="text-[11px] font-semibold leading-snug mb-1">Calcium D3 Tablet</p>
+        <p class="font-bold text-xs">₹210 <span class="text-gray-400 font-medium line-through text-[9px]">₹280</span></p>
+        <div class="star-rating text-amber-400 text-[10px]">★★★★<span class="text-gray-300">★</span> <span class="text-gray-400">4.5</span></div>
+      </div>
+      <div class="shrink-0 w-32 sm:w-40 bg-white border border-gray-100 rounded-xl p-3 snap-start">
+        <div class="bg-gray-50 rounded-lg aspect-square flex items-center justify-center mb-2"><svg viewBox="0 0 80 80" class="w-12 h-12"><rect x="24" y="14" width="32" height="52" rx="6" fill="#8FBF3F"/></svg></div>
+        <p class="text-[11px] font-semibold leading-snug mb-1">Pediasure 1kg</p>
+        <p class="font-bold text-xs">₹980 <span class="text-gray-400 font-medium line-through text-[9px]">₹1,140</span></p>
+        <div class="star-rating text-amber-400 text-[10px]">★★★★<span class="text-amber-200">★</span> <span class="text-gray-400">4.6</span></div>
+      </div>
+      <div class="shrink-0 w-32 sm:w-40 bg-white border border-gray-100 rounded-xl p-3 snap-start">
+        <div class="bg-gray-50 rounded-lg aspect-square flex items-center justify-center mb-2"><svg viewBox="0 0 80 80" class="w-12 h-12"><rect x="26" y="16" width="28" height="48" rx="4" fill="#4B7A2F"/></svg></div>
+        <p class="text-[11px] font-semibold leading-snug mb-1">Himalaya Ashwagandha</p>
+        <p class="font-bold text-xs">₹299 <span class="text-gray-400 font-medium line-through text-[9px]">₹399</span></p>
+        <div class="star-rating text-amber-400 text-[10px]">★★★★<span class="text-amber-200">★</span> <span class="text-gray-400">4.6</span></div>
+      </div>
+    </div>
+    <button id="bsNext" class="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white border border-gray-200 shadow-card items-center justify-center hover:bg-gray-50 transition"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></button>
+  </div>
+</section>
+
+<!-- ============ DOCTOR'S PICKS ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-10">
+  <h2 class="font-extrabold text-lg md:text-xl mb-4">Doctor's Picks</h2>
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
+    <div class="bg-white border border-gray-100 rounded-xl p-3">
+      <span class="inline-block bg-brand-tealLight text-[#0A6459] text-[9px] font-semibold px-2 py-0.5 rounded mb-2">Best for Immunity</span>
+      <div class="bg-gray-50 rounded-lg aspect-square flex items-center justify-center mb-2"><svg viewBox="0 0 80 80" class="w-12 h-12"><rect x="28" y="16" width="24" height="48" rx="10" fill="#F0C647"/></svg></div>
+      <p class="text-[11px] font-semibold leading-snug mb-1">Vitamin C 1000mg Tablet</p>
+      <p class="font-bold text-xs">₹499</p>
+    </div>
+    <div class="bg-white border border-gray-100 rounded-xl p-3">
+      <span class="inline-block bg-brand-tealLight text-[#0A6459] text-[9px] font-semibold px-2 py-0.5 rounded mb-2">Heart Care</span>
+      <div class="bg-gray-50 rounded-lg aspect-square flex items-center justify-center mb-2"><svg viewBox="0 0 80 80" class="w-12 h-12"><rect x="26" y="16" width="28" height="48" rx="6" fill="#E8942E"/></svg></div>
+      <p class="text-[11px] font-semibold leading-snug mb-1">Omega 3 Fish Oil Capsule</p>
+      <p class="font-bold text-xs">₹699</p>
+    </div>
+    <div class="bg-white border border-gray-100 rounded-xl p-3">
+      <span class="inline-block bg-brand-tealLight text-[#0A6459] text-[9px] font-semibold px-2 py-0.5 rounded mb-2">Bone Strength</span>
+      <div class="bg-gray-50 rounded-lg aspect-square flex items-center justify-center mb-2"><svg viewBox="0 0 80 80" class="w-12 h-12"><rect x="28" y="16" width="24" height="48" rx="10" fill="#fff" stroke="#ddd" stroke-width="1.5"/></svg></div>
+      <p class="text-[11px] font-semibold leading-snug mb-1">Calcium + Vitamin D3 Tablet</p>
+      <p class="font-bold text-xs">₹399</p>
+    </div>
+    <div class="bg-white border border-gray-100 rounded-xl p-3">
+      <span class="inline-block bg-brand-tealLight text-[#0A6459] text-[9px] font-semibold px-2 py-0.5 rounded mb-2">Diabetes Care</span>
+      <div class="bg-gray-50 rounded-lg aspect-square flex items-center justify-center mb-2"><svg viewBox="0 0 80 80" class="w-12 h-12"><rect x="26" y="16" width="28" height="48" rx="6" fill="#4AA8E0"/></svg></div>
+      <p class="text-[11px] font-semibold leading-snug mb-1">Diabetes Care Tablet</p>
+      <p class="font-bold text-xs">₹549</p>
+    </div>
+    <div class="bg-white border border-gray-100 rounded-xl p-3">
+      <span class="inline-block bg-brand-tealLight text-[#0A6459] text-[9px] font-semibold px-2 py-0.5 rounded mb-2">Gut Health</span>
+      <div class="bg-gray-50 rounded-lg aspect-square flex items-center justify-center mb-2"><svg viewBox="0 0 80 80" class="w-12 h-12"><rect x="28" y="16" width="24" height="48" rx="10" fill="#8FBF3F"/></svg></div>
+      <p class="text-[11px] font-semibold leading-snug mb-1">Probiotic 40B Capsule</p>
+      <p class="font-bold text-xs">₹599</p>
+    </div>
+    <div class="bg-white border border-gray-100 rounded-xl p-3">
+      <span class="inline-block bg-brand-tealLight text-[#0A6459] text-[9px] font-semibold px-2 py-0.5 rounded mb-2">Joint Support</span>
+      <div class="bg-gray-50 rounded-lg aspect-square flex items-center justify-center mb-2"><svg viewBox="0 0 80 80" class="w-12 h-12"><rect x="26" y="16" width="28" height="48" rx="6" fill="#7B3F98"/></svg></div>
+      <p class="text-[11px] font-semibold leading-snug mb-1">Glucosamine Tablet</p>
+      <p class="font-bold text-xs">₹649</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST STATS BAR ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-10">
+  <div class="bg-brand-teal rounded-2xl px-5 md:px-8 py-6 grid grid-cols-2 md:grid-cols-5 gap-6 text-center text-white">
+    <div class="flex flex-col items-center gap-1.5">
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6"/></svg>
+      <p class="font-extrabold text-base md:text-lg">15K+</p><p class="text-[11px] md:text-xs text-white/80">Products</p>
+    </div>
+    <div class="flex flex-col items-center gap-1.5">
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+      <p class="font-extrabold text-base md:text-lg">100K+</p><p class="text-[11px] md:text-xs text-white/80">Happy Customers</p>
+    </div>
+    <div class="flex flex-col items-center gap-1.5">
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.4 7 .7-5.3 4.7 1.6 6.9L12 17l-6.2 3.7 1.6-6.9L2.1 9.1l7-.7L12 2z"/></svg>
+      <p class="font-extrabold text-base md:text-lg">4.9/5</p><p class="text-[11px] md:text-xs text-white/80">Average Rating</p>
+    </div>
+    <div class="flex flex-col items-center gap-1.5">
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12l4 4L19 6"/></svg>
+      <p class="font-extrabold text-base md:text-lg">100%</p><p class="text-[11px] md:text-xs text-white/80">Genuine Products</p>
+    </div>
+    <div class="hidden md:flex flex-col items-center gap-1.5">
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l7 4v6c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+      <p class="font-extrabold text-base md:text-lg">Licensed</p><p class="text-xs text-white/80">Pharmacy</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-10">
+  <h2 class="font-extrabold text-lg md:text-xl mb-5 text-center">What Our Customers Say</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+    <div class="bg-white border border-gray-100 rounded-2xl p-5">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-9 h-9 rounded-full bg-brand-tealLight flex items-center justify-center text-brand-teal font-bold text-sm">P</div>
+        <div><p class="text-sm font-semibold">Priya Sharma</p><p class="text-xs text-gray-500">Bangalore</p></div>
+      </div>
+      <div class="star-rating text-amber-400 text-sm mb-2">★★★★★</div>
+      <p class="text-sm text-[#3a4a47]">"MediSphere has made ordering medicines so easy. Genuine products, fast delivery and great customer support!"</p>
+    </div>
+    <div class="bg-white border border-gray-100 rounded-2xl p-5">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-9 h-9 rounded-full bg-brand-tealLight flex items-center justify-center text-brand-teal font-bold text-sm">R</div>
+        <div><p class="text-sm font-semibold">Rahul Verma</p><p class="text-xs text-gray-500">Delhi</p></div>
+      </div>
+      <div class="star-rating text-amber-400 text-sm mb-2">★★★★★</div>
+      <p class="text-sm text-[#3a4a47]">"I use the refill reminder and never miss my medicines now. Very reliable and convenient service."</p>
+    </div>
+    <div class="bg-white border border-gray-100 rounded-2xl p-5">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-9 h-9 rounded-full bg-brand-tealLight flex items-center justify-center text-brand-teal font-bold text-sm">S</div>
+        <div><p class="text-sm font-semibold">Sana Khan</p><p class="text-xs text-gray-500">Hyderabad</p></div>
+      </div>
+      <div class="star-rating text-amber-400 text-sm mb-2">★★★★★</div>
+      <p class="text-sm text-[#3a4a47]">"Excellent experience with lab test booking. Sample collection was on time and reports were quick."</p>
+    </div>
+  </div>
+  <div class="flex items-center justify-center gap-2 mt-6">
+    <span class="w-6 h-1.5 rounded-full bg-brand-teal"></span>
+    <span class="w-1.5 h-1.5 rounded-full bg-brand-teal/25"></span>
+    <span class="w-1.5 h-1.5 rounded-full bg-brand-teal/25"></span>
+  </div>
+</section>
+
+<!-- ============ NEVER MISS A DOSE ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-10">
+  <div class="bg-brand-tealLight rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-5">
+    <div>
+      <h2 class="font-extrabold text-lg md:text-xl text-[#0A6459] mb-1.5">Never Miss a Dose!</h2>
+      <p class="text-sm text-[#3a4a47] max-w-sm">Set refill reminders and get medicines delivered on time.</p>
+    </div>
+    <div class="flex items-center gap-4">
+      <svg class="w-14 h-14 text-brand-teal shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2"/><path d="M9 3h6"/></svg>
+      <button class="bg-brand-teal hover:bg-brand-tealDark transition text-white font-semibold px-6 py-3 rounded-lg text-sm shrink-0">Set Reminder</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-brand-tealDeep text-white/70 pt-10 pb-6">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="mb-8">
+      <a href="#" class="flex items-center gap-2 mb-3">
+        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" fill="#ffffff20"/><path d="M11 6h2v5h5v2h-5v5h-2v-5H6v-2h5z" fill="#fff"/></svg>
+        <span class="font-extrabold text-lg text-white">MediSphere</span>
+      </a>
+      <p class="text-sm text-white/50 max-w-sm">Your trusted partner in health and wellness. Genuine products, fast delivery, expert care, right to your door.</p>
+    </div>
+
+    <!-- desktop footer columns -->
+    <div class="hidden md:grid md:grid-cols-6 gap-8 pb-8 border-b border-white/10">
+      <div>
+        <h4 class="text-white font-semibold mb-3 text-sm">Customer Care</h4>
+        <ul class="space-y-2 text-sm text-white/55">
+          <li><a href="#" class="hover:text-white transition">Help Center</a></li>
+          <li><a href="#" class="hover:text-white transition">Track Order</a></li>
+          <li><a href="#" class="hover:text-white transition">Returns Policy</a></li>
+          <li><a href="#" class="hover:text-white transition">Shipping Policy</a></li>
+          <li><a href="#" class="hover:text-white transition">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3 text-sm">Pharmacy Services</h4>
+        <ul class="space-y-2 text-sm text-white/55">
+          <li><a href="#" class="hover:text-white transition">Refill Prescription</a></li>
+          <li><a href="#" class="hover:text-white transition">Medicine Reminder</a></li>
+          <li><a href="#" class="hover:text-white transition">Symptom A-Z</a></li>
+          <li><a href="#" class="hover:text-white transition">Wellness Tips</a></li>
+          <li><a href="#" class="hover:text-white transition">Bulk Orders</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3 text-sm">Health Resources</h4>
+        <ul class="space-y-2 text-sm text-white/55">
+          <li><a href="#" class="hover:text-white transition">Health Blog</a></li>
+          <li><a href="#" class="hover:text-white transition">Medicine Guide</a></li>
+          <li><a href="#" class="hover:text-white transition">FAQs</a></li>
+          <li><a href="#" class="hover:text-white transition">Health Calculators</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3 text-sm">About MediSphere</h4>
+        <ul class="space-y-2 text-sm text-white/55">
+          <li><a href="#" class="hover:text-white transition">About Us</a></li>
+          <li><a href="#" class="hover:text-white transition">Careers</a></li>
+          <li><a href="#" class="hover:text-white transition">Our Pharmacy</a></li>
+          <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+          <li><a href="#" class="hover:text-white transition">Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3 text-sm">Prescription Support</h4>
+        <ul class="space-y-2 text-sm text-white/55">
+          <li><a href="#" class="hover:text-white transition">How to Upload Prescription</a></li>
+          <li><a href="#" class="hover:text-white transition">Prescription Guide</a></li>
+          <li><a href="#" class="hover:text-white transition">FAQs</a></li>
+          <li><a href="#" class="hover:text-white transition">Need Help?</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3 text-sm">Contact &amp; Emergency Help</h4>
+        <ul class="space-y-2 text-sm text-white/55">
+          <li class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v2a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 1h2a2 2 0 012 1.7c.1 1 .3 2 .7 2.9a2 2 0 01-.4 2.1L7 9.1a16 16 0 006 6l1.4-1.4a2 2 0 012.1-.4c.9.4 1.9.6 2.9.7a2 2 0 011.7 2z"/></svg>1800-123-6677</li>
+          <li class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4zM4 4l8 8 8-8"/></svg>care@medisphere.com</li>
+          <li>MediSphere Pharmacy Pvt. Ltd.<br/>560001, Bangalore, India</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- mobile accordion -->
+    <div class="md:hidden divide-y divide-white/10 border-y border-white/10 mb-6">
+      <details class="py-3">
+        <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold text-white">Customer Care <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></summary>
+        <ul class="mt-2 space-y-2 text-sm text-white/55 pl-1"><li><a href="#">Help Center</a></li><li><a href="#">Track Order</a></li><li><a href="#">Returns Policy</a></li><li><a href="#">Contact Us</a></li></ul>
+      </details>
+      <details class="py-3">
+        <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold text-white">Pharmacy Services <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></summary>
+        <ul class="mt-2 space-y-2 text-sm text-white/55 pl-1"><li><a href="#">Refill Prescription</a></li><li><a href="#">Medicine Reminder</a></li><li><a href="#">Symptom A-Z</a></li><li><a href="#">Wellness Tips</a></li></ul>
+      </details>
+      <details class="py-3">
+        <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold text-white">Health Resources <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></summary>
+        <ul class="mt-2 space-y-2 text-sm text-white/55 pl-1"><li><a href="#">Health Blog</a></li><li><a href="#">Medicine Guide</a></li><li><a href="#">FAQs</a></li></ul>
+      </details>
+      <details class="py-3">
+        <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold text-white">About MediSphere <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></summary>
+        <ul class="mt-2 space-y-2 text-sm text-white/55 pl-1"><li><a href="#">About Us</a></li><li><a href="#">Careers</a></li><li><a href="#">Privacy Policy</a></li></ul>
+      </details>
+    </div>
+
+    <div class="flex items-center justify-center md:justify-start gap-3 mb-6">
+      <a href="#" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition" aria-label="Facebook"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.25-1.5 1.55-1.5H17V3.7C16.7 3.65 15.7 3.6 14.5 3.6c-2.4 0-4 1.45-4 4.15V10H7.8v3.1h2.7V21h3z"/></svg></a>
+      <a href="#" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition" aria-label="Instagram"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+      <a href="#" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition" aria-label="YouTube"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12s0-3.2-.4-4.7a2.8 2.8 0 00-2-2C17.9 5 12 5 12 5s-5.9 0-7.6.3a2.8 2.8 0 00-2 2C2 8.8 2 12 2 12s0 3.2.4 4.7a2.8 2.8 0 002 2C6.1 19 12 19 12 19s5.9 0 7.6-.3a2.8 2.8 0 002-2C22 15.2 22 12 22 12z"/></svg></a>
+      <a href="#" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition" aria-label="LinkedIn"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.34-.02-3.06-1.86-3.06-1.87 0-2.16 1.46-2.16 2.96V21H9z"/></svg></a>
+    </div>
+
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-white/10 text-xs text-white/45">
+      <p>© 2026 MediSphere Pharmacy Pvt. Ltd.</p>
+      <div class="flex items-center gap-2 flex-wrap justify-center">
+        <span class="bg-white/10 text-[9px] font-semibold rounded px-2 py-1">GDP Certified</span>
+        <span class="bg-white/10 text-[9px] font-semibold rounded px-2 py-1">WHO-GMP</span>
+        <span class="bg-white/10 text-[9px] font-semibold rounded px-2 py-1">ISO Certified</span>
+        <span class="bg-white border border-white/20 text-[#1A1F71] text-[9px] font-bold rounded px-2 py-1">VISA</span>
+        <span class="bg-white border border-white/20 text-[#EB001B] text-[9px] font-bold rounded px-2 py-1">MC</span>
+        <span class="bg-white border border-white/20 text-[#0A6459] text-[9px] font-bold rounded px-2 py-1">RuPay</span>
+        <span class="bg-white border border-white/20 text-[#3a4256] text-[9px] font-bold rounded px-2 py-1">UPI</span>
+        <span class="bg-white border border-white/20 text-[#00B9F1] text-[9px] font-bold rounded px-2 py-1">Paytm</span>
+        <span class="bg-white border border-white/20 text-[#4285F4] text-[9px] font-bold rounded px-2 py-1">GPay</span>
+      </div>
+    </div>
+    <p class="text-center md:text-left text-[10.5px] text-white/35 mt-3 max-w-2xl">Information provided is for awareness and not a substitute for professional medical advice.</p>
+  </div>
+</footer>
+
+<!-- spacer so content isn't hidden behind fixed mobile bottom nav -->
+<div class="h-16 md:hidden" aria-hidden="true"></div>
+
+<!-- ============ MOBILE BOTTOM NAV (app-style) ============ -->
+<nav class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-white border-t border-gray-100 shadow-navUp" style="padding-bottom: env(safe-area-inset-bottom);">
+  <div class="grid grid-cols-4">
+    <a href="#" class="flex flex-col items-center justify-center gap-1 py-2.5 text-brand-teal">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-8 9 8M5 10v10h14V10"/></svg>
+      <span class="text-[10px] font-semibold">Home</span>
+    </a>
+    <a href="#" class="flex flex-col items-center justify-center gap-1 py-2.5 text-gray-400 hover:text-brand-teal transition">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      <span class="text-[10px] font-medium">Categories</span>
+    </a>
+    <a href="#" class="flex flex-col items-center justify-center gap-1 py-2.5 text-gray-400 hover:text-brand-teal transition">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="8" width="13" height="8" rx="1"/><path d="M15 11h3l3 3v2h-6z"/><circle cx="6.5" cy="18.5" r="1.6"/><circle cx="17.5" cy="18.5" r="1.6"/></svg>
+      <span class="text-[10px] font-medium">Orders</span>
+    </a>
+    <a href="#" class="flex flex-col items-center justify-center gap-1 py-2.5 text-gray-400 hover:text-brand-teal transition">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+      <span class="text-[10px] font-medium">Account</span>
+    </a>
+  </div>
+</nav>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileNav = document.getElementById('mobileNav');
+  menuBtn.addEventListener('click', () => {
+    mobileNav.classList.toggle('hidden');
+    mobileNav.classList.toggle('flex');
+  });
+
+  const bsScroll = document.getElementById('bsScroll');
+  document.getElementById('bsPrev').addEventListener('click', () => bsScroll.scrollBy({ left: -200, behavior: 'smooth' }));
+  document.getElementById('bsNext').addEventListener('click', () => bsScroll.scrollBy({ left: 200, behavior: 'smooth' }));
+</script>
+
+</body>
+</html>

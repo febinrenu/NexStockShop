@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  html,body{margin:0;padding:0;background:#F2FAFB}
+  body{font-family:Quicksand,Tajawal,sans-serif;color:#0B1F2E}
+  *{box-sizing:border-box}
+  a{color:#14998E;text-decoration:none}
+  a:hover{color:#0D5C63}
+  @keyframes tbFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+</style>
+</helmet>
+<div dir="{{ dir }}" data-screen-label="Home" style="font-family:Quicksand,Tajawal,sans-serif;background:#F2FAFB;min-height:100vh;overflow-x:hidden">
+
+<!-- HEADER -->
+<header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid #E2F1F1">
+  <div style="max-width:1280px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;gap:18px;flex-wrap:wrap">
+    <a href="#top" style="display:flex;align-items:center;gap:10px;flex:none">
+      <img src="assets/logo-icon.png" alt="Tibiva" style="height:42px;width:auto"/>
+      <span style="display:flex;flex-direction:column;line-height:1">
+        <span style="font-weight:700;font-size:24px;color:#0D5C63;letter-spacing:.5px">Tibiva</span>
+        <span style="font-size:8.5px;color:#14998E;font-weight:600;letter-spacing:.3px">{{ t.tagline }}</span>
+      </span>
+    </a>
+    <nav style="display:flex;align-items:center;gap:22px;flex:1;justify-content:center">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="6">
+        <a href="{{ n.href }}" style="font-size:13.5px;font-weight:600;color:#33505C" style-hover="color:#14998E">{{ n.label }}</a>
+      </sc-for>
+    </nav>
+    <div style="display:flex;align-items:center;gap:10px;flex:none">
+      <button onClick="{{ toggleLang }}" style="display:flex;align-items:center;gap:6px;border:1px solid #CFE8E6;background:#fff;border-radius:999px;padding:7px 14px;font-family:inherit;font-size:12.5px;font-weight:700;color:#0D5C63;cursor:pointer" style-hover="border-color:#14998E">
+        <span style="width:14px;height:14px;display:inline-flex">{{ ic.globe }}</span>{{ t.langBtn }}
+      </button>
+      <a href="#app" style="font-size:13px;font-weight:700;color:#0D5C63;padding:8px 10px">{{ t.signIn }}</a>
+      <a href="#search" style="background:#0D5C63;color:#fff;font-size:13px;font-weight:700;padding:10px 20px;border-radius:10px;box-shadow:0 4px 14px rgba(13,92,99,.25)" style-hover="background:#14998E;color:#fff">{{ t.bookCta }}</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" style="position:relative;background:linear-gradient(160deg,#FFFFFF 0%,#EAF7F6 55%,#DDF2EF 100%)">
+  <div style="max-width:1280px;margin:0 auto;padding:56px 32px 100px;display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:40px;align-items:center">
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <span style="align-self:flex-start;background:#E3F6F3;color:#0D5C63;font-size:11.5px;font-weight:800;letter-spacing:2px;padding:8px 16px;border-radius:999px;text-transform:uppercase">{{ t.heroBadge }}</span>
+      <h1 style="margin:0;font-size:58px;line-height:1.08;font-weight:700;color:#0B1F2E">{{ t.heroTitle1 }}<br/><span style="color:#14998E">{{ t.heroTitle2 }}</span></h1>
+      <p style="margin:0;max-width:480px;font-size:16px;line-height:1.7;color:#4A6572;font-weight:500">{{ t.heroCopy }}</p>
+      <div style="display:flex;gap:28px;margin-top:8px;flex-wrap:wrap">
+        <sc-for list="{{ trust }}" as="tr" hint-placeholder-count="3">
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="width:40px;height:40px;border-radius:12px;background:#fff;box-shadow:0 4px 12px rgba(13,92,99,.12);display:flex;align-items:center;justify-content:center;color:#14998E">{{ tr.icon }}</span>
+            <span style="display:flex;flex-direction:column"><b style="font-size:13.5px;color:#0B1F2E">{{ tr.a }}</b><span style="font-size:12px;color:#5E7A86">{{ tr.b }}</span></span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="position:relative;height:520px">
+      <img src="assets/logo-icon.png" alt="" style="position:absolute;top:-10px;inset-inline-end:-30px;width:480px;opacity:.14;filter:saturate(1.2)"/>
+      <div style="position:absolute;bottom:0;inset-inline-start:40px;width:400px;height:500px">
+        <image-slot id="hero-doctor" shape="rounded" radius="24" placeholder="Doctor portrait photo (400×500)"></image-slot>
+      </div>
+      <div style="position:absolute;top:30px;inset-inline-end:0;background:rgba(255,255,255,.95);border-radius:16px;box-shadow:0 10px 30px rgba(13,92,99,.15);padding:14px 18px;display:flex;align-items:center;gap:12px;animation:tbFloat 5s ease-in-out infinite">
+        <span style="width:38px;height:38px;border-radius:10px;background:#E3F6F3;display:flex;align-items:center;justify-content:center;color:#0D5C63">{{ ic.smile }}</span>
+        <span style="display:flex;flex-direction:column"><b style="font-size:17px;color:#0B1F2E">98%</b><span style="font-size:11.5px;color:#5E7A86">{{ t.statSat }}</span><span style="color:#F6B93B;font-size:11px;letter-spacing:2px">★★★★★</span></span>
+      </div>
+      <div style="position:absolute;top:190px;inset-inline-end:-14px;background:rgba(255,255,255,.95);border-radius:16px;box-shadow:0 10px 30px rgba(13,92,99,.15);padding:14px 18px;display:flex;align-items:center;gap:12px;animation:tbFloat 6s ease-in-out .8s infinite">
+        <span style="width:38px;height:38px;border-radius:10px;background:#E3F6F3;display:flex;align-items:center;justify-content:center;color:#0D5C63">{{ ic.users }}</span>
+        <span style="display:flex;flex-direction:column"><b style="font-size:17px;color:#0B1F2E">1,200+</b><span style="font-size:11.5px;color:#5E7A86">{{ t.statDocs }}</span>
+          <span style="display:flex;margin-top:4px">
+            <span style="width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#14998E,#41D4C4);border:2px solid #fff"></span>
+            <span style="width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#0D5C63,#14998E);border:2px solid #fff;margin-inline-start:-7px"></span>
+            <span style="width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#41D4C4,#A7F0E3);border:2px solid #fff;margin-inline-start:-7px"></span>
+            <span style="width:20px;height:20px;border-radius:50%;background:#0B1F2E;border:2px solid #fff;margin-inline-start:-7px;color:#fff;font-size:8px;display:flex;align-items:center;justify-content:center;font-weight:700">+</span>
+          </span>
+        </span>
+      </div>
+      <div style="position:absolute;top:360px;inset-inline-end:10px;background:rgba(255,255,255,.95);border-radius:16px;box-shadow:0 10px 30px rgba(13,92,99,.15);padding:14px 18px;display:flex;align-items:center;gap:12px;animation:tbFloat 5.5s ease-in-out 1.6s infinite">
+        <span style="width:38px;height:38px;border-radius:10px;background:#E3F6F3;display:flex;align-items:center;justify-content:center;color:#0D5C63">{{ ic.shield }}</span>
+        <span style="display:flex;flex-direction:column"><b style="font-size:17px;color:#0B1F2E">100%</b><span style="font-size:11.5px;color:#5E7A86">{{ t.statSecure }}</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEARCH PANEL -->
+<section id="search" style="max-width:1180px;margin:-70px auto 0;padding:0 32px;position:relative;z-index:5">
+  <div style="background:#fff;border-radius:20px;box-shadow:0 20px 50px rgba(13,92,99,.14);overflow:hidden">
+    <div style="display:flex;border-bottom:1px solid #EAF3F3">
+      <sc-for list="{{ tabs }}" as="tab" hint-placeholder-count="5">
+        <button onClick="{{ tab.onClick }}" style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:16px 10px;background:{{ tab.bg }};border:none;border-bottom:3px solid {{ tab.line }};color:{{ tab.color }};font-family:inherit;font-size:13px;font-weight:700;cursor:pointer">{{ tab.icon }}{{ tab.label }}</button>
+      </sc-for>
+    </div>
+    <div style="padding:22px 26px 8px;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px">
+      <label style="display:flex;flex-direction:column;gap:6px;min-width:0"><span style="font-size:11.5px;font-weight:700;color:#5E7A86">{{ t.fSpec }}</span>
+        <span style="display:flex;align-items:center;gap:8px;border:1.5px solid #DFEDEC;border-radius:10px;padding:11px 12px;color:#9AB3BC">{{ ic.search }}<input placeholder="{{ t.fSpecPh }}" style="border:none;outline:none;font-family:inherit;font-size:13px;flex:1;min-width:0;background:transparent;color:#0B1F2E"/></span></label>
+      <label style="display:flex;flex-direction:column;gap:6px;min-width:0"><span style="font-size:11.5px;font-weight:700;color:#5E7A86">{{ t.fLoc }}</span>
+        <span style="display:flex;align-items:center;gap:8px;border:1.5px solid #DFEDEC;border-radius:10px;padding:11px 12px;color:#9AB3BC">{{ ic.pin }}<input placeholder="{{ t.fLocPh }}" style="border:none;outline:none;font-family:inherit;font-size:13px;flex:1;min-width:0;background:transparent;color:#0B1F2E"/></span></label>
+      <label style="display:flex;flex-direction:column;gap:6px;min-width:0"><span style="font-size:11.5px;font-weight:700;color:#5E7A86">{{ t.fDate }}</span>
+        <span style="display:flex;align-items:center;gap:8px;border:1.5px solid #DFEDEC;border-radius:10px;padding:11px 12px;color:#9AB3BC">{{ ic.cal }}<input placeholder="{{ t.fDatePh }}" style="border:none;outline:none;font-family:inherit;font-size:13px;flex:1;min-width:0;background:transparent;color:#0B1F2E"/></span></label>
+      <label style="display:flex;flex-direction:column;gap:6px;min-width:0"><span style="font-size:11.5px;font-weight:700;color:#5E7A86">{{ t.fIns }}</span>
+        <span style="display:flex;align-items:center;gap:8px;border:1.5px solid #DFEDEC;border-radius:10px;padding:11px 12px;color:#9AB3BC">{{ ic.shield }}<input placeholder="{{ t.fInsPh }}" style="border:none;outline:none;font-family:inherit;font-size:13px;flex:1;min-width:0;background:transparent;color:#0B1F2E"/></span></label>
+      <button style="align-self:end;background:#14998E;color:#fff;border:none;border-radius:10px;padding:13px 30px;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 6px 16px rgba(20,153,142,.35)" style-hover="background:#0D5C63">{{ t.searchBtn }}</button>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;padding:12px 26px 20px;flex-wrap:wrap">
+      <span style="font-size:12px;font-weight:800;color:#0B1F2E">{{ t.popular }}</span>
+      <sc-for list="{{ chips }}" as="c" hint-placeholder-count="6">
+        <a href="#specialties" style="font-size:11.5px;font-weight:700;color:#0D5C63;background:#F0FAF8;border:1px solid #DCEFEC;border-radius:999px;padding:6px 14px" style-hover="background:#E3F6F3">{{ c }}</a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK SERVICES -->
+<section id="services" style="max-width:1180px;margin:36px auto 0;padding:0 32px">
+  <div style="background:#fff;border-radius:20px;box-shadow:0 8px 24px rgba(13,92,99,.06);display:grid;grid-template-columns:repeat(auto-fit,minmax(105px,1fr));padding:22px 10px">
+    <sc-for list="{{ services }}" as="s" hint-placeholder-count="8">
+      <a href="{{ s.href }}" style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:10px 4px;border-radius:14px" style-hover="background:#F0FAF8">
+        <span style="width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,#E3F6F3,#F0FAF8);display:flex;align-items:center;justify-content:center;color:#0D5C63;border:1px solid #DCEFEC">{{ s.icon }}</span>
+        <span style="font-size:12px;font-weight:700;color:#33505C;text-align:center;line-height:1.3">{{ s.label }}</span>
+      </a>
+    </sc-for>
+  </div>
+</section>
+
+<!-- SPECIALTIES + DOCTORS -->
+<section id="specialties" style="max-width:1180px;margin:44px auto 0;padding:0 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:24px">
+  <div style="background:#fff;border-radius:20px;box-shadow:0 8px 24px rgba(13,92,99,.06);padding:24px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
+      <h2 style="margin:0;font-size:22px;font-weight:700;color:#0B1F2E">{{ t.specTitle }}</h2>
+      <a href="#specialties" style="font-size:12.5px;font-weight:700">{{ t.viewAll }} {{ arrow }}</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px">
+      <sc-for list="{{ specialties }}" as="sp" hint-placeholder-count="10">
+        <a href="#search" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 4px;border:1px solid #EAF3F3;border-radius:14px" style-hover="border-color:#41D4C4;background:#F7FDFC">
+          <span style="color:#14998E">{{ sp.icon }}</span>
+          <span style="font-size:11px;font-weight:700;color:#33505C;text-align:center;line-height:1.3">{{ sp.label }}</span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+  <div style="background:#fff;border-radius:20px;box-shadow:0 8px 24px rgba(13,92,99,.06);padding:24px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
+      <h2 style="margin:0;font-size:22px;font-weight:700;color:#0B1F2E">{{ t.docsTitle }}</h2>
+      <a href="#search" style="font-size:12.5px;font-weight:700">{{ t.viewAll }} {{ arrow }}</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px">
+      <sc-for list="{{ doctors }}" as="d" hint-placeholder-count="3">
+        <div style="border:1px solid #EAF3F3;border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:8px;min-width:0" style-hover="box-shadow:0 10px 24px rgba(13,92,99,.1)">
+          <div style="height:130px"><image-slot id="{{ d.slot }}" shape="rounded" radius="12" placeholder="{{ d.ph }}"></image-slot></div>
+          <b style="font-size:13.5px;color:#0B1F2E">{{ d.name }}</b>
+          <span style="font-size:11.5px;color:#5E7A86;font-weight:600">{{ d.spec }}</span>
+          <span style="font-size:11px;color:#33505C"><span style="color:#F6B93B">★</span> {{ d.rating }} · {{ d.exp }}</span>
+          <span style="font-size:11px;font-weight:700;color:#14998E">● {{ t.availToday }}</span>
+          <a href="#search" style="text-align:center;border:1.5px solid #14998E;border-radius:9px;padding:8px 0;font-size:12px;font-weight:700;color:#0D5C63" style-hover="background:#14998E;color:#fff">{{ t.bookNow }}</a>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- CLINICS + VIDEO BANNER -->
+<section id="clinics" style="max-width:1180px;margin:24px auto 0;padding:0 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(440px,1fr));gap:24px">
+  <div style="background:#fff;border-radius:20px;box-shadow:0 8px 24px rgba(13,92,99,.06);padding:24px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
+      <h2 style="margin:0;font-size:22px;font-weight:700;color:#0B1F2E">{{ t.clinicsTitle }}</h2>
+      <a href="#clinics" style="font-size:12.5px;font-weight:700">{{ t.viewAll }} {{ arrow }}</a>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <sc-for list="{{ clinics }}" as="cl" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="height:110px"><image-slot id="{{ cl.slot }}" shape="rounded" radius="12" placeholder="{{ cl.ph }}"></image-slot></div>
+          <b style="font-size:13px;color:#0B1F2E">{{ cl.name }}</b>
+          <span style="font-size:11px;color:#33505C"><span style="color:#F6B93B">★</span> {{ cl.rating }}</span>
+          <span style="font-size:11px;color:#5E7A86">{{ cl.addr }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  <div id="video" style="background:linear-gradient(140deg,#0B1F2E 0%,#0D5C63 70%,#14998E 110%);border-radius:20px;padding:30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;color:#fff;position:relative;overflow:hidden">
+    <div style="display:flex;flex-direction:column;gap:14px;position:relative;z-index:2">
+      <span style="font-size:11.5px;font-weight:800;letter-spacing:1.5px;color:#41D4C4;text-transform:uppercase">{{ t.videoKicker }}</span>
+      <h2 style="margin:0;font-size:28px;font-weight:700;line-height:1.15">{{ t.videoTitle }}</h2>
+      <p style="margin:0;font-size:13px;line-height:1.6;color:#BFE3E0">{{ t.videoCopy }}</p>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <sc-for list="{{ videoPoints }}" as="vp" hint-placeholder-count="3">
+          <span style="display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:#E8F7F5"><span style="color:#41D4C4">{{ ic.check }}</span>{{ vp }}</span>
+        </sc-for>
+      </div>
+      <a href="#search" style="align-self:flex-start;background:#41D4C4;color:#0B1F2E;font-size:13px;font-weight:800;padding:12px 22px;border-radius:10px" style-hover="background:#A7F0E3;color:#0B1F2E">{{ t.videoCta }}</a>
+      <span style="font-size:11px;color:#8FBFBB">{{ t.videoNote }}</span>
+    </div>
+    <div style="position:relative;z-index:2;min-height:260px">
+      <image-slot id="video-doctor" shape="rounded" radius="16" placeholder="Doctor on video call photo"></image-slot>
+    </div>
+    <img src="assets/logo-icon.png" alt="" style="position:absolute;bottom:-60px;inset-inline-start:-40px;width:260px;opacity:.08;z-index:1"/>
+  </div>
+</section>
+
+<!-- TRIO CARDS -->
+<section id="more" style="max-width:1180px;margin:24px auto 0;padding:0 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px">
+  <div style="background:#fff;border-radius:20px;box-shadow:0 8px 24px rgba(13,92,99,.06);padding:22px;display:flex;flex-direction:column;gap:10px">
+    <h3 style="margin:0;font-size:18px;font-weight:700">{{ t.labsTitle }}</h3>
+    <p style="margin:0;font-size:12.5px;color:#5E7A86;line-height:1.6">{{ t.labsCopy }}</p>
+    <a href="#search" style="font-size:13px;font-weight:800">{{ t.labsCta }} {{ arrow }}</a>
+    <div style="height:120px;margin-top:4px"><image-slot id="labs-img" shape="rounded" radius="12" placeholder="Lab test tubes photo"></image-slot></div>
+  </div>
+  <div style="background:#fff;border-radius:20px;box-shadow:0 8px 24px rgba(13,92,99,.06);padding:22px;display:flex;flex-direction:column;gap:10px">
+    <h3 style="margin:0;font-size:18px;font-weight:700">{{ t.homeTitle }}</h3>
+    <p style="margin:0;font-size:12.5px;color:#5E7A86;line-height:1.6">{{ t.homeCopy }}</p>
+    <a href="#search" style="font-size:13px;font-weight:800">{{ t.homeCta }} {{ arrow }}</a>
+    <div style="height:120px;margin-top:4px"><image-slot id="homecare-img" shape="rounded" radius="12" placeholder="Home nurse with patient photo"></image-slot></div>
+  </div>
+  <div style="background:#fff;border-radius:20px;box-shadow:0 8px 24px rgba(13,92,99,.06);padding:22px;display:flex;flex-direction:column;gap:10px">
+    <h3 style="margin:0;font-size:18px;font-weight:700">{{ t.insTitle }}</h3>
+    <p style="margin:0;font-size:12.5px;color:#5E7A86;line-height:1.6">{{ t.insCopy }}</p>
+    <a href="#search" style="font-size:13px;font-weight:800">{{ t.insCta }} {{ arrow }}</a>
+    <div style="height:120px;margin-top:4px"><image-slot id="insurance-img" shape="rounded" radius="12" placeholder="Insurance / shield visual"></image-slot></div>
+  </div>
+</section>
+
+<!-- APP -->
+<section id="app" style="max-width:1180px;margin:24px auto 0;padding:0 32px">
+  <div style="background:linear-gradient(120deg,#FFFFFF,#E9F8F5);border-radius:24px;box-shadow:0 8px 24px rgba(13,92,99,.06);padding:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:28px;align-items:center;position:relative;overflow:hidden">
+    <div style="display:flex;flex-direction:column;gap:14px;position:relative;z-index:2">
+      <h2 style="margin:0;font-size:32px;font-weight:700;line-height:1.15;color:#0B1F2E">{{ t.appTitle1 }}<br/>{{ t.appTitle2 }}</h2>
+      <p style="margin:0;font-size:13.5px;color:#4A6572;line-height:1.7;max-width:320px">{{ t.appCopy }}</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="#app" style="display:flex;align-items:center;gap:8px;background:#0B1F2E;color:#fff;border-radius:10px;padding:9px 16px" style-hover="background:#0D5C63;color:#fff"><span style="font-size:20px"></span><span style="display:flex;flex-direction:column;line-height:1.2"><span style="font-size:8.5px;color:#B9CDD4">{{ t.appDl }}</span><b style="font-size:13px">App Store</b></span></a>
+        <a href="#app" style="display:flex;align-items:center;gap:8px;background:#0B1F2E;color:#fff;border-radius:10px;padding:9px 16px" style-hover="background:#0D5C63;color:#fff"><span style="font-size:16px;color:#41D4C4">▶</span><span style="display:flex;flex-direction:column;line-height:1.2"><span style="font-size:8.5px;color:#B9CDD4">{{ t.appGet }}</span><b style="font-size:13px">Google Play</b></span></a>
+      </div>
+    </div>
+    <div style="position:relative;z-index:2;height:380px;display:flex;justify-content:center">
+      <div style="width:200px;height:380px;background:#0B1F2E;border-radius:32px;padding:10px;box-shadow:0 24px 50px rgba(11,31,46,.3)">
+        <div style="width:100%;height:100%;border-radius:24px;overflow:hidden"><image-slot id="app-phone" shape="rounded" radius="24" placeholder="App screen (mobile UI)"></image-slot></div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;position:relative;z-index:2">
+      <sc-for list="{{ appPoints }}" as="ap" hint-placeholder-count="4">
+        <span style="display:flex;align-items:center;gap:12px;background:#fff;border:1px solid #DCEFEC;border-radius:12px;padding:12px 16px;font-size:13px;font-weight:700;color:#33505C"><span style="color:#14998E">{{ ap.icon }}</span>{{ ap.label }}</span>
+      </sc-for>
+    </div>
+    <img src="assets/logo-icon.png" alt="" style="position:absolute;top:-40px;inset-inline-end:-50px;width:280px;opacity:.07;z-index:1"/>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="stories" style="max-width:1180px;margin:24px auto 0;padding:0 32px">
+  <div style="background:#fff;border-radius:20px;box-shadow:0 8px 24px rgba(13,92,99,.06);padding:26px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
+      <h2 style="margin:0;font-size:22px;font-weight:700;color:#0B1F2E">{{ t.testTitle }}</h2>
+      <a href="#stories" style="font-size:12.5px;font-weight:700">{{ t.viewAll }} {{ arrow }}</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+      <sc-for list="{{ quotes }}" as="q" hint-placeholder-count="3">
+        <div style="border:1px solid #EAF3F3;border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:12px">
+          <p style="margin:0;font-size:13px;color:#33505C;line-height:1.65;font-weight:500">“{{ q.text }}”</p>
+          <div style="display:flex;align-items:center;gap:10px;margin-top:auto">
+            <div style="width:44px;height:44px;flex:none"><image-slot id="{{ q.slot }}" shape="circle" compact="true" placeholder="+"></image-slot></div>
+            <span style="display:flex;flex-direction:column"><b style="font-size:12.5px;color:#0B1F2E">{{ q.name }}</b><span style="color:#F6B93B;font-size:10.5px;letter-spacing:2px">★★★★★</span></span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section style="max-width:1180px;margin:24px auto 0;padding:0 32px">
+  <div style="background:#fff;border-radius:20px;box-shadow:0 8px 24px rgba(13,92,99,.06);display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));padding:20px 10px">
+    <sc-for list="{{ stats }}" as="st" hint-placeholder-count="5">
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;border-inline-end:1px solid #EAF3F3;padding:6px 10px">
+        <span style="width:44px;height:44px;border-radius:50%;background:#E3F6F3;display:flex;align-items:center;justify-content:center;color:#0D5C63;flex:none">{{ st.icon }}</span>
+        <span style="display:flex;flex-direction:column"><b style="font-size:19px;color:#0B1F2E">{{ st.v }}</b><span style="font-size:11px;color:#5E7A86;font-weight:600">{{ st.l }}</span></span>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section style="max-width:1180px;margin:24px auto 44px;padding:0 32px">
+  <div style="background:#fff;border-radius:16px;box-shadow:0 8px 24px rgba(13,92,99,.05);padding:16px 26px;display:flex;align-items:center;gap:30px;flex-wrap:wrap">
+    <span style="font-size:12px;font-weight:800;color:#5E7A86">{{ t.partners }}</span>
+    <sc-for list="{{ partnerNames }}" as="pn" hint-placeholder-count="5">
+      <span style="font-size:15px;font-weight:700;color:#9AB3BC;letter-spacing:.5px">{{ pn }}</span>
+    </sc-for>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#0B1F2E;color:#B9CDD4">
+  <div style="max-width:1280px;margin:0 auto;padding:48px 32px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:28px">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <span style="display:flex;align-items:center;gap:10px">
+        <span style="background:#fff;border-radius:12px;padding:6px;display:flex"><img src="assets/logo-icon.png" alt="Tibiva" style="height:34px"/></span>
+        <span style="display:flex;flex-direction:column;line-height:1"><b style="font-size:22px;color:#fff">Tibiva</b><span style="font-size:8px;color:#41D4C4;font-weight:700">{{ t.tagline }}</span></span>
+      </span>
+      <p style="margin:0;font-size:12px;line-height:1.7">{{ t.footBlurb }}</p>
+      <div style="display:flex;gap:8px">
+        <sc-for list="{{ socials }}" as="so" hint-placeholder-count="5">
+          <a href="#top" style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:#A7F0E3;font-size:11px;font-weight:800" style-hover="background:#14998E;color:#fff">{{ so }}</a>
+        </sc-for>
+      </div>
+    </div>
+    <sc-for list="{{ footCols }}" as="fc" hint-placeholder-count="4">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <b style="font-size:13px;color:#fff">{{ fc.title }}</b>
+        <sc-for list="{{ fc.links }}" as="fl" hint-placeholder-count="5">
+          <a href="#top" style="font-size:12px;color:#B9CDD4" style-hover="color:#41D4C4">{{ fl }}</a>
+        </sc-for>
+      </div>
+    </sc-for>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <b style="font-size:13px;color:#fff">{{ t.needHelp }}</b>
+      <span style="display:flex;align-items:center;gap:8px;font-size:12px"><span style="color:#41D4C4">{{ ic.clock }}</span>{{ t.support247 }}</span>
+      <span style="display:flex;align-items:center;gap:8px;font-size:12px"><span style="color:#41D4C4">{{ ic.phone }}</span><span dir="ltr">+1 (800) 123-4567</span></span>
+      <span style="display:flex;align-items:center;gap:8px;font-size:12px"><span style="color:#41D4C4">{{ ic.mail }}</span><span dir="ltr">support@tibiva.com</span></span>
+      <a href="#top" style="align-self:flex-start;background:#14998E;color:#fff;border-radius:9px;padding:9px 18px;font-size:12px;font-weight:800;margin-top:4px;white-space:nowrap" style-hover="background:#41D4C4;color:#0B1F2E">{{ t.helpCenter }} {{ arrow }}</a>
+    </div>
+  </div>
+  <div style="border-top:1px solid rgba(255,255,255,.08)">
+    <div style="max-width:1280px;margin:0 auto;padding:14px 32px;display:flex;justify-content:space-between;align-items:center;font-size:11.5px">
+      <span>{{ t.copyright }}</span>
+      <span>{{ t.madeWith }}</span>
+    </div>
+  </div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;en&quot;,&quot;ar&quot;],&quot;default&quot;:&quot;en&quot;,&quot;tsType&quot;:&quot;'en'|'ar'&quot;,&quot;section&quot;:&quot;Language&quot;}}">
+class Component extends DCLogic {
+  state = { lang: null, tab: 0 };
+  componentDidMount() {
+    const saved = localStorage.getItem('tibiva-lang');
+    if (saved && !this.state.lang) this.setState({ lang: saved });
+  }
+  dict(lang) {
+    const en = {
+      tagline: 'Find Trusted Care, Wherever You Are', langBtn: 'العربية', signIn: 'Sign In', bookCta: 'Book Appointment',
+      heroBadge: 'Your Health, Our Priority', heroTitle1: 'Find Trusted Care,', heroTitle2: 'Wherever You Are',
+      heroCopy: 'Tibiva connects you with verified healthcare professionals anytime, anywhere. Book appointments, consult online, access records, and manage your health with confidence.',
+      statSat: 'Patient Satisfaction', statDocs: 'Top Doctors', statSecure: 'Secure Health Records',
+      fSpec: 'Specialty / Doctor', fSpecPh: 'Search specialty, doctor...', fLoc: 'Location', fLocPh: 'City, area or hospital...', fDate: 'Date', fDatePh: 'Select date', fIns: 'Insurance (Optional)', fInsPh: 'Select insurance',
+      searchBtn: 'Search', popular: 'Popular searches:',
+      specTitle: 'Explore by Specialty', docsTitle: 'Featured Doctors Near You', viewAll: 'View all', availToday: 'Available Today', bookNow: 'Book Now',
+      clinicsTitle: 'Top Rated Clinics & Hospitals',
+      videoKicker: 'Consult a Doctor', videoTitle: 'Anytime, Anywhere', videoCopy: 'Connect instantly with our trusted doctors through secure video consultations.',
+      videoCta: 'Start Video Consultation', videoNote: 'Starting at $20 · Available 24/7',
+      labsTitle: 'Labs & Imaging', labsCopy: 'Book lab tests and imaging services at trusted centers.', labsCta: 'Book a Test',
+      homeTitle: 'Home Care Services', homeCopy: 'Nursing, physiotherapy, and caregiving support at your doorstep.', homeCta: 'Explore Home Care',
+      insTitle: 'Insurance Support', insCopy: 'Find insurance plans and get help with claims and coverage options.', insCta: 'Check Coverage',
+      appTitle1: 'Your Health,', appTitle2: 'In Your Hand', appCopy: 'The Tibiva app makes healthcare simple, accessible, and personal.', appDl: 'Download on the', appGet: 'GET IT ON',
+      testTitle: 'Trusted by Patients', partners: 'Trusted by Leading Providers',
+      needHelp: 'Need Help?', support247: '24/7 Customer Support', helpCenter: 'Help Center',
+      footBlurb: 'Tibiva is a digital healthcare platform that connects you with trusted doctors, hospitals, and care services — anytime, anywhere.',
+      copyright: '© 2026 Tibiva. All rights reserved.', madeWith: 'Made with ♥ for better healthcare.',
+      nav: ['Find Doctors','Specialties','Clinics & Hospitals','Health Services','For Providers','Resources'],
+      tabs: ['Find Doctor','Video Consultation','Clinics & Hospitals','Labs & Imaging','Home Care'],
+      chips: ['General Physician','Dermatologist','Pediatrician','Dentist','Cardiologist','Orthopedist'],
+      services: ['Find Doctors','Book Appointments','Video Consultations','Clinics & Hospitals','Labs & Imaging','Home Care','Insurance Support','Patient Records'],
+      specialties: ['General Physician','Pediatrics','Dermatology','Gynecology','Cardiology','Orthopedics','Dentistry','Neurology','Ophthalmology','More Specialties'],
+      doctors: [
+        {name:'Dr. Sarah Ahmed', spec:'General Physician', rating:'4.9 (120)', exp:'10+ yrs'},
+        {name:'Dr. Omar Khalid', spec:'Cardiologist', rating:'4.9 (98)', exp:'12+ yrs'},
+        {name:'Dr. Aisha Rahman', spec:'Dermatologist', rating:'4.9 (101)', exp:'7+ yrs'}],
+      clinics: [
+        {name:'Tibiva Care Hospital', rating:'4.8 (230)', addr:'Downtown, City Center'},
+        {name:'HealthPlus Clinic', rating:'4.7 (184)', addr:'Green Avenue, City'},
+        {name:'Wellness Medical Center', rating:'4.9 (196)', addr:'Sunset Road, City'},
+        {name:'LifeCare Hospital', rating:'4.9 (256)', addr:'Maple Street, City'}],
+      videoPoints: ['No Waiting, Just Care','Private & Secure','E-Prescriptions'],
+      appPoints: ['Book appointments in seconds','Video consults from anywhere','Access prescriptions & reports','Health reminders & more'],
+      quotes: [
+        {text:'Tibiva made it so easy to find the right doctor near me and book instantly. Highly recommended!', name:'Ayesha M.'},
+        {text:'The app is super convenient. I can consult doctors and access my reports anytime.', name:'Michael D.'},
+        {text:'Excellent experience! Booking appointments and lab tests has been so amazing.', name:'Fatima R.'}],
+      stats: [['1M+','Happy Patients'],['15K+','Verified Doctors'],['2K+','Hospitals & Clinics'],['98%','Satisfaction Rate'],['24/7','Support Available']],
+      footCols: [
+        {title:'For Patients', links:['Find Doctors','Book Appointment','Video Consultation','Health Records','Patient Rewards']},
+        {title:'For Providers', links:['Join as Doctor','Provider Dashboard','Telemedicine','Help Center']},
+        {title:'Company', links:['About Us','Careers','Blog','Newsroom','Contact Us']},
+        {title:'Legal', links:['Privacy Policy','Terms of Service','Cookies Policy','HIPAA Compliance']}]
+    };
+    const ar = {
+      tagline: 'اعثر على رعاية موثوقة، أينما كنت', langBtn: 'English', signIn: 'تسجيل الدخول', bookCta: 'احجز موعدًا',
+      heroBadge: 'صحتك أولويتنا', heroTitle1: 'اعثر على رعاية موثوقة،', heroTitle2: 'أينما كنت',
+      heroCopy: 'تربطك تيبيفا بمقدمي رعاية صحية موثوقين في أي وقت وأي مكان. احجز المواعيد، واستشر عن بُعد، واطّلع على سجلاتك، وأدر صحتك بثقة.',
+      statSat: 'رضا المرضى', statDocs: 'نخبة الأطباء', statSecure: 'سجلات صحية آمنة',
+      fSpec: 'التخصص / الطبيب', fSpecPh: 'ابحث عن تخصص أو طبيب...', fLoc: 'الموقع', fLocPh: 'المدينة أو المنطقة أو المستشفى...', fDate: 'التاريخ', fDatePh: 'اختر التاريخ', fIns: 'التأمين (اختياري)', fInsPh: 'اختر شركة التأمين',
+      searchBtn: 'بحث', popular: 'الأكثر بحثًا:',
+      specTitle: 'تصفح حسب التخصص', docsTitle: 'أطباء مميزون بالقرب منك', viewAll: 'عرض الكل', availToday: 'متاح اليوم', bookNow: 'احجز الآن',
+      clinicsTitle: 'أفضل العيادات والمستشفيات',
+      videoKicker: 'استشر طبيبًا', videoTitle: 'في أي وقت، وأي مكان', videoCopy: 'تواصل فورًا مع أطبائنا الموثوقين عبر استشارات مرئية آمنة.',
+      videoCta: 'ابدأ استشارة مرئية', videoNote: 'تبدأ من 20$ · متاح على مدار الساعة',
+      labsTitle: 'المختبرات والأشعة', labsCopy: 'احجز الفحوصات المخبرية وخدمات الأشعة في مراكز موثوقة.', labsCta: 'احجز فحصًا',
+      homeTitle: 'الزيارات المنزلية', homeCopy: 'تمريض وعلاج طبيعي ورعاية منزلية حتى باب منزلك.', homeCta: 'استكشف الرعاية المنزلية',
+      insTitle: 'التأمين الطبي', insCopy: 'اعثر على خطط التأمين واحصل على مساعدة في المطالبات وخيارات التغطية.', insCta: 'تحقق من التغطية',
+      appTitle1: 'صحتك،', appTitle2: 'بين يديك', appCopy: 'تطبيق تيبيفا يجعل الرعاية الصحية بسيطة وشخصية وفي متناول الجميع.', appDl: 'حمّله من', appGet: 'متوفر على',
+      testTitle: 'موثوق من المرضى', partners: 'موثوق من كبار مقدمي الخدمات',
+      needHelp: 'تحتاج مساعدة؟', support247: 'دعم العملاء على مدار الساعة', helpCenter: 'مركز المساعدة',
+      footBlurb: 'تيبيفا منصة رعاية صحية رقمية تربطك بأطباء ومستشفيات وخدمات رعاية موثوقة — في أي وقت وأي مكان.',
+      copyright: '© 2026 تيبيفا. جميع الحقوق محفوظة.', madeWith: 'صُنع بحب ♥ لرعاية صحية أفضل.',
+      nav: ['البحث عن الأطباء','التخصصات','العيادات والمستشفيات','الخدمات الصحية','لمقدمي الخدمات','الموارد'],
+      tabs: ['البحث عن طبيب','استشارة مرئية','العيادات والمستشفيات','المختبرات والأشعة','الرعاية المنزلية'],
+      chips: ['طب عام','جلدية','أطفال','أسنان','قلب','عظام'],
+      services: ['البحث عن الأطباء','حجز المواعيد','الاستشارات المرئية','العيادات والمستشفيات','المختبرات والأشعة','الرعاية المنزلية','التأمين الطبي','ملفات المرضى'],
+      specialties: ['طب عام','أطفال','جلدية','نساء وتوليد','قلب','عظام','أسنان','مخ وأعصاب','عيون','تخصصات أخرى'],
+      doctors: [
+        {name:'د. سارة أحمد', spec:'طب عام', rating:'4.9 (120)', exp:'خبرة +10 سنوات'},
+        {name:'د. عمر خالد', spec:'أمراض القلب', rating:'4.9 (98)', exp:'خبرة +12 سنة'},
+        {name:'د. عائشة رحمن', spec:'الأمراض الجلدية', rating:'4.9 (101)', exp:'خبرة +7 سنوات'}],
+      clinics: [
+        {name:'مستشفى تيبيفا للرعاية', rating:'4.8 (230)', addr:'وسط المدينة'},
+        {name:'عيادة هيلث بلس', rating:'4.7 (184)', addr:'شارع الأخضر'},
+        {name:'مركز ويلنس الطبي', rating:'4.9 (196)', addr:'طريق الغروب'},
+        {name:'مستشفى لايف كير', rating:'4.9 (256)', addr:'شارع القيقب'}],
+      videoPoints: ['رعاية فورية دون انتظار','خصوصية وأمان','وصفات إلكترونية'],
+      appPoints: ['احجز موعدك في ثوانٍ','استشارات مرئية من أي مكان','الوصول للوصفات والتقارير','تذكيرات صحية والمزيد'],
+      quotes: [
+        {text:'سهّلت عليّ تيبيفا العثور على الطبيب المناسب قربي والحجز فورًا. أنصح بها بشدة!', name:'عائشة م.'},
+        {text:'التطبيق مريح جدًا. أستطيع استشارة الأطباء والاطلاع على تقاريري في أي وقت.', name:'مايكل د.'},
+        {text:'تجربة ممتازة! حجز المواعيد والفحوصات المخبرية أصبح رائعًا.', name:'فاطمة ر.'}],
+      stats: [['+1M','مريض سعيد'],['+15K','طبيب موثّق'],['+2K','مستشفى وعيادة'],['98%','نسبة الرضا'],['24/7','دعم متواصل']],
+      footCols: [
+        {title:'للمرضى', links:['البحث عن الأطباء','حجز موعد','استشارة مرئية','السجلات الصحية','مكافآت المرضى']},
+        {title:'لمقدمي الخدمات', links:['انضم كطبيب','لوحة مقدم الخدمة','الطب عن بُعد','مركز المساعدة']},
+        {title:'الشركة', links:['من نحن','الوظائف','المدونة','الأخبار','اتصل بنا']},
+        {title:'قانوني', links:['سياسة الخصوصية','شروط الاستخدام','سياسة الكوكيز','الامتثال الصحي']}]
+    };
+    return lang === 'ar' ? ar : en;
+  }
+  ic(paths, fill) {
+    return React.createElement('svg', {width:22, height:22, viewBox:'0 0 24 24', fill: fill?'currentColor':'none', stroke: fill?'none':'currentColor', strokeWidth:1.8, strokeLinecap:'round', strokeLinejoin:'round', style:{display:'block'}},
+      paths.map((d,i)=>React.createElement('path',{key:i,d})));
+  }
+  renderVals() {
+    const lang = this.state.lang || this.props.defaultLang || 'en';
+    const isAr = lang === 'ar';
+    const t = this.dict(lang);
+    const P = {
+      search:['M21 21l-4.35-4.35','M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z'],
+      pin:['M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z','M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z'],
+      cal:['M3 5h18v16H3z','M16 3v4M8 3v4M3 10h18'],
+      shield:['M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z','M9 12l2 2 4-4'],
+      video:['M2 7h13v10H2z','M15 10l7-3v10l-7-3'],
+      user:['M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2','M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z'],
+      users:['M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2','M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z','M23 21v-2a4 4 0 0 0-3-3.87','M16 3.13a4 4 0 0 1 0 7.75'],
+      heart:['M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l8.8 8.8 8.8-8.8a5.5 5.5 0 0 0 0-7.8z'],
+      home:['M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z','M9 22V12h6v10'],
+      flask:['M9 3h6','M10 3v6L4 20a1.5 1.5 0 0 0 1.4 2h13.2A1.5 1.5 0 0 0 20 20L14 9V3'],
+      scan:['M3 7V5a2 2 0 0 1 2-2h2','M17 3h2a2 2 0 0 1 2 2v2','M21 17v2a2 2 0 0 1-2 2h-2','M7 21H5a2 2 0 0 1-2-2v-2','M7 12h10'],
+      file:['M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z','M14 2v6h6','M8 13h8M8 17h5'],
+      phone:['M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.8a2 2 0 0 1-.4 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.5 2.9.6a2 2 0 0 1 1.7 2z'],
+      clock:['M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z','M12 6v6l4 2'],
+      check:['M20 6L9 17l-5-5'],
+      globe:['M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z','M2 12h20','M12 2a15 15 0 0 1 0 20a15 15 0 0 1 0-20z'],
+      smile:['M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z','M8 14s1.5 2 4 2 4-2 4-2','M9 9h.01M15 9h.01'],
+      eye:['M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z','M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z'],
+      activity:['M22 12h-4l-3 9L9 3l-3 9H2'],
+      grid:['M3 3h7v7H3z','M14 3h7v7h-7z','M3 14h7v7H3z','M14 14h7v7h-7z'],
+      tooth:['M12 5.5C10 3 4.5 2.5 4.5 8c0 4 2 5 2.5 9 .3 2.5 1.5 4.5 2.5 4.5 1.5 0 1-4 2.5-4s1 4 2.5 4c1 0 2.2-2 2.5-4.5.5-4 2.5-5 2.5-9 0-5.5-5.5-5-7.5-2.5z'],
+      baby:['M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z','M9 15s1 1.5 3 1.5 3-1.5 3-1.5','M9 10h.01M15 10h.01','M12 2v3'],
+      mail:['M4 4h16v16H4z','M22 6l-10 7L2 6'],
+      bone:['M17 10c.7-.7 2-.5 2.8.3a2.4 2.4 0 0 1-1.4 4 2.4 2.4 0 0 1-4-1.4L10 17.3a2.4 2.4 0 0 1-1.4 4 2.4 2.4 0 0 1-4-1.4c-.8-.8-1-2.1-.3-2.8.7-.7-.5-2 .3-2.8a2.4 2.4 0 0 1 4 1.4l4.4-4.4a2.4 2.4 0 0 1 1.4-4 2.4 2.4 0 0 1 4 1.4c.8.8.6 2.1-.4 2.3z'],
+      stetho:['M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6 6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3','M8 15v1a6 6 0 0 0 6 6 6 6 0 0 0 6-6v-4','M20 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z']
+    };
+    const I = {}; for (const k in P) I[k] = this.ic(P[k]);
+    const svcIcons = [I.user, I.cal, I.video, I.home, I.flask, I.heart, I.shield, I.file];
+    const spIcons = [I.user, I.baby, I.activity, I.heart, I.heart, I.bone, I.tooth, I.activity, I.eye, I.grid];
+    const tabIcons = [I.user, I.video, I.home, I.flask, I.heart];
+    const setLang = (l) => { localStorage.setItem('tibiva-lang', l); this.setState({ lang: l }); };
+    return {
+      t, dir: isAr ? 'rtl' : 'ltr', isAr, arrow: isAr ? '←' : '→', ic: I,
+      toggleLang: () => setLang(isAr ? 'en' : 'ar'),
+      nav: t.nav.map((label,i)=>({label, href:['#search','#specialties','#clinics','#more','#app','#stories'][i]})),
+      tabs: t.tabs.map((label,i)=>({ label, icon: tabIcons[i],
+        onClick: () => this.setState({tab:i}),
+        bg: this.state.tab===i ? '#F0FAF8' : 'transparent',
+        line: this.state.tab===i ? '#14998E' : 'transparent',
+        color: this.state.tab===i ? '#0D5C63' : '#5E7A86' })),
+      chips: t.chips,
+      trust: [
+        {icon:I.users, a: isAr?'موثوق من':'Trusted by', b: isAr?'أكثر من مليون مريض':'1M+ Patients'},
+        {icon:I.clock, a: isAr?'رعاية 24/7':'24/7 Care', b: isAr?'في أي وقت وأي مكان':'Anytime, Anywhere'},
+        {icon:I.shield, a: isAr?'آمن وخاص':'Secure & Private', b: isAr?'بياناتك محمية':'Your data is protected'}],
+      services: t.services.map((label,i)=>({label, icon: svcIcons[i], href:'#search'})),
+      specialties: t.specialties.map((label,i)=>({label, icon: spIcons[i]})),
+      doctors: t.doctors.map((d,i)=>({...d, slot:'doc-'+(i+1), ph:'Doctor photo'})),
+      clinics: t.clinics.map((c,i)=>({...c, slot:'clinic-'+(i+1), ph:'Facility photo'})),
+      videoPoints: t.videoPoints,
+      appPoints: t.appPoints.map((label,i)=>({label, icon:[I.cal,I.video,I.file,I.clock][i]})),
+      quotes: t.quotes.map((q,i)=>({...q, slot:'ava-'+(i+1)})),
+      stats: t.stats.map((s,i)=>({v:s[0], l:s[1], icon:[I.smile,I.user,I.home,I.heart,I.clock][i]})),
+      partnerNames: ['MediLife','NovaMed','Al-Shifa Group','HealthPoint','CarePlus'],
+      socials: ['f','X','in','▶','ig'],
+      footCols: t.footCols
+    };
+  }
+}
+</script>
+</body>
+</html>

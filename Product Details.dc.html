@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>
+body { margin:0; background:#F4F2ED; color:#12151A; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; -webkit-font-smoothing:antialiased; }
+a { color:#1E5FD6; text-decoration:none; }
+a:hover { color:#0B1F3F; }
+</style>
+</helmet>
+<dc-import name="StoreHeader" lang="{{ lang }}" active="shop" cart-count="{{ cartCount }}" on-set-lang="{{ setLang }}" hint-size="100%,220px"></dc-import>
+<main dir="{{ dir }}" style="max-width:1320px; margin:0 auto; padding:clamp(16px,3vw,28px) clamp(16px,4vw,32px) 60px; display:flex; flex-direction:column; gap:clamp(32px,4vw,44px); font-family:'Archivo','IBM Plex Sans Arabic',sans-serif;">
+  <div style="font-size:12.5px; color:#8A857A;"><a href="NexStock%20Store.dc.html" style="color:#8A857A;">{{ t.home }}</a> / <a href="Shop.dc.html" style="color:#8A857A;">{{ t.shop }}</a> / <span style="color:#12151A; font-weight:600;">iPhone 15</span></div>
+  <div style="display:flex; flex-wrap:wrap; gap:clamp(20px,3vw,40px); align-items:flex-start;">
+    <div style="flex:1.1 1 340px; min-width:0;">
+      <div style="background:#FDFCFA; border:1px solid #E7E3DA; border-radius:22px; overflow:hidden; height:clamp(300px,42vw,460px); position:relative;">
+        <span style="position:absolute; top:18px; inset-inline-start:18px; z-index:2; background:#12151A; color:#fff; font-size:12px; font-weight:800; padding:5px 12px; border-radius:999px;">-14%</span>
+        <image-slot id="pd-main" shape="rect" placeholder="iPhone 15 hero photo"></image-slot>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; margin-top:10px;">
+        <div style="height:82px; border-radius:14px; overflow:hidden; background:#FDFCFA; border:2px solid #1E5FD6;"><image-slot id="pd-th-1" shape="rounded" radius="12" placeholder="Angle 1"></image-slot></div>
+        <div style="height:82px; border-radius:14px; overflow:hidden; background:#FDFCFA; border:1px solid #E7E3DA;"><image-slot id="pd-th-2" shape="rounded" radius="12" placeholder="Angle 2"></image-slot></div>
+        <div style="height:82px; border-radius:14px; overflow:hidden; background:#FDFCFA; border:1px solid #E7E3DA;"><image-slot id="pd-th-3" shape="rounded" radius="12" placeholder="Angle 3"></image-slot></div>
+        <div style="height:82px; border-radius:14px; overflow:hidden; background:#FDFCFA; border:1px solid #E7E3DA;"><image-slot id="pd-th-4" shape="rounded" radius="12" placeholder="In hand"></image-slot></div>
+      </div>
+    </div>
+    <div style="flex:1 1 340px; min-width:0; display:flex; flex-direction:column; gap:18px;">
+      <div>
+        <div style="font-size:11px; letter-spacing:0.16em; font-weight:700; color:#1E5FD6; text-transform:uppercase; margin-bottom:10px;">Apple · {{ t.inStock }}</div>
+        <h1 style="margin:0 0 10px; font-size:clamp(24px,3vw,36px); font-weight:900; letter-spacing:-0.02em; line-height:1.1;">Apple iPhone 15</h1>
+        <div style="font-size:13px; color:#8A857A;"><span style="color:#C89B3C;">★★★★★</span> 4.8 · <a href="#reviews">128 {{ t.reviews }}</a> · SKU NX-100482</div>
+      </div>
+      <div style="display:flex; align-items:baseline; gap:12px; flex-wrap:wrap;">
+        <span style="font-size:clamp(26px,3vw,34px); font-weight:900; letter-spacing:-0.02em;">{{ priceFmt }}</span>
+        <span style="font-size:16px; color:#B0AA9B; text-decoration:line-through;">CFA 579,000</span>
+        <span style="background:#DFE8DC; color:#3E5C38; font-size:11.5px; font-weight:800; padding:4px 10px; border-radius:999px;">{{ t.save }}</span>
+      </div>
+      <div>
+        <div style="font-size:12.5px; font-weight:800; margin-bottom:10px;">{{ t.color }}: <span style="color:#1E5FD6;">{{ colorName }}</span></div>
+        <div style="display:flex; gap:10px;">
+          <sc-for list="{{ colors }}" as="c" hint-placeholder-count="4">
+            <span onClick="{{ c.pick }}" style="width:34px; height:34px; border-radius:50%; background:{{ c.hex }}; cursor:pointer; border:2px solid {{ c.ring }}; box-shadow:inset 0 0 0 3px #F4F2ED;"></span>
+          </sc-for>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12.5px; font-weight:800; margin-bottom:10px;">{{ t.storage }}</div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <sc-for list="{{ storages }}" as="s" hint-placeholder-count="3">
+            <button onClick="{{ s.pick }}" style="background:{{ s.bg }}; color:{{ s.fg }}; border:1.5px solid {{ s.bd }}; border-radius:12px; padding:10px 18px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:13px; font-weight:800; cursor:pointer;">{{ s.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+        <div style="display:flex; align-items:center; border:1.5px solid #E3DFD4; border-radius:999px; background:#FDFCFA;">
+          <button onClick="{{ qtyDown }}" style="width:44px; height:48px; border:none; background:transparent; font-size:18px; cursor:pointer; color:#5C594F;">−</button>
+          <span style="min-width:36px; text-align:center; font-size:15px; font-weight:900;">{{ qty }}</span>
+          <button onClick="{{ qtyUp }}" style="width:44px; height:48px; border:none; background:transparent; font-size:18px; cursor:pointer; color:#5C594F;">+</button>
+        </div>
+        <button onClick="{{ addToCart }}" style="flex:1 1 180px; min-height:48px; background:#12151A; color:#fff; border:none; border-radius:999px; padding:0 28px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:14.5px; font-weight:800; cursor:pointer;" style-hover="background:#1E5FD6;">{{ t.addToCart }}</button>
+        <a href="Checkout.dc.html" style="min-height:48px; display:flex; align-items:center; background:#1E5FD6; color:#fff; border-radius:999px; padding:0 28px; font-size:14.5px; font-weight:800;" style-hover="background:#0B1F3F; color:#fff;">{{ t.buyNow }}</a>
+      </div>
+      <div style="background:#FDFCFA; border:1px solid #E7E3DA; border-radius:16px; padding:16px 18px; display:flex; flex-direction:column; gap:10px;">
+        <div style="display:flex; gap:10px; align-items:center; font-size:13px;"><span style="width:8px; height:8px; border-radius:50%; background:#3E5C38;"></span>{{ t.ship1 }}</div>
+        <div style="display:flex; gap:10px; align-items:center; font-size:13px;"><span style="width:8px; height:8px; border-radius:50%; background:#1E5FD6;"></span>{{ t.ship2 }}</div>
+        <div style="display:flex; gap:10px; align-items:center; font-size:13px;"><span style="width:8px; height:8px; border-radius:50%; background:#B07A2A;"></span>{{ t.ship3 }}</div>
+      </div>
+    </div>
+  </div>
+  <section>
+    <div style="display:flex; gap:4px; border-bottom:1px solid #E7E3DA; flex-wrap:wrap;">
+      <sc-for list="{{ tabs }}" as="tb" hint-placeholder-count="3">
+        <button onClick="{{ tb.pick }}" style="background:transparent; border:none; border-bottom:2.5px solid {{ tb.border }}; padding:13px 18px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:14px; font-weight:{{ tb.weight }}; color:{{ tb.color }}; cursor:pointer;">{{ tb.label }}</button>
+      </sc-for>
+    </div>
+    <div style="padding:24px 4px; max-width:820px;">
+      <sc-if value="{{ tabDesc }}" hint-placeholder-val="{{ true }}">
+        <p style="margin:0 0 14px; font-size:14.5px; line-height:1.75; color:#3B3830; text-wrap:pretty;">{{ t.descP1 }}</p>
+        <p style="margin:0; font-size:14.5px; line-height:1.75; color:#3B3830; text-wrap:pretty;">{{ t.descP2 }}</p>
+      </sc-if>
+      <sc-if value="{{ tabSpecs }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:0 32px;">
+          <sc-for list="{{ specs }}" as="s" hint-placeholder-count="8">
+            <div style="display:flex; justify-content:space-between; gap:16px; padding:11px 0; border-bottom:1px solid #ECE8DF; font-size:13.5px;">
+              <span style="color:#8A857A; font-weight:600;">{{ s.k }}</span><span style="font-weight:700; text-align:end;">{{ s.v }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+      <sc-if value="{{ tabReviews }}" hint-placeholder-val="{{ false }}">
+        <div id="reviews" style="display:flex; flex-direction:column; gap:14px;">
+          <sc-for list="{{ reviewList }}" as="r" hint-placeholder-count="3">
+            <div style="background:#FDFCFA; border:1px solid #E7E3DA; border-radius:16px; padding:18px 20px;">
+              <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:8px;">
+                <span style="font-size:13.5px; font-weight:800;">{{ r.name }}</span>
+                <span style="font-size:12.5px; color:#C89B3C;">{{ r.stars }}</span>
+              </div>
+              <p style="margin:0; font-size:13.5px; line-height:1.65; color:#3B3830;">{{ r.text }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+  <section>
+    <div style="display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:20px;">
+      <h2 style="margin:0; font-size:clamp(20px,2.4vw,28px); font-weight:900; letter-spacing:-0.02em;">{{ t.related }}</h2>
+      <a href="Shop.dc.html" style="font-size:13px; font-weight:700; white-space:nowrap;">{{ t.seeAll }}</a>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:14px;">
+      <sc-for list="{{ related }}" as="p" hint-placeholder-count="4">
+        <a href="Product%20Details.dc.html" style="background:#FDFCFA; border:1px solid #E7E3DA; border-radius:18px; padding:12px; display:flex; flex-direction:column; gap:10px; color:#12151A;" style-hover="box-shadow:0 16px 40px rgba(11,31,63,0.12); transform:translateY(-4px); color:#12151A;">
+          <div style="height:150px; border-radius:12px; overflow:hidden; background:#F1EEE7;"><image-slot id="{{ p.slot }}" shape="rounded" radius="12" placeholder="{{ p.ph }}"></image-slot></div>
+          <div style="padding:2px 4px 4px;">
+            <div style="font-size:13.5px; font-weight:700; line-height:1.35; min-height:36px;">{{ p.name }}</div>
+            <div style="font-size:15px; font-weight:900; margin-top:6px;">{{ p.priceFmt }}</div>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+</main>
+<dc-import name="StoreFooter" lang="{{ lang }}" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { cart: 0, lang: (typeof localStorage !== 'undefined' && localStorage.getItem('nexstock-lang')) || 'en', qty: 1, color: 0, storage: 0, tab: 0 };
+  renderVals() {
+    const lang = this.state.lang; const ar = lang === 'ar';
+    const f = (x) => 'CFA ' + x.toLocaleString('en-US');
+    const T = {
+      en: { home: 'Home', shop: 'Shop', inStock: 'In stock', reviews: 'reviews', save: 'Save CFA 80,000', color: 'Color', storage: 'Storage', addToCart: 'Add to cart', buyNow: 'Buy now', ship1: 'Free delivery — arrives Tue, 2–4 days', ship2: '12-month official warranty included', ship3: '14-day free returns, no questions asked', related: 'You may also like', seeAll: 'See all →',
+        tabs: ['Description', 'Specifications', 'Reviews (128)'],
+        descP1: 'The iPhone 15 brings the Dynamic Island, a 48MP main camera and USB-C to the everyday flagship. The 6.1-inch Super Retina XDR display is bright, sharp and comfortable to read in direct sunlight.',
+        descP2: 'Powered by the A16 Bionic chip with all-day battery life, it ships unlocked with a full 12-month official warranty and free local support from our NexStock service centers.',
+        colorNames: ['Blue', 'Black', 'Green', 'Pink'] },
+      ar: { home: 'الرئيسية', shop: 'المتجر', inStock: 'متوفر', reviews: 'تقييماً', save: 'وفّر 80,000 CFA', color: 'اللون', storage: 'السعة', addToCart: 'أضِف إلى السلة', buyNow: 'اشترِ الآن', ship1: 'توصيل مجاني — يصل الثلاثاء، خلال 2–4 أيام', ship2: 'ضمان رسمي لمدة 12 شهراً', ship3: 'إرجاع مجاني خلال 14 يوماً دون أسئلة', related: 'قد يعجبك أيضاً', seeAll: '← عرض الكل',
+        tabs: ['الوصف', 'المواصفات', 'التقييمات (128)'],
+        descP1: 'يقدّم آيفون 15 ميزة Dynamic Island وكاميرا رئيسية بدقة 48 ميجابكسل ومنفذ USB-C. شاشة Super Retina XDR مقاس 6.1 بوصة ساطعة وواضحة ومريحة للقراءة حتى تحت أشعة الشمس.',
+        descP2: 'يعمل بشريحة A16 Bionic مع بطارية تدوم طوال اليوم، ويأتي غير مقفل مع ضمان رسمي لمدة 12 شهراً ودعم محلي مجاني من مراكز خدمة نكستوك.',
+        colorNames: ['أزرق', 'أسود', 'أخضر', 'وردي'] }
+    }[lang];
+    const hexes = ['#9DB4D4', '#3B3B3D', '#CBD6C4', '#EDD5D2'];
+    const colors = hexes.map((hex, i) => ({ hex, ring: this.state.color === i ? '#1E5FD6' : '#E3DFD4', pick: () => this.setState({ color: i }) }));
+    const storagePrices = [499000, 569000, 669000];
+    const storages = ['128GB', '256GB', '512GB'].map((label, i) => ({ label, pick: () => this.setState({ storage: i }), bg: this.state.storage === i ? '#12151A' : '#FDFCFA', fg: this.state.storage === i ? '#fff' : '#3B3830', bd: this.state.storage === i ? '#12151A' : '#E3DFD4' }));
+    const tabs = T.tabs.map((label, i) => ({ label, pick: () => this.setState({ tab: i }), border: this.state.tab === i ? '#1E5FD6' : 'transparent', weight: this.state.tab === i ? 800 : 600, color: this.state.tab === i ? '#12151A' : '#8A857A' }));
+    const specs = (ar ? [['الشاشة','‏6.1 بوصة Super Retina XDR'],['المعالج','A16 Bionic'],['الكاميرا','‏48MP + 12MP'],['البطارية','حتى 20 ساعة فيديو'],['المنفذ','USB-C'],['المقاومة','IP68'],['الشبكة','5G'],['الضمان','12 شهراً رسمي']] : [['Display','6.1" Super Retina XDR'],['Chip','A16 Bionic'],['Camera','48MP + 12MP'],['Battery','Up to 20h video'],['Port','USB-C'],['Rating','IP68'],['Network','5G'],['Warranty','12 months official']]).map(s => ({ k: s[0], v: s[1] }));
+    const reviewList = ar ? [
+      { name: 'أمينة ك.', stars: '★★★★★', text: 'وصل خلال يومين، منتج أصلي ومغلف بعناية. الكاميرا مذهلة والبطارية ممتازة.' },
+      { name: 'يوسف د.', stars: '★★★★★', text: 'أفضل سعر وجدته مع ضمان رسمي. خدمة العملاء ردّت على استفساري خلال دقائق.' },
+      { name: 'مريم س.', stars: '★★★★☆', text: 'الهاتف رائع والتوصيل سريع. أتمنى توفر ألوان إضافية.' }
+    ] : [
+      { name: 'Amina K.', stars: '★★★★★', text: 'Arrived in two days, genuine and carefully packed. Camera is stunning and battery easily lasts the day.' },
+      { name: 'Youssef D.', stars: '★★★★★', text: 'Best price I found with an official warranty. Support answered my question within minutes.' },
+      { name: 'Mariam S.', stars: '★★★★☆', text: 'Great phone, fast delivery. Wish more colors were in stock.' }
+    ];
+    const related = [
+      { name: 'Apple AirPods Pro 2', price: 179000, ph: 'AirPods photo' },
+      { name: 'Apple Watch Series 9', price: 279000, ph: 'Apple Watch photo' },
+      { name: 'MagSafe Charger 15W', price: 29000, ph: 'Charger photo' },
+      { name: 'iPhone 15 Silicone Case', price: 24000, ph: 'Case photo' }
+    ].map((p, i) => ({ ...p, slot: 'pd-rel-' + (i + 1), priceFmt: f(p.price) }));
+    return {
+      lang, dir: ar ? 'rtl' : 'ltr', t: T, colors, storages, tabs, specs, reviewList, related,
+      colorName: T.colorNames[this.state.color],
+      priceFmt: f(storagePrices[this.state.storage]),
+      qty: this.state.qty, cartCount: this.state.cart,
+      tabDesc: this.state.tab === 0, tabSpecs: this.state.tab === 1, tabReviews: this.state.tab === 2,
+      qtyUp: () => this.setState(s => ({ qty: s.qty + 1 })),
+      qtyDown: () => this.setState(s => ({ qty: Math.max(1, s.qty - 1) })),
+      addToCart: () => this.setState(s => ({ cart: s.cart + s.qty })),
+      setLang: (l) => { try { localStorage.setItem('nexstock-lang', l); } catch(e) {} this.setState({ lang: l }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

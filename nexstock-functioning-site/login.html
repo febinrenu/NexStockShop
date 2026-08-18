@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in — NexStock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+<main class="container-narrow row" style="align-items:stretch;padding-top:clamp(24px,4vw,56px);">
+  <div class="hero" style="flex:1 1 340px;background:#0B1F3F;color:#fff;padding:clamp(28px,4vw,48px);display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-height:420px;">
+    <div>
+      <img src="assets/img/logo-white.svg" alt="NexStock" style="height:36px;width:auto;margin-bottom:28px;">
+      <h1 id="lg-welcome" style="margin:0 0 14px;font-size:clamp(28px,3.4vw,42px);line-height:1.05;"></h1>
+      <p id="lg-sub" style="margin:0;font-size:14.5px;line-height:1.7;color:#B9C8E2;max-width:360px;"></p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;" id="lg-perks"></div>
+  </div>
+  <div class="panel" style="flex:1 1 340px;display:flex;flex-direction:column;justify-content:center;gap:18px;">
+    <div>
+      <h2 id="lg-title" style="font-size:24px;margin-bottom:6px;"></h2>
+      <div class="muted" style="font-size:13.5px;" id="lg-subline"></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div><div style="font-size:12.5px;font-weight:800;margin-bottom:7px;" id="lg-emaillabel"></div><input id="lg-email" class="formrow" placeholder="name@email.com"></div>
+      <div><div style="display:flex;justify-content:space-between;margin-bottom:7px;"><span style="font-size:12.5px;font-weight:800;" id="lg-passlabel"></span><a href="#" style="font-size:12px;font-weight:700;" id="lg-forgot"></a></div><input id="lg-password" type="password" class="formrow" placeholder="••••••••"></div>
+      <label style="display:flex;align-items:center;gap:9px;font-size:13px;color:#5C594F;cursor:pointer;"><input type="checkbox" style="accent-color:#1E5FD6;width:16px;height:16px;"><span id="lg-remember"></span></label>
+    </div>
+    <button class="btn btn-dark" style="width:100%;" id="lg-signinbtn" onclick="doLogin()"></button>
+    <div id="lg-success" class="toast" style="display:none;"></div>
+    <div style="display:flex;align-items:center;gap:14px;color:#B0AA9B;font-size:12px;"><span style="flex:1;height:1px;background:#ECE8DF;"></span><span id="lg-or"></span><span style="flex:1;height:1px;background:#ECE8DF;"></span></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <button class="btn" style="flex:1 1 130px;border:1.5px solid #E3DFD4;background:#F4F2ED;color:#3B3830;" onclick="showToast(isAr()?'قريباً':'Coming soon')">Google</button>
+      <button class="btn" style="flex:1 1 130px;border:1.5px solid #E3DFD4;background:#F4F2ED;color:#3B3830;" onclick="showToast(isAr()?'قريباً':'Coming soon')">Apple</button>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+mountChrome('home');
+const L = t('login'); const ar = isAr();
+$('lg-welcome').innerHTML = `${L.welcomeA} <span class="serif" style="color:#8FB4F2;">${L.welcomeB}</span>`;
+$('lg-sub').textContent = L.welcomeSub;
+$('lg-perks').innerHTML = L.perks.map(p => `<div style="display:flex;gap:12px;align-items:center;font-size:13.5px;color:#C9D6EC;"><span style="width:9px;height:9px;border-radius:50%;background:#8FD3A8;flex-shrink:0;"></span>${p}</div>`).join('');
+$('lg-title').textContent = L.title;
+$('lg-subline').innerHTML = `${L.sub} <a href="register.html" style="font-weight:800;">${L.createOne}</a>`;
+$('lg-emaillabel').textContent = L.email; $('lg-passlabel').textContent = L.password; $('lg-forgot').textContent = L.forgot; $('lg-remember').textContent = L.remember;
+$('lg-signinbtn').textContent = L.signInBtn; $('lg-or').textContent = L.or;
+
+function doLogin(){
+  const email = $('lg-email').value.trim(), pass = $('lg-password').value.trim();
+  if (!email || !pass){ showToast(L.needInputs); return; }
+  setUser({ name: email.split('@')[0].replace(/[._]/g,' ').replace(/\b\w/g, c=>c.toUpperCase()), email });
+  const box = $('lg-success'); box.style.display='block'; box.textContent = L.success;
+  setTimeout(()=>{ location.href = 'account.html'; }, 1200);
+}
+</script>
+</body>
+</html>

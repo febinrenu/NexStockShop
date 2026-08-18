@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wishlist — NexStock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+<main class="container">
+  <div class="section-head">
+    <div><h1 id="wl-title" style="font-size:clamp(26px,3.2vw,38px);"></h1><div class="muted" style="font-size:13.5px;" id="wl-sub"></div></div>
+    <button class="btn btn-dark" id="wl-addall" onclick="addAllWishlist()"></button>
+  </div>
+  <div class="grid grid-auto" id="wl-grid"></div>
+  <div class="card" id="wl-empty" style="display:none;border-style:dashed;text-align:center;padding:56px 24px;"></div>
+</main>
+<div id="site-footer"></div>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+mountChrome('home');
+const W = t('wishlist'); const ar = isAr();
+$('wl-sub').textContent = W.sub; $('wl-addall').textContent = W.addAll;
+
+function addAllWishlist(){ getWishlist().forEach(id => addToCart(id, 1)); }
+
+function render(){
+  const ids = getWishlist();
+  $('wl-title').textContent = `${W.title} (${ids.length})`;
+  if (!ids.length){
+    $('wl-grid').innerHTML=''; $('wl-empty').style.display='block';
+    $('wl-empty').innerHTML = `<div style="font-size:17px;font-weight:800;margin-bottom:8px;">${W.emptyTitle}</div><div class="muted" style="font-size:13.5px;margin-bottom:18px;">${W.emptySub}</div><a href="shop.html" class="btn btn-dark">${W.emptyCta}</a>`;
+  } else {
+    $('wl-empty').style.display='none';
+    $('wl-grid').innerHTML = ids.map(id => getProduct(id)).filter(Boolean).map(p => {
+      const card = productCard(p, {});
+      // inject a remove-from-wishlist heart button (always active/filled here)
+      return card.replace('<div class="card pcard">', `<div class="card pcard"><button class="wishbtn active" onclick="toggleWishlist(${p.id});render();">♥</button>`);
+    }).join('');
+  }
+}
+render();
+</script>
+</body>
+</html>

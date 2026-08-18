@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Create account — NexStock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+<main class="container-narrow row" style="align-items:stretch;padding-top:clamp(24px,4vw,56px);">
+  <div class="panel" style="flex:1 1 340px;display:flex;flex-direction:column;justify-content:center;gap:18px;">
+    <div>
+      <h1 id="rg-title" style="font-size:26px;margin-bottom:6px;"></h1>
+      <div class="muted" style="font-size:13.5px;" id="rg-subline"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(160px,1fr));gap:12px;">
+      <div style="grid-column:1/-1;"><div style="font-size:12.5px;font-weight:800;margin-bottom:7px;" id="rg-namelabel"></div><input id="rg-name" class="formrow"></div>
+      <div><div style="font-size:12.5px;font-weight:800;margin-bottom:7px;" id="rg-emaillabel"></div><input id="rg-email" class="formrow" placeholder="name@email.com"></div>
+      <div><div style="font-size:12.5px;font-weight:800;margin-bottom:7px;" id="rg-phonelabel"></div><input id="rg-phone" class="formrow" placeholder="+225 00 00 00 00"></div>
+      <div style="grid-column:1/-1;"><div style="font-size:12.5px;font-weight:800;margin-bottom:7px;" id="rg-passlabel"></div><input id="rg-password" type="password" class="formrow" placeholder="••••••••"><div class="muted" style="font-size:11.5px;margin-top:6px;" id="rg-passhint"></div></div>
+    </div>
+    <label style="display:flex;align-items:flex-start;gap:9px;font-size:12.5px;color:var(--muted2);cursor:pointer;line-height:1.5;"><input type="checkbox" style="accent-color:var(--blue);width:16px;height:16px;margin-top:1px;"><span id="rg-terms"></span></label>
+    <button class="btn btn-blue" style="width:100%;" id="rg-createbtn" onclick="doRegister()"></button>
+    <div id="rg-success" class="toast" style="display:none;"></div>
+    <div style="display:flex;align-items:center;gap:14px;color:var(--old-price);font-size:12px;"><span style="flex:1;height:1px;background:var(--border3);"></span><span id="rg-or"></span><span style="flex:1;height:1px;background:var(--border3);"></span></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <button class="btn" style="flex:1 1 130px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text2);" onclick="showToast(isAr()?'قريباً':'Coming soon')">Google</button>
+      <button class="btn" style="flex:1 1 130px;border:1.5px solid var(--border2);background:var(--bg);color:var(--text2);" onclick="showToast(isAr()?'قريباً':'Coming soon')">Apple</button>
+    </div>
+  </div>
+  <div class="hero" style="flex:1 1 340px;background:var(--sand);padding:clamp(28px,4vw,48px);display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-height:420px;">
+    <div>
+      <div class="eyebrow" style="color:#8A7A5A;" id="rg-whyeyebrow"></div>
+      <h2 id="rg-whytitle" style="font-size:clamp(26px,3vw,38px);line-height:1.08;margin-bottom:14px;"></h2>
+      <p id="rg-whysub" style="margin:0;font-size:14px;line-height:1.7;color:var(--muted2);max-width:380px;"></p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(150px,1fr));gap:12px;" id="rg-perks"></div>
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+mountChrome('home');
+const R = t('register'); const ar = isAr();
+$('rg-title').textContent = R.title;
+$('rg-subline').innerHTML = `${R.sub} <a href="login.html" style="font-weight:800;">${R.signIn}</a>`;
+$('rg-namelabel').textContent = R.fullName; $('rg-name').placeholder = R.namePh;
+$('rg-emaillabel').textContent = R.email; $('rg-phonelabel').textContent = R.phone;
+$('rg-passlabel').textContent = R.password; $('rg-passhint').textContent = R.passHint;
+$('rg-terms').textContent = R.terms; $('rg-createbtn').textContent = R.createBtn; $('rg-or').textContent = R.or;
+$('rg-whyeyebrow').textContent = R.whyEyebrow;
+$('rg-whytitle').innerHTML = `${R.whyA} <span class="serif" style="color:#8A6A2F;">${R.whyB}</span>`;
+$('rg-whysub').textContent = R.whySub;
+$('rg-perks').innerHTML = R.perks.map(p => `<div style="background:rgba(255,255,255,0.55);border-radius:16px;padding:18px;"><div style="font-size:20px;font-weight:900;color:#8A6A2F;margin-bottom:4px;">${p[0]}</div><div style="font-size:12.5px;font-weight:700;color:var(--text2);line-height:1.4;">${p[1]}</div></div>`).join('');
+
+function doRegister(){
+  const name = $('rg-name').value.trim(), email = $('rg-email').value.trim(), pass = $('rg-password').value.trim();
+  if (!name || !email || !pass){ showToast(R.needInputs); return; }
+  setUser({ name, email });
+  const box = $('rg-success'); box.style.display='block'; box.textContent = R.success;
+  setTimeout(()=>{ location.href = 'account.html'; }, 1200);
+}
+</script>
+</body>
+</html>

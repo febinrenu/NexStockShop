@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+</helmet>
+<footer dir="{{ dir }}" style="background:#0B1F3F; color:#B9C8E2; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif;">
+  <div style="max-width:1320px; margin:0 auto; padding:clamp(36px,5vw,60px) clamp(16px,4vw,32px) 24px; display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:36px 28px;">
+    <div>
+      <img src="uploads/nexstck_logo_White.png" alt="NexStock" style="height:38px; width:auto; margin-bottom:16px;">
+      <p style="margin:0; font-size:13px; line-height:1.7; max-width:260px; text-wrap:pretty;">{{ t.blurb }}</p>
+      <div style="display:flex; gap:10px; margin-top:18px;">
+        <span style="width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; color:#fff; cursor:pointer;" style-hover="background:#1E5FD6;">f</span>
+        <span style="width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; color:#fff; cursor:pointer;" style-hover="background:#1E5FD6;">X</span>
+        <span style="width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; color:#fff; cursor:pointer;" style-hover="background:#1E5FD6;">ig</span>
+        <span style="width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; color:#fff; cursor:pointer;" style-hover="background:#1E5FD6;">yt</span>
+      </div>
+    </div>
+    <sc-for list="{{ cols }}" as="col" hint-placeholder-count="3">
+      <div>
+        <div style="font-size:12px; letter-spacing:0.12em; font-weight:800; color:#fff; text-transform:uppercase; margin-bottom:16px;">{{ col.title }}</div>
+        <div style="display:flex; flex-direction:column; gap:10px; font-size:13px;">
+          <sc-for list="{{ col.links }}" as="l" hint-placeholder-count="5">
+            <a href="{{ l.href }}" style="color:#B9C8E2;" style-hover="color:#fff;">{{ l.label }}</a>
+          </sc-for>
+        </div>
+      </div>
+    </sc-for>
+    <div>
+      <div style="font-size:12px; letter-spacing:0.12em; font-weight:800; color:#fff; text-transform:uppercase; margin-bottom:16px;">{{ t.newsletter }}</div>
+      <p style="margin:0 0 14px; font-size:13px; line-height:1.7;">{{ t.newsSub }}</p>
+      <div style="display:flex; background:rgba(255,255,255,0.08); border-radius:999px; padding:4px; padding-inline-start:18px; align-items:center; gap:8px;">
+        <input placeholder="{{ t.emailPh }}" style="flex:1; min-width:0; border:none; outline:none; background:transparent; color:#fff; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:13px;">
+        <button style="background:#1E5FD6; color:#fff; border:none; border-radius:999px; width:36px; height:36px; font-size:15px; cursor:pointer; flex-shrink:0;" style-hover="background:#fff; color:#0B1F3F;">{{ t.arrow }}</button>
+      </div>
+      <div style="display:flex; gap:8px; margin-top:18px; flex-wrap:wrap;">
+        <span style="background:rgba(255,255,255,0.08); border-radius:8px; padding:6px 12px; font-size:11px; font-weight:700; color:#fff;">App Store</span>
+        <span style="background:rgba(255,255,255,0.08); border-radius:8px; padding:6px 12px; font-size:11px; font-weight:700; color:#fff;">Google Play</span>
+      </div>
+    </div>
+  </div>
+  <div style="border-top:1px solid rgba(255,255,255,0.1);">
+  <div style="padding:18px clamp(16px,4vw,32px); display:flex; flex-wrap:wrap; gap:12px 24px; align-items:center; justify-content:space-between; max-width:1320px; margin:0 auto; font-size:12px;">
+    <span>{{ t.copyright }}</span>
+    <div style="display:flex; gap:20px;">
+      <a href="#" style="color:#B9C8E2;" style-hover="color:#fff;">{{ t.privacy }}</a>
+      <a href="#" style="color:#B9C8E2;" style-hover="color:#fff;">{{ t.terms }}</a>
+    </div>
+    <div style="display:flex; gap:8px; align-items:center;">
+      <span style="background:rgba(255,255,255,0.1); border-radius:5px; padding:3px 8px; font-size:10.5px; font-weight:800; color:#fff;">VISA</span>
+      <span style="background:rgba(255,255,255,0.1); border-radius:5px; padding:3px 8px; font-size:10.5px; font-weight:800; color:#fff;">MC</span>
+      <span style="background:rgba(255,255,255,0.1); border-radius:5px; padding:3px 8px; font-size:10.5px; font-weight:800; color:#fff;">PayPal</span>
+      <span style="background:rgba(255,255,255,0.1); border-radius:5px; padding:3px 8px; font-size:10.5px; font-weight:800; color:#fff;">CFA</span>
+    </div>
+  </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:480},&quot;lang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;en&quot;,&quot;ar&quot;],&quot;default&quot;:&quot;en&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const lang = this.props.lang ?? 'en'; const ar = lang === 'ar';
+    const T = {
+      en: { blurb: 'Your one-stop shop for the best products, top brands and unbeatable deals — in English and العربية.', newsletter: 'Newsletter', newsSub: 'Exclusive offers and new drops, weekly.', emailPh: 'Enter your email', copyright: '© 2026 NexStock. All rights reserved.', privacy: 'Privacy Policy', terms: 'Terms & Conditions', arrow: '→',
+        cols: [
+          { title: 'Shop', links: [['All Products','Shop.dc.html'],['Deals & Offers','Deals.dc.html'],['Brands','Brands.dc.html'],['New Arrivals','Shop.dc.html'],['Best Sellers','Shop.dc.html']] },
+          { title: 'Customer Service', links: [['Help Center','Help.dc.html'],['Track Your Order','Track%20Order.dc.html'],['My Account','Account.dc.html'],['Wishlist','Wishlist.dc.html'],['Sign in / Register','Login.dc.html']] },
+          { title: 'About NexStock', links: [['About Us','About.dc.html'],['Careers','#'],['Store Locator','#'],['Corporate Sales','#'],['Press & News','#']] }
+        ] },
+      ar: { blurb: 'وجهتك الواحدة لأفضل المنتجات وأشهر العلامات التجارية وعروض لا تُقاوم — بالعربية والإنجليزية.', newsletter: 'النشرة البريدية', newsSub: 'عروض حصرية ومنتجات جديدة، أسبوعياً.', emailPh: 'أدخل بريدك الإلكتروني', copyright: '© 2026 نكستوك. جميع الحقوق محفوظة.', privacy: 'سياسة الخصوصية', terms: 'الشروط والأحكام', arrow: '←',
+        cols: [
+          { title: 'المتجر', links: [['كل المنتجات','Shop.dc.html'],['العروض والتخفيضات','Deals.dc.html'],['العلامات التجارية','Brands.dc.html'],['وصل حديثاً','Shop.dc.html'],['الأكثر مبيعاً','Shop.dc.html']] },
+          { title: 'خدمة العملاء', links: [['مركز المساعدة','Help.dc.html'],['تتبع طلبك','Track%20Order.dc.html'],['حسابي','Account.dc.html'],['المفضلة','Wishlist.dc.html'],['تسجيل الدخول / حساب جديد','Login.dc.html']] },
+          { title: 'عن نكستوك', links: [['من نحن','About.dc.html'],['الوظائف','#'],['مواقع المتاجر','#'],['مبيعات الشركات','#'],['الأخبار','#']] }
+        ] }
+    }[lang];
+    return { t: T, dir: ar ? 'rtl' : 'ltr', cols: T.cols.map(c => ({ title: c.title, links: c.links.map(l => ({ label: l[0], href: l[1] })) })) };
+  }
+}
+</script>
+</body>
+</html>

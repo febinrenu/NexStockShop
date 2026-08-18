@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>
+body { margin:0; background:#F4F2ED; color:#12151A; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; -webkit-font-smoothing:antialiased; }
+a { color:#1E5FD6; text-decoration:none; }
+a:hover { color:#0B1F3F; }
+</style>
+</helmet>
+<dc-import name="StoreHeader" lang="{{ lang }}" active="about" cart-count="0" on-set-lang="{{ setLang }}" hint-size="100%,220px"></dc-import>
+<main dir="{{ dir }}" style="max-width:1320px; margin:0 auto; padding:clamp(16px,3vw,28px) clamp(16px,4vw,32px) 60px; display:flex; flex-direction:column; gap:clamp(36px,5vw,60px); font-family:'Archivo','IBM Plex Sans Arabic',sans-serif;">
+  <div style="background:#0B1F3F; color:#fff; border-radius:24px; padding:clamp(32px,5vw,64px); position:relative; overflow:hidden;">
+    <div style="position:absolute; inset-inline-end:-100px; top:-100px; width:380px; height:380px; border-radius:50%; border:1px solid rgba(255,255,255,0.12);"></div>
+    <div style="position:absolute; inset-inline-end:-40px; top:-40px; width:260px; height:260px; border-radius:50%; border:1px solid rgba(255,255,255,0.08);"></div>
+    <div style="max-width:680px; position:relative;">
+      <div style="font-size:12px; letter-spacing:0.22em; font-weight:700; color:#7FA8E8; text-transform:uppercase; margin-bottom:16px;">{{ t.eyebrow }}</div>
+      <h1 style="margin:0 0 18px; font-size:clamp(32px,4.6vw,58px); line-height:1.04; font-weight:900; letter-spacing:-0.03em;">{{ t.heroA }} <span style="font-family:'Instrument Serif','IBM Plex Sans Arabic',serif; font-style:italic; font-weight:400; color:#8FB4F2;">{{ t.heroB }}</span></h1>
+      <p style="margin:0; font-size:15.5px; line-height:1.7; color:#B9C8E2; max-width:520px; text-wrap:pretty;">{{ t.heroSub }}</p>
+    </div>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:14px;">
+    <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+      <div style="background:#FDFCFA; border:1px solid #E7E3DA; border-radius:20px; padding:28px 24px; text-align:center;">
+        <div style="font-size:clamp(28px,3vw,38px); font-weight:900; letter-spacing:-0.02em; color:#1E5FD6;">{{ s.n }}</div>
+        <div style="font-size:13px; color:#8A857A; font-weight:600; margin-top:6px;">{{ s.label }}</div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="display:flex; flex-wrap:wrap; gap:clamp(24px,4vw,48px); align-items:center;">
+    <div style="flex:1 1 320px; height:clamp(260px,32vw,380px); border-radius:22px; overflow:hidden; background:#EAE2D3;">
+      <image-slot id="about-team" shape="rounded" radius="22" placeholder="Team / warehouse photo"></image-slot>
+    </div>
+    <div style="flex:1.1 1 320px;">
+      <div style="font-size:11px; letter-spacing:0.2em; font-weight:700; color:#1E5FD6; text-transform:uppercase; margin-bottom:12px;">{{ t.storyEyebrow }}</div>
+      <h2 style="margin:0 0 16px; font-size:clamp(24px,3vw,36px); font-weight:900; letter-spacing:-0.02em; line-height:1.1;">{{ t.storyTitle }}</h2>
+      <p style="margin:0 0 14px; font-size:14.5px; line-height:1.75; color:#3B3830; text-wrap:pretty;">{{ t.storyP1 }}</p>
+      <p style="margin:0; font-size:14.5px; line-height:1.75; color:#3B3830; text-wrap:pretty;">{{ t.storyP2 }}</p>
+    </div>
+  </div>
+  <section>
+    <h2 style="margin:0 0 22px; font-size:clamp(22px,2.6vw,30px); font-weight:900; letter-spacing:-0.02em;">{{ t.valuesTitle }}</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:14px;">
+      <sc-for list="{{ values }}" as="v" hint-placeholder-count="4">
+        <div style="background:{{ v.bg }}; color:{{ v.fg }}; border-radius:20px; padding:28px 24px;">
+          <span style="display:inline-flex; width:40px; height:40px; border-radius:50%; border:1.5px solid currentColor; align-items:center; justify-content:center; margin-bottom:16px; opacity:0.8;"><span style="width:12px; height:12px; border-radius:50%; background:currentColor;"></span></span>
+          <div style="font-size:16.5px; font-weight:800; margin-bottom:8px;">{{ v.title }}</div>
+          <div style="font-size:13px; line-height:1.65; opacity:0.8;">{{ v.sub }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+  <div style="background:#FDFCFA; border:1px solid #E7E3DA; border-radius:24px; padding:clamp(28px,4vw,48px); display:flex; flex-wrap:wrap; align-items:center; gap:24px;">
+    <div style="flex:2 1 300px;">
+      <div style="font-size:clamp(22px,2.6vw,30px); font-weight:900; letter-spacing:-0.02em; margin-bottom:8px;">{{ t.contactTitle }}</div>
+      <div style="font-size:13.5px; color:#8A857A; line-height:1.7;">{{ t.contactSub }}<br>support@nexstock.com · +225 00 00 00 00 · 9AM–9PM</div>
+    </div>
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <a href="Shop.dc.html" style="background:#12151A; color:#fff; border-radius:999px; padding:14px 28px; font-size:13.5px; font-weight:800;" style-hover="background:#1E5FD6; color:#fff;">{{ t.contactCta1 }}</a>
+      <a href="#" style="border:1.5px solid #12151A; color:#12151A; border-radius:999px; padding:14px 28px; font-size:13.5px; font-weight:800;">{{ t.contactCta2 }}</a>
+    </div>
+  </div>
+</main>
+<dc-import name="StoreFooter" lang="{{ lang }}" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: (typeof localStorage !== 'undefined' && localStorage.getItem('nexstock-lang')) || 'en' };
+  renderVals() {
+    const lang = this.state.lang; const ar = lang === 'ar';
+    const T = {
+      en: { eyebrow: 'About NexStock', heroA: 'Commerce that helps you', heroB: 'manage, grow, succeed.', heroSub: 'NexStock is a marketplace built for real life — original products across tech, home, fashion and daily essentials, delivered fast and backed by humans who answer.', storyEyebrow: 'Our story', storyTitle: 'From one warehouse to a regional marketplace.', storyP1: 'We started in 2021 with a simple frustration: buying genuine products online meant either overpaying or gambling on authenticity. So we built the store we wanted to shop at — official distributors only, honest pricing, and delivery you can track to the minute.', storyP2: 'Today NexStock serves customers across West Africa in English and Arabic, with local warehouses, local support teams and a 14-day no-questions return promise.', valuesTitle: 'What we stand for', contactTitle: 'Talk to a human.', contactSub: 'Our support team answers in under 5 minutes, in English and العربية.', contactCta1: 'Start shopping', contactCta2: 'Contact support',
+        stats: [['250K+', 'Happy customers'], ['60+', 'Official brand partners'], ['12', 'Cities with same-day delivery'], ['4.8★', 'Average store rating']],
+        values: [
+          { title: '100% original, always', sub: 'Every product is sourced from official distributors and covered by a full local warranty.' },
+          { title: 'Prices without games', sub: 'No inflated “was” prices. Discounts are real, measured against our own everyday price.' },
+          { title: 'Delivery you can trust', sub: 'Same-day in 12 cities, live tracking everywhere, and free shipping over CFA 75,000.' },
+          { title: 'Support that answers', sub: 'Real people, 24/7, in English and Arabic — before and after your purchase.' }
+        ] },
+      ar: { eyebrow: 'عن نكستوك', heroA: 'تجارة تساعدك على أن', heroB: 'تدير، تنمو، تنجح.', heroSub: 'نكستوك سوق إلكتروني مبني للحياة الحقيقية — منتجات أصلية في التقنية والمنزل والأزياء والمستلزمات اليومية، تصلك بسرعة ويدعمها فريق بشري يجيب فعلاً.', storyEyebrow: 'قصتنا', storyTitle: 'من مستودع واحد إلى سوق إقليمي.', storyP1: 'بدأنا في 2021 من إحباط بسيط: شراء منتجات أصلية عبر الإنترنت كان يعني إما دفع مبالغ زائدة أو المخاطرة بالتقليد. فبنينا المتجر الذي تمنّينا أن نتسوق منه — موزعون رسميون فقط، وأسعار صادقة، وتوصيل تتبعه دقيقة بدقيقة.', storyP2: 'اليوم تخدم نكستوك عملاءها في غرب أفريقيا بالعربية والإنجليزية، بمستودعات محلية وفرق دعم محلية ووعد إرجاع خلال 14 يوماً دون أسئلة.', valuesTitle: 'ما نؤمن به', contactTitle: 'تحدث مع إنسان.', contactSub: 'فريق الدعم يرد خلال أقل من 5 دقائق، بالعربية والإنجليزية.', contactCta1: 'ابدأ التسوق', contactCta2: 'تواصل مع الدعم',
+        stats: [['+250 ألف', 'عميل سعيد'], ['+60', 'شريك علامة تجارية رسمي'], ['12', 'مدينة بتوصيل في نفس اليوم'], ['4.8★', 'متوسط تقييم المتجر']],
+        values: [
+          { title: 'أصلي 100%، دائماً', sub: 'كل منتج من موزعين رسميين ومشمول بضمان محلي كامل.' },
+          { title: 'أسعار بلا ألاعيب', sub: 'لا أسعار "سابقة" مضخّمة. الخصومات حقيقية ومقاسة على سعرنا اليومي.' },
+          { title: 'توصيل تثق به', sub: 'نفس اليوم في 12 مدينة، وتتبع مباشر في كل مكان، وشحن مجاني فوق 75,000 CFA.' },
+          { title: 'دعم يجيب فعلاً', sub: 'أشخاص حقيقيون، على مدار الساعة، بالعربية والإنجليزية — قبل الشراء وبعده.' }
+        ] }
+    }[lang];
+    const bgs = [['#0B1F3F', '#FDFCFA'], ['#EAE2D3', '#12151A'], ['#E3EBFA', '#0B1F3F'], ['#DFE8DC', '#1E2B1A']];
+    return {
+      lang, dir: ar ? 'rtl' : 'ltr', t: T,
+      stats: T.stats.map(s => ({ n: s[0], label: s[1] })),
+      values: T.values.map((v, i) => ({ ...v, bg: bgs[i][0], fg: bgs[i][1] })),
+      setLang: (l) => { try { localStorage.setItem('nexstock-lang', l); } catch(e) {} this.setState({ lang: l }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

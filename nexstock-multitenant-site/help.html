@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Help Center — NexStock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+<main class="container-narrow" style="display:flex;flex-direction:column;gap:clamp(28px,4vw,44px);padding-top:clamp(24px,4vw,48px);">
+  <div style="text-align:center;">
+    <div class="eyebrow" id="hp-eyebrow"></div>
+    <h1 id="hp-title" style="font-size:clamp(28px,3.8vw,44px);margin-bottom:12px;"></h1>
+    <div style="display:flex;gap:10px;max-width:520px;margin:18px auto 0;flex-wrap:wrap;">
+      <input id="hp-search" class="formrow" style="flex:1 1 240px;border-radius:999px;padding:15px 22px;">
+      <button class="btn btn-dark" style="padding:15px 30px;" id="hp-searchbtn" onclick="doSearch()"></button>
+    </div>
+  </div>
+  <div class="grid grid-auto-sm" id="hp-topics"></div>
+  <section>
+    <h2 id="hp-faqtitle" style="font-size:clamp(20px,2.4vw,28px);margin-bottom:18px;"></h2>
+    <div style="display:flex;flex-direction:column;gap:10px;" id="hp-faqs"></div>
+  </section>
+  <div class="hero" style="background:var(--hero-gradient);color:var(--hero-text);padding:clamp(26px,4vw,44px);display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+    <div style="flex:2 1 280px;">
+      <div style="font-size:clamp(20px,2.4vw,28px);font-weight:900;margin-bottom:8px;" id="hp-contacttitle"></div>
+      <div class="muted" style="font-size:13.5px;line-height:1.7;color:var(--hero-subtext);" id="hp-contactsub"></div>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;" id="hp-contactchips">
+      <span style="background:var(--hero-chip-bg);border-radius:14px;padding:14px 20px;font-size:13px;font-weight:700;" id="hp-email"></span>
+      <span style="background:var(--hero-chip-bg);border-radius:14px;padding:14px 20px;font-size:13px;font-weight:700;">+225 00 00 00 00</span>
+      <span onclick="showToast(isAr()?'جارٍ الاتصال…':'Connecting…')" style="background:var(--blue);border-radius:14px;padding:14px 20px;font-size:13px;font-weight:800;cursor:pointer;" id="hp-chat"></span>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+mountChrome('home');
+const HP = t('help'); const ar = isAr();
+$('hp-eyebrow').textContent = HP.eyebrow;
+$('hp-title').innerHTML = `${HP.titleA} <span class="serif">${HP.titleB}</span>`;
+$('hp-search').placeholder = HP.searchPh; $('hp-searchbtn').textContent = HP.searchBtn;
+$('hp-faqtitle').textContent = HP.faqTitle;
+$('hp-contacttitle').textContent = HP.contactTitle; $('hp-contactsub').textContent = HP.contactSub; $('hp-chat').textContent = HP.chat;
+$('hp-email').textContent = 'support@' + TENANT.id + '.com';
+$('hp-topics').innerHTML = HP.topics.map(tp => `<a href="${tp[2]}" class="card" style="display:flex;flex-direction:column;gap:6px;padding:24px;color:var(--navy);background:var(--blue-tint);"><span style="font-size:15px;font-weight:900;">${tp[0]}</span><span style="font-size:12.5px;opacity:0.75;line-height:1.5;">${tp[1]}</span></a>`).join('');
+
+let openIdx = 0;
+function renderFaqs(filter){
+  const items = HP.faqs.map((f,i)=>({...f, i})).filter((f)=> !filter || HP.faqs[f.i][0].toLowerCase().includes(filter.toLowerCase()) || HP.faqs[f.i][1].toLowerCase().includes(filter.toLowerCase()));
+  $('hp-faqs').innerHTML = HP.faqs.map((f,i) => {
+    const open = openIdx === i;
+    if (filter && !(f[0].toLowerCase().includes(filter.toLowerCase()) || f[1].toLowerCase().includes(filter.toLowerCase()))) return '';
+    return `<div class="card" style="border-color:${open?'var(--blue)':'var(--border)'};padding:0;overflow:hidden;">
+    <div onclick="openIdx = ${open?-1:i}; renderFaqs(document.getElementById('hp-search').value);" style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 22px;cursor:pointer;">
+      <span style="font-size:14px;font-weight:800;">${f[0]}</span>
+      <span style="width:28px;height:28px;border-radius:50%;background:${open?'var(--blue)':'var(--placeholder-bg)'};color:${open?'#fff':'var(--muted2)'};display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;">${open?'−':'+'}</span>
+    </div>
+    ${open?`<div style="padding:0 22px 20px;font-size:13.5px;line-height:1.7;color:var(--muted2);max-width:760px;">${f[1]}</div>`:''}
+  </div>`;
+  }).join('') || `<div class="muted" style="text-align:center;padding:24px;">${ar?'لا توجد نتائج':'No results found'}</div>`;
+}
+function doSearch(){ renderFaqs($('hp-search').value); }
+renderFaqs('');
+</script>
+</body>
+</html>

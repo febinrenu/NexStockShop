@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Track Order — NexStock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+<main class="container-narrow" style="display:flex;flex-direction:column;gap:24px;padding-top:clamp(24px,4vw,48px);">
+  <div style="text-align:center;">
+    <div class="eyebrow" id="tk-eyebrow"></div>
+    <h1 id="tk-title" style="font-size:clamp(28px,3.6vw,42px);margin-bottom:10px;"></h1>
+    <p class="muted" id="tk-sub" style="max-width:440px;margin:0 auto;font-size:14px;line-height:1.6;"></p>
+  </div>
+  <div style="display:flex;gap:10px;max-width:560px;width:100%;margin:0 auto;flex-wrap:wrap;">
+    <input id="tk-input" class="formrow" style="flex:1 1 260px;border-radius:999px;padding:15px 22px;" value="NX-10482">
+    <button class="btn btn-dark" style="padding:15px 32px;" id="tk-btn" onclick="doTrack()"></button>
+  </div>
+  <div class="panel" style="padding:clamp(22px,3.5vw,36px);" id="tk-result"></div>
+  <div class="hero" style="background:var(--hero-gradient);color:var(--hero-text);padding:22px 28px;display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:space-between;">
+    <div style="font-size:14px;font-weight:800;"><span id="tk-helptitle"></span> <span style="color:var(--hero-accent);font-weight:600;" id="tk-helpsub"></span></div>
+    <a href="help.html" class="btn btn-white" id="tk-helpcta"></a>
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+mountChrome('home');
+const TK = t('track'); const ar = isAr();
+$('tk-eyebrow').textContent = TK.eyebrow;
+$('tk-title').innerHTML = `${TK.titleA} <span class="serif">${TK.titleB}</span>`;
+$('tk-sub').textContent = TK.sub; $('tk-btn').textContent = TK.trackBtn;
+$('tk-helptitle').textContent = TK.helpTitle; $('tk-helpsub').textContent = TK.helpSub; $('tk-helpcta').textContent = TK.helpCta;
+$('tk-input').placeholder = TK.placeholder;
+
+function doTrack(){
+  const orderNo = ($('tk-input').value || 'NX-10482').trim();
+  const steps = TK.steps.map(s => {
+    const st = s[2];
+    return { title:s[0], sub:s[1], check: st==='done'?'✓':'', dotBg: st==='done'?'var(--blue)':(st==='now'?'#fff':'var(--bg)'), dotBd: st==='todo'?'var(--card-border-hover)':'var(--blue)', titleC: st==='todo'?'var(--muted)':'var(--ink)', lineBg: st==='done'?'var(--blue)':'var(--border2)' };
+  });
+  $('tk-result').innerHTML = `
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;align-items:center;margin-bottom:28px;">
+      <div><div style="font-size:16px;font-weight:900;">${TK.order} #${orderNo}</div><div class="muted" style="font-size:12.5px;margin-top:3px;">${TK.placed}</div></div>
+      <span style="background:var(--blue-tint);color:var(--blue);font-size:12px;font-weight:800;padding:7px 16px;border-radius:999px;">${TK.statusNow}</span>
+    </div>
+    <div style="display:flex;flex-direction:column;">
+      ${steps.map((s,i) => `<div style="display:flex;gap:16px;">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <span style="width:22px;height:22px;border-radius:50%;background:${s.dotBg};border:2.5px solid ${s.dotBd};display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:900;flex-shrink:0;">${s.check}</span>
+          ${i<steps.length-1?`<span style="width:2.5px;flex:1;min-height:34px;background:${s.lineBg};"></span>`:''}
+        </div>
+        <div style="padding-bottom:26px;min-width:0;"><div style="font-size:14px;font-weight:800;color:${s.titleC};">${s.title}</div><div class="muted" style="font-size:12.5px;margin-top:3px;line-height:1.55;">${s.sub}</div></div>
+      </div>`).join('')}
+    </div>
+    <div style="border-top:1px solid var(--border3);margin-top:6px;padding-top:20px;display:flex;flex-wrap:wrap;gap:12px 28px;font-size:13px;">
+      <div><span class="muted">${TK.courier}:</span> <span style="font-weight:800;">${TENANT.name} Express</span></div>
+      <div><span class="muted">${TK.eta}:</span> <span style="font-weight:800;color:var(--green);">${TK.etaVal}</span></div>
+      <div><span class="muted">${TK.destination}:</span> <span style="font-weight:800;">${TK.destVal}</span></div>
+    </div>`;
+}
+doTrack();
+</script>
+</body>
+</html>

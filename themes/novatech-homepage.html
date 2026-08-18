@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>NovaTech — Upgrade. Perform. Enjoy.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Inter', 'sans-serif'] },
+        colors: {
+          brand: {
+            navy: '#12142E',
+            navyLight: '#1C1F42',
+            purple: '#6D3FE0',
+            purpleDark: '#5A32C4',
+            purpleLight: '#EFE9FC',
+            blue: '#2E77E0',
+          },
+        },
+        boxShadow: {
+          card: '0 4px 14px -4px rgba(18, 20, 46, 0.10)',
+          cardHover: '0 12px 26px -8px rgba(18, 20, 46, 0.18)',
+          navUp: '0 -4px 14px -6px rgba(18,20,46,0.14)',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  ::-webkit-scrollbar { height: 6px; width: 6px; }
+  ::-webkit-scrollbar-thumb { background: #d7d0ee; border-radius: 999px; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
+</head>
+<body class="bg-white text-[#12142E] antialiased">
+
+<!-- ============ TOP UTILITY BAR ============ -->
+<div class="bg-gradient-to-r from-[#5A2FC7] to-[#8B4FE0] text-white text-[12.5px]">
+  <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-center md:justify-between gap-3">
+    <span class="flex items-center gap-2 text-center flex-wrap justify-center">
+      <span>🔥</span>
+      <span class="font-medium">TECH WEEK SALE: Up to 30% OFF on selected items!</span>
+      <a href="#bestsellers" class="inline-flex items-center bg-white text-brand-purpleDark text-xs font-bold px-3 py-1.5 rounded-full">Shop Deals</a>
+    </span>
+    <div class="hidden md:flex items-center gap-4 whitespace-nowrap text-white/85">
+      <a href="#" class="hover:text-white transition">Support</a>
+      <a href="#" class="hover:text-white transition">Store Locator</a>
+      <span class="flex items-center gap-1">Eng
+        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100">
+  <div class="hidden md:flex max-w-7xl mx-auto px-4 py-4 items-center gap-5">
+    <a href="#" class="flex items-center gap-2.5 shrink-0">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-purple to-brand-blue flex items-center justify-center">
+        <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19V5l14 14V5"/></svg>
+      </div>
+      <span class="leading-tight">
+        <span class="block font-extrabold text-lg text-[#12142E] -mb-0.5">NOVATECH</span>
+        <span class="block text-[9px] font-semibold text-brand-purple tracking-wide">SMARTER EVERYDAY</span>
+      </span>
+    </a>
+
+    <button class="flex items-center gap-1.5 bg-brand-navy text-white text-sm font-medium px-4 py-2.5 rounded-lg shrink-0">
+      All Categories
+      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+
+    <div class="flex flex-1 max-w-lg">
+      <div class="flex w-full border border-gray-200 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-brand-purple/25">
+        <input type="text" placeholder="Search for products, brands..." class="w-full px-4 py-2.5 text-sm outline-none placeholder:text-gray-400" />
+        <button class="bg-brand-purple hover:bg-brand-purpleDark transition text-white px-5 flex items-center justify-center" aria-label="Search">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-5 ml-auto text-[12px] text-[#3a3f5c] shrink-0">
+      <a href="#" class="hidden lg:flex flex-col items-center gap-1 hover:text-brand-purple transition">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17a4 4 0 100-8 4 4 0 000 8zM17 17a4 4 0 100-8 4 4 0 000 8zM9 9l6-4M9 15l6 4"/></svg>
+        Compare
+      </a>
+      <a href="#" class="relative flex flex-col items-center gap-1 hover:text-brand-purple transition">
+        <span class="relative">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg>
+          <span class="absolute -top-1.5 -right-2 bg-brand-purple text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center">3</span>
+        </span>
+        Wishlist
+      </a>
+      <a href="#" class="relative flex flex-col items-center gap-1 hover:text-brand-purple transition">
+        <span class="relative">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 8V6a6 6 0 0112 0v2M4 8h16l-1.2 12.1a2 2 0 01-2 1.9H7.2a2 2 0 01-2-1.9L4 8z"/></svg>
+          <span class="absolute -top-1.5 -right-2 bg-brand-purple text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center">2</span>
+        </span>
+        Cart
+      </a>
+    </div>
+  </div>
+
+  <!-- mobile row -->
+  <div class="md:hidden flex items-center gap-3 px-4 py-3">
+    <button id="menuBtn" class="p-1 -ml-1" aria-label="Open menu">
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+    <a href="#" class="flex items-center gap-2 flex-1">
+      <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-brand-purple to-brand-blue flex items-center justify-center">
+        <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19V5l14 14V5"/></svg>
+      </div>
+      <span class="font-extrabold text-base text-[#12142E]">NOVATECH</span>
+    </a>
+    <a href="#" class="relative p-1">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg>
+      <span class="absolute -top-0.5 -right-0.5 bg-brand-purple text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center">3</span>
+    </a>
+    <a href="#" class="relative p-1">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 8V6a6 6 0 0112 0v2M4 8h16l-1.2 12.1a2 2 0 01-2 1.9H7.2a2 2 0 01-2-1.9L4 8z"/></svg>
+      <span class="absolute -top-0.5 -right-0.5 bg-brand-purple text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center">2</span>
+    </a>
+  </div>
+  <div class="md:hidden px-4 pb-3">
+    <div class="flex w-full border border-gray-200 rounded-lg overflow-hidden">
+      <input type="text" placeholder="Search products, brands..." class="w-full px-3.5 py-2 text-sm outline-none placeholder:text-gray-400" />
+      <button class="bg-brand-purple text-white px-4 flex items-center justify-center">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- mobile nav drawer -->
+  <div id="mobileNav" class="md:hidden hidden flex-col px-4 py-2 text-sm font-medium text-[#12142E] divide-y divide-gray-100 border-t border-gray-100">
+    <a href="#" class="py-2.5 text-brand-purple">Home</a>
+    <a href="#" class="py-2.5">Shop</a>
+    <a href="#" class="py-2.5">New Arrivals</a>
+    <a href="#bestsellers" class="py-2.5">Best Sellers</a>
+    <a href="#" class="py-2.5">Brands</a>
+    <a href="#" class="py-2.5">Blog</a>
+    <a href="#" class="py-2.5 text-brand-purple font-semibold">⚡ Today's Deals</a>
+  </div>
+
+  <!-- nav row (desktop) -->
+  <nav class="hidden md:block border-t border-gray-100 relative">
+    <div class="max-w-7xl mx-auto px-4 flex items-center gap-6 text-[13px] font-semibold text-[#3a3f5c] h-12">
+      <button id="categoriesBtn" class="flex items-center gap-2 bg-brand-purple hover:bg-brand-purpleDark transition text-white px-4 py-2 rounded-md text-[13px] shrink-0">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        Browse Categories
+        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+      <a href="#" class="py-2 border-b-2 border-brand-purple text-brand-purple">HOME</a>
+      <a href="#" class="py-2 border-b-2 border-transparent hover:text-brand-purple transition">SHOP</a>
+      <a href="#" class="py-2 border-b-2 border-transparent hover:text-brand-purple transition">NEW ARRIVALS</a>
+      <a href="#bestsellers" class="py-2 border-b-2 border-transparent hover:text-brand-purple transition">BEST SELLERS</a>
+      <a href="#" class="py-2 border-b-2 border-transparent hover:text-brand-purple transition">BRANDS</a>
+      <a href="#" class="py-2 border-b-2 border-transparent hover:text-brand-purple transition">BLOG</a>
+      <a href="#" class="ml-auto flex items-center gap-1.5 bg-brand-purple hover:bg-brand-purpleDark transition text-white px-4 py-2 rounded-md text-xs">⚡ TODAY'S DEALS</a>
+    </div>
+
+    <!-- categories dropdown panel -->
+    <div id="categoriesPanel" class="hidden absolute left-4 top-full mt-1 w-64 bg-brand-navy rounded-lg shadow-cardHover py-2 z-40 text-white">
+      <a href="#" class="flex items-center justify-between px-4 py-2.5 hover:bg-white/10 transition text-sm"><span class="flex items-center gap-2.5"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg>Electronics</span><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a>
+      <a href="#" class="flex items-center justify-between px-4 py-2.5 hover:bg-white/10 transition text-sm"><span class="flex items-center gap-2.5"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M2 20h20"/></svg>Computers &amp; Laptops</span><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a>
+      <a href="#" class="flex items-center justify-between px-4 py-2.5 hover:bg-white/10 transition text-sm"><span class="flex items-center gap-2.5"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="7" y="2" width="10" height="20" rx="2"/></svg>Mobiles &amp; Tablets</span><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a>
+      <a href="#" class="flex items-center justify-between px-4 py-2.5 hover:bg-white/10 transition text-sm"><span class="flex items-center gap-2.5"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="7"/></svg>Smart Watch</span><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a>
+      <a href="#" class="flex items-center justify-between px-4 py-2.5 hover:bg-white/10 transition text-sm"><span class="flex items-center gap-2.5"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 13v-1a8 8 0 0116 0v1"/><rect x="3" y="13" width="5" height="7" rx="2"/><rect x="16" y="13" width="5" height="7" rx="2"/></svg>Audio &amp; Headphones</span><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a>
+      <a href="#" class="flex items-center justify-between px-4 py-2.5 hover:bg-white/10 transition text-sm"><span class="flex items-center gap-2.5"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="6" width="16" height="12" rx="2"/><circle cx="12" cy="12" r="3.5"/></svg>Camera &amp; Photo</span><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a>
+      <a href="#" class="flex items-center justify-between px-4 py-2.5 hover:bg-white/10 transition text-sm"><span class="flex items-center gap-2.5"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="8" width="20" height="10" rx="5"/><circle cx="8" cy="13" r="1.4"/><circle cx="17" cy="12" r="1.4"/></svg>Gaming</span><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a>
+      <a href="#" class="flex items-center justify-between px-4 py-2.5 hover:bg-white/10 transition text-sm"><span class="flex items-center gap-2.5"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6l6 6-6 6M13 18h7"/></svg>Accessories</span><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a>
+      <a href="#" class="flex items-center justify-between px-4 py-2.5 hover:bg-white/10 transition text-sm"><span class="flex items-center gap-2.5"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h5"/></svg>Software</span><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a>
+      <a href="#" class="flex items-center justify-between px-4 py-2.5 hover:bg-white/10 transition text-sm"><span class="flex items-center gap-2.5"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="10" width="16" height="10" rx="1"/><path d="M8 10V6h8v4"/></svg>Home Appliances</span><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a>
+      <a href="#" class="flex items-center justify-between px-4 py-2.5 hover:bg-white/10 transition text-sm"><span class="flex items-center gap-2.5"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/></svg>More Categories</span><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a>
+    </div>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="relative overflow-hidden bg-gradient-to-br from-[#0B0D22] via-[#12142E] to-[#1C1440]">
+  <svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 800 400" preserveAspectRatio="none"><circle cx="650" cy="200" r="180" fill="none" stroke="#6D3FE0" stroke-width="1"/></svg>
+  <div class="max-w-7xl mx-auto px-4 py-10 md:py-16 grid md:grid-cols-2 gap-8 items-center relative">
+    <div class="relative z-10">
+      <span class="inline-block text-brand-purple/90 text-xs font-semibold tracking-wide mb-3">NEW TECHNOLOGY</span>
+      <h1 class="font-extrabold text-3xl sm:text-4xl md:text-5xl leading-[1.1] mb-4">
+        <span class="text-white">Upgrade.<br/>Perform.</span><br/>
+        <span class="bg-gradient-to-r from-[#8B5CF6] to-[#3B82F6] bg-clip-text text-transparent">Enjoy.</span>
+      </h1>
+      <p class="text-white/60 text-sm md:text-base max-w-sm mb-7">Discover the latest tech and gadgets at the best prices.</p>
+      <div class="flex flex-wrap items-center gap-3">
+        <a href="#bestsellers" class="inline-flex items-center gap-2 bg-brand-purple hover:bg-brand-purpleDark transition text-white font-semibold px-6 py-3 rounded-lg text-sm">SHOP NOW
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#" class="hidden sm:inline-flex items-center gap-2 bg-transparent border-2 border-white/30 text-white font-semibold px-6 py-3 rounded-lg hover:bg-white/10 transition text-sm">EXPLORE MORE</a>
+      </div>
+    </div>
+
+    <div class="relative flex justify-center">
+      <div class="absolute -top-2 right-2 md:right-8 z-10 w-24 h-24 rounded-full bg-brand-navy border-2 border-brand-purple flex flex-col items-center justify-center text-center shadow-cardHover">
+        <span class="text-[9px] text-white/70 font-medium">UP TO</span>
+        <span class="text-2xl font-extrabold bg-gradient-to-r from-[#8B5CF6] to-[#3B82F6] bg-clip-text text-transparent leading-none">30%</span>
+        <span class="text-[9px] text-white/70 font-medium">OFF</span>
+      </div>
+      <svg viewBox="0 0 420 340" class="w-full max-w-md">
+        <ellipse cx="220" cy="300" rx="140" ry="14" fill="#6D3FE0" opacity="0.15"/>
+        <circle cx="220" cy="190" r="115" fill="none" stroke="url(#ringGrad)" stroke-width="3"/>
+        <defs>
+          <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#8B5CF6"/>
+            <stop offset="100%" stop-color="#3B82F6"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="220" cy="290" rx="90" ry="16" fill="#1C1F42"/>
+        <!-- laptop -->
+        <rect x="110" y="150" width="130" height="90" rx="6" fill="#D7DEEA"/>
+        <rect x="118" y="156" width="114" height="72" rx="2" fill="#1C1440"/>
+        <path d="M95 240h180l10 20H85z" fill="#9BA9C4"/>
+        <path d="M130 165q30-20 60 0t20 40" stroke="#8B5CF6" stroke-width="3" fill="none" opacity="0.8"/>
+        <!-- smartphone -->
+        <rect x="255" y="130" width="60" height="120" rx="12" fill="#232323" stroke="#3a3a5a" stroke-width="2"/>
+        <rect x="261" y="138" width="48" height="100" rx="4" fill="#1C1440"/>
+        <path d="M270 160q15-15 30 0t8 30" stroke="#3B82F6" stroke-width="2.5" fill="none" opacity="0.8"/>
+        <!-- watch -->
+        <rect x="140" y="200" width="34" height="46" rx="10" fill="#232323"/>
+        <rect x="146" y="206" width="22" height="34" rx="5" fill="#3a3a5a"/>
+        <!-- earbuds case -->
+        <rect x="190" y="215" width="28" height="20" rx="6" fill="#fff"/>
+        <circle cx="199" cy="225" r="4" fill="#e2e6ee"/><circle cx="210" cy="225" r="4" fill="#e2e6ee"/>
+      </svg>
+    </div>
+  </div>
+
+  <button id="heroPrev" class="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 transition items-center justify-center text-white">
+    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button id="heroNext" class="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 transition items-center justify-center text-white">
+    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>
+  </button>
+
+  <div class="flex items-center justify-center gap-2 pb-6 relative z-10">
+    <span class="w-6 h-2 rounded-full bg-brand-purple"></span>
+    <span class="w-2 h-2 rounded-full bg-white/25"></span>
+    <span class="w-2 h-2 rounded-full bg-white/25"></span>
+    <span class="w-2 h-2 rounded-full bg-white/25"></span>
+  </div>
+</section>
+
+<!-- ============ CATEGORY ICONS ============ -->
+<section class="max-w-7xl mx-auto px-4 py-10">
+  <div class="grid grid-cols-3 md:grid-cols-9 gap-3 md:gap-4 text-center">
+    <a href="#" class="group flex flex-col items-center gap-2"><div class="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-brand-purpleLight flex items-center justify-center group-hover:scale-105 transition"><svg class="w-6 h-6 text-brand-purple" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M2 20h20"/></svg></div><span class="text-[10.5px] font-medium">Laptops</span></a>
+    <a href="#" class="group flex flex-col items-center gap-2"><div class="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-teal-50 flex items-center justify-center group-hover:scale-105 transition"><svg class="w-6 h-6 text-teal-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="7" y="2" width="10" height="20" rx="2"/></svg></div><span class="text-[10.5px] font-medium">Smartphones</span></a>
+    <a href="#" class="group flex flex-col items-center gap-2"><div class="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-indigo-50 flex items-center justify-center group-hover:scale-105 transition"><svg class="w-6 h-6 text-indigo-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="7" y="8" width="10" height="12" rx="4"/><path d="M9 8V5h6v3"/></svg></div><span class="text-[10.5px] font-medium">Wearables</span></a>
+    <a href="#" class="group flex flex-col items-center gap-2"><div class="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-rose-50 flex items-center justify-center group-hover:scale-105 transition"><svg class="w-6 h-6 text-rose-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 13v-1a8 8 0 0116 0v1"/><rect x="3" y="13" width="5" height="7" rx="2"/><rect x="16" y="13" width="5" height="7" rx="2"/></svg></div><span class="text-[10.5px] font-medium">Audio</span></a>
+    <a href="#" class="group flex flex-col items-center gap-2"><div class="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-emerald-50 flex items-center justify-center group-hover:scale-105 transition"><svg class="w-6 h-6 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="8" width="20" height="10" rx="5"/><circle cx="8" cy="13" r="1.4"/><circle cx="17" cy="12" r="1.4"/></svg></div><span class="text-[10.5px] font-medium">Gaming</span></a>
+    <a href="#" class="group flex flex-col items-center gap-2"><div class="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-gray-100 flex items-center justify-center group-hover:scale-105 transition"><svg class="w-6 h-6 text-gray-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6l6 6-6 6M13 18h7"/></svg></div><span class="text-[10.5px] font-medium">Accessories</span></a>
+    <a href="#" class="group flex flex-col items-center gap-2"><div class="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-sky-50 flex items-center justify-center group-hover:scale-105 transition"><svg class="w-6 h-6 text-sky-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="6" width="16" height="12" rx="2"/><circle cx="12" cy="12" r="3.5"/></svg></div><span class="text-[10.5px] font-medium">Cameras</span></a>
+    <a href="#" class="group flex flex-col items-center gap-2"><div class="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-cyan-50 flex items-center justify-center group-hover:scale-105 transition"><svg class="w-6 h-6 text-cyan-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12.5a10 10 0 0114 0M8 15.5a6 6 0 018 0M12 19h.01"/><rect x="6" y="4" width="12" height="16" rx="2"/></svg></div><span class="text-[10.5px] font-medium">Smart Home</span></a>
+    <a href="#" class="group flex flex-col items-center gap-2"><div class="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-gray-100 flex items-center justify-center group-hover:scale-105 transition"><svg class="w-6 h-6 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></div><span class="text-[10.5px] font-medium">More</span></a>
+  </div>
+</section>
+
+<!-- ============ 3 PROMO BANNERS ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-10">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+    <div class="bg-brand-purple rounded-2xl p-6 flex items-center justify-between overflow-hidden relative min-h-[190px]">
+      <div class="relative z-10">
+        <h3 class="font-extrabold text-lg text-white mb-1">Sound That<br/>Moves You</h3>
+        <p class="text-xs text-white/70 max-w-[160px] mb-4">Premium audio for every moment.</p>
+        <a href="#" class="inline-flex items-center gap-1.5 text-xs font-bold bg-white text-brand-purpleDark px-4 py-2 rounded-lg">SHOP AUDIO
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <svg viewBox="0 0 100 100" class="w-20 h-20 shrink-0"><path d="M25 55q0-25 25-25t25 25" fill="none" stroke="#232323" stroke-width="7" stroke-linecap="round"/><rect x="16" y="50" width="16" height="26" rx="8" fill="#232323"/><rect x="68" y="50" width="16" height="26" rx="8" fill="#232323"/></svg>
+    </div>
+
+    <div class="bg-brand-blue rounded-2xl p-6 flex items-center justify-between overflow-hidden relative min-h-[190px]">
+      <div class="relative z-10">
+        <h3 class="font-extrabold text-lg text-white mb-1">Light. Fast.<br/>Powerful.</h3>
+        <p class="text-xs text-white/70 max-w-[160px] mb-4">Laptops built for speed and performance.</p>
+        <a href="#" class="inline-flex items-center gap-1.5 text-xs font-bold bg-white text-[#1747B3] px-4 py-2 rounded-lg">SHOP LAPTOPS
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <svg viewBox="0 0 100 100" class="w-20 h-20 shrink-0"><rect x="20" y="30" width="60" height="40" rx="4" fill="#D7DEEA"/><rect x="26" y="35" width="48" height="30" fill="#1C1440"/><path d="M15 70h70l5 10H10z" fill="#9BA9C4"/></svg>
+    </div>
+
+    <div class="bg-[#3D2A85] rounded-2xl p-6 flex items-center justify-between overflow-hidden relative min-h-[190px]">
+      <div class="relative z-10">
+        <h3 class="font-extrabold text-lg text-white mb-1">Stay Connected.<br/>Stay Ahead.</h3>
+        <p class="text-xs text-white/70 max-w-[160px] mb-4">Smartwatches for a smarter you.</p>
+        <a href="#" class="inline-flex items-center gap-1.5 text-xs font-bold bg-white text-[#3D2A85] px-4 py-2 rounded-lg">SHOP SMART WATCHES
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <svg viewBox="0 0 100 100" class="w-20 h-20 shrink-0"><rect x="30" y="20" width="40" height="60" rx="14" fill="#232323"/><rect x="37" y="28" width="26" height="44" rx="7" fill="#3a3a5a"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BEST SELLERS ============ -->
+<section id="bestsellers" class="max-w-7xl mx-auto px-4 pb-10">
+  <div class="flex items-center justify-between mb-5">
+    <h2 class="font-extrabold text-lg md:text-xl">BEST SELLERS</h2>
+    <a href="#" class="text-xs md:text-sm font-semibold text-brand-purple hover:text-brand-purpleDark transition flex items-center gap-1">View All Products
+      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-5">
+    <div class="group bg-white border border-gray-100 rounded-xl p-3 hover:shadow-cardHover transition">
+      <div class="relative bg-gray-50 rounded-lg aspect-square flex items-center justify-center overflow-hidden mb-2.5">
+        <button class="absolute top-2 right-2 text-gray-300 hover:text-brand-purple transition z-10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg></button>
+        <svg viewBox="0 0 100 100" class="w-14 h-14"><rect x="10" y="45" width="26" height="26" rx="6" fill="#F5F5F5" stroke="#ddd" stroke-width="1.5"/><rect x="64" y="45" width="26" height="26" rx="6" fill="#F5F5F5" stroke="#ddd" stroke-width="1.5"/></svg>
+      </div>
+      <p class="text-xs md:text-sm font-semibold leading-snug mb-1">Wireless Earbuds Pro</p>
+      <p class="font-bold text-sm mb-1">$59.99</p>
+      <div class="text-brand-purple text-[10px]">★★★★<span class="text-brand-purpleLight">★</span> <span class="text-gray-400">(245)</span></div>
+    </div>
+    <div class="group bg-white border border-gray-100 rounded-xl p-3 hover:shadow-cardHover transition">
+      <div class="relative bg-gray-50 rounded-lg aspect-square flex items-center justify-center overflow-hidden mb-2.5">
+        <button class="absolute top-2 right-2 text-gray-300 hover:text-brand-purple transition z-10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg></button>
+        <svg viewBox="0 0 100 100" class="w-14 h-16"><rect x="32" y="20" width="36" height="46" rx="10" fill="#232323"/><rect x="38" y="26" width="24" height="34" rx="5" fill="#3a3a3a"/></svg>
+      </div>
+      <p class="text-xs md:text-sm font-semibold leading-snug mb-1">Smart Watch Series X</p>
+      <p class="font-bold text-sm mb-1">$129.99</p>
+      <div class="text-brand-purple text-[10px]">★★★★<span class="text-brand-purpleLight">★</span> <span class="text-gray-400">(189)</span></div>
+    </div>
+    <div class="group bg-white border border-gray-100 rounded-xl p-3 hover:shadow-cardHover transition">
+      <div class="relative bg-gray-50 rounded-lg aspect-square flex items-center justify-center overflow-hidden mb-2.5">
+        <button class="absolute top-2 right-2 text-gray-300 hover:text-brand-purple transition z-10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg></button>
+        <svg viewBox="0 0 100 100" class="w-16 h-16"><rect x="20" y="35" width="60" height="40" rx="4" fill="#D7DEEA"/><rect x="26" y="40" width="48" height="30" fill="#1C1440"/></svg>
+      </div>
+      <p class="text-xs md:text-sm font-semibold leading-snug mb-1">UltraBook Pro 14"</p>
+      <p class="font-bold text-sm mb-1">$899.99</p>
+      <div class="text-brand-purple text-[10px]">★★★★<span class="text-brand-purpleLight">★</span> <span class="text-gray-400">(312)</span></div>
+    </div>
+    <div class="group bg-white border border-gray-100 rounded-xl p-3 hover:shadow-cardHover transition">
+      <div class="relative bg-gray-50 rounded-lg aspect-square flex items-center justify-center overflow-hidden mb-2.5">
+        <button class="absolute top-2 right-2 text-gray-300 hover:text-brand-purple transition z-10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg></button>
+        <svg viewBox="0 0 100 100" class="w-12 h-16"><rect x="38" y="18" width="24" height="64" rx="10" fill="#8B9AB0" stroke="#6a7a94" stroke-width="2"/></svg>
+      </div>
+      <p class="text-xs md:text-sm font-semibold leading-snug mb-1">Galaxy S24 Ultra</p>
+      <p class="font-bold text-sm mb-1">$1,099.99</p>
+      <div class="text-brand-purple text-[10px]">★★★★<span class="text-brand-purpleLight">★</span> <span class="text-gray-400">(421)</span></div>
+    </div>
+    <div class="group bg-white border border-gray-100 rounded-xl p-3 hover:shadow-cardHover transition">
+      <div class="relative bg-gray-50 rounded-lg aspect-square flex items-center justify-center overflow-hidden mb-2.5">
+        <button class="absolute top-2 right-2 text-gray-300 hover:text-brand-purple transition z-10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg></button>
+        <svg viewBox="0 0 100 100" class="w-16 h-16"><rect x="25" y="35" width="50" height="35" rx="4" fill="#232323"/><circle cx="50" cy="52" r="14" fill="#3a3a3a"/><circle cx="50" cy="52" r="7" fill="#1C1440"/></svg>
+      </div>
+      <p class="text-xs md:text-sm font-semibold leading-snug mb-1">Mirrorless Camera A7</p>
+      <p class="font-bold text-sm mb-1">$799.99</p>
+      <div class="text-brand-purple text-[10px]">★★★★<span class="text-brand-purpleLight">★</span> <span class="text-gray-400">(163)</span></div>
+    </div>
+    <div class="group bg-white border border-gray-100 rounded-xl p-3 hover:shadow-cardHover transition">
+      <div class="relative bg-gray-50 rounded-lg aspect-square flex items-center justify-center overflow-hidden mb-2.5">
+        <button class="absolute top-2 right-2 text-gray-300 hover:text-brand-purple transition z-10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg></button>
+        <svg viewBox="0 0 100 100" class="w-16 h-16"><circle cx="50" cy="55" r="26" fill="#232323"/><circle cx="50" cy="55" r="10" fill="#3a3a3a"/></svg>
+      </div>
+      <p class="text-xs md:text-sm font-semibold leading-snug mb-1">Bluetooth Speaker 360</p>
+      <p class="font-bold text-sm mb-1">$49.99</p>
+      <div class="text-brand-purple text-[10px]">★★★★<span class="text-brand-purpleLight">★</span> <span class="text-gray-400">(98)</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST BAR ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-10">
+  <div class="bg-brand-navy rounded-2xl px-5 md:px-8 py-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-white">
+    <div class="flex items-center gap-3">
+      <svg class="w-8 h-8 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg>
+      <div><p class="font-semibold text-xs md:text-sm">Free Shipping</p><p class="text-[10px] md:text-xs text-white/55">On orders over $75</p></div>
+    </div>
+    <div class="flex items-center gap-3">
+      <svg class="w-8 h-8 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 4v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V7z"/><path d="M9 12l2 2 4-4"/></svg>
+      <div><p class="font-semibold text-xs md:text-sm">Secure Payment</p><p class="text-[10px] md:text-xs text-white/55">100% secure checkout</p></div>
+    </div>
+    <div class="flex items-center gap-3">
+      <svg class="w-8 h-8 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4v6h6M20 20v-6h-6"/><path d="M5.5 15a8 8 0 0013.9 3.5M18.5 9A8 8 0 004.6 5.5"/></svg>
+      <div><p class="font-semibold text-xs md:text-sm">Easy Returns</p><p class="text-[10px] md:text-xs text-white/55">30-day return policy</p></div>
+    </div>
+    <div class="flex items-center gap-3">
+      <svg class="w-8 h-8 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 16v-3a8 8 0 0116 0v3"/><rect x="2.5" y="15" width="5" height="6" rx="2"/><rect x="16.5" y="15" width="5" height="6" rx="2"/></svg>
+      <div><p class="font-semibold text-xs md:text-sm">24/7 Support</p><p class="text-[10px] md:text-xs text-white/55">We're here to help</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWSLETTER BAND ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-10">
+  <div class="bg-black rounded-2xl px-6 md:px-10 py-7 flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="flex items-center gap-4">
+      <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-purple to-brand-blue flex items-center justify-center text-white shrink-0">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7l9 6 9-6M4 5h16a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1z"/></svg>
+      </div>
+      <div>
+        <h3 class="font-extrabold text-lg text-white">GET EXCLUSIVE OFFERS</h3>
+        <p class="text-sm text-white/60 mt-0.5">Subscribe to get updates on new arrivals, special offers and tech news.</p>
+      </div>
+    </div>
+    <form class="flex w-full md:w-auto gap-3" onsubmit="event.preventDefault(); this.reset(); alert('Thanks for subscribing!');">
+      <input type="email" required placeholder="Enter your email address" class="flex-1 md:w-72 px-5 py-3 rounded-lg border-0 outline-none focus:ring-2 focus:ring-brand-purple/50 text-sm" />
+      <button class="bg-brand-purple hover:bg-brand-purpleDark transition text-white font-semibold px-7 py-3 rounded-lg shrink-0">SUBSCRIBE</button>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-brand-navy text-white/70 pt-10 pb-6">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="grid md:grid-cols-4 gap-10 pb-8 border-b border-white/10">
+      <div>
+        <a href="#" class="flex items-center gap-2 mb-3">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-purple to-brand-blue flex items-center justify-center">
+            <svg class="w-4.5 h-4.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19V5l14 14V5"/></svg>
+          </div>
+          <span class="leading-tight"><span class="block font-extrabold text-lg text-white -mb-0.5">NOVATECH</span><span class="block text-[9px] font-semibold text-brand-purple tracking-wide">SMARTER EVERYDAY</span></span>
+        </a>
+        <p class="text-sm text-white/50 leading-relaxed mb-4">Your one-stop destination for the latest tech, gadgets and electronics.</p>
+        <div class="flex items-center gap-3">
+          <a href="#" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition" aria-label="Facebook"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.25-1.5 1.55-1.5H17V3.7C16.7 3.65 15.7 3.6 14.5 3.6c-2.4 0-4 1.45-4 4.15V10H7.8v3.1h2.7V21h3z"/></svg></a>
+          <a href="#" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition" aria-label="Twitter"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4l7.5 9.5L4.3 20H7l5.8-6.4L17.3 20H21l-7.9-10L20 4h-2.7l-5.3 5.9L7.7 4z"/></svg></a>
+          <a href="#" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition" aria-label="Instagram"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+          <a href="#" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition" aria-label="YouTube"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12s0-3.2-.4-4.7a2.8 2.8 0 00-2-2C17.9 5 12 5 12 5s-5.9 0-7.6.3a2.8 2.8 0 00-2 2C2 8.8 2 12 2 12s0 3.2.4 4.7a2.8 2.8 0 002 2C6.1 19 12 19 12 19s5.9 0 7.6-.3a2.8 2.8 0 002-2C22 15.2 22 12 22 12z"/></svg></a>
+          <a href="#" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition" aria-label="TikTok"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.4 2.2 1.9 3.6 4 3.8v2.7c-1.4 0-2.7-.4-3.9-1.2v6.2a5.4 5.4 0 11-4.6-5.4v2.8a2.7 2.7 0 102.7 2.7V3h1.8z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3 text-sm">SHOP</h4>
+        <ul class="space-y-2 text-sm text-white/50">
+          <li><a href="#" class="hover:text-white transition">All Categories</a></li>
+          <li><a href="#" class="hover:text-white transition">New Arrivals</a></li>
+          <li><a href="#" class="hover:text-white transition">Best Sellers</a></li>
+          <li><a href="#" class="hover:text-white transition">Deals</a></li>
+          <li><a href="#" class="hover:text-white transition">Brands</a></li>
+          <li><a href="#" class="hover:text-white transition">Gift Cards</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3 text-sm">CUSTOMER CARE</h4>
+        <ul class="space-y-2 text-sm text-white/50">
+          <li><a href="#" class="hover:text-white transition">Track Your Order</a></li>
+          <li><a href="#" class="hover:text-white transition">Returns &amp; Exchanges</a></li>
+          <li><a href="#" class="hover:text-white transition">Shipping Info</a></li>
+          <li><a href="#" class="hover:text-white transition">FAQs</a></li>
+          <li><a href="#" class="hover:text-white transition">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3 text-sm">COMPANY</h4>
+        <ul class="space-y-2 text-sm text-white/50 mb-5">
+          <li><a href="#" class="hover:text-white transition">About Us</a></li>
+          <li><a href="#" class="hover:text-white transition">Careers</a></li>
+          <li><a href="#" class="hover:text-white transition">Blog</a></li>
+          <li><a href="#" class="hover:text-white transition">Press</a></li>
+          <li><a href="#" class="hover:text-white transition">Affiliates</a></li>
+        </ul>
+        <h4 class="text-white font-semibold mb-2 text-sm">PAYMENT METHODS</h4>
+        <div class="grid grid-cols-4 gap-1.5">
+          <span class="bg-white text-[#1A1F71] text-[8px] font-bold rounded px-1.5 py-1.5 text-center">VISA</span>
+          <span class="bg-white text-[#EB001B] text-[8px] font-bold rounded px-1.5 py-1.5 text-center">MC</span>
+          <span class="bg-white text-[#003087] text-[8px] font-bold rounded px-1.5 py-1.5 text-center">PayPal</span>
+          <span class="bg-white text-[#2E77BC] text-[8px] font-bold rounded px-1.5 py-1.5 text-center">AMEX</span>
+          <span class="bg-white text-[#000] text-[8px] font-bold rounded px-1.5 py-1.5 text-center">Pay</span>
+          <span class="bg-white text-[#4285F4] text-[8px] font-bold rounded px-1.5 py-1.5 text-center">GPay</span>
+          <span class="bg-white text-[#5A31F4] text-[8px] font-bold rounded px-1.5 py-1.5 text-center">ShopPay</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 text-xs text-white/45">
+      <p>© 2026 Novatech. All Rights Reserved.</p>
+      <div class="flex items-center gap-4">
+        <a href="#" class="hover:text-white transition">Privacy Policy</a>
+        <a href="#" class="hover:text-white transition">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- spacer so content isn't hidden behind fixed mobile bottom nav -->
+<div class="h-16 md:hidden" aria-hidden="true"></div>
+
+<!-- ============ MOBILE BOTTOM NAV (app-style) ============ -->
+<nav class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-white border-t border-gray-100 shadow-navUp" style="padding-bottom: env(safe-area-inset-bottom);">
+  <div class="grid grid-cols-5">
+    <a href="#" class="flex flex-col items-center justify-center gap-1 py-2.5 text-brand-purple">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-8 9 8M5 10v10h14V10"/></svg>
+      <span class="text-[10px] font-semibold">Home</span>
+    </a>
+    <a href="#" class="flex flex-col items-center justify-center gap-1 py-2.5 text-gray-400 hover:text-brand-purple transition">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      <span class="text-[10px] font-medium">Categories</span>
+    </a>
+    <a href="#" class="flex flex-col items-center justify-center gap-1 py-2.5 text-gray-400 hover:text-brand-purple transition">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>
+      <span class="text-[10px] font-medium">Deals</span>
+    </a>
+    <a href="#" class="relative flex flex-col items-center justify-center gap-1 py-2.5 text-gray-400 hover:text-brand-purple transition">
+      <span class="relative">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg>
+        <span class="absolute -top-1.5 -right-1.5 bg-brand-purple text-white text-[8px] w-3.5 h-3.5 rounded-full flex items-center justify-center">3</span>
+      </span>
+      <span class="text-[10px] font-medium">Wishlist</span>
+    </a>
+    <a href="#" class="relative flex flex-col items-center justify-center gap-1 py-2.5 text-gray-400 hover:text-brand-purple transition">
+      <span class="relative">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8V6a6 6 0 0112 0v2M4 8h16l-1.2 12.1a2 2 0 01-2 1.9H7.2a2 2 0 01-2-1.9L4 8z"/></svg>
+        <span class="absolute -top-1.5 -right-1.5 bg-brand-purple text-white text-[8px] w-3.5 h-3.5 rounded-full flex items-center justify-center">2</span>
+      </span>
+      <span class="text-[10px] font-medium">Cart</span>
+    </a>
+  </div>
+</nav>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileNav = document.getElementById('mobileNav');
+  menuBtn.addEventListener('click', () => {
+    mobileNav.classList.toggle('hidden');
+    mobileNav.classList.toggle('flex');
+  });
+
+  const categoriesBtn = document.getElementById('categoriesBtn');
+  const categoriesPanel = document.getElementById('categoriesPanel');
+  categoriesBtn.addEventListener('click', () => {
+    categoriesPanel.classList.toggle('hidden');
+  });
+  document.addEventListener('click', (e) => {
+    if (!categoriesBtn.contains(e.target) && !categoriesPanel.contains(e.target)) {
+      categoriesPanel.classList.add('hidden');
+    }
+  });
+</script>
+
+</body>
+</html>

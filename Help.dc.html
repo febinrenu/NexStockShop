@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+body { margin:0; background:#F4F2ED; color:#12151A; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; -webkit-font-smoothing:antialiased; }
+a { color:#1E5FD6; text-decoration:none; }
+a:hover { color:#0B1F3F; }
+input { box-sizing:border-box; }
+</style>
+</helmet>
+<dc-import name="StoreHeader" lang="{{ lang }}" active="home" cart-count="0" on-set-lang="{{ setLang }}" hint-size="100%,220px"></dc-import>
+<main dir="{{ dir }}" style="max-width:1100px; margin:0 auto; padding:clamp(24px,4vw,48px) clamp(16px,4vw,32px) 70px; display:flex; flex-direction:column; gap:clamp(28px,4vw,44px); font-family:'Archivo','IBM Plex Sans Arabic',sans-serif;">
+  <div style="text-align:center;">
+    <div style="font-size:11px; letter-spacing:0.22em; font-weight:700; color:#1E5FD6; text-transform:uppercase; margin-bottom:12px;">{{ t.eyebrow }}</div>
+    <h1 style="margin:0 0 12px; font-size:clamp(28px,3.8vw,44px); font-weight:900; letter-spacing:-0.03em;">{{ t.titleA }} <span style="font-family:'Instrument Serif','IBM Plex Sans Arabic',serif; font-style:italic; font-weight:400; color:#1E5FD6;">{{ t.titleB }}</span></h1>
+    <div style="display:flex; gap:10px; max-width:520px; margin:18px auto 0; flex-wrap:wrap;">
+      <input placeholder="{{ t.searchPh }}" style="flex:1 1 240px; border:1.5px solid #E3DFD4; border-radius:999px; padding:15px 22px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:14px; outline:none; background:#FDFCFA;">
+      <button style="background:#12151A; color:#fff; border:none; border-radius:999px; padding:15px 30px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:14px; font-weight:800; cursor:pointer;" style-hover="background:#1E5FD6;">{{ t.searchBtn }}</button>
+    </div>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:12px;">
+    <sc-for list="{{ topics }}" as="tp" hint-placeholder-count="4">
+      <a href="{{ tp.href }}" style="background:{{ tp.bg }}; color:{{ tp.fg }}; border-radius:18px; padding:24px; display:flex; flex-direction:column; gap:6px;" style-hover="transform:translateY(-3px); box-shadow:0 14px 34px rgba(11,31,63,0.12); color:{{ tp.fg }};">
+        <span style="font-size:15px; font-weight:900;">{{ tp.title }}</span>
+        <span style="font-size:12.5px; opacity:0.75; line-height:1.5;">{{ tp.sub }}</span>
+      </a>
+    </sc-for>
+  </div>
+  <section>
+    <h2 style="margin:0 0 18px; font-size:clamp(20px,2.4vw,28px); font-weight:900; letter-spacing:-0.02em;">{{ t.faqTitle }}</h2>
+    <div style="display:flex; flex-direction:column; gap:10px;">
+      <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="6">
+        <div style="background:#FDFCFA; border:1px solid {{ q.bd }}; border-radius:16px; overflow:hidden;">
+          <div onClick="{{ q.toggle }}" style="display:flex; justify-content:space-between; align-items:center; gap:16px; padding:18px 22px; cursor:pointer;">
+            <span style="font-size:14px; font-weight:800;">{{ q.q }}</span>
+            <span style="width:28px; height:28px; border-radius:50%; background:{{ q.iconBg }}; color:{{ q.iconFg }}; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:800; flex-shrink:0;">{{ q.icon }}</span>
+          </div>
+          <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:0 22px 20px; font-size:13.5px; line-height:1.7; color:#5C594F; max-width:760px;">{{ q.a }}</div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+  <div style="background:#0B1F3F; color:#fff; border-radius:24px; padding:clamp(26px,4vw,44px); display:flex; flex-wrap:wrap; gap:24px; align-items:center;">
+    <div style="flex:2 1 280px;">
+      <div style="font-size:clamp(20px,2.4vw,28px); font-weight:900; letter-spacing:-0.02em; margin-bottom:8px;">{{ t.contactTitle }}</div>
+      <div style="font-size:13.5px; color:#B9C8E2; line-height:1.7;">{{ t.contactSub }}</div>
+    </div>
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <span style="background:rgba(255,255,255,0.1); border-radius:14px; padding:14px 20px; font-size:13px; font-weight:700;">support@nexstock.com</span>
+      <span style="background:rgba(255,255,255,0.1); border-radius:14px; padding:14px 20px; font-size:13px; font-weight:700;">+225 00 00 00 00</span>
+      <span style="background:#1E5FD6; border-radius:14px; padding:14px 20px; font-size:13px; font-weight:800; cursor:pointer;" style-hover="background:#fff; color:#0B1F3F;">{{ t.chat }}</span>
+    </div>
+  </div>
+</main>
+<dc-import name="StoreFooter" lang="{{ lang }}" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: (typeof localStorage !== 'undefined' && localStorage.getItem('nexstock-lang')) || 'en', open: 0 };
+  renderVals() {
+    const lang = this.state.lang; const ar = lang === 'ar';
+    const T = {
+      en: { eyebrow: 'Help center', titleA: 'How can we', titleB: 'help?', searchPh: 'Search for answers…', searchBtn: 'Search', faqTitle: 'Frequently asked questions', contactTitle: 'Still stuck? Talk to us.', contactSub: 'Real humans, 24/7, in English and العربية — average reply under 5 minutes.', chat: 'Start live chat',
+        topics: [
+          { title: 'Track an order', sub: 'Live status, courier contact and ETA.', href: 'Track%20Order.dc.html' },
+          { title: 'Returns & refunds', sub: '14-day free returns, no questions asked.', href: '#' },
+          { title: 'Payments', sub: 'Cards, Mobile Money, PayPal and cash.', href: '#' },
+          { title: 'Shipping & delivery', sub: 'Zones, fees and same-day cities.', href: '#' }
+        ],
+        faqs: [
+          ['How long does delivery take?', 'Standard delivery takes 2–4 business days. In 12 major cities we offer same-day delivery for orders placed before 1pm. Every order includes live tracking to the minute.'],
+          ['How do returns work?', 'You have 14 days from delivery to return any product free of charge — no questions asked. Request the return from your account, and a courier picks it up. Refunds land within 3–5 business days.'],
+          ['Which payment methods do you accept?', 'Visa, Mastercard, PayPal, Mobile Money (Orange, MTN, Wave) and cash on delivery. All online payments are 256-bit encrypted.'],
+          ['Are your products original?', 'Yes — 100%. Every product is sourced from official distributors and covered by a full local warranty of at least 12 months.'],
+          ['Can I change or cancel my order?', 'Yes, free of charge until the order is packed (usually within 2 hours). After that, simply refuse the delivery or use the 14-day return.'],
+          ['Do you deliver outside major cities?', 'We deliver nationwide. Outside major cities delivery takes 3–6 business days via our partner network, with the same tracking and return rights.']
+        ] },
+      ar: { eyebrow: 'مركز المساعدة', titleA: 'كيف يمكننا', titleB: 'مساعدتك؟', searchPh: 'ابحث عن إجابة…', searchBtn: 'بحث', faqTitle: 'الأسئلة الشائعة', contactTitle: 'ما زلت بحاجة لمساعدة؟ كلّمنا.', contactSub: 'أشخاص حقيقيون، على مدار الساعة، بالعربية والإنجليزية — متوسط الرد أقل من 5 دقائق.', chat: 'ابدأ محادثة مباشرة',
+        topics: [
+          { title: 'تتبع طلب', sub: 'الحالة المباشرة وموعد الوصول.', href: 'Track%20Order.dc.html' },
+          { title: 'الإرجاع والاسترداد', sub: 'إرجاع مجاني خلال 14 يوماً دون أسئلة.', href: '#' },
+          { title: 'المدفوعات', sub: 'بطاقات، Mobile Money، PayPal ونقداً.', href: '#' },
+          { title: 'الشحن والتوصيل', sub: 'المناطق والرسوم ومدن التوصيل الفوري.', href: '#' }
+        ],
+        faqs: [
+          ['كم يستغرق التوصيل؟', 'التوصيل العادي يستغرق 2–4 أيام عمل. وفي 12 مدينة رئيسية نوفر توصيلاً في نفس اليوم للطلبات قبل 1 ظهراً. كل طلب يشمل تتبعاً مباشراً دقيقة بدقيقة.'],
+          ['كيف يعمل الإرجاع؟', 'لديك 14 يوماً من الاستلام لإرجاع أي منتج مجاناً — دون أسئلة. اطلب الإرجاع من حسابك وسيستلمه المندوب. يصلك المبلغ خلال 3–5 أيام عمل.'],
+          ['ما طرق الدفع المتاحة؟', 'فيزا، ماستركارد، PayPal، ‏Mobile Money ‏(Orange وMTN وWave) والدفع نقداً عند الاستلام. جميع المدفوعات مشفّرة بالكامل.'],
+          ['هل منتجاتكم أصلية؟', 'نعم — 100%. كل منتج من موزعين رسميين ومشمول بضمان محلي كامل لا يقل عن 12 شهراً.'],
+          ['هل يمكنني تعديل أو إلغاء طلبي؟', 'نعم، مجاناً حتى يتم تجهيز الطلب (عادة خلال ساعتين). بعد ذلك يمكنك رفض الاستلام أو استخدام حق الإرجاع خلال 14 يوماً.'],
+          ['هل توصلون خارج المدن الكبرى؟', 'نوصل لجميع المناطق. خارج المدن الكبرى يستغرق التوصيل 3–6 أيام عمل عبر شبكة شركائنا، بنفس حقوق التتبع والإرجاع.']
+        ] }
+    }[lang];
+    const bgs = [['#E3EBFA', '#0B1F3F'], ['#DFE8DC', '#1E2B1A'], ['#F5E9D8', '#4A3A1A'], ['#F2E3E0', '#4A2A20']];
+    const faqs = T.faqs.map((q, i) => {
+      const open = this.state.open === i;
+      return { q: q[0], a: q[1], open, toggle: () => this.setState({ open: open ? -1 : i }), bd: open ? '#1E5FD6' : '#E7E3DA', icon: open ? '−' : '+', iconBg: open ? '#1E5FD6' : '#F1EEE7', iconFg: open ? '#fff' : '#5C594F' };
+    });
+    return {
+      lang, dir: ar ? 'rtl' : 'ltr', t: T, faqs,
+      topics: T.topics.map((tp, i) => ({ ...tp, bg: bgs[i][0], fg: bgs[i][1] })),
+      setLang: (l) => { try { localStorage.setItem('nexstock-lang', l); } catch(e) {} this.setState({ lang: l }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

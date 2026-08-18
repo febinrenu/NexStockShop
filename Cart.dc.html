@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>
+body { margin:0; background:#F4F2ED; color:#12151A; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; -webkit-font-smoothing:antialiased; }
+a { color:#1E5FD6; text-decoration:none; }
+a:hover { color:#0B1F3F; }
+</style>
+</helmet>
+<dc-import name="StoreHeader" lang="{{ lang }}" active="shop" cart-count="{{ cartCount }}" on-set-lang="{{ setLang }}" hint-size="100%,220px"></dc-import>
+<main dir="{{ dir }}" style="max-width:1320px; margin:0 auto; padding:clamp(16px,3vw,28px) clamp(16px,4vw,32px) 60px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif;">
+  <h1 style="margin:0 0 6px; font-size:clamp(26px,3.2vw,38px); font-weight:900; letter-spacing:-0.02em;">{{ t.title }} <span style="font-family:'Instrument Serif','IBM Plex Sans Arabic',serif; font-style:italic; font-weight:400; color:#1E5FD6;">({{ cartCount }})</span></h1>
+  <div style="font-size:13.5px; color:#8A857A; margin-bottom:26px;">{{ t.sub }}</div>
+  <div style="display:flex; flex-wrap:wrap; gap:24px; align-items:flex-start;">
+    <div style="flex:2 1 440px; min-width:0; display:flex; flex-direction:column; gap:12px;">
+      <sc-for list="{{ items }}" as="it" hint-placeholder-count="3">
+        <div style="background:#FDFCFA; border:1px solid #E7E3DA; border-radius:18px; padding:16px; display:flex; gap:16px; align-items:center; flex-wrap:wrap;">
+          <div style="width:86px; height:86px; border-radius:14px; overflow:hidden; background:#F1EEE7; flex-shrink:0;">
+            <image-slot id="{{ it.slot }}" shape="rounded" radius="14" placeholder="{{ it.ph }}"></image-slot>
+          </div>
+          <div style="flex:1 1 180px; min-width:0;">
+            <div style="font-size:14px; font-weight:800; line-height:1.35;">{{ it.name }}</div>
+            <div style="font-size:12.5px; color:#8A857A; margin-top:4px;">{{ it.variant }}</div>
+            <div style="font-size:12px; color:#3E5C38; font-weight:700; margin-top:4px;">{{ t.inStock }}</div>
+          </div>
+          <div style="display:flex; align-items:center; border:1.5px solid #E3DFD4; border-radius:999px; background:#F4F2ED;">
+            <button onClick="{{ it.down }}" style="width:38px; height:40px; border:none; background:transparent; font-size:16px; cursor:pointer; color:#5C594F;">−</button>
+            <span style="min-width:30px; text-align:center; font-size:14px; font-weight:900;">{{ it.qty }}</span>
+            <button onClick="{{ it.up }}" style="width:38px; height:40px; border:none; background:transparent; font-size:16px; cursor:pointer; color:#5C594F;">+</button>
+          </div>
+          <div style="text-align:end; min-width:110px;">
+            <div style="font-size:15.5px; font-weight:900;">{{ it.lineFmt }}</div>
+            <button onClick="{{ it.remove }}" style="border:none; background:transparent; color:#B03A2E; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:12px; font-weight:700; cursor:pointer; padding:4px 0; text-decoration:underline; text-underline-offset:3px;">{{ t.remove }}</button>
+          </div>
+        </div>
+      </sc-for>
+      <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#FDFCFA; border:1px dashed #D8D2C4; border-radius:18px; padding:48px 24px; text-align:center;">
+          <div style="font-size:17px; font-weight:800; margin-bottom:8px;">{{ t.emptyTitle }}</div>
+          <div style="font-size:13.5px; color:#8A857A; margin-bottom:18px;">{{ t.emptySub }}</div>
+          <a href="Shop.dc.html" style="display:inline-block; background:#12151A; color:#fff; border-radius:999px; padding:12px 26px; font-size:13.5px; font-weight:800;">{{ t.emptyCta }}</a>
+        </div>
+      </sc-if>
+      <a href="Shop.dc.html" style="font-size:13.5px; font-weight:700; margin-top:6px;">{{ t.continue }}</a>
+    </div>
+    <aside style="flex:1 1 300px; max-width:420px; display:flex; flex-direction:column; gap:14px;">
+      <div style="background:#FDFCFA; border:1px solid #E7E3DA; border-radius:20px; padding:24px;">
+        <div style="font-size:15px; font-weight:900; margin-bottom:18px;">{{ t.summary }}</div>
+        <div style="display:flex; flex-direction:column; gap:12px; font-size:13.5px;">
+          <div style="display:flex; justify-content:space-between;"><span style="color:#8A857A;">{{ t.subtotal }}</span><span style="font-weight:800;">{{ subtotalFmt }}</span></div>
+          <div style="display:flex; justify-content:space-between;"><span style="color:#8A857A;">{{ t.shipping }}</span><span style="font-weight:800; color:#3E5C38;">{{ t.freeShip }}</span></div>
+          <div style="display:flex; justify-content:space-between;"><span style="color:#8A857A;">{{ t.discount }}</span><span style="font-weight:800; color:#B03A2E;">− {{ discountFmt }}</span></div>
+          <div style="border-top:1px solid #ECE8DF; padding-top:14px; display:flex; justify-content:space-between; align-items:baseline;">
+            <span style="font-weight:800;">{{ t.total }}</span><span style="font-size:20px; font-weight:900;">{{ totalFmt }}</span>
+          </div>
+        </div>
+        <a href="Checkout.dc.html" style="display:block; text-align:center; background:#1E5FD6; color:#fff; border-radius:999px; padding:15px 20px; font-size:14.5px; font-weight:800; margin-top:20px;" style-hover="background:#0B1F3F; color:#fff;">{{ t.checkout }}</a>
+        <div style="font-size:11.5px; color:#8A857A; text-align:center; margin-top:12px;">{{ t.secure }}</div>
+      </div>
+      <div style="background:#FDFCFA; border:1px solid #E7E3DA; border-radius:20px; padding:20px 24px;">
+        <div style="font-size:13px; font-weight:800; margin-bottom:12px;">{{ t.promo }}</div>
+        <div style="display:flex; gap:8px;">
+          <input placeholder="WELCOME10" style="flex:1; min-width:0; border:1.5px solid #E3DFD4; border-radius:12px; padding:11px 14px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:13px; outline:none; background:#F4F2ED;">
+          <button style="background:#12151A; color:#fff; border:none; border-radius:12px; padding:0 20px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:13px; font-weight:800; cursor:pointer;" style-hover="background:#1E5FD6;">{{ t.apply }}</button>
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+<dc-import name="StoreFooter" lang="{{ lang }}" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    lang: (typeof localStorage !== 'undefined' && localStorage.getItem('nexstock-lang')) || 'en',
+    items: [
+      { id: 1, nameEn: 'Apple iPhone 15 · 128GB', nameAr: 'آبل آيفون 15 · ‏128GB', varEn: 'Blue · Unlocked', varAr: 'أزرق · غير مقفل', price: 499000, qty: 1, ph: 'iPhone photo' },
+      { id: 2, nameEn: 'Apple AirPods Pro 2', nameAr: 'آبل إيربودز برو 2', varEn: 'USB-C case', varAr: 'علبة USB-C', price: 179000, qty: 1, ph: 'AirPods photo' },
+      { id: 3, nameEn: 'Sony WH-CH720N Headphones', nameAr: 'سوني WH-CH720N سماعات', varEn: 'Black', varAr: 'أسود', price: 89000, qty: 2, ph: 'Headphones photo' }
+    ]
+  };
+  renderVals() {
+    const lang = this.state.lang; const ar = lang === 'ar';
+    const f = (x) => 'CFA ' + x.toLocaleString('en-US');
+    const T = {
+      en: { title: 'Your cart', sub: 'Items are reserved for 60 minutes.', inStock: 'In stock', remove: 'Remove', continue: '← Continue shopping', summary: 'Order summary', subtotal: 'Subtotal', shipping: 'Shipping', freeShip: 'Free', discount: 'Discount (WELCOME10)', total: 'Total', checkout: 'Proceed to checkout', secure: '256-bit secure checkout · Visa, Mastercard, PayPal, Mobile Money', promo: 'Promo code', apply: 'Apply', emptyTitle: 'Your cart is empty', emptySub: 'Browse the shop and add something you love.', emptyCta: 'Start shopping' },
+      ar: { title: 'سلة التسوق', sub: 'المنتجات محجوزة لمدة 60 دقيقة.', inStock: 'متوفر', remove: 'إزالة', continue: 'متابعة التسوق ←', summary: 'ملخص الطلب', subtotal: 'المجموع الفرعي', shipping: 'الشحن', freeShip: 'مجاني', discount: 'الخصم (WELCOME10)', total: 'الإجمالي', checkout: 'إتمام الطلب', secure: 'دفع آمن مشفّر · فيزا، ماستركارد، PayPal، Mobile Money', promo: 'كود الخصم', apply: 'تطبيق', emptyTitle: 'سلتك فارغة', emptySub: 'تصفح المتجر وأضف ما يعجبك.', emptyCta: 'ابدأ التسوق' }
+    }[lang];
+    const items = this.state.items.map(it => ({
+      slot: 'cart-' + it.id, ph: it.ph,
+      name: ar ? it.nameAr : it.nameEn, variant: ar ? it.varAr : it.varEn,
+      qty: it.qty, lineFmt: f(it.price * it.qty),
+      up: () => this.setQty(it.id, it.qty + 1),
+      down: () => this.setQty(it.id, Math.max(1, it.qty - 1)),
+      remove: () => this.setState(s => ({ items: s.items.filter(x => x.id !== it.id) }))
+    }));
+    const subtotal = this.state.items.reduce((a, it) => a + it.price * it.qty, 0);
+    const discount = subtotal > 0 ? 10000 : 0;
+    const count = this.state.items.reduce((a, it) => a + it.qty, 0);
+    return {
+      lang, dir: ar ? 'rtl' : 'ltr', t: T, items,
+      empty: this.state.items.length === 0, cartCount: count,
+      subtotalFmt: f(subtotal), discountFmt: f(discount), totalFmt: f(Math.max(0, subtotal - discount)),
+      setLang: (l) => { try { localStorage.setItem('nexstock-lang', l); } catch(e) {} this.setState({ lang: l }); }
+    };
+  }
+  setQty(id, qty) { this.setState(s => ({ items: s.items.map(x => x.id === id ? { ...x, qty } : x) })); }
+}
+</script>
+</body>
+</html>

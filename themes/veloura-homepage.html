@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Veloura Beauty — Scent. Glow. Indulge.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          serif: ['"Playfair Display"', 'serif'],
+          sans: ['Inter', 'sans-serif'],
+        },
+        colors: {
+          brand: {
+            mauve: '#6E2A47',
+            mauveDark: '#571F38',
+            gold: '#C9A15B',
+            blush: '#FBEDE8',
+            pink: '#F3D4DB',
+            pinkDark: '#E9B9C4',
+            cream: '#FDF6F0',
+          },
+        },
+        boxShadow: {
+          card: '0 4px 16px -6px rgba(110, 42, 71, 0.14)',
+          cardHover: '0 14px 30px -10px rgba(110, 42, 71, 0.24)',
+          navUp: '0 -4px 14px -6px rgba(110,42,71,0.14)',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  .font-logo { font-family: 'Playfair Display', serif; }
+  .eyebrow { letter-spacing: .14em; }
+  ::-webkit-scrollbar { height: 6px; width: 6px; }
+  ::-webkit-scrollbar-thumb { background: #eccdd6; border-radius: 999px; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  summary::-webkit-details-marker { display: none; }
+  summary { list-style: none; }
+</style>
+</head>
+<body class="bg-brand-cream text-[#2E1A22] antialiased">
+
+<!-- ============ TOP UTILITY BAR (desktop only) ============ -->
+<div class="hidden md:block bg-gradient-to-r from-brand-pink to-brand-blush text-[#5a2a3c] text-[12px]">
+  <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
+    <div class="flex items-center gap-6">
+      <span class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg>Free Samples on Every Order</span>
+      <span class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12l4 4L19 6"/></svg>Clean Beauty Promise</span>
+      <span class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11.5A7 7 0 105 9.5C5 14.5 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Store Locator</span>
+      <span class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.9 6.4 7 .7-5.3 4.7 1.6 6.9L12 17l-6.2 3.7 1.6-6.9L2.1 9.1l7-.7L12 2z"/></svg>Veloura Rewards</span>
+    </div>
+    <span class="flex items-center gap-1">USA (USD) <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></span>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="sticky top-0 z-50 bg-brand-cream/95 backdrop-blur border-b border-black/5">
+  <div class="hidden md:flex max-w-7xl mx-auto px-4 py-4 items-center gap-6">
+    <a href="#" class="shrink-0 leading-none">
+      <div class="font-logo text-2xl text-brand-mauve">Veloura</div>
+      <div class="text-[9px] eyebrow text-[#8a6a76] -mt-0.5">BEAUTY</div>
+    </a>
+
+    <div class="flex flex-1 max-w-xl mx-auto">
+      <div class="flex w-full border border-black/10 rounded-full overflow-hidden bg-white focus-within:ring-2 focus-within:ring-brand-mauve/20">
+        <input type="text" placeholder="Search fragrances, skincare, makeup..." class="w-full px-5 py-2.5 text-sm outline-none placeholder:text-gray-400" />
+        <button class="px-5 flex items-center justify-center text-brand-mauve" aria-label="Search">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-5 text-[#2E1A22]">
+      <a href="#" class="flex items-center gap-1.5 hover:text-brand-mauve transition text-sm"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg>Account</a>
+      <a href="#" class="flex items-center gap-1.5 hover:text-brand-mauve transition text-sm"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg>Wishlist</a>
+      <a href="#" class="relative flex items-center gap-1.5 hover:text-brand-mauve transition text-sm">
+        <span class="relative">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 8V6a6 6 0 0112 0v2M4 8h16l-1.2 12.1a2 2 0 01-2 1.9H7.2a2 2 0 01-2-1.9L4 8z"/></svg>
+          <span class="absolute -top-1.5 -right-1.5 bg-brand-mauve text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center">3</span>
+        </span>
+        Cart
+      </a>
+    </div>
+  </div>
+
+  <!-- mobile row -->
+  <div class="md:hidden flex items-center gap-3 px-4 py-3.5">
+    <button id="menuBtn" class="p-1 -ml-1" aria-label="Open menu">
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+    <a href="#" class="flex-1 flex flex-col items-center leading-none">
+      <span class="font-logo text-lg text-brand-mauve">Veloura</span>
+      <span class="text-[7.5px] eyebrow text-[#8a6a76] -mt-0.5">BEAUTY</span>
+    </a>
+    <button aria-label="Search" class="p-1"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></button>
+    <a href="#" class="relative p-1">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 8V6a6 6 0 0112 0v2M4 8h16l-1.2 12.1a2 2 0 01-2 1.9H7.2a2 2 0 01-2-1.9L4 8z"/></svg>
+      <span class="absolute -top-0.5 -right-0.5 bg-brand-mauve text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center">3</span>
+    </a>
+  </div>
+
+  <!-- mobile nav drawer -->
+  <div id="mobileNav" class="md:hidden hidden flex-col px-4 py-2 text-sm font-medium text-[#2E1A22] divide-y divide-black/5 border-t border-black/5">
+    <a href="#" class="py-2.5">Fragrance</a>
+    <a href="#" class="py-2.5">Skincare</a>
+    <a href="#" class="py-2.5">Makeup</a>
+    <a href="#" class="py-2.5">Bath &amp; Body</a>
+    <a href="#" class="py-2.5">Hair</a>
+    <a href="#" class="py-2.5">Gift Sets</a>
+    <a href="#" class="py-2.5">New In</a>
+    <a href="#" class="py-2.5">Bestsellers</a>
+  </div>
+
+  <!-- nav row (desktop) -->
+  <nav class="hidden md:block border-t border-black/5">
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-center gap-7 text-[12px] font-medium text-[#5a3a46] eyebrow h-11">
+      <svg class="w-3.5 h-3.5 text-brand-gold" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></svg>
+      <a href="#" class="hover:text-brand-mauve transition">FRAGRANCE</a>
+      <a href="#" class="hover:text-brand-mauve transition">SKINCARE</a>
+      <a href="#" class="hover:text-brand-mauve transition">MAKEUP</a>
+      <a href="#" class="hover:text-brand-mauve transition">BATH &amp; BODY</a>
+      <a href="#" class="hover:text-brand-mauve transition">HAIR</a>
+      <a href="#" class="hover:text-brand-mauve transition">GIFT SETS</a>
+      <a href="#" class="hover:text-brand-mauve transition">NEW IN</a>
+      <a href="#" class="hover:text-brand-mauve transition">BESTSELLERS</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="max-w-7xl mx-auto px-4 pt-5 md:pt-6">
+  <div class="grid md:grid-cols-2 gap-6 md:gap-10 items-center bg-white/40 rounded-2xl overflow-hidden">
+    <div class="p-6 md:p-8">
+      <h1 class="font-logo text-4xl sm:text-5xl md:text-[54px] leading-[1.08] mb-4">
+        <span class="text-brand-mauve">Scent.</span><br/>
+        <span class="text-brand-gold">Glow.</span><br/>
+        <span class="text-brand-mauve">Indulge.</span>
+      </h1>
+      <p class="text-[#6a4a56] max-w-sm mb-6 text-sm md:text-base">Luxurious fragrances and beauty rituals crafted to make every moment unforgettable.</p>
+      <div class="flex flex-wrap items-center gap-3">
+        <a href="#bestsellers" class="hidden md:inline-flex items-center gap-2 bg-brand-mauve hover:bg-brand-mauveDark transition text-white font-semibold px-6 py-3 rounded-full text-xs eyebrow">SHOP BESTSELLERS</a>
+        <a href="#bestsellers" class="md:hidden inline-flex items-center gap-2 bg-brand-mauve hover:bg-brand-mauveDark transition text-white font-semibold px-6 py-2.5 rounded-full text-xs eyebrow">SHOP NOW</a>
+        <a href="#" class="hidden md:inline-flex items-center gap-2 bg-transparent border border-brand-mauve text-brand-mauve font-semibold px-6 py-3 rounded-full hover:bg-brand-mauve hover:text-white transition text-xs eyebrow">EXPLORE RITUALS</a>
+      </div>
+    </div>
+
+    <div class="relative min-h-[220px] md:min-h-[380px]">
+      <svg viewBox="0 0 460 380" class="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid slice">
+        <rect width="460" height="380" fill="#F8E9E4"/>
+        <ellipse cx="230" cy="340" rx="180" ry="16" fill="#EDD3CE"/>
+        <!-- perfume bottle -->
+        <rect x="150" y="150" width="70" height="130" rx="6" fill="#F4C9D6"/>
+        <rect x="170" y="120" width="30" height="30" fill="#8a5a68"/>
+        <rect x="160" y="180" width="50" height="60" fill="#fff" opacity="0.5"/>
+        <text x="185" y="215" font-family="Playfair Display, serif" font-size="9" fill="#8a5a68" text-anchor="middle">VELOURA</text>
+        <!-- dropper serum -->
+        <rect x="250" y="170" width="34" height="90" rx="4" fill="#E8C97A"/>
+        <rect x="257" y="140" width="20" height="35" fill="#AD8748"/>
+        <!-- lipstick -->
+        <rect x="310" y="195" width="20" height="60" rx="3" fill="#8C2F45"/>
+        <path d="M310 195q10-25 20 0z" fill="#C0526E"/>
+        <!-- cream jar -->
+        <ellipse cx="240" cy="290" rx="45" ry="18" fill="#F3D4DB"/>
+        <rect x="195" y="255" width="90" height="35" rx="8" fill="#FBEDE8" stroke="#E9B9C4" stroke-width="1.5"/>
+        <ellipse cx="240" cy="255" rx="45" ry="8" fill="#E9B9C4"/>
+        <!-- hand -->
+        <path d="M330 130q20-15 40-5t10 30l-25 30-35-15z" fill="#E7C9A8"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST BAR ============ -->
+<section class="max-w-7xl mx-auto px-4 py-8 md:py-9">
+  <div class="grid grid-cols-2 md:grid-cols-5 gap-5 md:gap-6">
+    <div class="flex items-center gap-3">
+      <svg class="w-7 h-7 text-brand-mauve shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg>
+      <div><p class="font-semibold text-xs md:text-sm">Cruelty Free</p><p class="text-[10px] md:text-xs text-[#8a6a76]">Always &amp; Forever</p></div>
+    </div>
+    <div class="flex items-center gap-3">
+      <svg class="w-7 h-7 text-brand-mauve shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg>
+      <div><p class="font-semibold text-xs md:text-sm">Free Samples</p><p class="text-[10px] md:text-xs text-[#8a6a76]">With Every Order</p></div>
+    </div>
+    <div class="flex items-center gap-3">
+      <svg class="w-7 h-7 text-brand-mauve shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 2v4M15 2v4M6 8h12l-1 12a2 2 0 01-2 2H9a2 2 0 01-2-2z"/></svg>
+      <div><p class="font-semibold text-xs md:text-sm">Dermatologist Tested</p><p class="text-[10px] md:text-xs text-[#8a6a76]">Safe &amp; Effective</p></div>
+    </div>
+    <div class="flex items-center gap-3">
+      <svg class="w-7 h-7 text-brand-mauve shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+      <div><p class="font-semibold text-xs md:text-sm">Secure Checkout</p><p class="text-[10px] md:text-xs text-[#8a6a76]">100% Protected</p></div>
+    </div>
+    <div class="hidden md:flex items-center gap-3">
+      <svg class="w-7 h-7 text-brand-mauve shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4v6h6M20 20v-6h-6"/><path d="M5.5 15a8 8 0 0013.9 3.5M18.5 9A8 8 0 004.6 5.5"/></svg>
+      <div><p class="font-semibold text-sm">Easy Returns</p><p class="text-xs text-[#8a6a76]">Hassle-Free</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SHOP BY BEAUTY RITUAL ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-10">
+  <h2 class="eyebrow text-sm md:text-base font-semibold text-center mb-6">SHOP BY BEAUTY RITUAL</h2>
+  <div class="grid grid-cols-4 md:grid-cols-8 gap-3 md:gap-4 text-center">
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-brand-pink flex items-center justify-center group-hover:scale-105 transition"><svg class="w-7 h-7 text-brand-mauve" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="9" y="9" width="6" height="12" rx="2"/><rect x="10" y="4" width="4" height="6" fill="currentColor"/></svg></div>
+      <span class="text-[10.5px] md:text-xs font-medium">Perfume</span>
+      <span class="text-[9px] text-[#8a6a76] hidden md:block">Discover Scents</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#DDE6EA] flex items-center justify-center group-hover:scale-105 transition"><svg class="w-7 h-7 text-[#4a6a76]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="8" y="9" width="8" height="12" rx="3"/><rect x="9" y="5" width="6" height="5" rx="1"/></svg></div>
+      <span class="text-[10.5px] md:text-xs font-medium">Skincare</span>
+      <span class="text-[9px] text-[#8a6a76] hidden md:block">Nourish &amp; Glow</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#F4D9DB] flex items-center justify-center group-hover:scale-105 transition"><svg class="w-7 h-7 text-[#8C2F45]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l7-16 3 7 6-4-4 13z"/></svg></div>
+      <span class="text-[10.5px] md:text-xs font-medium">Makeup</span>
+      <span class="text-[9px] text-[#8a6a76] hidden md:block">Enhance Beauty</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-brand-pink flex items-center justify-center group-hover:scale-105 transition"><svg class="w-7 h-7 text-brand-mauve" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c1 2-1 3-1 5a4 4 0 108 0c0-3-2-4-3-6M8 10a6 6 0 106 10"/></svg></div>
+      <span class="text-[10.5px] md:text-xs font-medium">Bath &amp; Body</span>
+      <span class="text-[9px] text-[#8a6a76] hidden md:block">&nbsp;</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#EDE0CE] flex items-center justify-center group-hover:scale-105 transition"><svg class="w-7 h-7 text-[#8a6a3a]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 3q10 0 8 12-2 8-8 6-6-2-4-9M8 3q-8 3-4 12"/></svg></div>
+      <span class="text-[10.5px] md:text-xs font-medium">Hair Care</span>
+      <span class="text-[9px] text-[#8a6a76] hidden md:block">Strength &amp; Shine</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-brand-pink flex items-center justify-center group-hover:scale-105 transition"><svg class="w-7 h-7 text-brand-mauve" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="9" width="16" height="12" rx="2"/><path d="M4 9l8-5 8 5"/></svg></div>
+      <span class="text-[10.5px] md:text-xs font-medium">Gift Sets</span>
+      <span class="text-[9px] text-[#8a6a76] hidden md:block">Perfect to Gift</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#DDE6EA] flex items-center justify-center group-hover:scale-105 transition"><svg class="w-7 h-7 text-[#4a6a76]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg></div>
+      <span class="text-[10.5px] md:text-xs font-medium">Men's Grooming</span>
+      <span class="text-[9px] text-[#8a6a76] hidden md:block">Elevate Essentials</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#DCE9DA] flex items-center justify-center group-hover:scale-105 transition"><svg class="w-7 h-7 text-[#4a7a4a]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c1 2-1 3-1 5a4 4 0 108 0c0-3-2-4-3-6M8 10a6 6 0 106 10"/></svg></div>
+      <span class="text-[10.5px] md:text-xs font-medium">Clean Beauty</span>
+      <span class="text-[9px] text-[#8a6a76] hidden md:block">Pure &amp; Conscious</span>
+    </a>
+  </div>
+</section>
+
+<!-- ============ CURATED BEAUTY SELLERS ============ -->
+<section id="bestsellers" class="max-w-7xl mx-auto px-4 pb-10">
+  <div class="flex items-center justify-between mb-5">
+    <h2 class="eyebrow text-sm md:text-base font-semibold">CURATED BEAUTY SELLERS</h2>
+    <a href="#" class="text-xs md:text-sm font-semibold text-brand-mauve hover:opacity-70 transition">View All →</a>
+  </div>
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-5">
+    <div class="group bg-white rounded-xl p-3 shadow-card hover:shadow-cardHover transition">
+      <div class="relative bg-brand-blush rounded-lg aspect-square flex items-center justify-center overflow-hidden mb-2.5">
+        <button class="absolute top-2 right-2 text-white/70 hover:text-brand-mauve transition z-10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg></button>
+        <svg viewBox="0 0 100 120" class="w-14 h-16"><rect x="30" y="35" width="40" height="70" rx="4" fill="#F4C9D6"/><rect x="42" y="18" width="16" height="20" fill="#8a5a68"/></svg>
+      </div>
+      <p class="text-xs md:text-sm font-semibold leading-snug mb-0.5">Veloura Élan</p>
+      <p class="text-[10px] text-[#8a6a76] mb-1">Eau de Parfum · Fragrance</p>
+      <div class="text-amber-400 text-[10px] mb-1">★★★★<span class="text-amber-200">★</span> <span class="text-gray-400">(128)</span></div>
+      <div class="flex items-center justify-between">
+        <p class="font-bold text-sm">$89.00</p>
+        <button class="w-7 h-7 bg-brand-mauve hover:bg-brand-mauveDark transition rounded-full flex items-center justify-center"><svg class="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8V6a6 6 0 0112 0v2M4 8h16l-1.2 12.1a2 2 0 01-2 1.9H7.2a2 2 0 01-2-1.9L4 8z"/></svg></button>
+      </div>
+    </div>
+
+    <div class="group bg-white rounded-xl p-3 shadow-card hover:shadow-cardHover transition">
+      <div class="relative bg-brand-blush rounded-lg aspect-square flex items-center justify-center overflow-hidden mb-2.5">
+        <button class="absolute top-2 right-2 text-white/70 hover:text-brand-mauve transition z-10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg></button>
+        <svg viewBox="0 0 100 120" class="w-12 h-16"><rect x="34" y="40" width="32" height="65" rx="4" fill="#E8C97A"/><rect x="40" y="18" width="20" height="26" fill="#AD8748"/></svg>
+      </div>
+      <p class="text-xs md:text-sm font-semibold leading-snug mb-0.5">Glow Elixir</p>
+      <p class="text-[10px] text-[#8a6a76] mb-1">Vitamin C Serum · Skincare</p>
+      <div class="text-amber-400 text-[10px] mb-1">★★★★<span class="text-gray-300">★</span> <span class="text-gray-400">(94)</span></div>
+      <div class="flex items-center justify-between">
+        <p class="font-bold text-sm">$62.00</p>
+        <button class="w-7 h-7 bg-brand-mauve hover:bg-brand-mauveDark transition rounded-full flex items-center justify-center"><svg class="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8V6a6 6 0 0112 0v2M4 8h16l-1.2 12.1a2 2 0 01-2 1.9H7.2a2 2 0 01-2-1.9L4 8z"/></svg></button>
+      </div>
+    </div>
+
+    <div class="group bg-white rounded-xl p-3 shadow-card hover:shadow-cardHover transition">
+      <div class="relative bg-brand-blush rounded-lg aspect-square flex items-center justify-center overflow-hidden mb-2.5">
+        <button class="absolute top-2 right-2 text-white/70 hover:text-brand-mauve transition z-10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg></button>
+        <svg viewBox="0 0 100 120" class="w-14 h-14"><ellipse cx="50" cy="60" rx="34" ry="22" fill="#F3D4DB"/><rect x="24" y="38" width="52" height="24" rx="10" fill="#FBEDE8" stroke="#E9B9C4" stroke-width="1.5"/></svg>
+      </div>
+      <p class="text-xs md:text-sm font-semibold leading-snug mb-0.5">Rose Hydration</p>
+      <p class="text-[10px] text-[#8a6a76] mb-1">Moisturizer · Skincare</p>
+      <div class="text-amber-400 text-[10px] mb-1">★★★★★ <span class="text-gray-400">(87)</span></div>
+      <div class="flex items-center justify-between">
+        <p class="font-bold text-sm">$54.00</p>
+        <button class="w-7 h-7 bg-brand-mauve hover:bg-brand-mauveDark transition rounded-full flex items-center justify-center"><svg class="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8V6a6 6 0 0112 0v2M4 8h16l-1.2 12.1a2 2 0 01-2 1.9H7.2a2 2 0 01-2-1.9L4 8z"/></svg></button>
+      </div>
+    </div>
+
+    <div class="group bg-white rounded-xl p-3 shadow-card hover:shadow-cardHover transition">
+      <div class="relative bg-brand-blush rounded-lg aspect-square flex items-center justify-center overflow-hidden mb-2.5">
+        <button class="absolute top-2 right-2 text-white/70 hover:text-brand-mauve transition z-10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg></button>
+        <svg viewBox="0 0 100 120" class="w-10 h-16"><rect x="40" y="35" width="20" height="60" rx="3" fill="#8C2F45"/><path d="M40 35q10-25 20 0z" fill="#C0526E"/></svg>
+      </div>
+      <p class="text-xs md:text-sm font-semibold leading-snug mb-0.5">Velvet Muse</p>
+      <p class="text-[10px] text-[#8a6a76] mb-1">Matte Lipstick · Makeup</p>
+      <div class="text-amber-400 text-[10px] mb-1">★★★★<span class="text-gray-300">★</span> <span class="text-gray-400">(76)</span></div>
+      <div class="flex items-center justify-between">
+        <p class="font-bold text-sm">$32.00</p>
+        <button class="w-7 h-7 bg-brand-mauve hover:bg-brand-mauveDark transition rounded-full flex items-center justify-center"><svg class="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8V6a6 6 0 0112 0v2M4 8h16l-1.2 12.1a2 2 0 01-2 1.9H7.2a2 2 0 01-2-1.9L4 8z"/></svg></button>
+      </div>
+    </div>
+
+    <div class="group bg-white rounded-xl p-3 shadow-card hover:shadow-cardHover transition">
+      <div class="relative bg-brand-blush rounded-lg aspect-square flex items-center justify-center overflow-hidden mb-2.5">
+        <button class="absolute top-2 right-2 text-white/70 hover:text-brand-mauve transition z-10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg></button>
+        <svg viewBox="0 0 100 120" class="w-12 h-16"><rect x="32" y="35" width="36" height="68" rx="6" fill="#F3D4DB"/><rect x="38" y="18" width="24" height="22" fill="#E9B9C4"/></svg>
+      </div>
+      <p class="text-xs md:text-sm font-semibold leading-snug mb-0.5">Silk Petal</p>
+      <p class="text-[10px] text-[#8a6a76] mb-1">Body Wash · Bath &amp; Body</p>
+      <div class="text-amber-400 text-[10px] mb-1">★★★★<span class="text-gray-300">★</span> <span class="text-gray-400">(58)</span></div>
+      <div class="flex items-center justify-between">
+        <p class="font-bold text-sm">$22.00</p>
+        <button class="w-7 h-7 bg-brand-mauve hover:bg-brand-mauveDark transition rounded-full flex items-center justify-center"><svg class="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8V6a6 6 0 0112 0v2M4 8h16l-1.2 12.1a2 2 0 01-2 1.9H7.2a2 2 0 01-2-1.9L4 8z"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3 PROMO BANNERS ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-10">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+    <div class="bg-brand-mauve rounded-2xl p-6 flex flex-col justify-between min-h-[150px] overflow-hidden relative">
+      <svg viewBox="0 0 300 200" class="absolute inset-0 w-full h-full opacity-20" preserveAspectRatio="xMidYMid slice"><rect width="300" height="200" fill="#6E2A47"/><rect x="200" y="60" width="40" height="90" rx="4" fill="#F4C9D6"/></svg>
+      <div class="relative z-10">
+        <h3 class="font-logo text-lg text-white mb-1.5">Fragrance Wardrobe</h3>
+        <p class="text-xs text-white/70 max-w-[190px]">Find a scent for every mood.</p>
+      </div>
+      <a href="#" class="relative z-10 text-xs font-semibold text-white eyebrow hover:text-brand-pink transition w-fit mt-3">SHOP NOW</a>
+    </div>
+    <div class="bg-[#DDE6EA] rounded-2xl p-6 flex flex-col justify-between min-h-[150px] overflow-hidden relative">
+      <svg viewBox="0 0 300 200" class="absolute inset-0 w-full h-full opacity-40" preserveAspectRatio="xMidYMid slice"><rect width="300" height="200" fill="#DDE6EA"/><circle cx="230" cy="100" r="30" fill="#fff"/></svg>
+      <div class="relative z-10">
+        <h3 class="font-logo text-lg text-[#2E1A22] mb-1.5">Hydration Essentials</h3>
+        <p class="text-xs text-[#4a5a5e] max-w-[190px]">Deep hydration for radiant skin.</p>
+      </div>
+      <a href="#" class="relative z-10 text-xs font-semibold text-[#2E1A22] eyebrow hover:text-brand-mauve transition w-fit mt-3">SHOP SKINCARE</a>
+    </div>
+    <div class="bg-[#EDD9C4] rounded-2xl p-6 flex flex-col justify-between min-h-[150px] overflow-hidden relative">
+      <svg viewBox="0 0 300 200" class="absolute inset-0 w-full h-full opacity-40" preserveAspectRatio="xMidYMid slice"><rect width="300" height="200" fill="#EDD9C4"/><circle cx="230" cy="110" r="26" fill="#3a3a3a" opacity="0.8"/></svg>
+      <div class="relative z-10">
+        <h3 class="font-logo text-lg text-[#5a3a1c] mb-1.5">Glow Makeup Edit</h3>
+        <p class="text-xs text-[#7a5a3a] max-w-[190px]">Flawless looks made effortlessly.</p>
+      </div>
+      <a href="#" class="relative z-10 text-xs font-semibold text-[#5a3a1c] eyebrow hover:opacity-70 transition w-fit mt-3">SHOP MAKEUP</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BUILD YOUR ROUTINE ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-10">
+  <div class="text-center mb-6">
+    <h2 class="eyebrow text-sm md:text-base font-semibold">BUILD YOUR ROUTINE</h2>
+    <p class="text-xs text-[#8a6a76] mt-1">Simple steps. Beautiful results.</p>
+  </div>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4 items-start relative">
+    <div class="text-center relative">
+      <span class="text-[10px] font-bold text-brand-gold">01</span>
+      <div class="bg-white rounded-xl aspect-square flex items-center justify-center mb-2 mt-1 shadow-card mx-auto max-w-[110px]"><svg viewBox="0 0 60 60" class="w-9 h-9"><rect x="24" y="10" width="12" height="35" rx="4" fill="#F3D4DB"/><rect x="20" y="45" width="20" height="8" rx="3" fill="#E9B9C4"/></svg></div>
+      <p class="text-sm font-semibold">Cleanse</p>
+      <p class="text-[10px] text-[#8a6a76]">Purify &amp; refresh the skin</p>
+      <svg class="hidden md:block absolute top-10 -right-4 w-6 h-6 text-brand-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </div>
+    <div class="text-center relative">
+      <span class="text-[10px] font-bold text-brand-gold">02</span>
+      <div class="bg-white rounded-xl aspect-square flex items-center justify-center mb-2 mt-1 shadow-card mx-auto max-w-[110px]"><svg viewBox="0 0 60 60" class="w-9 h-9"><rect x="22" y="18" width="16" height="35" rx="4" fill="#E8C97A"/><rect x="26" y="8" width="8" height="15" fill="#AD8748"/></svg></div>
+      <p class="text-sm font-semibold">Treat</p>
+      <p class="text-[10px] text-[#8a6a76]">Target concerns with powerful actives</p>
+      <svg class="hidden md:block absolute top-10 -right-4 w-6 h-6 text-brand-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </div>
+    <div class="text-center relative">
+      <span class="text-[10px] font-bold text-brand-gold">03</span>
+      <div class="bg-white rounded-xl aspect-square flex items-center justify-center mb-2 mt-1 shadow-card mx-auto max-w-[110px]"><svg viewBox="0 0 60 60" class="w-9 h-9"><ellipse cx="30" cy="32" rx="18" ry="12" fill="#F3D4DB"/><rect x="15" y="18" width="30" height="14" rx="6" fill="#FBEDE8" stroke="#E9B9C4" stroke-width="1.5"/></svg></div>
+      <p class="text-sm font-semibold">Moisturize</p>
+      <p class="text-[10px] text-[#8a6a76]">Nourish &amp; lock in hydration</p>
+      <svg class="hidden md:block absolute top-10 -right-4 w-6 h-6 text-brand-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </div>
+    <div class="text-center">
+      <span class="text-[10px] font-bold text-brand-gold">04</span>
+      <div class="bg-white rounded-xl aspect-square flex items-center justify-center mb-2 mt-1 shadow-card mx-auto max-w-[110px]"><svg viewBox="0 0 60 60" class="w-9 h-9"><rect x="22" y="12" width="16" height="38" rx="5" fill="#E9B9C4"/><circle cx="30" cy="22" r="7" fill="#fff"/><text x="30" y="26" font-size="7" text-anchor="middle" fill="#8C2F45" font-weight="700">50</text></svg></div>
+      <p class="text-sm font-semibold">Finish</p>
+      <p class="text-[10px] text-[#8a6a76]">Protect &amp; perfume your glow</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURED COLLECTIONS ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-10">
+  <div class="flex items-center justify-between mb-5">
+    <h2 class="eyebrow text-sm md:text-base font-semibold">FEATURED COLLECTIONS</h2>
+    <a href="#" class="text-xs md:text-sm font-semibold text-brand-mauve hover:opacity-70 transition">View All →</a>
+  </div>
+  <div class="grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-4 text-center">
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-full aspect-square rounded-full bg-gradient-to-br from-[#F4C9D6] to-[#E9B9C4] flex items-center justify-center group-hover:scale-105 transition"><svg class="w-8 h-8 text-white/90" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg></div>
+      <span class="text-[10.5px] font-medium">Veloura Rose Collection</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-full aspect-square rounded-full bg-gradient-to-br from-[#E8C97A] to-[#C9A15B] flex items-center justify-center group-hover:scale-105 transition"><svg class="w-8 h-8 text-white/90" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg></div>
+      <span class="text-[10.5px] font-medium">Golden Hour Glow</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-full aspect-square rounded-full bg-gradient-to-br from-[#B08D6A] to-[#6E4F32] flex items-center justify-center group-hover:scale-105 transition"><svg class="w-8 h-8 text-white/90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="6" height="12" rx="2"/></svg></div>
+      <span class="text-[10.5px] font-medium">The Signature Scents</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-full aspect-square rounded-full bg-gradient-to-br from-[#DDE6EA] to-[#A9C0C9] flex items-center justify-center group-hover:scale-105 transition"><svg class="w-8 h-8 text-white/90" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg></div>
+      <span class="text-[10.5px] font-medium">Ultimate Hydration</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-full aspect-square rounded-full bg-gradient-to-br from-[#F3D4DB] to-[#D89AA8] flex items-center justify-center group-hover:scale-105 transition"><svg class="w-8 h-8 text-white/90" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg></div>
+      <span class="text-[10.5px] font-medium">Bridal Beauty Edit</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-full aspect-square rounded-full bg-gradient-to-br from-[#EDE0CE] to-[#C9B48C] flex items-center justify-center group-hover:scale-105 transition"><svg class="w-8 h-8 text-white/90" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg></div>
+      <span class="text-[10.5px] font-medium">Self-Care Rituals</span>
+    </a>
+  </div>
+</section>
+
+<!-- ============ INGREDIENT SPOTLIGHT ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-10">
+  <div class="bg-white rounded-2xl p-6 md:p-8 shadow-card">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+      <div>
+        <h2 class="eyebrow text-sm md:text-base font-semibold">INGREDIENT SPOTLIGHT</h2>
+        <p class="text-xs text-[#8a6a76] mt-1">Thoughtfully chosen. Clinically loved.</p>
+      </div>
+      <a href="#" class="inline-flex items-center gap-1.5 border border-brand-mauve text-brand-mauve hover:bg-brand-mauve hover:text-white transition text-xs font-semibold px-5 py-2.5 rounded-full eyebrow w-fit">DISCOVER INGREDIENTS</a>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+      <div class="text-center">
+        <div class="w-14 h-14 rounded-full bg-[#DDE6EA] flex items-center justify-center mx-auto mb-2"><svg class="w-7 h-7 text-[#4a6a76]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2c3 4 6 8 6 12a6 6 0 01-12 0c0-4 3-8 6-12z"/></svg></div>
+        <p class="text-sm font-semibold mb-0.5">Hyaluronic Acid</p>
+        <p class="text-[10.5px] text-[#8a6a76]">Deeply hydrates and plumps skin.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-14 h-14 rounded-full bg-brand-pink flex items-center justify-center mx-auto mb-2"><svg class="w-7 h-7 text-brand-mauve" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="4" r="2"/><circle cx="12" cy="20" r="2"/><circle cx="4" cy="12" r="2"/><circle cx="20" cy="12" r="2"/></svg></div>
+        <p class="text-sm font-semibold mb-0.5">Rose Extract</p>
+        <p class="text-[10.5px] text-[#8a6a76]">Soothes, tones &amp; revives radiance.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-14 h-14 rounded-full bg-[#F7E0A8] flex items-center justify-center mx-auto mb-2"><svg class="w-7 h-7 text-[#B08D48]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><path d="M8 12h8"/></svg></div>
+        <p class="text-sm font-semibold mb-0.5">Vitamin C</p>
+        <p class="text-[10.5px] text-[#8a6a76]">Brightens &amp; protects for even tone.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-14 h-14 rounded-full bg-[#DCE9DA] flex items-center justify-center mx-auto mb-2"><svg class="w-7 h-7 text-[#4a7a4a]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><ellipse cx="12" cy="12" rx="5" ry="9"/></svg></div>
+        <p class="text-sm font-semibold mb-0.5">Argan Oil</p>
+        <p class="text-[10.5px] text-[#8a6a76]">Nourishes &amp; restores natural softness.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BEAUTY JOURNAL ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-10">
+  <div class="flex items-center justify-between mb-5">
+    <h2 class="eyebrow text-sm md:text-base font-semibold">BEAUTY JOURNAL</h2>
+    <a href="#" class="text-xs md:text-sm font-semibold text-brand-mauve hover:opacity-70 transition">View All Articles →</a>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+    <div class="rounded-xl overflow-hidden bg-white shadow-card">
+      <div class="relative bg-gradient-to-br from-[#F4C9D6] to-[#E9B9C4] aspect-[16/10]">
+        <span class="absolute top-2 left-2 bg-white/90 text-[9px] font-bold px-2 py-1 rounded eyebrow text-brand-mauve">FRAGRANCE</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm font-semibold mb-2">How to Find Your Signature Scent</p>
+        <a href="#" class="text-xs font-semibold text-brand-mauve hover:opacity-70 transition">Read More →</a>
+      </div>
+    </div>
+    <div class="rounded-xl overflow-hidden bg-white shadow-card">
+      <div class="relative bg-gradient-to-br from-[#F8E9E4] to-[#EDD3CE] aspect-[16/10]">
+        <span class="absolute top-2 left-2 bg-white/90 text-[9px] font-bold px-2 py-1 rounded eyebrow text-brand-mauve">SKINCARE</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm font-semibold mb-2">The Ultimate Guide to Glowing Skin</p>
+        <a href="#" class="text-xs font-semibold text-brand-mauve hover:opacity-70 transition">Read More →</a>
+      </div>
+    </div>
+    <div class="rounded-xl overflow-hidden bg-white shadow-card">
+      <div class="relative bg-gradient-to-br from-[#EDD9C4] to-[#D9BFA0] aspect-[16/10]">
+        <span class="absolute top-2 left-2 bg-white/90 text-[9px] font-bold px-2 py-1 rounded eyebrow text-brand-mauve">MAKEUP</span>
+      </div>
+      <div class="p-4">
+        <p class="text-sm font-semibold mb-2">5 Makeup Looks for Every Occasion</p>
+        <a href="#" class="text-xs font-semibold text-brand-mauve hover:opacity-70 transition">Read More →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VELOURA CLUB ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-10">
+  <div class="bg-gradient-to-br from-brand-pink to-brand-blush rounded-2xl p-6 md:p-10 relative overflow-hidden">
+    <svg class="hidden md:block absolute -left-6 top-0 w-40 h-full opacity-20" viewBox="0 0 100 300"><path d="M50 0q30 40 0 80t0 80 0 80" stroke="#6E2A47" stroke-width="2" fill="none"/></svg>
+    <svg class="hidden md:block absolute -right-6 top-0 w-40 h-full opacity-20" viewBox="0 0 100 300"><path d="M50 0q-30 40 0 80t0 80 0 80" stroke="#6E2A47" stroke-width="2" fill="none"/></svg>
+    <div class="relative z-10 grid md:grid-cols-2 gap-8 items-center">
+      <div class="text-center md:text-left">
+        <span class="font-logo text-5xl text-brand-mauve/30 block mb-1">V</span>
+        <h2 class="font-logo text-2xl md:text-3xl text-brand-mauve mb-1.5">VELOURA CLUB</h2>
+        <p class="text-sm text-[#6a4a56] mb-5">More than beauty. It's a lifestyle.</p>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6 max-w-md mx-auto md:mx-0">
+          <div class="flex flex-col items-center gap-1 text-center">
+            <svg class="w-6 h-6 text-brand-mauve" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg>
+            <span class="text-[10px] text-[#6a4a56]">Exclusive Member Offers</span>
+          </div>
+          <div class="flex flex-col items-center gap-1 text-center">
+            <svg class="w-6 h-6 text-brand-mauve" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 7h-9M14 17H5M17 3v8M8 13v8"/><circle cx="17" cy="7" r="3"/><circle cx="8" cy="17" r="3"/></svg>
+            <span class="text-[10px] text-[#6a4a56]">Early Access to New Launches</span>
+          </div>
+          <div class="flex flex-col items-center gap-1 text-center">
+            <svg class="w-6 h-6 text-brand-mauve" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="9" width="16" height="12" rx="2"/><path d="M4 9l8-5 8 5"/></svg>
+            <span class="text-[10px] text-[#6a4a56]">Birthday Surprises</span>
+          </div>
+          <div class="flex flex-col items-center gap-1 text-center">
+            <svg class="w-6 h-6 text-brand-mauve" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
+            <span class="text-[10px] text-[#6a4a56]">Double Points on Every Purchase</span>
+          </div>
+        </div>
+        <button class="bg-brand-mauve hover:bg-brand-mauveDark transition text-white font-semibold px-7 py-3 rounded-full text-xs eyebrow">JOIN NOW</button>
+      </div>
+      <div class="text-center md:text-left">
+        <p class="text-sm text-[#6a4a56] max-w-xs mx-auto md:mx-0">Join Veloura Club and enjoy beauty perks made just for you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-12">
+  <h2 class="eyebrow text-sm md:text-base font-semibold text-center mb-6">LOVED BY OUR BEAUTY COMMUNITY</h2>
+  <div class="relative">
+    <button id="tsPrev" class="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white border border-black/10 shadow-card items-center justify-center hover:bg-gray-50 transition"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="bg-white rounded-2xl p-5 shadow-card text-center">
+        <div class="text-amber-400 text-sm mb-2">★★★★★</div>
+        <p class="text-sm text-[#4a3a42] mb-3">"Veloura perfumes are long-lasting and absolutely divine. My new obsession!"</p>
+        <p class="text-sm font-semibold">— Olivia R.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-5 shadow-card text-center">
+        <div class="text-amber-400 text-sm mb-2">★★★★★</div>
+        <p class="text-sm text-[#4a3a42] mb-3">"The skincare is luxurious yet gentle. My skin has never looked better."</p>
+        <p class="text-sm font-semibold">— Mia K.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-5 shadow-card text-center">
+        <div class="text-amber-400 text-sm mb-2">★★★★<span class="text-gray-300">★</span></div>
+        <p class="text-sm text-[#4a3a42] mb-3">"Beautiful packaging, fast delivery, and amazing quality!"</p>
+        <p class="text-sm font-semibold">— Sophia L.</p>
+      </div>
+    </div>
+    <button id="tsNext" class="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white border border-black/10 shadow-card items-center justify-center hover:bg-gray-50 transition"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></button>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-white border-t border-black/5 pt-10 pb-6">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="mb-8 text-center md:text-left">
+      <div class="font-logo text-xl text-brand-mauve">Veloura</div>
+      <div class="text-[9px] eyebrow text-[#8a6a76]">BEAUTY</div>
+    </div>
+
+    <!-- desktop footer columns -->
+    <div class="hidden md:grid md:grid-cols-5 gap-8 pb-8 border-b border-black/10">
+      <div>
+        <h4 class="text-[#2E1A22] font-semibold mb-3 text-sm eyebrow">SHOP</h4>
+        <ul class="space-y-2 text-sm text-[#8a6a76]">
+          <li><a href="#" class="hover:text-brand-mauve transition">Fragrance</a></li>
+          <li><a href="#" class="hover:text-brand-mauve transition">Skincare</a></li>
+          <li><a href="#" class="hover:text-brand-mauve transition">Makeup</a></li>
+          <li><a href="#" class="hover:text-brand-mauve transition">Bath &amp; Body</a></li>
+          <li><a href="#" class="hover:text-brand-mauve transition">Gift Sets</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-[#2E1A22] font-semibold mb-3 text-sm eyebrow">HELP</h4>
+        <ul class="space-y-2 text-sm text-[#8a6a76]">
+          <li><a href="#" class="hover:text-brand-mauve transition">FAQs</a></li>
+          <li><a href="#" class="hover:text-brand-mauve transition">Shipping &amp; Delivery</a></li>
+          <li><a href="#" class="hover:text-brand-mauve transition">Returns &amp; Exchanges</a></li>
+          <li><a href="#" class="hover:text-brand-mauve transition">Track Your Order</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-[#2E1A22] font-semibold mb-3 text-sm eyebrow">ABOUT VELOURA</h4>
+        <ul class="space-y-2 text-sm text-[#8a6a76]">
+          <li><a href="#" class="hover:text-brand-mauve transition">Our Story</a></li>
+          <li><a href="#" class="hover:text-brand-mauve transition">Clean Beauty Promise</a></li>
+          <li><a href="#" class="hover:text-brand-mauve transition">Sustainability</a></li>
+          <li><a href="#" class="hover:text-brand-mauve transition">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-[#2E1A22] font-semibold mb-3 text-sm eyebrow">BEAUTY SERVICES</h4>
+        <ul class="space-y-2 text-sm text-[#8a6a76]">
+          <li><a href="#" class="hover:text-brand-mauve transition">Virtual Consultations</a></li>
+          <li><a href="#" class="hover:text-brand-mauve transition">Gift Wrapping</a></li>
+          <li><a href="#" class="hover:text-brand-mauve transition">Personalization</a></li>
+          <li><a href="#" class="hover:text-brand-mauve transition">Store Events</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-[#2E1A22] font-semibold mb-3 text-sm eyebrow">CUSTOMER CARE</h4>
+        <ul class="space-y-2 text-sm text-[#8a6a76]">
+          <li><a href="#" class="hover:text-brand-mauve transition">Contact Us</a></li>
+          <li><a href="#" class="hover:text-brand-mauve transition">Store Locator</a></li>
+          <li><a href="#" class="hover:text-brand-mauve transition">Veloura Rewards</a></li>
+          <li><a href="#" class="hover:text-brand-mauve transition">Gift Cards</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- mobile accordion -->
+    <div class="md:hidden divide-y divide-black/10 border-y border-black/10 mb-6">
+      <details class="py-3">
+        <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold eyebrow">SHOP <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></summary>
+        <ul class="mt-2 space-y-2 text-sm text-[#8a6a76] pl-1"><li><a href="#">Fragrance</a></li><li><a href="#">Skincare</a></li><li><a href="#">Makeup</a></li><li><a href="#">Bath &amp; Body</a></li></ul>
+      </details>
+      <details class="py-3">
+        <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold eyebrow">HELP <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></summary>
+        <ul class="mt-2 space-y-2 text-sm text-[#8a6a76] pl-1"><li><a href="#">FAQs</a></li><li><a href="#">Shipping &amp; Delivery</a></li><li><a href="#">Returns &amp; Exchanges</a></li></ul>
+      </details>
+      <details class="py-3">
+        <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold eyebrow">ABOUT VELOURA <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></summary>
+        <ul class="mt-2 space-y-2 text-sm text-[#8a6a76] pl-1"><li><a href="#">Our Story</a></li><li><a href="#">Clean Beauty Promise</a></li><li><a href="#">Careers</a></li></ul>
+      </details>
+      <details class="py-3">
+        <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold eyebrow">BEAUTY SERVICES <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></summary>
+        <ul class="mt-2 space-y-2 text-sm text-[#8a6a76] pl-1"><li><a href="#">Virtual Consultations</a></li><li><a href="#">Gift Wrapping</a></li><li><a href="#">Personalization</a></li></ul>
+      </details>
+      <details class="py-3">
+        <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold eyebrow">CUSTOMER CARE <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></summary>
+        <ul class="mt-2 space-y-2 text-sm text-[#8a6a76] pl-1"><li><a href="#">Contact Us</a></li><li><a href="#">Store Locator</a></li><li><a href="#">Veloura Rewards</a></li></ul>
+      </details>
+    </div>
+
+    <div class="text-center mb-6">
+      <p class="text-sm font-semibold eyebrow mb-3">STAY IN THE GLOW</p>
+      <div class="flex items-center justify-center gap-3">
+        <a href="#" class="w-9 h-9 rounded-full bg-brand-blush hover:bg-brand-pink flex items-center justify-center transition" aria-label="Instagram"><svg class="w-4 h-4 text-brand-mauve" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+        <a href="#" class="w-9 h-9 rounded-full bg-brand-blush hover:bg-brand-pink flex items-center justify-center transition" aria-label="Facebook"><svg class="w-4 h-4 text-brand-mauve" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.25-1.5 1.55-1.5H17V3.7C16.7 3.65 15.7 3.6 14.5 3.6c-2.4 0-4 1.45-4 4.15V10H7.8v3.1h2.7V21h3z"/></svg></a>
+        <a href="#" class="w-9 h-9 rounded-full bg-brand-blush hover:bg-brand-pink flex items-center justify-center transition" aria-label="TikTok"><svg class="w-4 h-4 text-brand-mauve" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.4 2.2 1.9 3.6 4 3.8v2.7c-1.4 0-2.7-.4-3.9-1.2v6.2a5.4 5.4 0 11-4.6-5.4v2.8a2.7 2.7 0 102.7 2.7V3h1.8z"/></svg></a>
+        <a href="#" class="w-9 h-9 rounded-full bg-brand-blush hover:bg-brand-pink flex items-center justify-center transition" aria-label="Pinterest"><svg class="w-4 h-4 text-brand-mauve" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-3.6 19.3c0-.8 0-1.8.2-2.6l1.4-6c-.35-.7-.35-1.75-.35-1.75 0-1.6.95-2.8 2.1-2.8 1 0 1.5.75 1.5 1.65 0 1-.65 2.5-1 3.9-.3 1.15.6 2.1 1.75 2.1 2.1 0 3.7-2.2 3.7-5.4 0-2.8-2-4.8-4.9-4.8-3.35 0-5.3 2.5-5.3 5.1a10 10 0 006.9 9.6A10 10 0 0012 2z"/></svg></a>
+        <a href="#" class="w-9 h-9 rounded-full bg-brand-blush hover:bg-brand-pink flex items-center justify-center transition" aria-label="YouTube"><svg class="w-4 h-4 text-brand-mauve" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12s0-3.2-.4-4.7a2.8 2.8 0 00-2-2C17.9 5 12 5 12 5s-5.9 0-7.6.3a2.8 2.8 0 00-2 2C2 8.8 2 12 2 12s0 3.2.4 4.7a2.8 2.8 0 002 2C6.1 19 12 19 12 19s5.9 0 7.6-.3a2.8 2.8 0 002-2C22 15.2 22 12 22 12z"/></svg></a>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-black/10 text-xs text-[#8a6a76]">
+      <p>© 2026 Veloura Beauty. All rights reserved.</p>
+      <div class="flex items-center gap-4">
+        <a href="#" class="hover:text-brand-mauve transition">Privacy Policy</a>
+        <a href="#" class="hover:text-brand-mauve transition">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- spacer so content isn't hidden behind fixed mobile bottom nav -->
+<div class="h-16 md:hidden" aria-hidden="true"></div>
+
+<!-- scroll to top (mobile) -->
+<button id="scrollTop" class="md:hidden fixed bottom-20 right-4 z-40 w-10 h-10 rounded-full bg-white shadow-card border border-black/10 flex items-center justify-center text-brand-mauve opacity-0 pointer-events-none transition-opacity" aria-label="Scroll to top">
+  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<!-- ============ MOBILE BOTTOM NAV (app-style) ============ -->
+<nav class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-white border-t border-black/10 shadow-navUp" style="padding-bottom: env(safe-area-inset-bottom);">
+  <div class="grid grid-cols-5">
+    <a href="#" class="flex flex-col items-center justify-center gap-1 py-2.5 text-brand-mauve">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-8 9 8M5 10v10h14V10"/></svg>
+      <span class="text-[10px] font-semibold">Home</span>
+    </a>
+    <a href="#" class="flex flex-col items-center justify-center gap-1 py-2.5 text-gray-400 hover:text-brand-mauve transition">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8V6a6 6 0 0112 0v2M4 8h16l-1.2 12.1a2 2 0 01-2 1.9H7.2a2 2 0 01-2-1.9L4 8z"/></svg>
+      <span class="text-[10px] font-medium">Shop</span>
+    </a>
+    <a href="#" class="flex flex-col items-center justify-center gap-1 py-2.5 text-gray-400 hover:text-brand-mauve transition">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg>
+      <span class="text-[10px] font-medium">Wishlist</span>
+    </a>
+    <a href="#" class="flex flex-col items-center justify-center gap-1 py-2.5 text-gray-400 hover:text-brand-mauve transition">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+      <span class="text-[10px] font-medium">Account</span>
+    </a>
+    <a href="#" class="flex flex-col items-center justify-center gap-1 py-2.5 text-gray-400 hover:text-brand-mauve transition">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.9 6.4 7 .7-5.3 4.7 1.6 6.9L12 17l-6.2 3.7 1.6-6.9L2.1 9.1l7-.7L12 2z"/></svg>
+      <span class="text-[10px] font-medium">Club</span>
+    </a>
+  </div>
+</nav>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileNav = document.getElementById('mobileNav');
+  menuBtn.addEventListener('click', () => {
+    mobileNav.classList.toggle('hidden');
+    mobileNav.classList.toggle('flex');
+  });
+
+  document.getElementById('tsPrev')?.addEventListener('click', () => {});
+  document.getElementById('tsNext')?.addEventListener('click', () => {});
+
+  const scrollTopBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 600) {
+      scrollTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+    } else {
+      scrollTopBtn.classList.add('opacity-0', 'pointer-events-none');
+    }
+  });
+  scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+
+</body>
+</html>

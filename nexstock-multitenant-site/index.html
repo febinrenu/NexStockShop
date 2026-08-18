@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NexStock — Everything you need, beautifully in one store</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+<main class="container" style="display:flex;flex-direction:column;gap:clamp(36px,5vw,56px);padding-top:clamp(16px,3vw,28px);">
+
+  <div class="row">
+    <div class="hero" style="flex:2.2 1 460px;min-height:380px;background:var(--hero-gradient);padding:clamp(28px,4vw,52px);display:flex;flex-wrap:wrap;align-items:center;gap:28px;">
+      <div style="flex:1.2 1 280px;color:var(--hero-text);position:relative;">
+        <div class="eyebrow" style="color:var(--hero-accent2);" id="h-eyebrow"></div>
+        <h1 style="margin:0 0 18px;font-size:clamp(34px,4.6vw,56px);line-height:1.02;" id="h-hero"></h1>
+        <p style="margin:0 0 28px;font-size:15.5px;line-height:1.6;color:var(--hero-subtext);max-width:420px;" id="h-sub"></p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="shop.html" class="btn btn-white" id="h-cta1"></a>
+          <a href="deals.html" class="btn" style="border:1.5px solid var(--hero-outline-border);color:var(--hero-text);" id="h-cta2"></a>
+        </div>
+      </div>
+      <div style="flex:1 1 240px;height:300px;border-radius:18px;overflow:hidden;">
+        <div id="h-hero-img" style="height:100%;"></div>
+      </div>
+    </div>
+    <div style="flex:1 1 280px;display:flex;flex-direction:column;gap:18px;">
+      <div style="flex:1;background:var(--sand);border-radius:24px;padding:26px;display:flex;gap:14px;align-items:center;min-height:170px;">
+        <div style="flex:1.2;">
+          <div class="eyebrow" style="color:#8A7A5A;" id="p1-eyebrow"></div>
+          <div style="font-size:21px;font-weight:800;line-height:1.15;margin-bottom:12px;" id="p1-title"></div>
+          <a href="shop.html" style="font-size:13px;font-weight:700;" id="p1-cta"></a>
+        </div>
+        <div style="flex:0.9;height:120px;border-radius:14px;overflow:hidden;" id="p1-img"></div>
+      </div>
+      <div style="flex:1;background:var(--ink);color:#fff;border-radius:24px;padding:26px;display:flex;gap:14px;align-items:center;min-height:170px;">
+        <div style="flex:1.2;">
+          <div class="eyebrow" style="color:var(--accent-light2);" id="p2-eyebrow"></div>
+          <div style="font-size:21px;font-weight:800;line-height:1.15;margin-bottom:12px;" id="p2-title"></div>
+          <a href="shop.html" style="font-size:13px;font-weight:700;color:var(--accent-light);" id="p2-cta"></a>
+        </div>
+        <div style="flex:0.9;height:120px;border-radius:14px;overflow:hidden;" id="p2-img"></div>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-head"><h2 id="cats-title"></h2><a href="shop.html" id="cats-viewall"></a></div>
+    <div class="grid grid-auto-sm" id="cats-grid"></div>
+  </section>
+
+  <section id="shopbypet-section" style="display:none;">
+    <div class="section-head"><h2 id="sbp-title"></h2><a href="shop.html" id="sbp-viewall"></a></div>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit, minmax(160px,1fr));" id="sbp-grid"></div>
+  </section>
+
+  <section>
+    <div class="section-head"><div><div class="eyebrow" id="trend-eyebrow"></div><h2 id="trend-title"></h2></div><a href="shop.html" id="trend-seeall"></a></div>
+    <div class="grid grid-auto" id="trend-grid"></div>
+  </section>
+
+  <div class="row">
+    <div class="hero" style="flex:1 1 380px;background:linear-gradient(120deg,var(--navy3),var(--blue));color:#fff;padding:clamp(26px,3vw,40px);display:flex;gap:20px;align-items:center;min-height:200px;">
+      <div style="flex:1.3;">
+        <div class="eyebrow" style="color:var(--hero-accent2);" id="banA-eyebrow"></div>
+        <div style="font-size:clamp(22px,2.4vw,30px);font-weight:900;line-height:1.1;margin-bottom:16px;" id="banA-title"></div>
+        <a href="deals.html" class="btn btn-white" id="banA-cta"></a>
+      </div>
+      <div style="flex:1;height:160px;border-radius:16px;overflow:hidden;" id="banA-img"></div>
+    </div>
+    <div class="hero" style="flex:1 1 380px;background:var(--greenBg);padding:clamp(26px,3vw,40px);display:flex;gap:20px;align-items:center;min-height:200px;">
+      <div style="flex:1.3;">
+        <div class="eyebrow" style="color:#5F7A58;" id="banB-eyebrow"></div>
+        <div style="font-size:clamp(22px,2.4vw,30px);font-weight:900;line-height:1.1;margin-bottom:16px;color:#1E2B1A;" id="banB-title"></div>
+        <a href="shop.html" class="btn" style="background:#1E2B1A;color:#fff;" id="banB-cta"></a>
+      </div>
+      <div style="flex:1;height:160px;border-radius:16px;overflow:hidden;" id="banB-img"></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-head"><div><div class="eyebrow" id="new-eyebrow"></div><h2 id="new-title"></h2></div><a href="shop.html" id="new-seeall"></a></div>
+    <div class="grid grid-auto" id="new-grid"></div>
+  </section>
+
+  <section>
+    <div class="section-head"><div><div class="eyebrow" id="best-eyebrow"></div><h2 id="best-title"></h2></div><a href="shop.html" id="best-seeall"></a></div>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit, minmax(240px,1fr));" id="best-grid"></div>
+  </section>
+
+  <div class="grid" style="grid-template-columns:repeat(auto-fit, minmax(240px,1fr));" id="collections-grid"></div>
+
+  <section>
+    <div class="section-head"><h2 id="brands-title"></h2><a href="brands.html" id="brands-viewall"></a></div>
+    <div class="grid grid-auto-sm" id="brands-grid"></div>
+  </section>
+
+  <div class="panel" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px,1fr));gap:20px;" id="services-grid"></div>
+
+</main>
+<div id="site-footer"></div>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+mountChrome('home');
+const H = t('home'); const ar = isAr();
+
+$('h-eyebrow').textContent = H.heroEyebrow;
+$('h-hero').innerHTML = `${H.heroA} <span class="serif" style="color:var(--hero-accent);">${H.heroB}</span> ${H.heroC}`;
+$('h-sub').textContent = H.heroSub;
+$('h-cta1').textContent = H.heroCta1;
+$('h-cta2').textContent = H.heroCta2;
+$('h-hero-img').innerHTML = ph(0, ar ? 'صورة المنتج الرئيسي' : 'Hero product photo', '', TENANT.heroImages.main);
+
+$('p1-eyebrow').textContent = H.promo1Eyebrow; $('p1-title').textContent = H.promo1Title; $('p1-cta').textContent = H.promo1Cta; $('p1-img').innerHTML = ph(4, ar?'بقالة طازجة':'Fresh groceries', '', TENANT.heroImages.promo1);
+$('p2-eyebrow').textContent = H.promo2Eyebrow; $('p2-title').textContent = H.promo2Title; $('p2-cta').textContent = H.promo2Cta; $('p2-img').innerHTML = ph(2, ar?'سماعات':'Headphones', '', TENANT.heroImages.promo2);
+
+$('cats-title').innerHTML = `${H.catsA} <span class="serif">${H.catsB}</span>`;
+$('cats-viewall').textContent = t('viewAll');
+$('cats-grid').innerHTML = CATS.map((cat,i) => `<a href="shop.html?cat=${i}" class="card" style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;color:var(--text2);padding:20px 14px;">
+  <span style="width:52px;height:52px;border-radius:var(--cat-radius);background:${cat.tint};color:${cat.ink};display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;">${catMono(cat.en)}</span>
+  <span style="font-size:12.5px;font-weight:700;">${ar?cat.ar:cat.en}</span></a>`).join('');
+
+if (TENANT.shopByPet){
+  $('shopbypet-section').style.display = '';
+  $('sbp-title').innerHTML = `<span>🐾</span> ${ar?'تسوّق حسب':'Shop by'} <span class="serif" style="color:var(--hero-accent);">${ar?'الحيوان الأليف':'Pet'}</span>`;
+  $('sbp-viewall').textContent = t('viewAll');
+  $('sbp-grid').innerHTML = TENANT.shopByPet.map((sp,i) => `<a href="shop.html" class="card" style="position:relative;aspect-ratio:1;padding:0;overflow:hidden;display:flex;align-items:flex-end;">
+    <div style="position:absolute;inset:0;background-image:url('${sp.img}'), linear-gradient(135deg, ${CAT_COLOR[i]||'#16324F'}, ${shade(CAT_COLOR[i]||'#16324F')});background-size:cover;background-position:center;"></div>
+    <div style="position:relative;z-index:1;width:100%;padding:14px;background:linear-gradient(to top, rgba(0,0,0,0.55), transparent);color:#fff;">
+      <div style="font-weight:800;font-size:14px;">${ar?sp.ar:sp.en}</div>
+      <div style="font-size:11px;font-weight:700;opacity:0.9;">${t('shopNow')}</div>
+    </div></a>`).join('');
+}
+
+$('trend-eyebrow').textContent = H.trendEyebrow; $('trend-title').textContent = H.trendTitle; $('trend-seeall').textContent = t('seeAll');
+$('trend-grid').innerHTML = PRODUCTS.filter(p=>p.trend).map(p => productCard(p, {wish:true})).join('');
+
+$('banA-eyebrow').textContent = H.bannerAEyebrow; $('banA-title').textContent = H.bannerATitle; $('banA-cta').textContent = H.bannerACta; $('banA-img').innerHTML = ph(1, ar?'حواسيب':'Laptops', '', TENANT.heroImages.bannerA);
+$('banB-eyebrow').textContent = H.bannerBEyebrow; $('banB-title').textContent = H.bannerBTitle; $('banB-cta').textContent = H.bannerBCta; $('banB-img').innerHTML = ph(4, ar?'بقالة':'Groceries', '', TENANT.heroImages.bannerB);
+
+$('new-eyebrow').textContent = H.newEyebrow; $('new-title').textContent = H.newTitle; $('new-seeall').textContent = t('seeAll');
+$('new-grid').innerHTML = PRODUCTS.filter(p=>p.isNew).map(p => productCard(p, {wish:true})).join('');
+
+$('best-eyebrow').textContent = H.bestEyebrow; $('best-title').textContent = H.bestTitle; $('best-seeall').textContent = t('seeAll');
+$('best-grid').innerHTML = PRODUCTS.filter(p=>p.best).map(p => `<a href="product.html?id=${p.id}" class="card" style="display:flex;gap:14px;align-items:center;color:var(--ink);">
+  <div style="width:74px;height:74px;border-radius:14px;overflow:hidden;flex-shrink:0;">${ph(p.cat, '', '', p.img)}</div>
+  <div style="min-width:0;"><div style="font-size:13.5px;font-weight:700;">${ar?p.ar:p.en}</div><div style="font-size:14.5px;font-weight:900;margin-top:6px;">${fmt(p.price)}</div></div></a>`).join('');
+
+$('collections-grid').innerHTML = H.collections.map((c,i) => `<a href="shop.html" class="card" style="background:${c[2]};color:${c[3]};padding:24px;display:flex;gap:14px;align-items:center;min-height:150px;border:none;">
+  <div style="flex:1.2;"><div style="font-size:17px;font-weight:800;margin-bottom:4px;">${c[0]}</div><div style="font-size:12.5px;opacity:0.75;margin-bottom:12px;">${c[1]}</div><span style="font-size:12.5px;font-weight:800;text-decoration:underline;">${t('shopNow')}</span></div>
+  <div style="flex:0.9;height:100px;border-radius:12px;overflow:hidden;">${ph(i%10, '')}</div></a>`).join('');
+
+$('brands-title').innerHTML = `${H.brandsA} <span class="serif">${H.brandsB}</span>`;
+$('brands-viewall').textContent = t('viewAll');
+$('brands-grid').innerHTML = BRANDS_ALL.slice(0,8).map(b => `<a href="brands.html" class="card" style="display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:var(--muted2);">${b}</a>`).join('');
+
+$('services-grid').innerHTML = H.services.map(s => `<div style="display:flex;gap:14px;align-items:flex-start;">
+  <span style="width:40px;height:40px;border-radius:50%;border:1.5px solid var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="width:12px;height:12px;border-radius:50%;background:var(--blue);"></span></span>
+  <div><div style="font-size:13.5px;font-weight:800;">${s[0]}</div><div style="font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:3px;">${s[1]}</div></div></div>`).join('');
+</script>
+</body>
+</html>

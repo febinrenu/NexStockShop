@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>
+body { margin:0; background:#F4F2ED; color:#12151A; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; -webkit-font-smoothing:antialiased; }
+a { color:#1E5FD6; text-decoration:none; }
+a:hover { color:#0B1F3F; }
+input { box-sizing:border-box; }
+</style>
+</helmet>
+<dc-import name="StoreHeader" lang="{{ lang }}" active="home" cart-count="0" on-set-lang="{{ setLang }}" hint-size="100%,220px"></dc-import>
+<main dir="{{ dir }}" style="max-width:900px; margin:0 auto; padding:clamp(24px,4vw,48px) clamp(16px,4vw,32px) 70px; display:flex; flex-direction:column; gap:24px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif;">
+  <div style="text-align:center;">
+    <div style="font-size:11px; letter-spacing:0.22em; font-weight:700; color:#1E5FD6; text-transform:uppercase; margin-bottom:12px;">{{ t.eyebrow }}</div>
+    <h1 style="margin:0 0 10px; font-size:clamp(28px,3.6vw,42px); font-weight:900; letter-spacing:-0.03em;">{{ t.titleA }} <span style="font-family:'Instrument Serif','IBM Plex Sans Arabic',serif; font-style:italic; font-weight:400; color:#1E5FD6;">{{ t.titleB }}</span></h1>
+    <p style="margin:0 auto; font-size:14px; color:#8A857A; max-width:440px; line-height:1.6;">{{ t.sub }}</p>
+  </div>
+  <div style="display:flex; gap:10px; max-width:560px; width:100%; margin:0 auto; flex-wrap:wrap;">
+    <input value="NX-10482" style="flex:1 1 260px; border:1.5px solid #E3DFD4; border-radius:999px; padding:15px 22px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:14px; outline:none; background:#FDFCFA;">
+    <button onClick="{{ doTrack }}" style="background:#12151A; color:#fff; border:none; border-radius:999px; padding:15px 32px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:14px; font-weight:800; cursor:pointer;" style-hover="background:#1E5FD6;">{{ t.trackBtn }}</button>
+  </div>
+  <sc-if value="{{ tracked }}" hint-placeholder-val="{{ true }}">
+    <div style="background:#FDFCFA; border:1px solid #E7E3DA; border-radius:24px; padding:clamp(22px,3.5vw,36px);">
+      <div style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px 24px; align-items:center; margin-bottom:28px;">
+        <div>
+          <div style="font-size:16px; font-weight:900;">{{ t.order }} #NX-10482</div>
+          <div style="font-size:12.5px; color:#8A857A; margin-top:3px;">{{ t.placed }}</div>
+        </div>
+        <span style="background:#E3EBFA; color:#1E5FD6; font-size:12px; font-weight:800; padding:7px 16px; border-radius:999px;">{{ t.statusNow }}</span>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:0;">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+          <div style="display:flex; gap:16px;">
+            <div style="display:flex; flex-direction:column; align-items:center;">
+              <span style="width:22px; height:22px; border-radius:50%; background:{{ s.dotBg }}; border:2.5px solid {{ s.dotBd }}; display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:900; flex-shrink:0;">{{ s.check }}</span>
+              <sc-if value="{{ s.hasLine }}" hint-placeholder-val="{{ true }}"><span style="width:2.5px; flex:1; min-height:34px; background:{{ s.lineBg }};"></span></sc-if>
+            </div>
+            <div style="padding-bottom:26px; min-width:0;">
+              <div style="font-size:14px; font-weight:800; color:{{ s.titleC }};">{{ s.title }}</div>
+              <div style="font-size:12.5px; color:#8A857A; margin-top:3px; line-height:1.55;">{{ s.sub }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="border-top:1px solid #ECE8DF; margin-top:6px; padding-top:20px; display:flex; flex-wrap:wrap; gap:12px 28px; font-size:13px;">
+        <div><span style="color:#8A857A;">{{ t.courier }}:</span> <span style="font-weight:800;">NexStock Express</span></div>
+        <div><span style="color:#8A857A;">{{ t.eta }}:</span> <span style="font-weight:800; color:#3E5C38;">{{ t.etaVal }}</span></div>
+        <div><span style="color:#8A857A;">{{ t.destination }}:</span> <span style="font-weight:800;">{{ t.destVal }}</span></div>
+      </div>
+    </div>
+    <div style="background:#0B1F3F; color:#fff; border-radius:20px; padding:22px 28px; display:flex; flex-wrap:wrap; gap:14px 24px; align-items:center; justify-content:space-between;">
+      <div style="font-size:14px; font-weight:800;">{{ t.helpTitle }} <span style="color:#8FB4F2; font-weight:600;">{{ t.helpSub }}</span></div>
+      <a href="About.dc.html" style="background:#fff; color:#0B1F3F; border-radius:999px; padding:11px 24px; font-size:13px; font-weight:800;">{{ t.helpCta }}</a>
+    </div>
+  </sc-if>
+</main>
+<dc-import name="StoreFooter" lang="{{ lang }}" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: (typeof localStorage !== 'undefined' && localStorage.getItem('nexstock-lang')) || 'en', tracked: true };
+  renderVals() {
+    const lang = this.state.lang; const ar = lang === 'ar';
+    const T = {
+      en: { eyebrow: 'Order tracking', titleA: 'Where is my', titleB: 'order?', sub: 'Enter your order number (from your confirmation email) to see live delivery status.', trackBtn: 'Track', order: 'Order', placed: 'Placed Jul 22, 2026 · 3 items · CFA 767,000', statusNow: 'In transit', courier: 'Courier', eta: 'Estimated delivery', etaVal: 'Tue, Jul 29 · before 6pm', destination: 'Deliver to', destVal: 'Home — Cocody, Abidjan', helpTitle: 'Problem with this order?', helpSub: 'Our support answers in under 5 minutes.', helpCta: 'Contact support',
+        steps: [
+          ['Order confirmed', 'Jul 22, 10:42 — payment received, order #NX-10482 created.', 'done'],
+          ['Packed at warehouse', 'Jul 23, 08:15 — 3 items quality-checked and sealed.', 'done'],
+          ['In transit', 'Jul 27, 07:30 — with NexStock Express, arriving via Abidjan hub.', 'now'],
+          ['Out for delivery', 'Your courier will call you 30 minutes before arrival.', 'todo'],
+          ['Delivered', 'Signature or code confirmation on hand-over.', 'todo']
+        ] },
+      ar: { eyebrow: 'تتبع الطلب', titleA: 'أين وصل', titleB: 'طلبي؟', sub: 'أدخل رقم طلبك (من رسالة التأكيد) لعرض حالة التوصيل المباشرة.', trackBtn: 'تتبّع', order: 'الطلب', placed: 'أُنشئ 22 يوليو 2026 · 3 منتجات · CFA 767,000', statusNow: 'قيد التوصيل', courier: 'شركة التوصيل', eta: 'موعد التسليم المتوقع', etaVal: 'الثلاثاء 29 يوليو · قبل 6 مساءً', destination: 'التوصيل إلى', destVal: 'المنزل — كوكودي، أبيدجان', helpTitle: 'مشكلة في هذا الطلب؟', helpSub: 'دعمنا يرد خلال أقل من 5 دقائق.', helpCta: 'تواصل مع الدعم',
+        steps: [
+          ['تم تأكيد الطلب', '22 يوليو، 10:42 — تم استلام الدفع وإنشاء الطلب #NX-10482.', 'done'],
+          ['تم التجهيز في المستودع', '23 يوليو، 08:15 — فُحصت 3 منتجات وخُتمت.', 'done'],
+          ['قيد التوصيل', '27 يوليو، 07:30 — مع نكستوك إكسبرس عبر مركز أبيدجان.', 'now'],
+          ['خرج للتوصيل', 'سيتصل بك المندوب قبل الوصول بـ 30 دقيقة.', 'todo'],
+          ['تم التسليم', 'تأكيد بالتوقيع أو الرمز عند الاستلام.', 'todo']
+        ] }
+    }[lang];
+    const steps = T.steps.map((s, i) => {
+      const st = s[2];
+      return {
+        title: s[0], sub: s[1], check: st === 'done' ? '✓' : '',
+        dotBg: st === 'done' ? '#1E5FD6' : st === 'now' ? '#fff' : '#F4F2ED',
+        dotBd: st === 'todo' ? '#D8D2C4' : '#1E5FD6',
+        titleC: st === 'todo' ? '#8A857A' : '#12151A',
+        hasLine: i < T.steps.length - 1,
+        lineBg: st === 'done' ? '#1E5FD6' : '#E3DFD4'
+      };
+    });
+    return {
+      lang, dir: ar ? 'rtl' : 'ltr', t: T, steps, tracked: this.state.tracked,
+      doTrack: () => this.setState({ tracked: true }),
+      setLang: (l) => { try { localStorage.setItem('nexstock-lang', l); } catch(e) {} this.setState({ lang: l }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

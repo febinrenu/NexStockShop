@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — NexStock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+<main class="container" style="display:flex;flex-direction:column;gap:clamp(36px,5vw,60px);">
+  <div class="hero" style="background:var(--hero-gradient);color:var(--hero-text);padding:clamp(32px,5vw,64px);">
+    <div style="max-width:680px;">
+      <div class="eyebrow" style="color:var(--hero-accent2);" id="ab-eyebrow"></div>
+      <h1 id="ab-hero" style="font-size:clamp(32px,4.6vw,58px);line-height:1.04;margin-bottom:18px;"></h1>
+      <p id="ab-sub" style="margin:0;font-size:15.5px;line-height:1.7;color:var(--hero-subtext);max-width:520px;"></p>
+    </div>
+  </div>
+  <div class="grid grid-auto-sm" id="ab-stats"></div>
+  <div class="row" style="align-items:center;">
+    <div style="flex:1 1 320px;height:clamp(260px,32vw,380px);border-radius:22px;overflow:hidden;">
+      <div id="ab-teamimg" style="height:100%;"></div>
+    </div>
+    <div style="flex:1.1 1 320px;">
+      <div class="eyebrow" id="ab-storyeyebrow"></div>
+      <h2 id="ab-storytitle" style="font-size:clamp(24px,3vw,36px);line-height:1.1;margin-bottom:16px;"></h2>
+      <p id="ab-p1" style="margin:0 0 14px;font-size:14.5px;line-height:1.75;color:var(--text2);"></p>
+      <p id="ab-p2" style="margin:0;font-size:14.5px;line-height:1.75;color:var(--text2);"></p>
+    </div>
+  </div>
+  <section>
+    <h2 id="ab-valuestitle" style="font-size:clamp(22px,2.6vw,30px);margin-bottom:22px;"></h2>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit, minmax(240px,1fr));" id="ab-values"></div>
+  </section>
+  <div class="panel" style="display:flex;flex-wrap:wrap;align-items:center;gap:24px;padding:clamp(28px,4vw,48px);">
+    <div style="flex:2 1 300px;">
+      <div style="font-size:clamp(22px,2.6vw,30px);font-weight:900;margin-bottom:8px;" id="ab-contacttitle"></div>
+      <div class="muted" style="font-size:13.5px;line-height:1.7;" id="ab-contactsub"></div>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="shop.html" class="btn btn-dark" id="ab-cta1"></a>
+      <a href="help.html" class="btn btn-outline" id="ab-cta2"></a>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+mountChrome('about');
+const AB = t('about'); const ar = isAr();
+$('ab-eyebrow').textContent = AB.eyebrow;
+$('ab-hero').innerHTML = `${AB.heroA} <span class="serif" style="color:var(--hero-accent);">${AB.heroB}</span>`;
+$('ab-sub').textContent = AB.heroSub;
+$('ab-stats').innerHTML = AB.stats.map(s=>`<div class="card" style="text-align:center;padding:28px 24px;"><div style="font-size:clamp(28px,3vw,38px);font-weight:900;color:var(--blue);">${s[0]}</div><div class="muted" style="font-size:13px;font-weight:600;margin-top:6px;">${s[1]}</div></div>`).join('');
+$('ab-teamimg').innerHTML = ph(3, ar?'صورة الفريق':'Team photo');
+$('ab-storyeyebrow').textContent = AB.storyEyebrow; $('ab-storytitle').textContent = AB.storyTitle;
+$('ab-p1').textContent = AB.storyP1; $('ab-p2').textContent = AB.storyP2;
+$('ab-valuestitle').textContent = AB.valuesTitle;
+const bgs = [['var(--navy)','var(--card)'],['var(--sand)','var(--ink)'],['var(--blue-tint)','var(--navy)'],['var(--greenBg)','#1E2B1A']];
+$('ab-values').innerHTML = AB.values.map((v,i)=>`<div class="card" style="background:${bgs[i][0]};color:${bgs[i][1]};border:none;padding:28px 24px;">
+  <span style="display:inline-flex;width:40px;height:40px;border-radius:50%;border:1.5px solid currentColor;align-items:center;justify-content:center;margin-bottom:16px;opacity:0.8;"><span style="width:12px;height:12px;border-radius:50%;background:currentColor;"></span></span>
+  <div style="font-size:16.5px;font-weight:800;margin-bottom:8px;">${v[0]}</div><div style="font-size:13px;line-height:1.65;opacity:0.8;">${v[1]}</div></div>`).join('');
+$('ab-contacttitle').textContent = AB.contactTitle; $('ab-contactsub').innerHTML = AB.contactSub + '<br>support@' + TENANT.id + '.com · +225 00 00 00 00 · 9AM–9PM';
+$('ab-cta1').textContent = AB.contactCta1; $('ab-cta2').textContent = AB.contactCta2;
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cart — NexStock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+<main class="container">
+  <h1 id="ct-title" style="font-size:clamp(26px,3.2vw,38px);margin-bottom:6px;"></h1>
+  <div class="muted" style="font-size:13.5px;margin-bottom:26px;" id="ct-sub"></div>
+  <div class="row" style="align-items:flex-start;">
+    <div style="flex:2 1 440px;min-width:0;display:flex;flex-direction:column;gap:12px;" id="ct-items"></div>
+    <aside style="flex:1 1 300px;max-width:420px;display:flex;flex-direction:column;gap:14px;">
+      <div class="panel">
+        <div style="font-size:15px;font-weight:900;margin-bottom:18px;" id="ct-summary"></div>
+        <div style="display:flex;flex-direction:column;gap:12px;font-size:13.5px;">
+          <div style="display:flex;justify-content:space-between;"><span class="muted" id="ct-subtotal-l"></span><span id="ct-subtotal-v" style="font-weight:800;"></span></div>
+          <div style="display:flex;justify-content:space-between;"><span class="muted" id="ct-ship-l"></span><span style="font-weight:800;color:#3E5C38;" id="ct-ship-v"></span></div>
+          <div style="display:flex;justify-content:space-between;" id="ct-disc-row"><span class="muted" id="ct-disc-l"></span><span style="font-weight:800;color:#B03A2E;" id="ct-disc-v"></span></div>
+          <div style="border-top:1px solid #ECE8DF;padding-top:14px;display:flex;justify-content:space-between;align-items:baseline;"><span style="font-weight:800;" id="ct-total-l"></span><span style="font-size:20px;font-weight:900;" id="ct-total-v"></span></div>
+        </div>
+        <a href="checkout.html" class="btn btn-blue" style="display:block;text-align:center;margin-top:20px;" id="ct-checkout-btn"></a>
+        <div class="muted" style="font-size:11.5px;text-align:center;margin-top:12px;" id="ct-secure"></div>
+      </div>
+      <div class="panel" style="padding:20px 24px;">
+        <div style="font-size:13px;font-weight:800;margin-bottom:12px;" id="ct-promo-label"></div>
+        <div style="display:flex;gap:8px;">
+          <input id="ct-promo-input" placeholder="WELCOME10" class="formrow" style="flex:1;">
+          <button class="btn btn-dark" id="ct-promo-btn" onclick="applyPromo()"></button>
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+mountChrome('shop');
+const C = t('cart'); const ar = isAr();
+$('ct-sub').textContent = C.sub;
+$('ct-summary').textContent = C.summary;
+$('ct-subtotal-l').textContent = C.subtotal; $('ct-ship-l').textContent = C.shipping; $('ct-disc-l').textContent = C.discount; $('ct-total-l').textContent = C.total;
+$('ct-checkout-btn').textContent = C.checkout; $('ct-secure').textContent = C.secure;
+$('ct-promo-label').textContent = C.promo; $('ct-promo-btn').textContent = C.apply;
+
+function isPromoApplied(){ return localStorage.getItem('nexstock-promo') === '1'; }
+function applyPromo(){
+  const v = ($('ct-promo-input').value||'').trim().toUpperCase();
+  if (v === 'WELCOME10'){ localStorage.setItem('nexstock-promo','1'); showToast(C.applied); }
+  else showToast(ar ? 'كود غير صالح' : 'Invalid code');
+  render();
+}
+
+function render(){
+  const lines = cartLines();
+  $('ct-title').textContent = `${C.title} (${cartCount()})`;
+  if (!lines.length){
+    $('ct-items').innerHTML = `<div class="card" style="border-style:dashed;text-align:center;padding:48px 24px;">
+      <div style="font-size:17px;font-weight:800;margin-bottom:8px;">${C.emptyTitle}</div>
+      <div class="muted" style="font-size:13.5px;margin-bottom:18px;">${C.emptySub}</div>
+      <a href="shop.html" class="btn btn-dark">${C.emptyCta}</a></div>
+      <a href="shop.html" style="font-size:13.5px;font-weight:700;margin-top:6px;display:inline-block;">${C.continue}</a>`;
+  } else {
+    $('ct-items').innerHTML = lines.map(l => `<div class="card" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+      <div style="width:86px;height:86px;border-radius:14px;overflow:hidden;flex-shrink:0;">${ph(l.p.cat,'')}</div>
+      <div style="flex:1 1 180px;min-width:0;">
+        <div style="font-size:14px;font-weight:800;line-height:1.35;">${ar?l.p.ar:l.p.en}</div>
+        <div style="font-size:12px;color:#3E5C38;font-weight:700;margin-top:4px;">${C.inStock}</div>
+      </div>
+      <div class="stepper"><button onclick="setCartQty(${l.p.id}, ${l.qty-1}); render();">−</button><span>${l.qty}</span><button onclick="setCartQty(${l.p.id}, ${l.qty+1}); render();">+</button></div>
+      <div style="text-align:end;min-width:110px;">
+        <div style="font-size:15.5px;font-weight:900;">${fmt(l.line)}</div>
+        <button onclick="removeFromCart(${l.p.id}); render();" style="border:none;background:transparent;color:#B03A2E;font-size:12px;font-weight:700;cursor:pointer;text-decoration:underline;">${C.remove}</button>
+      </div></div>`).join('') + `<a href="shop.html" style="font-size:13.5px;font-weight:700;margin-top:6px;">${C.continue}</a>`;
+  }
+  const subtotal = cartSubtotal();
+  const discount = (isPromoApplied() && subtotal > 0) ? 10000 : 0;
+  $('ct-subtotal-v').textContent = fmt(subtotal);
+  $('ct-ship-v').textContent = C.freeShip;
+  $('ct-disc-row').style.display = discount ? 'flex' : 'none';
+  $('ct-disc-v').textContent = '− ' + fmt(discount);
+  $('ct-total-v').textContent = fmt(Math.max(0, subtotal - discount));
+  const btn = $('ct-checkout-btn'); if (!lines.length){ btn.style.pointerEvents='none'; btn.style.opacity=0.5; } else { btn.style.pointerEvents='auto'; btn.style.opacity=1; }
+  updateCartBadge();
+}
+render();
+</script>
+</body>
+</html>

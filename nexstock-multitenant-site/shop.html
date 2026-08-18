@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shop — NexStock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+<main class="container">
+  <div class="crumb"><a href="index.html" id="cr-home"></a> / <span class="cur" id="cr-shop"></span></div>
+  <div class="section-head">
+    <div><h1 id="sh-title"></h1><div class="muted" style="font-size:13.5px;" id="sh-count"></div></div>
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+      <span class="muted" style="font-size:13px;" id="sh-sortlabel"></span>
+      <div id="sh-sorts" style="display:flex;gap:8px;flex-wrap:wrap;"></div>
+    </div>
+  </div>
+  <div class="row" style="align-items:flex-start;">
+    <aside style="flex:1 1 230px;max-width:300px;min-width:220px;display:flex;flex-direction:column;gap:16px;">
+      <div class="panel">
+        <div class="eyebrow" style="color:var(--muted);" id="sh-catslabel"></div>
+        <div style="display:flex;flex-direction:column;gap:4px;" id="sh-cats"></div>
+      </div>
+      <div class="panel">
+        <div class="eyebrow" style="color:var(--muted);" id="sh-pricelabel"></div>
+        <div style="display:flex;flex-direction:column;gap:8px;" id="sh-price"></div>
+      </div>
+      <div class="panel">
+        <div class="eyebrow" style="color:var(--muted);" id="sh-brandslabel"></div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;" id="sh-brands"></div>
+      </div>
+      <div class="panel" style="background:var(--navy);color:#fff;">
+        <div class="eyebrow" style="color:var(--accent-light2);" id="sh-dealeyebrow"></div>
+        <div style="font-size:18px;font-weight:800;line-height:1.2;margin-bottom:14px;" id="sh-dealtitle"></div>
+        <a href="deals.html" class="btn btn-white" id="sh-dealcta"></a>
+      </div>
+    </aside>
+    <div style="flex:3 1 480px;min-width:0;">
+      <div class="grid grid-auto" id="sh-grid"></div>
+      <div id="sh-empty" style="display:none;" class="card" style="text-align:center;padding:50px 24px;"></div>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+mountChrome('shop');
+const S = t('shop'); const ar = isAr();
+$('cr-home').textContent = S.home; $('cr-shop').textContent = S.shop;
+$('sh-title').innerHTML = `${S.title} <span class="serif">${S.titleAccent}</span>`;
+$('sh-sortlabel').textContent = S.sortBy;
+$('sh-catslabel').textContent = t('categories');
+$('sh-pricelabel').textContent = S.price;
+$('sh-brandslabel').textContent = S.brands;
+$('sh-dealeyebrow').textContent = S.dealEyebrow; $('sh-dealtitle').textContent = S.dealTitle; $('sh-dealcta').textContent = S.dealCta;
+
+let state = { cat: qs('cat') !== null ? Number(qs('cat')) : -1, sort: 0, price: -1, brands: [], q: qs('q') || '' };
+
+function catCount(i){ return PRODUCTS.filter(p=>p.cat===i).length; }
+function priceBandMatch(p, band){
+  if (band===0) return p.price < 50000;
+  if (band===1) return p.price >= 50000 && p.price <= 200000;
+  if (band===2) return p.price > 200000 && p.price <= 500000;
+  if (band===3) return p.price > 500000;
+  return true;
+}
+
+function renderSidebar(){
+  $('sh-cats').innerHTML = `<div onclick="state.cat=-1;renderAll();" style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-radius:10px;cursor:pointer;font-size:13.5px;font-weight:${state.cat===-1?800:600};color:${state.cat===-1?'var(--blue)':'var(--text2)'};background:${state.cat===-1?'var(--blue-tint)':'transparent'};"><span>${S.allCat}</span><span style="font-size:11.5px;color:var(--old-price);">${PRODUCTS.length}</span></div>` +
+    CATS.map((c,i) => `<div onclick="state.cat=${i};renderAll();" style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-radius:10px;cursor:pointer;font-size:13.5px;font-weight:${state.cat===i?800:600};color:${state.cat===i?'var(--blue)':'var(--text2)'};background:${state.cat===i?'var(--blue-tint)':'transparent'};"><span>${ar?c.ar:c.en}</span><span style="font-size:11.5px;color:var(--old-price);">${catCount(i)}</span></div>`).join('');
+  $('sh-price').innerHTML = S.bands.map((b,i) => `<label style="display:flex;align-items:center;gap:10px;font-size:13px;cursor:pointer;"><input type="radio" name="pb" ${state.price===i?'checked':''} onclick="state.price=${state.price===i?-1:i};renderAll();" style="accent-color:var(--blue);width:16px;height:16px;">${b}</label>`).join('');
+  const usedBrands = [...new Set(PRODUCTS.map(p=>p.brand))];
+  $('sh-brands').innerHTML = usedBrands.map(b => `<span class="pill ${state.brands.includes(b)?'active':''}" onclick="toggleBrand('${b}')">${b}</span>`).join('');
+  $('sh-sorts').innerHTML = S.sorts.map((label,i) => `<button class="pill ${state.sort===i?'active':''}" onclick="state.sort=${i};renderAll();">${label}</button>`).join('');
+}
+function toggleBrand(b){ state.brands = state.brands.includes(b) ? state.brands.filter(x=>x!==b) : [...state.brands, b]; renderAll(); }
+
+function renderGrid(){
+  let list = PRODUCTS.slice();
+  if (state.cat >= 0) list = list.filter(p=>p.cat===state.cat);
+  if (state.price >= 0) list = list.filter(p=>priceBandMatch(p, state.price));
+  if (state.brands.length) list = list.filter(p=>state.brands.includes(p.brand));
+  if (state.q) { const q = state.q.toLowerCase(); list = list.filter(p => p.en.toLowerCase().includes(q) || p.ar.includes(state.q)); }
+  if (state.sort === 1) list.sort((a,b)=> b.id - a.id);
+  else if (state.sort === 2) list.sort((a,b)=> a.price - b.price);
+  else if (state.sort === 3) list.sort((a,b)=> b.price - a.price);
+  else list.sort((a,b)=> b.reviews - a.reviews);
+  $('sh-count').textContent = `${list.length} ${ar?'منتجاً · يُحدَّث يومياً':'products · updated daily'}`;
+  if (!list.length){ $('sh-grid').innerHTML=''; $('sh-empty').style.display='block'; $('sh-empty').innerHTML = `<div style="font-size:17px;font-weight:800;margin-bottom:8px;">${ar?'لا توجد منتجات مطابقة':'No matching products'}</div><div class="muted" style="font-size:13.5px;">${ar?'جرّب تعديل الفلاتر':'Try adjusting your filters'}</div>`; }
+  else { $('sh-empty').style.display='none'; $('sh-grid').innerHTML = list.map(p => productCard(p, {wish:true})).join(''); }
+}
+function renderAll(){ renderSidebar(); renderGrid(); }
+renderAll();
+</script>
+</body>
+</html>

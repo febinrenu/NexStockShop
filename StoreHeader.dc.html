@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+</helmet>
+<div dir="{{ dir }}" style="font-family:'Archivo','IBM Plex Sans Arabic',sans-serif;">
+<div style="background:#0B1F3F; color:#C9D6EC; font-size:12.5px; padding:9px clamp(16px,4vw,32px); display:flex; flex-wrap:wrap; gap:10px 22px; align-items:center; justify-content:space-between;">
+  <div style="display:flex; gap:16px; align-items:center;">
+    <span onClick="{{ setEn }}" style="cursor:pointer; color:{{ enColor }}; font-weight:{{ enWeight }};">English</span>
+    <span onClick="{{ setAr }}" style="cursor:pointer; color:{{ arColor }}; font-weight:{{ arWeight }};">العربية</span>
+    <span style="opacity:0.35;">|</span>
+    <span style="cursor:pointer;">CFA · XOF ▾</span>
+  </div>
+  <div style="color:#8FD3A8; font-weight:600;">{{ t.freeShip }}</div>
+  <div style="display:flex; gap:18px;">
+    <a href="Help.dc.html" style="color:#C9D6EC;" style-hover="color:#fff;">{{ t.help }}</a>
+    <a href="Track%20Order.dc.html" style="color:#C9D6EC;" style-hover="color:#fff;">{{ t.track }}</a>
+    <a href="Account.dc.html" style="color:#C9D6EC;" style-hover="color:#fff;">{{ t.account }}</a>
+  </div>
+</div>
+<header style="background:#FDFCFA; border-bottom:1px solid #E7E3DA; padding:18px clamp(16px,4vw,32px); display:flex; flex-wrap:wrap; align-items:center; gap:16px 28px;">
+  <a href="NexStock%20Store.dc.html" style="display:flex;"><img src="uploads/nexstck_logo_Horizantal_Colored.png" alt="NexStock" style="height:42px; width:auto;"></a>
+  <div style="flex:1 1 300px; display:flex; align-items:center; background:#F1EEE7; border:1.5px solid #E3DFD4; border-radius:999px; padding:4px 4px 4px 20px; gap:12px; min-width:0;">
+    <input placeholder="{{ t.searchPh }}" style="flex:1; min-width:0; border:none; outline:none; background:transparent; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:14px; color:#12151A;">
+    <button style="background:#12151A; color:#fff; border:none; border-radius:999px; padding:10px 22px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-weight:700; font-size:13.5px; cursor:pointer;" style-hover="background:#1E5FD6;">{{ t.searchBtn }}</button>
+  </div>
+  <div style="display:flex; gap:8px; align-items:center;">
+    <a href="Login.dc.html" style="display:flex; align-items:center; gap:8px; padding:8px 14px; border-radius:12px; color:#12151A;" style-hover="background:#F1EEE7; color:#12151A;">
+      <span style="width:28px; height:28px; border-radius:50%; background:#EAE6DC; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; color:#5C594F;">S</span>
+      <div style="font-size:12px; line-height:1.25;"><div style="color:#8A857A;">{{ t.account }}</div><div style="font-weight:700;">{{ t.signIn }}</div></div>
+    </a>
+    <a href="Wishlist.dc.html" style="display:flex; align-items:center; gap:8px; padding:8px 14px; border-radius:12px; color:#12151A;" style-hover="background:#F1EEE7; color:#12151A;">
+      <span style="font-size:17px;">♡</span>
+      <div style="font-size:12px; line-height:1.25;"><div style="color:#8A857A;">{{ t.wishlist }}</div><div style="font-weight:700;">{{ t.saved }}</div></div>
+    </a>
+    <a href="Cart.dc.html" style="display:flex; align-items:center; gap:10px; padding:10px 16px; border-radius:999px; background:#12151A; color:#fff;" style-hover="background:#1E5FD6; color:#fff;">
+      <span style="font-size:13px; font-weight:700;">{{ t.cart }}</span>
+      <span style="background:#1E5FD6; min-width:20px; height:20px; border-radius:999px; display:flex; align-items:center; justify-content:center; font-size:11.5px; font-weight:800; padding:0 5px;">{{ cartCount }}</span>
+    </a>
+  </div>
+</header>
+<nav style="background:#FDFCFA; border-bottom:1px solid #E7E3DA; padding:0 clamp(16px,4vw,32px); display:flex; flex-wrap:wrap; align-items:center; gap:4px; position:relative;">
+  <button onClick="{{ toggleCats }}" style="background:#1E5FD6; color:#fff; border:none; border-radius:10px 10px 0 0; padding:13px 22px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-weight:700; font-size:13.5px; cursor:pointer; margin:0 12px;">☰&nbsp; {{ t.allCats }}</button>
+  <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="6">
+    <a href="{{ n.href }}" style="padding:14px 14px; font-size:13.5px; font-weight:{{ n.weight }}; color:{{ n.color }}; border-bottom:2px solid {{ n.border }};" style-hover="color:#1E5FD6;">{{ n.label }}</a>
+  </sc-for>
+  <span style="flex:1;"></span>
+  <span style="color:#8A857A; font-family:'Instrument Serif','IBM Plex Sans Arabic',serif; font-style:italic; font-size:15px;">{{ t.tagline }}</span>
+  <sc-if value="{{ catsOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute; top:100%; inset-inline-start:clamp(16px,4vw,32px); z-index:50; background:#FDFCFA; border:1px solid #E7E3DA; border-radius:16px; box-shadow:0 24px 60px rgba(11,31,63,0.18); padding:10px; width:min(300px, 88vw); display:flex; flex-direction:column;">
+      <sc-for list="{{ cats }}" as="c" hint-placeholder-count="6">
+        <a href="Shop.dc.html" style="display:flex; align-items:center; justify-content:space-between; padding:10px 14px; border-radius:10px; font-size:13.5px; font-weight:600; color:#3B3830;" style-hover="background:#F1EEE7; color:#1E5FD6;">
+          <span style="display:flex; align-items:center; gap:12px;"><span style="width:28px; height:28px; border-radius:9px; background:{{ c.tint }}; color:{{ c.ink }}; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800;">{{ c.mono }}</span>{{ c.name }}</span>
+          <span style="color:#B9B3A4;">›</span>
+        </a>
+      </sc-for>
+    </div>
+  </sc-if>
+</nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:220},&quot;lang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;en&quot;,&quot;ar&quot;],&quot;default&quot;:&quot;en&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;shop&quot;,&quot;deals&quot;,&quot;brands&quot;,&quot;about&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;cartCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:0,&quot;tsType&quot;:&quot;number&quot;},&quot;onSetLang&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(lang: string) =&gt; void&quot;}}">
+class Component extends DCLogic {
+  state = { catsOpen: false };
+  renderVals() {
+    const lang = this.props.lang ?? 'en'; const ar = lang === 'ar';
+    const T = {
+      en: { freeShip: 'Free shipping on orders over CFA 75,000', help: 'Help Center', track: 'Track Order', locator: 'Store Locator', searchPh: 'Search products, brands and more…', searchBtn: 'Search', account: 'Account', signIn: 'Sign in', wishlist: 'Wishlist', saved: 'Saved', cart: 'Cart', allCats: 'All Categories', tagline: 'Manage. Grow. Succeed.',
+        nav: ['Home', 'Shop', 'Deals', 'Brands', 'About Us'] },
+      ar: { freeShip: 'شحن مجاني للطلبات فوق 75,000 CFA', help: 'مركز المساعدة', track: 'تتبع الطلب', locator: 'مواقع المتاجر', searchPh: 'ابحث عن المنتجات والعلامات التجارية…', searchBtn: 'بحث', account: 'الحساب', signIn: 'تسجيل الدخول', wishlist: 'المفضلة', saved: 'المحفوظة', cart: 'السلة', allCats: 'كل الفئات', tagline: 'أدِر. انمُ. انجح.',
+        nav: ['الرئيسية', 'المتجر', 'العروض', 'العلامات التجارية', 'من نحن'] }
+    }[lang];
+    const hrefs = ['NexStock%20Store.dc.html', 'Shop.dc.html', 'Deals.dc.html', 'Brands.dc.html', 'About.dc.html'];
+    const keys = ['home', 'shop', 'deals', 'brands', 'about'];
+    const active = this.props.active ?? 'home';
+    const navItems = keys.map((k, i) => ({ href: hrefs[i], label: T.nav[i], weight: k === active ? 700 : 600, color: k === active ? '#12151A' : '#5C594F', border: k === active ? '#1E5FD6' : 'transparent' }));
+    const tints = [['#E3EBFA','#1E5FD6'],['#EAE2D3','#8A6A2F'],['#DFE8DC','#3E5C38'],['#F2E3E0','#A0522D'],['#E7E3F2','#5A4A9E'],['#E0EDEE','#2E6E74'],['#F5E9D8','#B07A2A'],['#E9E9E4','#4A4A42'],['#E3EBFA','#10305F'],['#EFE4EC','#8A4A72']];
+    const catEn = ['Smartphones & Gadgets','Laptops & Computers','TVs, Audio & Video','Home Appliances','Groceries & Essentials','Health & Beauty','Fashion & Accessories','Toys & Kids','Sports & Outdoors','Automotive'];
+    const catAr = ['الهواتف الذكية','الحواسيب المحمولة','التلفزيونات والصوتيات','الأجهزة المنزلية','البقالة والمستلزمات','الصحة والجمال','الأزياء والإكسسوارات','ألعاب الأطفال','الرياضة والهواء الطلق','السيارات'];
+    const cats = catEn.map((n, i) => ({ name: ar ? catAr[i] : n, mono: n.replace(/[^A-Za-z& ]/g,'').split(/[ ,&]+/).filter(Boolean).slice(0,2).map(w=>w[0]).join(''), tint: tints[i][0], ink: tints[i][1] }));
+    const setLang = (l) => { this.props.onSetLang && this.props.onSetLang(l); };
+    return {
+      t: T, dir: ar ? 'rtl' : 'ltr', navItems, cats,
+      cartCount: this.props.cartCount ?? 0,
+      catsOpen: this.state.catsOpen,
+      enColor: ar ? '#C9D6EC' : '#fff', enWeight: ar ? 400 : 700,
+      arColor: ar ? '#fff' : '#C9D6EC', arWeight: ar ? 700 : 400,
+      setEn: () => setLang('en'), setAr: () => setLang('ar'),
+      toggleCats: () => this.setState(s => ({ catsOpen: !s.catsOpen }))
+    };
+  }
+}
+</script>
+</body>
+</html>

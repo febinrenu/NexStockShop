@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>
+body { margin:0; background:#F4F2ED; color:#12151A; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; -webkit-font-smoothing:antialiased; }
+a { color:#1E5FD6; text-decoration:none; }
+a:hover { color:#0B1F3F; }
+</style>
+</helmet>
+<dc-import name="StoreHeader" lang="{{ lang }}" active="shop" cart-count="{{ cartCount }}" on-set-lang="{{ setLang }}" hint-size="100%,220px"></dc-import>
+<main dir="{{ dir }}" style="max-width:1320px; margin:0 auto; padding:clamp(16px,3vw,28px) clamp(16px,4vw,32px) 60px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif;">
+  <div style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:14px; margin-bottom:26px;">
+    <div>
+      <h1 style="margin:0 0 6px; font-size:clamp(26px,3.2vw,38px); font-weight:900; letter-spacing:-0.02em;">{{ t.title }} <span style="font-family:'Instrument Serif','IBM Plex Sans Arabic',serif; font-style:italic; font-weight:400; color:#1E5FD6;">({{ count }})</span></h1>
+      <div style="font-size:13.5px; color:#8A857A;">{{ t.sub }}</div>
+    </div>
+    <button onClick="{{ addAll }}" style="background:#12151A; color:#fff; border:none; border-radius:999px; padding:13px 26px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:13.5px; font-weight:800; cursor:pointer;" style-hover="background:#1E5FD6;">{{ t.addAll }}</button>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(210px, 1fr)); gap:14px;">
+    <sc-for list="{{ items }}" as="p" hint-placeholder-count="6">
+      <div style="background:#FDFCFA; border:1px solid #E7E3DA; border-radius:18px; padding:12px; display:flex; flex-direction:column; gap:10px; position:relative;" style-hover="box-shadow:0 16px 40px rgba(11,31,63,0.12); transform:translateY(-4px);">
+        <button onClick="{{ p.remove }}" title="{{ t.remove }}" style="position:absolute; top:20px; inset-inline-end:20px; z-index:2; width:32px; height:32px; border-radius:50%; border:none; background:#FDFCFA; color:#B03A2E; font-size:15px; font-weight:800; cursor:pointer; box-shadow:0 4px 14px rgba(11,31,63,0.15);" style-hover="background:#B03A2E; color:#fff;">♥</button>
+        <sc-if value="{{ p.stockBadge }}" hint-placeholder-val="{{ false }}">
+          <span style="position:absolute; top:20px; inset-inline-start:20px; z-index:2; background:#B03A2E; color:#fff; font-size:11px; font-weight:800; padding:4px 9px; border-radius:999px;">{{ p.stockBadge }}</span>
+        </sc-if>
+        <a href="Product%20Details.dc.html" style="display:block; height:160px; border-radius:12px; overflow:hidden; background:#F1EEE7;">
+          <image-slot id="{{ p.slot }}" shape="rounded" radius="12" placeholder="{{ p.ph }}"></image-slot>
+        </a>
+        <div style="display:flex; flex-direction:column; gap:6px; padding:2px 4px 4px;">
+          <a href="Product%20Details.dc.html" style="font-size:13.5px; font-weight:700; line-height:1.35; min-height:36px; color:#12151A;">{{ p.name }}</a>
+          <div style="font-size:12px; color:{{ p.noteColor }}; font-weight:700;">{{ p.note }}</div>
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:2px;">
+            <div style="font-size:15px; font-weight:900;">{{ p.priceFmt }}</div>
+            <button onClick="{{ p.addToCart }}" style="border:none; background:#12151A; color:#fff; border-radius:999px; padding:9px 16px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:12px; font-weight:800; cursor:pointer;" style-hover="background:#1E5FD6;">{{ t.add }}</button>
+          </div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+  <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+    <div style="background:#FDFCFA; border:1px dashed #D8D2C4; border-radius:18px; padding:56px 24px; text-align:center;">
+      <div style="font-size:17px; font-weight:800; margin-bottom:8px;">{{ t.emptyTitle }}</div>
+      <div style="font-size:13.5px; color:#8A857A; margin-bottom:18px;">{{ t.emptySub }}</div>
+      <a href="Shop.dc.html" style="display:inline-block; background:#12151A; color:#fff; border-radius:999px; padding:12px 26px; font-size:13.5px; font-weight:800;">{{ t.emptyCta }}</a>
+    </div>
+  </sc-if>
+</main>
+<dc-import name="StoreFooter" lang="{{ lang }}" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    lang: (typeof localStorage !== 'undefined' && localStorage.getItem('nexstock-lang')) || 'en', cart: 0,
+    items: [
+      { id: 1, nameEn: 'Apple iPhone 15 · 128GB Blue', nameAr: 'آبل آيفون 15 · أزرق 128GB', price: 499000, drop: 80000, low: false, ph: 'iPhone photo' },
+      { id: 2, nameEn: 'MacBook Air M2 · 13-inch', nameAr: 'ماك بوك إير M2 · ‏13 بوصة', price: 999000, drop: 0, low: false, ph: 'MacBook photo' },
+      { id: 3, nameEn: 'Sony WH-CH720N Headphones', nameAr: 'سوني WH-CH720N سماعات', price: 89000, drop: 37000, low: true, ph: 'Headphones photo' },
+      { id: 4, nameEn: 'Dyson V15 Detect Vacuum', nameAr: 'دايسون V15 مكنسة', price: 399000, drop: 0, low: false, ph: 'Dyson photo' },
+      { id: 5, nameEn: 'Apple Watch Series 9 · 41mm', nameAr: 'آبل واتش 9 · ‏41مم', price: 279000, drop: 29000, low: false, ph: 'Watch photo' },
+      { id: 6, nameEn: 'JBL Charge 5 Speaker', nameAr: 'جي بي إل تشارج 5', price: 129000, drop: 0, low: true, ph: 'Speaker photo' }
+    ]
+  };
+  renderVals() {
+    const lang = this.state.lang; const ar = lang === 'ar';
+    const f = (x) => 'CFA ' + x.toLocaleString('en-US');
+    const T = {
+      en: { title: 'Your wishlist', sub: 'We watch prices for you — drops show up here first.', addAll: 'Add all to cart', add: 'Add', remove: 'Remove from wishlist', emptyTitle: 'Nothing saved yet', emptySub: 'Tap the ♡ on any product to keep it here.', emptyCta: 'Browse the shop', lowStock: 'Low stock', priceDrop: 'Price dropped ', inStock: 'In stock' },
+      ar: { title: 'مفضلتك', sub: 'نراقب الأسعار من أجلك — الانخفاضات تظهر هنا أولاً.', addAll: 'أضف الكل إلى السلة', add: 'أضِف', remove: 'إزالة من المفضلة', emptyTitle: 'لا شيء محفوظ بعد', emptySub: 'اضغط ♡ على أي منتج ليبقى هنا.', emptyCta: 'تصفح المتجر', lowStock: 'كمية محدودة', priceDrop: 'انخفض السعر ', inStock: 'متوفر' }
+    }[lang];
+    const items = this.state.items.map(it => ({
+      slot: 'wish-' + it.id, ph: it.ph, name: ar ? it.nameAr : it.nameEn, priceFmt: f(it.price),
+      note: it.drop > 0 ? T.priceDrop + '− ' + f(it.drop) : T.inStock,
+      noteColor: it.drop > 0 ? '#3E5C38' : '#8A857A',
+      stockBadge: it.low ? T.lowStock : false,
+      addToCart: () => this.setState(s => ({ cart: s.cart + 1 })),
+      remove: () => this.setState(s => ({ items: s.items.filter(x => x.id !== it.id) }))
+    }));
+    return {
+      lang, dir: ar ? 'rtl' : 'ltr', t: T, items,
+      count: this.state.items.length, empty: this.state.items.length === 0, cartCount: this.state.cart,
+      addAll: () => this.setState(s => ({ cart: s.cart + s.items.length })),
+      setLang: (l) => { try { localStorage.setItem('nexstock-lang', l); } catch(e) {} this.setState({ lang: l }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

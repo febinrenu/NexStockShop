@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TechNova — Upgrade Your Tech Lifestyle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Inter', 'sans-serif'] },
+        colors: {
+          brand: {
+            blue: '#1D5FE0',
+            blueDark: '#1747B3',
+            blueLight: '#EEF3FF',
+            navy: '#0E1B33',
+            navy2: '#16233F',
+            red: '#DC2626',
+          },
+        },
+        boxShadow: {
+          card: '0 4px 14px -4px rgba(14, 27, 51, 0.10)',
+          cardHover: '0 12px 26px -8px rgba(14, 27, 51, 0.18)',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  ::-webkit-scrollbar { height: 6px; width: 6px; }
+  ::-webkit-scrollbar-thumb { background: #d7e0ee; border-radius: 999px; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .star-rating { letter-spacing: 1px; }
+</style>
+</head>
+<body class="bg-white text-[#111827] antialiased">
+
+<!-- ============ TOP UTILITY BAR ============ -->
+<div class="bg-brand-blue text-white text-[12.5px]">
+  <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-center md:justify-between gap-4 overflow-x-auto no-scrollbar">
+    <div class="flex items-center gap-2 whitespace-nowrap">
+      <span>🔥</span>
+      <span class="font-medium">Up to 40% Off</span>
+      <span class="text-white/80 hidden sm:inline">– Summer Tech Sale on Laptops, Headphones &amp; More!</span>
+      <span class="hidden md:inline text-white/60">|</span>
+      <span class="hidden md:inline text-white/80">Free Shipping on Orders $49+</span>
+    </div>
+    <div class="hidden md:flex items-center gap-4 whitespace-nowrap text-white/85">
+      <a href="#" class="hover:text-white transition">Track Order</a>
+      <a href="#" class="hover:text-white transition">Help Center</a>
+      <span class="flex items-center gap-1">English
+        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 py-3.5 flex items-center gap-4 md:gap-6">
+    <button id="menuBtn" class="md:hidden p-2 -ml-2 rounded-lg hover:bg-gray-100 transition shrink-0" aria-label="Open menu">
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+
+    <a href="#" class="font-extrabold text-xl tracking-tight shrink-0 text-[#111827]">Tech<span class="text-brand-blue">Nova</span></a>
+
+    <div class="hidden md:flex items-center gap-0 flex-1 max-w-2xl mx-auto">
+      <button class="flex items-center gap-1.5 bg-gray-100 hover:bg-gray-200 transition text-sm font-medium text-[#3a4256] px-4 py-2.5 rounded-l-lg border border-r-0 border-gray-200 shrink-0">
+        All Categories
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="flex w-full border border-gray-200 overflow-hidden focus-within:ring-2 focus-within:ring-brand-blue/25">
+        <input type="text" placeholder="Search for products, brands and more..." class="w-full px-4 py-2.5 text-sm outline-none placeholder:text-gray-400" />
+        <button class="bg-brand-blue hover:bg-brand-blueDark transition text-white px-5 flex items-center justify-center rounded-r-lg" aria-label="Search">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-4 md:gap-5 ml-auto md:ml-0 text-[12.5px] text-[#3a4256]">
+      <a href="#" class="hidden lg:flex items-center gap-2 hover:text-brand-blue transition">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+        <span class="leading-tight"><span class="block text-[10.5px] text-gray-500">Account</span><span class="block font-semibold">Sign In</span></span>
+      </a>
+      <a href="#" class="hidden sm:flex items-center gap-1.5 hover:text-brand-blue transition">
+        <span class="relative">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.8 8.6c0-2.6-2.1-4.6-4.7-4.6-1.6 0-3 .8-3.9 2-.9-1.2-2.3-2-3.9-2-2.6 0-4.7 2-4.7 4.6 0 5 8.6 10.4 8.6 10.4s8.6-5.4 8.6-10.4z"/></svg>
+          <span class="absolute -top-1.5 -right-1.5 bg-brand-red text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+        </span>
+        <span class="hidden xl:block font-medium">Wishlist</span>
+      </a>
+      <a href="#" class="hidden lg:flex items-center gap-1.5 hover:text-brand-blue transition">
+        <span class="relative">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17a4 4 0 100-8 4 4 0 000 8zM17 17a4 4 0 100-8 4 4 0 000 8z"/><path d="M9 9l6-4M9 15l6 4"/></svg>
+          <span class="absolute -top-1.5 -right-1.5 bg-brand-red text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+        </span>
+        <span class="hidden xl:block font-medium">Compare</span>
+      </a>
+      <a href="#" class="flex items-center gap-1.5 hover:text-brand-blue transition">
+        <span class="relative">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 8V6a6 6 0 0112 0v2M4 8h16l-1.2 12.1a2 2 0 01-2 1.9H7.2a2 2 0 01-2-1.9L4 8z"/></svg>
+          <span class="absolute -top-1.5 -right-1.5 bg-brand-red text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+        </span>
+        <span class="hidden sm:block font-semibold">$0.00</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- mobile search -->
+  <div class="md:hidden px-4 pb-3">
+    <div class="flex w-full rounded-lg border border-gray-200 overflow-hidden">
+      <input type="text" placeholder="Search products..." class="w-full px-3.5 py-2 text-sm outline-none placeholder:text-gray-400" />
+      <button class="bg-brand-blue text-white px-4 flex items-center justify-center">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- main nav (desktop) -->
+  <nav class="border-t border-gray-100 hidden md:block">
+    <div class="max-w-7xl mx-auto px-4 flex items-center gap-7 text-[13.5px] font-medium text-[#3a4256]">
+      <a href="#" class="py-3 border-b-2 border-brand-blue text-brand-blue">Home</a>
+      <a href="#" class="py-3 border-b-2 border-transparent hover:text-brand-blue transition">Smartphones</a>
+      <a href="#" class="py-3 border-b-2 border-transparent hover:text-brand-blue transition">Laptops</a>
+      <a href="#" class="py-3 border-b-2 border-transparent hover:text-brand-blue transition">Audio</a>
+      <a href="#" class="py-3 border-b-2 border-transparent hover:text-brand-blue transition">Gaming</a>
+      <a href="#" class="py-3 border-b-2 border-transparent hover:text-brand-blue transition">Smart Home</a>
+      <a href="#" class="py-3 border-b-2 border-transparent hover:text-brand-blue transition">Accessories</a>
+      <a href="#" class="py-3 border-b-2 border-transparent text-brand-red font-semibold hover:opacity-70 transition">Deals</a>
+      <a href="#" class="py-3 border-b-2 border-transparent hover:text-brand-blue transition flex items-center gap-1 ml-auto">Support
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <!-- mobile nav drawer -->
+  <div id="mobileNav" class="md:hidden hidden flex-col px-4 py-2 text-sm font-medium text-[#3a4256] divide-y divide-gray-100 border-t border-gray-100">
+    <a href="#" class="py-2.5 text-brand-blue">Home</a>
+    <a href="#" class="py-2.5">Smartphones</a>
+    <a href="#" class="py-2.5">Laptops</a>
+    <a href="#" class="py-2.5">Audio</a>
+    <a href="#" class="py-2.5">Gaming</a>
+    <a href="#" class="py-2.5">Smart Home</a>
+    <a href="#" class="py-2.5">Accessories</a>
+    <a href="#" class="py-2.5 text-brand-red">Deals</a>
+    <a href="#" class="py-2.5">Support</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="relative overflow-hidden bg-gradient-to-br from-[#0E1B33] via-[#16305C] to-[#1D5FE0]">
+  <svg class="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 800 400" preserveAspectRatio="none"><path d="M0 400L800 0M100 400L800 100M200 400L800 200" stroke="#ffffff" stroke-width="1"/></svg>
+  <div class="max-w-7xl mx-auto px-4 pt-10 pb-8 md:pt-16 md:pb-12 grid md:grid-cols-2 gap-8 items-center relative">
+    <div>
+      <span class="inline-block bg-white/10 text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4 tracking-wide">NEW ARRIVALS 2024</span>
+      <h1 class="font-extrabold text-3xl sm:text-4xl md:text-5xl leading-[1.1] mb-4 text-white">Upgrade Your<br/>Tech Lifestyle</h1>
+      <p class="text-white/70 text-sm md:text-base max-w-md mb-7">Discover the latest electronics, smart devices, and accessories designed for performance and innovation.</p>
+      <div class="flex flex-wrap items-center gap-4">
+        <a href="#featured" class="inline-flex items-center gap-2 bg-white hover:bg-gray-100 transition text-brand-blue font-semibold px-6 py-3 md:py-3.5 rounded-lg shadow-card text-sm md:text-base">
+          Shop Now
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#" class="hidden md:inline-flex items-center gap-2 bg-transparent border-2 border-white/40 text-white font-semibold px-6 py-3.5 rounded-lg hover:bg-white/10 transition text-sm md:text-base">
+          Explore Deals
+        </a>
+      </div>
+    </div>
+
+    <div class="relative flex justify-center">
+      <svg viewBox="0 0 460 320" class="w-full max-w-lg">
+        <ellipse cx="230" cy="290" rx="180" ry="16" fill="#ffffff" opacity="0.12"/>
+        <ellipse cx="230" cy="270" rx="90" ry="18" fill="#ffffff" opacity="0.9"/>
+        <!-- laptop -->
+        <rect x="120" y="80" width="130" height="90" rx="6" fill="#D7DEEA"/>
+        <rect x="128" y="86" width="114" height="72" rx="2" fill="#1747B3"/>
+        <path d="M105 170h180l10 20H95z" fill="#9BA9C4"/>
+        <!-- phone -->
+        <rect x="270" y="60" width="70" height="140" rx="14" fill="#B9C6E0" stroke="#8FA0C4" stroke-width="2"/>
+        <rect x="277" y="70" width="56" height="118" rx="3" fill="#DCE6F5"/>
+        <!-- watch -->
+        <rect x="145" y="190" width="34" height="46" rx="10" fill="#232323"/>
+        <rect x="150" y="196" width="24" height="34" rx="5" fill="#3a3a3a"/>
+        <!-- earbuds case -->
+        <rect x="115" y="205" width="26" height="18" rx="6" fill="#fff"/>
+        <circle cx="123" cy="214" r="4" fill="#e2e6ee"/><circle cx="133" cy="214" r="4" fill="#e2e6ee"/>
+        <!-- headphones -->
+        <path d="M330 190q0-38 38-38t38 38" fill="none" stroke="#232323" stroke-width="10" stroke-linecap="round"/>
+        <rect x="318" y="185" width="18" height="32" rx="9" fill="#232323"/>
+        <rect x="388" y="185" width="18" height="32" rx="9" fill="#232323"/>
+        <circle cx="397" cy="200" r="4" fill="#1D5FE0"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="flex items-center justify-center gap-2 pb-6 relative">
+    <span class="w-6 h-2 rounded-full bg-white"></span>
+    <span class="w-2 h-2 rounded-full bg-white/30"></span>
+    <span class="w-2 h-2 rounded-full bg-white/30"></span>
+  </div>
+
+  <!-- trust icons -->
+  <div class="max-w-7xl mx-auto px-4 pb-8 relative">
+    <div class="bg-white rounded-xl md:rounded-2xl shadow-card grid grid-cols-2 md:grid-cols-5 gap-5 px-5 md:px-8 py-5">
+      <div class="flex items-center gap-2.5">
+        <svg class="w-6 h-6 text-brand-blue shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg>
+        <div><p class="font-semibold text-xs md:text-sm">Free Shipping</p><p class="text-[10px] md:text-xs text-gray-500">On orders $49+</p></div>
+      </div>
+      <div class="flex items-center gap-2.5">
+        <svg class="w-6 h-6 text-brand-blue shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+        <div><p class="font-semibold text-xs md:text-sm">Secure Payments</p><p class="text-[10px] md:text-xs text-gray-500">100% protected</p></div>
+      </div>
+      <div class="flex items-center gap-2.5">
+        <svg class="w-6 h-6 text-brand-blue shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l7 4v6c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+        <div><p class="font-semibold text-xs md:text-sm">Official Warranty</p><p class="text-[10px] md:text-xs text-gray-500">Brand warranty</p></div>
+      </div>
+      <div class="flex items-center gap-2.5">
+        <svg class="w-6 h-6 text-brand-blue shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        <div><p class="font-semibold text-xs md:text-sm">Fast Delivery</p><p class="text-[10px] md:text-xs text-gray-500">2–4 business days</p></div>
+      </div>
+      <div class="hidden md:flex items-center gap-2.5">
+        <svg class="w-6 h-6 text-brand-blue shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 16v-3a8 8 0 0116 0v3"/><rect x="2.5" y="15" width="5" height="6" rx="2"/><rect x="16.5" y="15" width="5" height="6" rx="2"/></svg>
+        <div><p class="font-semibold text-sm">24/7 Support</p><p class="text-xs text-gray-500">Live chat &amp; email</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SHOP BY CATEGORY ============ -->
+<section class="max-w-7xl mx-auto px-4 py-10">
+  <div class="flex items-center justify-between mb-5">
+    <h2 class="font-extrabold text-xl md:text-2xl">Shop by Category</h2>
+    <a href="#" class="text-xs md:text-sm font-semibold text-brand-blue hover:text-brand-blueDark transition">View All Categories</a>
+  </div>
+  <div class="grid grid-cols-3 md:grid-cols-8 gap-3 md:gap-4">
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-full aspect-square rounded-xl bg-gray-100 flex items-center justify-center group-hover:shadow-cardHover transition">
+        <svg class="w-9 h-9 text-[#3a4256]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>
+      </div>
+      <span class="text-[11px] md:text-xs font-medium text-center">Smartphones</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-full aspect-square rounded-xl bg-gray-100 flex items-center justify-center group-hover:shadow-cardHover transition">
+        <svg class="w-9 h-9 text-[#3a4256]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M2 19h20l-2-3H4z"/></svg>
+      </div>
+      <span class="text-[11px] md:text-xs font-medium text-center">Laptops</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-full aspect-square rounded-xl bg-gray-100 flex items-center justify-center group-hover:shadow-cardHover transition">
+        <svg class="w-9 h-9 text-[#3a4256]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="3" width="16" height="18" rx="2"/></svg>
+      </div>
+      <span class="text-[11px] md:text-xs font-medium text-center">Tablets</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-full aspect-square rounded-xl bg-gray-100 flex items-center justify-center group-hover:shadow-cardHover transition">
+        <svg class="w-9 h-9 text-[#3a4256]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 13v-1a8 8 0 0116 0v1"/><rect x="3" y="13" width="5" height="7" rx="2"/><rect x="16" y="13" width="5" height="7" rx="2"/></svg>
+      </div>
+      <span class="text-[11px] md:text-xs font-medium text-center">Audio</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-full aspect-square rounded-xl bg-gray-100 flex items-center justify-center group-hover:shadow-cardHover transition">
+        <svg class="w-9 h-9 text-[#3a4256]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="8" width="20" height="10" rx="5"/><circle cx="8" cy="13" r="1.4"/><circle cx="6" cy="11" r="1.4"/><circle cx="17" cy="12" r="1.4"/><circle cx="19" cy="14" r="1.4"/></svg>
+      </div>
+      <span class="text-[11px] md:text-xs font-medium text-center">Gaming</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-full aspect-square rounded-xl bg-gray-100 flex items-center justify-center group-hover:shadow-cardHover transition">
+        <svg class="w-9 h-9 text-[#3a4256]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="6" width="16" height="12" rx="2"/><circle cx="12" cy="12" r="3.5"/></svg>
+      </div>
+      <span class="text-[11px] md:text-xs font-medium text-center">Cameras</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-full aspect-square rounded-xl bg-gray-100 flex items-center justify-center group-hover:shadow-cardHover transition">
+        <svg class="w-9 h-9 text-[#3a4256]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="4" width="12" height="16" rx="2"/><circle cx="12" cy="17" r="1"/></svg>
+      </div>
+      <span class="text-[11px] md:text-xs font-medium text-center">Smart Home</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2">
+      <div class="w-full aspect-square rounded-xl bg-gray-100 flex items-center justify-center group-hover:shadow-cardHover transition">
+        <svg class="w-9 h-9 text-[#3a4256]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6l6 6-6 6M13 18h7"/></svg>
+      </div>
+      <span class="text-[11px] md:text-xs font-medium text-center">Accessories</span>
+    </a>
+  </div>
+</section>
+
+<!-- ============ FEATURED PRODUCTS ============ -->
+<section id="featured" class="max-w-7xl mx-auto px-4 pb-10">
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
+    <div class="flex items-center gap-6">
+      <h2 class="font-extrabold text-xl md:text-2xl">Featured Products</h2>
+      <div class="hidden sm:flex items-center gap-5 text-sm font-medium text-gray-400">
+        <button data-ftab="top" class="ftab-btn text-brand-blue border-b-2 border-brand-blue pb-1">Top Picks</button>
+        <button data-ftab="rated" class="ftab-btn hover:text-brand-blue transition pb-1 border-b-2 border-transparent">Best Rated</button>
+        <button data-ftab="sale" class="ftab-btn hover:text-brand-blue transition pb-1 border-b-2 border-transparent">On Sale</button>
+      </div>
+    </div>
+    <a href="#" class="text-xs md:text-sm font-semibold text-brand-blue hover:text-brand-blueDark transition">View All →</a>
+  </div>
+
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
+    <div class="group bg-white border border-gray-100 rounded-2xl p-3 hover:shadow-cardHover transition">
+      <div class="relative bg-gray-50 rounded-xl aspect-square flex items-center justify-center overflow-hidden mb-3">
+        <span class="absolute top-2 left-2 bg-brand-red text-white text-[10px] font-bold px-2 py-1 rounded-md z-10">-12%</span>
+        <svg viewBox="0 0 120 120" class="w-16 h-20 group-hover:scale-105 transition"><rect x="42" y="20" width="36" height="80" rx="10" fill="#3F4E6B"/><rect x="46" y="26" width="28" height="64" rx="2" fill="#8FA0C4"/></svg>
+      </div>
+      <h3 class="text-xs md:text-sm font-semibold leading-snug mb-1">Apple iPhone 15 Pro Max 256GB – Titanium Blue</h3>
+      <div class="star-rating text-amber-400 text-[11px] flex items-center gap-1 mb-1">★★★★<span class="text-amber-200">★</span><span class="text-gray-400 font-sans ml-1">(1.2k)</span></div>
+      <p class="font-extrabold text-sm">$1,099.00 <span class="text-gray-400 font-medium line-through text-[10px] block sm:inline">$1,249.00</span></p>
+    </div>
+
+    <div class="group bg-white border border-gray-100 rounded-2xl p-3 hover:shadow-cardHover transition">
+      <div class="relative bg-gray-50 rounded-xl aspect-square flex items-center justify-center overflow-hidden mb-3">
+        <span class="absolute top-2 left-2 bg-brand-red text-white text-[10px] font-bold px-2 py-1 rounded-md z-10">-20%</span>
+        <svg viewBox="0 0 120 120" class="w-16 h-20 group-hover:scale-105 transition"><rect x="40" y="18" width="40" height="84" rx="12" fill="#232323"/><rect x="45" y="24" width="30" height="68" rx="3" fill="#4a4a4a"/></svg>
+      </div>
+      <h3 class="text-xs md:text-sm font-semibold leading-snug mb-1">Samsung Galaxy S24 Ultra 512GB – Titanium Black</h3>
+      <div class="star-rating text-amber-400 text-[11px] flex items-center gap-1 mb-1">★★★★<span class="text-amber-200">★</span><span class="text-gray-400 font-sans ml-1">(980)</span></div>
+      <p class="font-extrabold text-sm">$1,149.00</p>
+    </div>
+
+    <div class="group bg-white border border-gray-100 rounded-2xl p-3 hover:shadow-cardHover transition">
+      <div class="relative bg-gray-50 rounded-xl aspect-square flex items-center justify-center overflow-hidden mb-3">
+        <span class="absolute top-2 left-2 bg-brand-red text-white text-[10px] font-bold px-2 py-1 rounded-md z-10">Sale</span>
+        <svg viewBox="0 0 120 120" class="w-20 h-20 group-hover:scale-105 transition"><path d="M35 55q0-30 25-30t25 30" fill="none" stroke="#232323" stroke-width="9" stroke-linecap="round"/><rect x="24" y="50" width="18" height="34" rx="9" fill="#232323"/><rect x="78" y="50" width="18" height="34" rx="9" fill="#232323"/></svg>
+      </div>
+      <h3 class="text-xs md:text-sm font-semibold leading-snug mb-1">Sony WH-1000XM5 Wireless Headphones</h3>
+      <div class="star-rating text-amber-400 text-[11px] flex items-center gap-1 mb-1">★★★★★<span class="text-gray-400 font-sans ml-1">(2.1k)</span></div>
+      <p class="font-extrabold text-sm">$279.00 <span class="text-gray-400 font-medium line-through text-[10px]">$349.00</span></p>
+    </div>
+
+    <div class="group bg-white border border-gray-100 rounded-2xl p-3 hover:shadow-cardHover transition">
+      <div class="relative bg-gray-50 rounded-xl aspect-square flex items-center justify-center overflow-hidden mb-3">
+        <svg viewBox="0 0 120 120" class="w-24 h-24 group-hover:scale-105 transition"><rect x="24" y="40" width="72" height="48" rx="5" fill="#D7DEEA"/><rect x="30" y="45" width="60" height="38" rx="2" fill="#1747B3"/><path d="M18 88h84l6 10H12z" fill="#9BA9C4"/></svg>
+      </div>
+      <h3 class="text-xs md:text-sm font-semibold leading-snug mb-1">MacBook Air M3 Chip 13-inch, 512GB SSD</h3>
+      <div class="star-rating text-amber-400 text-[11px] flex items-center gap-1 mb-1">★★★★<span class="text-amber-200">★</span><span class="text-gray-400 font-sans ml-1">(890)</span></div>
+      <p class="font-extrabold text-sm">$1,099.00</p>
+    </div>
+
+    <div class="group bg-white border border-gray-100 rounded-2xl p-3 hover:shadow-cardHover transition">
+      <div class="relative bg-gray-50 rounded-xl aspect-square flex items-center justify-center overflow-hidden mb-3">
+        <svg viewBox="0 0 120 120" class="w-24 h-24 group-hover:scale-105 transition"><circle cx="60" cy="60" r="8" fill="#3a3a3a"/><path d="M60 60L30 40M60 60L90 40M60 60L30 80M60 60L90 80" stroke="#232323" stroke-width="4"/><circle cx="30" cy="40" r="9" fill="#666"/><circle cx="90" cy="40" r="9" fill="#666"/><circle cx="30" cy="80" r="9" fill="#666"/><circle cx="90" cy="80" r="9" fill="#666"/></svg>
+      </div>
+      <h3 class="text-xs md:text-sm font-semibold leading-snug mb-1">DJI Mini 4 Pro Drone Fly More Combo</h3>
+      <div class="star-rating text-amber-400 text-[11px] flex items-center gap-1 mb-1">★★★★<span class="text-amber-200">★</span><span class="text-gray-400 font-sans ml-1">(430)</span></div>
+      <p class="font-extrabold text-sm">$959.00</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3 PROMO BANNERS ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-10">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+    <div class="bg-gradient-to-br from-[#141B2E] to-[#2B3A63] rounded-2xl p-6 flex items-center justify-between overflow-hidden relative min-h-[150px]">
+      <div class="relative z-10">
+        <p class="text-white/60 text-xs mb-1">Level Up Your Game</p>
+        <h3 class="font-extrabold text-lg md:text-xl text-white">Gaming Gear</h3>
+        <p class="text-xs text-white/70 mt-1 mb-3">Up to 35% Off</p>
+        <a href="#" class="inline-flex items-center gap-1 text-xs font-bold bg-white text-[#141B2E] px-4 py-2 rounded-lg">Shop Gaming
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <svg viewBox="0 0 100 100" class="w-20 h-20 shrink-0"><rect x="18" y="40" width="64" height="26" rx="13" fill="#3a4a7a"/><circle cx="34" cy="53" r="5" fill="#F0C647"/><circle cx="66" cy="48" r="4" fill="#E5484D"/><circle cx="74" cy="53" r="4" fill="#4CAF7D"/></svg>
+    </div>
+
+    <div class="bg-gradient-to-br from-[#0F2A3D] to-[#1D5FE0] rounded-2xl p-6 flex items-center justify-between overflow-hidden relative min-h-[150px]">
+      <div class="relative z-10">
+        <p class="text-white/60 text-xs mb-1">Smarter Living</p>
+        <h3 class="font-extrabold text-lg md:text-xl text-white">Smart Home</h3>
+        <p class="text-xs text-white/70 mt-1 mb-3">Up to 30% Off</p>
+        <a href="#" class="inline-flex items-center gap-1 text-xs font-bold bg-white text-[#0F2A3D] px-4 py-2 rounded-lg">Shop Now
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <svg viewBox="0 0 100 100" class="w-20 h-20 shrink-0"><rect x="34" y="35" width="32" height="45" rx="14" fill="#9AB4E8"/><circle cx="50" cy="50" r="4" fill="#fff"/><path d="M20 30q10-16 20 0M60 30q10-16 20 0" stroke="#fff" stroke-width="3" fill="none" opacity="0.8"/></svg>
+    </div>
+
+    <div class="bg-gradient-to-br from-[#241338] to-[#1D5FE0] rounded-2xl p-6 flex items-center justify-between overflow-hidden relative min-h-[150px]">
+      <div class="relative z-10">
+        <p class="text-white/60 text-xs mb-1">Immersive Sound</p>
+        <h3 class="font-extrabold text-lg md:text-xl text-white">Audio Deals</h3>
+        <p class="text-xs text-white/70 mt-1 mb-3">Up to 40% Off</p>
+        <a href="#" class="inline-flex items-center gap-1 text-xs font-bold bg-white text-[#241338] px-4 py-2 rounded-lg">Shop Audio
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <svg viewBox="0 0 100 100" class="w-20 h-20 shrink-0"><rect x="30" y="30" width="12" height="30" rx="6" fill="#fff"/><rect x="58" y="30" width="12" height="30" rx="6" fill="#fff"/><path d="M36 30q14-16 28 0" stroke="#fff" stroke-width="3" fill="none"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BEST SELLERS + NEW ARRIVALS ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-10">
+  <div class="grid lg:grid-cols-[1fr_2fr] gap-6">
+
+    <div class="bg-white border border-gray-100 rounded-2xl p-5">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="font-extrabold text-base md:text-lg">Best Sellers</h2>
+        <a href="#" class="text-xs font-semibold text-brand-blue hover:text-brand-blueDark transition">View All →</a>
+      </div>
+      <div class="divide-y divide-gray-50">
+        <div class="flex items-center gap-3 py-3">
+          <span class="font-extrabold text-gray-300 text-lg w-4">1</span>
+          <div class="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center shrink-0"><svg viewBox="0 0 40 40" class="w-7 h-7"><rect x="14" y="12" width="6" height="9" rx="3" fill="#fff" stroke="#ddd" stroke-width="1"/><rect x="20" y="12" width="6" height="9" rx="3" fill="#fff" stroke="#ddd" stroke-width="1"/></svg></div>
+          <div class="flex-1 min-w-0">
+            <p class="text-xs md:text-sm font-semibold truncate">Apple AirPods Pro (2nd Gen)</p>
+            <div class="star-rating text-amber-400 text-[10px] flex items-center gap-1">★★★★<span class="text-amber-200">★</span><span class="text-gray-400 font-sans ml-1">(2.5k)</span></div>
+          </div>
+          <p class="font-bold text-sm shrink-0">$249.00</p>
+        </div>
+        <div class="flex items-center gap-3 py-3">
+          <span class="font-extrabold text-gray-300 text-lg w-4">2</span>
+          <div class="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center shrink-0"><svg viewBox="0 0 40 40" class="w-7 h-7"><rect x="14" y="8" width="12" height="18" rx="4" fill="#232323"/></svg></div>
+          <div class="flex-1 min-w-0">
+            <p class="text-xs md:text-sm font-semibold truncate">Apple Watch Series 9 GPS 45mm</p>
+            <div class="star-rating text-amber-400 text-[10px] flex items-center gap-1">★★★★<span class="text-amber-200">★</span><span class="text-gray-400 font-sans ml-1">(1.8k)</span></div>
+          </div>
+          <p class="font-bold text-sm shrink-0">$399.00</p>
+        </div>
+        <div class="flex items-center gap-3 py-3">
+          <span class="font-extrabold text-gray-300 text-lg w-4">3</span>
+          <div class="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center shrink-0"><svg viewBox="0 0 40 40" class="w-7 h-7"><path d="M10 20q0-10 10-10t10 10" fill="none" stroke="#232323" stroke-width="3"/><rect x="6" y="18" width="7" height="12" rx="3" fill="#232323"/><rect x="27" y="18" width="7" height="12" rx="3" fill="#232323"/></svg></div>
+          <div class="flex-1 min-w-0">
+            <p class="text-xs md:text-sm font-semibold truncate">Bose QuietComfort Ultra Headphones</p>
+            <div class="star-rating text-amber-400 text-[10px] flex items-center gap-1">★★★★<span class="text-amber-200">★</span><span class="text-gray-400 font-sans ml-1">(980)</span></div>
+          </div>
+          <p class="font-bold text-sm shrink-0">$329.00</p>
+        </div>
+        <div class="flex items-center gap-3 py-3">
+          <span class="font-extrabold text-gray-300 text-lg w-4">4</span>
+          <div class="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center shrink-0"><svg viewBox="0 0 40 40" class="w-7 h-7"><rect x="15" y="6" width="10" height="28" rx="4" fill="#fff" stroke="#ddd" stroke-width="1.5"/></svg></div>
+          <div class="flex-1 min-w-0">
+            <p class="text-xs md:text-sm font-semibold truncate">PlayStation 5 Console Slim Edition</p>
+            <div class="star-rating text-amber-400 text-[10px] flex items-center gap-1">★★★★<span class="text-amber-200">★</span><span class="text-gray-400 font-sans ml-1">(1.9k)</span></div>
+          </div>
+          <p class="font-bold text-sm shrink-0">$499.00</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white border border-gray-100 rounded-2xl p-5">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="font-extrabold text-base md:text-lg">New Arrivals</h2>
+        <a href="#" class="text-xs font-semibold text-brand-blue hover:text-brand-blueDark transition">View All →</a>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="group">
+          <div class="relative bg-gray-50 rounded-xl aspect-square flex items-center justify-center mb-2 overflow-hidden">
+            <span class="absolute top-2 left-2 bg-brand-blue text-white text-[9px] font-bold px-2 py-0.5 rounded z-10">NEW</span>
+            <svg viewBox="0 0 100 100" class="w-16 h-16 group-hover:scale-105 transition"><rect x="20" y="35" width="60" height="40" rx="4" fill="#7B3FF2"/><rect x="26" y="40" width="48" height="30" rx="2" fill="#3a1f8f"/></svg>
+          </div>
+          <p class="text-xs font-semibold leading-snug mb-1">ASUS ROG Zephyrus G14 Gaming Laptop</p>
+          <div class="star-rating text-amber-400 text-[10px] flex items-center gap-1 mb-1">★★★★<span class="text-gray-300">★</span><span class="text-gray-400 font-sans ml-1">(120)</span></div>
+          <p class="font-bold text-sm">$1,599.00</p>
+        </div>
+        <div class="group">
+          <div class="bg-gray-50 rounded-xl aspect-square flex items-center justify-center mb-2 overflow-hidden">
+            <svg viewBox="0 0 100 100" class="w-14 h-18 group-hover:scale-105 transition"><rect x="35" y="18" width="30" height="64" rx="8" fill="#8FBF3F"/><rect x="39" y="23" width="22" height="50" rx="2" fill="#e9f2dc"/></svg>
+          </div>
+          <p class="text-xs font-semibold leading-snug mb-1">Google Pixel 8a 128GB – Aloe</p>
+          <div class="star-rating text-amber-400 text-[10px] flex items-center gap-1 mb-1">★★★★<span class="text-gray-300">★</span><span class="text-gray-400 font-sans ml-1">(210)</span></div>
+          <p class="font-bold text-sm">$499.00</p>
+        </div>
+        <div class="group">
+          <div class="bg-gray-50 rounded-xl aspect-square flex items-center justify-center mb-2 overflow-hidden">
+            <svg viewBox="0 0 100 100" class="w-16 h-16 group-hover:scale-105 transition"><path d="M28 48q0-24 22-24t22 24" fill="none" stroke="#3a4256" stroke-width="7" stroke-linecap="round"/><rect x="20" y="44" width="14" height="26" rx="7" fill="#3a4256"/><rect x="66" y="44" width="14" height="26" rx="7" fill="#3a4256"/></svg>
+          </div>
+          <p class="text-xs font-semibold leading-snug mb-1">Sony WH-CH720N Wireless Headphones</p>
+          <div class="star-rating text-amber-400 text-[10px] flex items-center gap-1 mb-1">★★★★<span class="text-gray-300">★</span><span class="text-gray-400 font-sans ml-1">(340)</span></div>
+          <p class="font-bold text-sm">$129.00</p>
+        </div>
+        <div class="group">
+          <div class="bg-gray-50 rounded-xl aspect-square flex items-center justify-center mb-2 overflow-hidden">
+            <svg viewBox="0 0 100 100" class="w-14 h-18 group-hover:scale-105 transition"><rect x="38" y="22" width="24" height="56" rx="10" fill="#232323"/><rect x="43" y="28" width="14" height="34" rx="3" fill="#4AA8E0"/></svg>
+          </div>
+          <p class="text-xs font-semibold leading-snug mb-1">Anker 737 Power Bank (24000mAh, 140W)</p>
+          <div class="star-rating text-amber-400 text-[10px] flex items-center gap-1 mb-1">★★★★<span class="text-amber-200">★</span><span class="text-gray-400 font-sans ml-1">(610)</span></div>
+          <p class="font-bold text-sm">$109.00</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST STATS BAR ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-10">
+  <div class="bg-brand-blueLight rounded-2xl px-5 md:px-8 py-6 grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
+    <div class="flex flex-col items-center gap-1.5">
+      <svg class="w-6 h-6 text-brand-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M3 7l9-4 9 4"/></svg>
+      <p class="font-extrabold text-base md:text-lg">15K+</p><p class="text-[11px] md:text-xs text-gray-500">Products Available</p>
+    </div>
+    <div class="flex flex-col items-center gap-1.5">
+      <svg class="w-6 h-6 text-brand-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+      <p class="font-extrabold text-base md:text-lg">60K+</p><p class="text-[11px] md:text-xs text-gray-500">Happy Customers</p>
+    </div>
+    <div class="flex flex-col items-center gap-1.5">
+      <svg class="w-6 h-6 text-brand-blue" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.4 7 .7-5.3 4.7 1.6 6.9L12 17l-6.2 3.7 1.6-6.9L2.1 9.1l7-.7L12 2z"/></svg>
+      <p class="font-extrabold text-base md:text-lg">4.9/5</p><p class="text-[11px] md:text-xs text-gray-500">Customer Rating</p>
+    </div>
+    <div class="flex flex-col items-center gap-1.5">
+      <svg class="w-6 h-6 text-brand-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+      <p class="font-extrabold text-base md:text-lg">100%</p><p class="text-[11px] md:text-xs text-gray-500">Secure Shopping</p>
+    </div>
+    <div class="hidden md:flex flex-col items-center gap-1.5">
+      <svg class="w-6 h-6 text-brand-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l7 4v6c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+      <p class="font-extrabold text-base md:text-lg">Official</p><p class="text-xs text-gray-500">Brand Warranty</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-10">
+  <div class="flex items-center justify-between mb-5">
+    <h2 class="font-extrabold text-xl md:text-2xl">What Our Customers Say</h2>
+    <a href="#" class="text-xs md:text-sm font-semibold text-brand-blue hover:text-brand-blueDark transition">View All Reviews</a>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+    <div class="bg-white border border-gray-100 rounded-2xl p-5">
+      <div class="star-rating text-amber-400 text-sm mb-3">★★★★★</div>
+      <p class="text-sm text-[#3a4256] mb-5">"TechNova has the best collection of gadgets! Fast shipping, genuine products and excellent customer service."</p>
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full bg-brand-blueLight flex items-center justify-center text-brand-blue font-bold text-sm">D</div>
+        <div><p class="text-sm font-semibold">Daniel K.</p><p class="text-xs text-gray-500">Verified Buyer</p></div>
+      </div>
+    </div>
+    <div class="bg-white border border-gray-100 rounded-2xl p-5">
+      <div class="star-rating text-amber-400 text-sm mb-3">★★★★★</div>
+      <p class="text-sm text-[#3a4256] mb-5">"I bought my MacBook from TechNova and the experience was amazing. Great prices and secure checkout."</p>
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full bg-brand-blueLight flex items-center justify-center text-brand-blue font-bold text-sm">S</div>
+        <div><p class="text-sm font-semibold">Sophia L.</p><p class="text-xs text-gray-500">Verified Buyer</p></div>
+      </div>
+    </div>
+    <div class="bg-white border border-gray-100 rounded-2xl p-5">
+      <div class="star-rating text-amber-400 text-sm mb-3">★★★★★</div>
+      <p class="text-sm text-[#3a4256] mb-5">"The gaming accessories I ordered are top quality. Highly recommended store for tech lovers!"</p>
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full bg-brand-blueLight flex items-center justify-center text-brand-blue font-bold text-sm">J</div>
+        <div><p class="text-sm font-semibold">James T.</p><p class="text-xs text-gray-500">Verified Buyer</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWSLETTER BAND ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-10">
+  <div class="bg-brand-blue rounded-2xl px-6 md:px-10 py-7 flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden relative">
+    <div class="flex items-center gap-4 relative z-10">
+      <div class="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center text-white shrink-0">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7l9 6 9-6M4 5h16a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1z"/></svg>
+      </div>
+      <div>
+        <h3 class="font-extrabold text-lg text-white">Stay Ahead with Tech</h3>
+        <p class="text-sm text-white/70 mt-0.5">Get exclusive deals, new arrivals &amp; tech updates straight to your inbox.</p>
+        <p class="text-[11px] text-white/50 mt-1">No spam. Unsubscribe anytime.</p>
+      </div>
+    </div>
+    <form class="flex w-full md:w-auto gap-3 relative z-10" onsubmit="event.preventDefault(); this.reset(); alert('Thanks for subscribing!');">
+      <input type="email" required placeholder="Enter your email address" class="flex-1 md:w-72 px-5 py-3 rounded-lg border-0 outline-none focus:ring-2 focus:ring-white/40 text-sm" />
+      <button class="bg-white hover:bg-gray-100 transition text-brand-blue font-semibold px-7 py-3 rounded-lg shrink-0">Subscribe</button>
+    </form>
+    <svg class="hidden lg:block absolute right-6 -bottom-2 w-16 h-16 opacity-90" viewBox="0 0 100 100"><rect x="20" y="35" width="26" height="30" rx="3" fill="#F0C647"/><rect x="52" y="30" width="30" height="35" rx="3" fill="#4AA8E0"/><path d="M20 45h26M52 42h30" stroke="#fff" stroke-width="3"/></svg>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-white border-t border-gray-100 pt-12 pb-8">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="grid md:grid-cols-6 gap-10 pb-10 border-b border-gray-200">
+      <div class="md:col-span-1">
+        <a href="#" class="font-extrabold text-xl text-[#111827] mb-3 block">Tech<span class="text-brand-blue">Nova</span></a>
+        <p class="text-sm text-gray-500 leading-relaxed mb-4">Your one-stop destination for the latest electronics, smart gadgets, and accessories. Quality you can trust, service you can rely on.</p>
+        <div class="flex items-center gap-3">
+          <a href="#" class="w-8 h-8 rounded-full bg-gray-50 border border-gray-200 hover:border-brand-blue hover:text-brand-blue flex items-center justify-center transition" aria-label="Facebook">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.25-1.5 1.55-1.5H17V3.7C16.7 3.65 15.7 3.6 14.5 3.6c-2.4 0-4 1.45-4 4.15V10H7.8v3.1h2.7V21h3z"/></svg>
+          </a>
+          <a href="#" class="w-8 h-8 rounded-full bg-gray-50 border border-gray-200 hover:border-brand-blue hover:text-brand-blue flex items-center justify-center transition" aria-label="X">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4l7.5 9.5L4.3 20H7l5.8-6.4L17.3 20H21l-7.9-10L20 4h-2.7l-5.3 5.9L7.7 4z"/></svg>
+          </a>
+          <a href="#" class="w-8 h-8 rounded-full bg-gray-50 border border-gray-200 hover:border-brand-blue hover:text-brand-blue flex items-center justify-center transition" aria-label="Instagram">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor"/></svg>
+          </a>
+          <a href="#" class="w-8 h-8 rounded-full bg-gray-50 border border-gray-200 hover:border-brand-blue hover:text-brand-blue flex items-center justify-center transition" aria-label="YouTube">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12s0-3.2-.4-4.7a2.8 2.8 0 00-2-2C17.9 5 12 5 12 5s-5.9 0-7.6.3a2.8 2.8 0 00-2 2C2 8.8 2 12 2 12s0 3.2.4 4.7a2.8 2.8 0 002 2C6.1 19 12 19 12 19s5.9 0 7.6-.3a2.8 2.8 0 002-2C22 15.2 22 12 22 12z"/><path d="M10 9.5v5l4.5-2.5z" fill="#fff"/></svg>
+          </a>
+          <a href="#" class="w-8 h-8 rounded-full bg-gray-50 border border-gray-200 hover:border-brand-blue hover:text-brand-blue flex items-center justify-center transition" aria-label="Pinterest">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-3.6 19.3c0-.8 0-1.8.2-2.6l1.4-6c-.35-.7-.35-1.75-.35-1.75 0-1.6.95-2.8 2.1-2.8 1 0 1.5.75 1.5 1.65 0 1-.65 2.5-1 3.9-.3 1.15.6 2.1 1.75 2.1 2.1 0 3.7-2.2 3.7-5.4 0-2.8-2-4.8-4.9-4.8-3.35 0-5.3 2.5-5.3 5.1a10 10 0 006.9 9.6A10 10 0 0012 2z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-[#111827] font-semibold mb-4 text-sm">Shop</h4>
+        <ul class="space-y-2.5 text-sm text-gray-500">
+          <li><a href="#" class="hover:text-brand-blue transition">Smartphones</a></li>
+          <li><a href="#" class="hover:text-brand-blue transition">Laptops</a></li>
+          <li><a href="#" class="hover:text-brand-blue transition">Tablets</a></li>
+          <li><a href="#" class="hover:text-brand-blue transition">Audio</a></li>
+          <li><a href="#" class="hover:text-brand-blue transition">Gaming</a></li>
+          <li><a href="#" class="hover:text-brand-blue transition">Smart Home</a></li>
+          <li><a href="#" class="hover:text-brand-blue transition">Accessories</a></li>
+          <li><a href="#" class="hover:text-brand-blue transition">Deals</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-[#111827] font-semibold mb-4 text-sm">Customer Care</h4>
+        <ul class="space-y-2.5 text-sm text-gray-500">
+          <li><a href="#" class="hover:text-brand-blue transition">Contact Us</a></li>
+          <li><a href="#" class="hover:text-brand-blue transition">Track Order</a></li>
+          <li><a href="#" class="hover:text-brand-blue transition">Returns &amp; Refunds</a></li>
+          <li><a href="#" class="hover:text-brand-blue transition">Shipping Info</a></li>
+          <li><a href="#" class="hover:text-brand-blue transition">Warranty</a></li>
+          <li><a href="#" class="hover:text-brand-blue transition">FAQs</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-[#111827] font-semibold mb-4 text-sm">Company</h4>
+        <ul class="space-y-2.5 text-sm text-gray-500">
+          <li><a href="#" class="hover:text-brand-blue transition">About Us</a></li>
+          <li><a href="#" class="hover:text-brand-blue transition">Careers</a></li>
+          <li><a href="#" class="hover:text-brand-blue transition">Blog</a></li>
+          <li><a href="#" class="hover:text-brand-blue transition">Press</a></li>
+          <li><a href="#" class="hover:text-brand-blue transition">Affiliates</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-[#111827] font-semibold mb-4 text-sm">Information</h4>
+        <ul class="space-y-2.5 text-sm text-gray-500 mb-5">
+          <li><a href="#" class="hover:text-brand-blue transition">Privacy Policy</a></li>
+          <li><a href="#" class="hover:text-brand-blue transition">Terms &amp; Conditions</a></li>
+          <li><a href="#" class="hover:text-brand-blue transition">Cookie Policy</a></li>
+          <li><a href="#" class="hover:text-brand-blue transition">Sitemap</a></li>
+        </ul>
+        <h4 class="text-[#111827] font-semibold mb-3 text-sm">Get in Touch</h4>
+        <ul class="space-y-2 text-sm text-gray-500">
+          <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-blue shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v2a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 1h2a2 2 0 012 1.7c.1 1 .3 2 .7 2.9a2 2 0 01-.4 2.1L7 9.1a16 16 0 006 6l1.4-1.4a2 2 0 012.1-.4c.9.4 1.9.6 2.9.7a2 2 0 011.7 2z"/></svg>(800) 123-4567</li>
+          <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-blue shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4zM4 4l8 8 8-8"/></svg>support@technova.com</li>
+          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-brand-blue shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-11.5A7 7 0 105 9.5C5 14.5 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>123 Tech Street, Suite 456<br/>San Francisco, CA 94107</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 text-xs text-gray-500">
+      <p>© 2026 TechNova. All Rights Reserved.</p>
+      <div class="flex items-center gap-2">
+        <span class="bg-white border border-gray-200 text-[#1A1F71] text-[10px] font-bold rounded-md px-2.5 py-1.5">VISA</span>
+        <span class="bg-white border border-gray-200 text-[#EB001B] text-[10px] font-bold rounded-md px-2.5 py-1.5">MC</span>
+        <span class="bg-white border border-gray-200 text-[#003087] text-[10px] font-bold rounded-md px-2.5 py-1.5">PayPal</span>
+        <span class="bg-white border border-gray-200 text-[#000] text-[10px] font-bold rounded-md px-2.5 py-1.5">Pay</span>
+        <span class="bg-white border border-gray-200 text-[#4285F4] text-[10px] font-bold rounded-md px-2.5 py-1.5">GPay</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileNav = document.getElementById('mobileNav');
+  menuBtn.addEventListener('click', () => {
+    mobileNav.classList.toggle('hidden');
+    mobileNav.classList.toggle('flex');
+  });
+
+  const ftabBtns = document.querySelectorAll('.ftab-btn');
+  ftabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      ftabBtns.forEach(b => { b.classList.remove('text-brand-blue','border-brand-blue'); b.classList.add('text-gray-400','border-transparent'); });
+      btn.classList.add('text-brand-blue','border-brand-blue');
+      btn.classList.remove('text-gray-400','border-transparent');
+    });
+  });
+</script>
+
+</body>
+</html>

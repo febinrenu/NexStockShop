@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Élégance — Define Your Signature Style</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          serif: ['"Playfair Display"', 'serif'],
+          sans: ['Inter', 'sans-serif'],
+        },
+        colors: {
+          brand: {
+            black: '#111111',
+            gold: '#C9A15B',
+            goldDark: '#AD8748',
+            cream: '#F3ECDD',
+          },
+        },
+        boxShadow: {
+          card: '0 4px 16px -6px rgba(17,17,17,0.10)',
+          cardHover: '0 14px 30px -10px rgba(17,17,17,0.20)',
+          navUp: '0 -4px 14px -6px rgba(17,17,17,0.14)',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  .font-logo { font-family: 'Playfair Display', serif; }
+  .eyebrow { letter-spacing: .14em; }
+  ::-webkit-scrollbar { height: 6px; width: 6px; }
+  ::-webkit-scrollbar-thumb { background: #e2d6c2; border-radius: 999px; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  summary::-webkit-details-marker { display: none; }
+  summary { list-style: none; }
+</style>
+</head>
+<body class="bg-white text-[#171310] antialiased">
+
+<!-- ============ TOP UTILITY BAR ============ -->
+<div class="bg-brand-black text-white text-[12px]">
+  <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between gap-3">
+    <span class="flex items-center gap-2 whitespace-nowrap">
+      <span>👑</span>
+      <span class="hidden sm:inline">EXTRA 20% OFF ON FIRST ORDER | USE CODE:</span>
+      <span class="sm:hidden">EXTRA 20% OFF | CODE:</span>
+      <span class="text-brand-gold font-bold">NEW20</span>
+    </span>
+    <div class="hidden md:flex items-center gap-4 whitespace-nowrap text-white/80">
+      <a href="#" class="hover:text-white transition">Store Locator</a>
+      <a href="#" class="hover:text-white transition">Help &amp; FAQs</a>
+      <a href="#" class="hover:text-white transition">Returns</a>
+      <span class="flex items-center gap-1">USD
+        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100">
+  <div class="hidden md:flex max-w-7xl mx-auto px-4 py-4 items-center gap-8">
+    <a href="#" class="shrink-0 leading-none">
+      <div class="font-logo text-2xl tracking-wide text-[#171310]">ÉLÉGANCE</div>
+      <div class="text-[9px] eyebrow text-[#7a7058] mt-0.5">TIMELESS FASHION</div>
+    </a>
+
+    <div class="flex flex-1 max-w-xl mx-auto">
+      <div class="flex w-full border border-gray-300 overflow-hidden focus-within:ring-2 focus-within:ring-black/10">
+        <input type="text" placeholder="Search for products, brands and more..." class="w-full px-5 py-2.5 text-sm outline-none placeholder:text-gray-400" />
+        <button class="bg-brand-black hover:bg-black transition text-white px-5 flex items-center justify-center" aria-label="Search">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-6 text-[12px] text-[#171310]">
+      <a href="#" class="flex flex-col items-center gap-1 hover:text-brand-gold transition">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+        Account
+      </a>
+      <a href="#" class="relative flex flex-col items-center gap-1 hover:text-brand-gold transition">
+        <span class="relative">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg>
+          <span class="absolute -top-1.5 -right-1.5 bg-brand-black text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center">2</span>
+        </span>
+        Wishlist
+      </a>
+      <a href="#" class="relative flex flex-col items-center gap-1 hover:text-brand-gold transition">
+        <span class="relative">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 8V6a6 6 0 0112 0v2M4 8h16l-1.2 12.1a2 2 0 01-2 1.9H7.2a2 2 0 01-2-1.9L4 8z"/></svg>
+          <span class="absolute -top-1.5 -right-1.5 bg-brand-black text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center">3</span>
+        </span>
+        Cart
+      </a>
+    </div>
+  </div>
+
+  <!-- mobile row -->
+  <div class="md:hidden flex items-center gap-3 px-4 py-3.5">
+    <button id="menuBtn" class="p-1 -ml-1" aria-label="Open menu">
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+    <a href="#" class="flex-1 flex flex-col items-center leading-none">
+      <span class="font-logo text-lg tracking-wide">ÉLÉGANCE</span>
+      <span class="text-[7.5px] eyebrow text-[#7a7058]">TIMELESS FASHION</span>
+    </a>
+    <a href="#" class="relative p-1">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 8V6a6 6 0 0112 0v2M4 8h16l-1.2 12.1a2 2 0 01-2 1.9H7.2a2 2 0 01-2-1.9L4 8z"/></svg>
+      <span class="absolute -top-0.5 -right-0.5 bg-brand-black text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center">3</span>
+    </a>
+  </div>
+  <div class="md:hidden px-4 pb-3">
+    <div class="flex w-full border border-gray-300 overflow-hidden">
+      <input type="text" placeholder="Search for products, brands..." class="w-full px-4 py-2 text-sm outline-none placeholder:text-gray-400" />
+      <button class="bg-brand-black text-white px-4 flex items-center justify-center">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- mobile nav drawer -->
+  <div id="mobileNav" class="md:hidden hidden flex-col px-4 py-2 text-sm font-medium text-[#171310] divide-y divide-gray-100 border-t border-gray-100">
+    <a href="#" class="py-2.5">New In</a>
+    <a href="#" class="py-2.5">Women</a>
+    <a href="#" class="py-2.5">Men</a>
+    <a href="#" class="py-2.5">Dresses</a>
+    <a href="#" class="py-2.5">Shoes</a>
+    <a href="#" class="py-2.5">Bags</a>
+    <a href="#" class="py-2.5">Accessories</a>
+    <a href="#" class="py-2.5">Brands</a>
+    <a href="#" class="py-2.5 text-brand-gold font-semibold">Sale</a>
+  </div>
+
+  <!-- nav row (desktop) -->
+  <nav class="hidden md:block bg-brand-black">
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-center gap-8 text-[12px] font-medium text-white/85 eyebrow h-11">
+      <a href="#" class="hover:text-brand-gold transition">NEW IN</a>
+      <a href="#" class="hover:text-brand-gold transition">WOMEN</a>
+      <a href="#" class="hover:text-brand-gold transition">MEN</a>
+      <a href="#" class="hover:text-brand-gold transition">DRESSES</a>
+      <a href="#" class="hover:text-brand-gold transition">SHOES</a>
+      <a href="#" class="hover:text-brand-gold transition">BAGS</a>
+      <a href="#" class="hover:text-brand-gold transition">ACCESSORIES</a>
+      <a href="#" class="hover:text-brand-gold transition">BRANDS</a>
+      <a href="#" class="text-brand-gold font-semibold hover:opacity-70 transition">SALE</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="relative overflow-hidden bg-brand-black">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-0 items-center">
+    <div class="px-4 md:px-10 py-10 md:py-0 relative z-10">
+      <span class="eyebrow text-xs font-semibold text-brand-gold uppercase mb-3 block">Summer Collection '24</span>
+      <h1 class="text-4xl sm:text-5xl md:text-[46px] leading-[1.1] mb-4">
+        <span class="text-white font-sans font-light">Define Your</span><br/>
+        <span class="font-logo italic text-brand-gold text-5xl sm:text-6xl md:text-[58px]">Signature Style</span>
+      </h1>
+      <p class="text-white/60 max-w-sm mb-8 text-sm md:text-base">Elevate your wardrobe with modern pieces that speak elegance.</p>
+      <div class="flex flex-wrap items-center gap-3 mb-10">
+        <a href="#newin" class="inline-flex items-center gap-2 bg-brand-gold hover:bg-brand-goldDark transition text-black font-semibold px-7 py-3.5 text-sm">SHOP WOMEN</a>
+        <a href="#" class="inline-flex items-center gap-2 bg-transparent border border-white/40 text-white font-semibold px-7 py-3.5 text-sm hover:bg-white/10 transition">SHOP MEN</a>
+      </div>
+      <div class="hidden md:flex items-center gap-3 text-[11px] text-white/50">
+        <span>01</span>
+        <span class="w-24 h-px bg-white/20 relative"><span class="absolute left-0 top-0 h-px w-1/3 bg-brand-gold"></span></span>
+        <span>03</span>
+      </div>
+    </div>
+
+    <div class="relative min-h-[280px] md:min-h-[520px]">
+      <svg viewBox="0 0 460 560" class="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMax slice">
+        <defs>
+          <radialGradient id="skinGradEl" cx="40%" cy="30%" r="80%">
+            <stop offset="0%" stop-color="#D9A876"/>
+            <stop offset="100%" stop-color="#B67D50"/>
+          </radialGradient>
+        </defs>
+        <rect width="460" height="560" fill="#EDE4D3"/>
+        <path d="M0 560 Q120 480 260 560 T540 560" fill="#DFCFB4" opacity="0.4"/>
+        <!-- columns backdrop -->
+        <rect x="20" y="60" width="18" height="480" fill="#DCD0B8" opacity="0.5"/>
+        <rect x="410" y="60" width="18" height="480" fill="#DCD0B8" opacity="0.5"/>
+        <!-- figure -->
+        <circle cx="240" cy="160" r="42" fill="url(#skinGradEl)"/>
+        <path d="M204 190q36 22 72 0" fill="none" stroke="#171310" stroke-width="2"/>
+        <path d="M195 210q45 45 90 0" fill="#111" stroke="none"/>
+        <path d="M180 260q60-42 120 0l16 220h-152z" fill="#D8C4A0"/>
+        <path d="M180 260q60-42 120 0" fill="none" stroke="#171310" stroke-width="2"/>
+        <path d="M180 260l-14 150 32 12 10-140" fill="#171310"/>
+        <path d="M300 260l14 150 -32 12 -10-140" fill="#171310"/>
+        <ellipse cx="330" cy="330" rx="26" ry="22" fill="#171310"/>
+        <path d="M330 308v46" stroke="#C9A15B" stroke-width="2"/>
+        <path d="M270 350l-8 100h30l6-90" fill="#171310" opacity="0.85"/>
+        <path d="M300 350l8 100h-30l-6-90" fill="#171310" opacity="0.85"/>
+        <ellipse cx="278" cy="450" rx="16" ry="7" fill="#171310"/>
+        <ellipse cx="308" cy="450" rx="16" ry="7" fill="#171310"/>
+        <!-- sunglasses -->
+        <rect x="220" y="150" width="20" height="12" rx="3" fill="#111" opacity="0.85"/>
+        <rect x="248" y="150" width="20" height="12" rx="3" fill="#111" opacity="0.85"/>
+      </svg>
+
+      <div class="hidden md:flex absolute top-6 right-6 w-28 h-28 rounded-full bg-brand-black/85 border border-brand-gold/40 text-white flex-col items-center justify-center text-center">
+        <span class="text-[10px] font-medium">UP TO</span>
+        <span class="font-logo text-3xl text-brand-gold leading-none">50%</span>
+        <span class="text-[10px] font-medium">OFF</span>
+      </div>
+
+      <div class="hidden md:flex absolute bottom-6 right-6 items-center gap-2">
+        <button id="heroPrev" class="w-9 h-9 rounded-full bg-brand-black/70 hover:bg-brand-black transition flex items-center justify-center text-white">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button id="heroNext" class="w-9 h-9 rounded-full bg-brand-black/70 hover:bg-brand-black transition flex items-center justify-center text-white">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST BAR ============ -->
+<section class="max-w-7xl mx-auto px-4 py-8">
+  <div class="grid grid-cols-2 md:grid-cols-5 gap-5 md:gap-6">
+    <div class="flex items-center gap-3">
+      <svg class="w-7 h-7 text-[#171310] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg>
+      <div><p class="font-semibold text-xs md:text-sm">Free Shipping</p><p class="text-[10px] md:text-xs text-gray-500">On orders over $100</p></div>
+    </div>
+    <div class="flex items-center gap-3">
+      <svg class="w-7 h-7 text-[#171310] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l7 4v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V7z"/><path d="M9 12l2 2 4-4"/></svg>
+      <div><p class="font-semibold text-xs md:text-sm">Secure Payment</p><p class="text-[10px] md:text-xs text-gray-500">100% secure checkout</p></div>
+    </div>
+    <div class="flex items-center gap-3">
+      <svg class="w-7 h-7 text-[#171310] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4v6h6M20 20v-6h-6"/><path d="M5.5 15a8 8 0 0013.9 3.5M18.5 9A8 8 0 004.6 5.5"/></svg>
+      <div><p class="font-semibold text-xs md:text-sm">Easy Returns</p><p class="text-[10px] md:text-xs text-gray-500">30-day return policy</p></div>
+    </div>
+    <div class="flex items-center gap-3">
+      <svg class="w-7 h-7 text-[#171310] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l4 2 5-6 5 6 4-2-2 10H5z"/></svg>
+      <div><p class="font-semibold text-xs md:text-sm">Premium Quality</p><p class="text-[10px] md:text-xs text-gray-500">Handpicked with care</p></div>
+    </div>
+    <div class="hidden md:flex items-center gap-3">
+      <svg class="w-7 h-7 text-[#171310] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 16v-3a8 8 0 0116 0v3"/><rect x="2.5" y="15" width="5" height="6" rx="2"/><rect x="16.5" y="15" width="5" height="6" rx="2"/></svg>
+      <div><p class="font-semibold text-sm">24/7 Support</p><p class="text-xs text-gray-500">We're here to help</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5 COLLECTION CARDS ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-10">
+  <div class="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
+    <div class="relative rounded-lg overflow-hidden aspect-[4/5] bg-gradient-to-br from-[#3a3a3a] to-[#111]">
+      <svg viewBox="0 0 200 250" class="absolute inset-0 w-full h-full opacity-90"><rect width="200" height="250" fill="#2a2a2a"/><circle cx="100" cy="90" r="26" fill="#D9A876"/><path d="M60 200q40 26 80 0l6-70q-46-30-92 0z" fill="#D8C4A0"/></svg>
+      <div class="absolute inset-0 bg-black/25"></div>
+      <div class="absolute top-4 left-4 text-white">
+        <h3 class="font-logo text-xl">WOMEN</h3>
+        <p class="text-[10px] eyebrow text-white/70">COLLECTION</p>
+      </div>
+      <a href="#" class="absolute bottom-4 left-4 bg-white text-black text-[10px] font-bold eyebrow px-3 py-2">SHOP NOW</a>
+    </div>
+    <div class="relative rounded-lg overflow-hidden aspect-[4/5] bg-gradient-to-br from-[#3a3a3a] to-[#111]">
+      <svg viewBox="0 0 200 250" class="absolute inset-0 w-full h-full opacity-90"><rect width="200" height="250" fill="#2a2a2a"/><circle cx="100" cy="90" r="26" fill="#C99060"/><path d="M65 200q35 20 70 0l5-70q-40-25-80 0z" fill="#232323"/></svg>
+      <div class="absolute inset-0 bg-black/25"></div>
+      <div class="absolute top-4 left-4 text-white">
+        <h3 class="font-logo text-xl">MEN</h3>
+        <p class="text-[10px] eyebrow text-white/70">COLLECTION</p>
+      </div>
+      <a href="#" class="absolute bottom-4 left-4 bg-white text-black text-[10px] font-bold eyebrow px-3 py-2">SHOP NOW</a>
+    </div>
+    <div class="relative rounded-lg overflow-hidden aspect-[4/5] bg-gradient-to-br from-[#E8E0D0] to-[#C9BC9C]">
+      <svg viewBox="0 0 200 250" class="absolute inset-0 w-full h-full"><rect width="200" height="250" fill="#DCD3BC"/><ellipse cx="100" cy="200" rx="40" ry="8" fill="#B8A97E"/><path d="M60 200q4-70 40-70t40 70z" fill="#171310"/></svg>
+      <div class="absolute top-4 left-4 text-[#171310]">
+        <h3 class="font-logo text-xl">SHOES</h3>
+        <p class="text-[10px] eyebrow text-[#5a5340]">COLLECTION</p>
+      </div>
+      <a href="#" class="absolute bottom-4 left-4 bg-brand-black text-white text-[10px] font-bold eyebrow px-3 py-2">SHOP NOW</a>
+    </div>
+    <div class="relative rounded-lg overflow-hidden aspect-[4/5] bg-gradient-to-br from-[#8C6B3F] to-[#4a3a24]">
+      <svg viewBox="0 0 200 250" class="absolute inset-0 w-full h-full opacity-90"><rect width="200" height="250" fill="#3a2c1c"/><rect x="55" y="100" width="90" height="70" rx="6" fill="#171310"/><path d="M70 100v-16a30 30 0 0160 0v16" fill="none" stroke="#C9A15B" stroke-width="4"/></svg>
+      <div class="absolute inset-0 bg-black/15"></div>
+      <div class="absolute top-4 left-4 text-white">
+        <h3 class="font-logo text-xl">BAGS</h3>
+        <p class="text-[10px] eyebrow text-white/70">COLLECTION</p>
+      </div>
+      <a href="#" class="absolute bottom-4 left-4 bg-white text-black text-[10px] font-bold eyebrow px-3 py-2">SHOP NOW</a>
+    </div>
+    <div class="relative rounded-lg overflow-hidden aspect-[4/5] bg-gradient-to-br from-[#D8C4A0] to-[#B08D5C]">
+      <svg viewBox="0 0 200 250" class="absolute inset-0 w-full h-full"><rect width="200" height="250" fill="#C9B48C"/><circle cx="100" cy="130" r="34" fill="none" stroke="#F3ECDD" stroke-width="6"/><circle cx="100" cy="130" r="20" fill="#EDE4D3" stroke="#C9A15B" stroke-width="2"/></svg>
+      <div class="absolute top-4 left-4 text-[#171310]">
+        <h3 class="font-logo text-xl">ACCESSORIES</h3>
+        <p class="text-[10px] eyebrow text-[#5a5340]">COLLECTION</p>
+      </div>
+      <a href="#" class="absolute bottom-4 left-4 bg-brand-black text-white text-[10px] font-bold eyebrow px-3 py-2">SHOP NOW</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEW IN ============ -->
+<section id="newin" class="max-w-7xl mx-auto px-4 pb-10">
+  <div class="flex items-center justify-between mb-5">
+    <h2 class="eyebrow text-sm md:text-base font-bold flex items-center gap-2">NEW IN <span class="w-8 h-px bg-brand-gold"></span></h2>
+    <a href="#" class="text-xs md:text-sm font-semibold text-[#171310] hover:text-brand-gold transition flex items-center gap-1">View All Products
+      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-5">
+    <div class="group">
+      <div class="relative bg-brand-cream rounded-lg aspect-[4/5] flex items-center justify-center overflow-hidden mb-2.5">
+        <button class="absolute top-2 right-2 text-gray-400 hover:text-brand-gold transition z-10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg></button>
+        <svg viewBox="0 0 120 140" class="w-20 h-24 group-hover:scale-105 transition"><circle cx="60" cy="24" r="12" fill="#E7C9A8"/><path d="M36 118q24 14 48 0l4-58q-28-16-56 0z" fill="#171310"/></svg>
+      </div>
+      <p class="text-xs md:text-sm font-medium leading-snug mb-1">Pleated Maxi Dress</p>
+      <p class="font-bold text-sm mb-1">$79.99</p>
+      <div class="text-amber-400 text-[10px]">★★★★<span class="text-amber-200">★</span> <span class="text-gray-400">(128)</span></div>
+    </div>
+    <div class="group">
+      <div class="relative bg-brand-cream rounded-lg aspect-[4/5] flex items-center justify-center overflow-hidden mb-2.5">
+        <button class="absolute top-2 right-2 text-gray-400 hover:text-brand-gold transition z-10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg></button>
+        <svg viewBox="0 0 120 140" class="w-20 h-20 group-hover:scale-105 transition"><rect x="38" y="55" width="44" height="34" rx="6" fill="#D8C4A0"/><path d="M46 55v-9a14 14 0 0128 0v9" fill="none" stroke="#B08D5C" stroke-width="4"/></svg>
+      </div>
+      <p class="text-xs md:text-sm font-medium leading-snug mb-1">Minimal Leather Tote</p>
+      <p class="font-bold text-sm mb-1">$129.99</p>
+      <div class="text-amber-400 text-[10px]">★★★★<span class="text-amber-200">★</span> <span class="text-gray-400">(96)</span></div>
+    </div>
+    <div class="group">
+      <div class="relative bg-brand-cream rounded-lg aspect-[4/5] flex items-center justify-center overflow-hidden mb-2.5">
+        <button class="absolute top-2 right-2 text-gray-400 hover:text-brand-gold transition z-10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg></button>
+        <svg viewBox="0 0 120 140" class="w-20 h-24 group-hover:scale-105 transition"><circle cx="60" cy="24" r="12" fill="#E0BE9A"/><path d="M38 108l3-56q19-10 38 0l3 56z" fill="#171310"/></svg>
+      </div>
+      <p class="text-xs md:text-sm font-medium leading-snug mb-1">Linen Regular Shirt</p>
+      <p class="font-bold text-sm mb-1">$49.99</p>
+      <div class="text-amber-400 text-[10px]">★★★★<span class="text-amber-200">★</span> <span class="text-gray-400">(76)</span></div>
+    </div>
+    <div class="group">
+      <div class="relative bg-brand-cream rounded-lg aspect-[4/5] flex items-center justify-center overflow-hidden mb-2.5">
+        <button class="absolute top-2 right-2 text-gray-400 hover:text-brand-gold transition z-10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg></button>
+        <svg viewBox="0 0 120 140" class="w-20 h-20 group-hover:scale-105 transition"><path d="M30 88q30-16 60 0l-6 16H36z" fill="#F4F4F4" stroke="#D8DCE4" stroke-width="2"/><rect x="30" y="98" width="60" height="10" rx="4" fill="#EDEFF3" stroke="#D8DCE4" stroke-width="2"/></svg>
+      </div>
+      <p class="text-xs md:text-sm font-medium leading-snug mb-1">Clean Leather Sneakers</p>
+      <p class="font-bold text-sm mb-1">$89.99</p>
+      <div class="text-amber-400 text-[10px]">★★★★<span class="text-amber-200">★</span> <span class="text-gray-400">(112)</span></div>
+    </div>
+    <div class="group">
+      <div class="relative bg-brand-cream rounded-lg aspect-[4/5] flex items-center justify-center overflow-hidden mb-2.5">
+        <button class="absolute top-2 right-2 text-gray-400 hover:text-brand-gold transition z-10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg></button>
+        <svg viewBox="0 0 120 140" class="w-20 h-20 group-hover:scale-105 transition"><circle cx="46" cy="70" r="14" fill="none" stroke="#171310" stroke-width="5"/><circle cx="74" cy="70" r="14" fill="none" stroke="#171310" stroke-width="5"/><path d="M60 70h0M32 66l-6-4M88 66l6-4" stroke="#171310" stroke-width="5"/></svg>
+      </div>
+      <p class="text-xs md:text-sm font-medium leading-snug mb-1">Classic Square Sunglasses</p>
+      <p class="font-bold text-sm mb-1">$29.99</p>
+      <div class="text-amber-400 text-[10px]">★★★★<span class="text-amber-200">★</span> <span class="text-gray-400">(84)</span></div>
+    </div>
+    <div class="group">
+      <div class="relative bg-brand-cream rounded-lg aspect-[4/5] flex items-center justify-center overflow-hidden mb-2.5">
+        <button class="absolute top-2 right-2 text-gray-400 hover:text-brand-gold transition z-10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg></button>
+        <svg viewBox="0 0 120 140" class="w-20 h-20 group-hover:scale-105 transition"><ellipse cx="60" cy="70" rx="34" ry="22" fill="none" stroke="#C9A15B" stroke-width="7"/></svg>
+      </div>
+      <p class="text-xs md:text-sm font-medium leading-snug mb-1">Chain Link Bracelet</p>
+      <p class="font-bold text-sm mb-1">$39.99</p>
+      <div class="text-amber-400 text-[10px]">★★★★<span class="text-amber-200">★</span> <span class="text-gray-400">(67)</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BRAND STRIP ============ -->
+<section class="bg-brand-black py-7">
+  <div class="max-w-7xl mx-auto px-4 flex items-center justify-between gap-8 overflow-x-auto no-scrollbar text-white/70">
+    <span class="font-extrabold text-lg tracking-wide shrink-0">ZARA</span>
+    <span class="font-bold text-base tracking-widest shrink-0">MANGO</span>
+    <span class="font-serif font-bold text-xl shrink-0">BOSS</span>
+    <span class="font-bold text-lg tracking-wide shrink-0">GUESS</span>
+    <span class="font-serif italic text-lg shrink-0">Calvin Klein</span>
+    <span class="font-bold text-sm tracking-widest shrink-0">MICHAEL KORS</span>
+    <span class="font-serif text-base tracking-widest shrink-0">TED BAKER</span>
+  </div>
+</section>
+
+<!-- ============ 2-COLUMN BANNER ============ -->
+<section class="max-w-7xl mx-auto px-4 py-10">
+  <div class="grid md:grid-cols-2 gap-4 md:gap-6">
+    <div class="relative rounded-lg overflow-hidden min-h-[260px] p-8 flex flex-col justify-center bg-[#1a1a1a]">
+      <svg viewBox="0 0 500 340" class="absolute inset-0 w-full h-full opacity-60" preserveAspectRatio="xMidYMid slice">
+        <rect width="500" height="340" fill="#1a1a1a"/>
+        <circle cx="330" cy="110" r="34" fill="#D9A876"/>
+        <path d="M280 180q50 28 100 0l10 150H270z" fill="#171310"/>
+      </svg>
+      <div class="relative z-10">
+        <h3 class="font-logo text-3xl text-white mb-2">The Art of Minimalism</h3>
+        <p class="text-sm text-white/60 max-w-xs mb-6">Discover pieces that make simplicity look extraordinary.</p>
+        <a href="#" class="inline-flex items-center gap-2 bg-white hover:bg-gray-100 transition text-black font-semibold px-6 py-3 text-xs eyebrow w-fit">EXPLORE EDITORIAL</a>
+      </div>
+    </div>
+
+    <div class="relative rounded-lg overflow-hidden min-h-[260px] p-8 flex flex-col justify-center bg-brand-cream">
+      <svg viewBox="0 0 500 340" class="absolute inset-0 w-full h-full opacity-70" preserveAspectRatio="xMidYMid slice">
+        <rect width="500" height="340" fill="#F3ECDD"/>
+        <circle cx="320" cy="150" r="20" fill="none" stroke="#171310" stroke-width="5"/>
+        <circle cx="360" cy="150" r="20" fill="none" stroke="#171310" stroke-width="5"/>
+        <rect x="380" y="120" width="70" height="60" rx="6" fill="#D8C4A0"/>
+        <rect x="300" y="200" width="30" height="70" rx="6" fill="#EDE4D3" stroke="#C9A15B" stroke-width="2"/>
+      </svg>
+      <div class="relative z-10">
+        <h3 class="font-logo text-3xl text-[#171310] mb-2">Timeless Accessories</h3>
+        <p class="text-sm text-[#5a5340] max-w-xs mb-6">The finishing touches that complete your look.</p>
+        <a href="#" class="inline-flex items-center gap-2 bg-brand-black hover:bg-black transition text-white font-semibold px-6 py-3 text-xs eyebrow w-fit">SHOP ACCESSORIES</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWSLETTER BAND ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-10">
+  <div class="flex flex-col md:flex-row items-center gap-5 md:gap-8 border-t border-b border-gray-100 py-8">
+    <div class="w-14 h-14 rounded-full border border-brand-gold flex items-center justify-center shrink-0">
+      <svg class="w-6 h-6 text-brand-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7l9 6 9-6M4 5h16a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1z"/></svg>
+    </div>
+    <div class="text-center md:text-left">
+      <h3 class="eyebrow text-sm font-bold mb-1">BE THE FIRST TO KNOW</h3>
+      <p class="text-xs text-gray-500 max-w-sm">Subscribe to get special offers, free giveaways and once-in-a-lifetime deals.</p>
+    </div>
+    <form class="flex w-full md:w-auto md:ml-auto gap-3" onsubmit="event.preventDefault(); this.reset(); alert('Thanks for subscribing!');">
+      <input type="email" required placeholder="Enter your email address" class="flex-1 md:w-64 px-4 py-3 border border-gray-200 outline-none focus:ring-2 focus:ring-black/10 text-sm" />
+      <button class="bg-brand-black hover:bg-black transition text-white font-semibold px-6 py-3 text-xs eyebrow shrink-0">SUBSCRIBE</button>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-brand-black text-white/70 pt-10 pb-6">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="hidden md:grid md:grid-cols-6 gap-8 pb-8 border-b border-white/10">
+      <div>
+        <a href="#" class="font-logo text-xl text-white block mb-1">ÉLÉGANCE</a>
+        <p class="text-[9px] eyebrow text-white/40 mb-3">TIMELESS FASHION</p>
+        <p class="text-sm text-white/45 leading-relaxed mb-4">Elegance is not about being noticed, it's about being remembered.</p>
+        <div class="flex items-center gap-2.5">
+          <a href="#" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition" aria-label="Instagram"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+          <a href="#" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition" aria-label="Facebook"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.25-1.5 1.55-1.5H17V3.7C16.7 3.65 15.7 3.6 14.5 3.6c-2.4 0-4 1.45-4 4.15V10H7.8v3.1h2.7V21h3z"/></svg></a>
+          <a href="#" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition" aria-label="Pinterest"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-3.6 19.3c0-.8 0-1.8.2-2.6l1.4-6c-.35-.7-.35-1.75-.35-1.75 0-1.6.95-2.8 2.1-2.8 1 0 1.5.75 1.5 1.65 0 1-.65 2.5-1 3.9-.3 1.15.6 2.1 1.75 2.1 2.1 0 3.7-2.2 3.7-5.4 0-2.8-2-4.8-4.9-4.8-3.35 0-5.3 2.5-5.3 5.1a10 10 0 006.9 9.6A10 10 0 0012 2z"/></svg></a>
+          <a href="#" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition" aria-label="YouTube"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12s0-3.2-.4-4.7a2.8 2.8 0 00-2-2C17.9 5 12 5 12 5s-5.9 0-7.6.3a2.8 2.8 0 00-2 2C2 8.8 2 12 2 12s0 3.2.4 4.7a2.8 2.8 0 002 2C6.1 19 12 19 12 19s5.9 0 7.6-.3a2.8 2.8 0 002-2C22 15.2 22 12 22 12z"/></svg></a>
+          <a href="#" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition" aria-label="TikTok"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.4 2.2 1.9 3.6 4 3.8v2.7c-1.4 0-2.7-.4-3.9-1.2v6.2a5.4 5.4 0 11-4.6-5.4v2.8a2.7 2.7 0 102.7 2.7V3h1.8z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3 text-sm eyebrow">SHOP</h4>
+        <ul class="space-y-2 text-sm text-white/50">
+          <li><a href="#" class="hover:text-white transition">New In</a></li>
+          <li><a href="#" class="hover:text-white transition">Women</a></li>
+          <li><a href="#" class="hover:text-white transition">Men</a></li>
+          <li><a href="#" class="hover:text-white transition">Dresses</a></li>
+          <li><a href="#" class="hover:text-white transition">Shoes</a></li>
+          <li><a href="#" class="hover:text-white transition">Bags</a></li>
+          <li><a href="#" class="hover:text-white transition">Accessories</a></li>
+          <li><a href="#" class="hover:text-white transition">Sale</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3 text-sm eyebrow">CUSTOMER CARE</h4>
+        <ul class="space-y-2 text-sm text-white/50">
+          <li><a href="#" class="hover:text-white transition">Track Your Order</a></li>
+          <li><a href="#" class="hover:text-white transition">Returns &amp; Exchanges</a></li>
+          <li><a href="#" class="hover:text-white transition">Shipping Info</a></li>
+          <li><a href="#" class="hover:text-white transition">FAQs</a></li>
+          <li><a href="#" class="hover:text-white transition">Size Guide</a></li>
+          <li><a href="#" class="hover:text-white transition">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3 text-sm eyebrow">ABOUT US</h4>
+        <ul class="space-y-2 text-sm text-white/50">
+          <li><a href="#" class="hover:text-white transition">Our Story</a></li>
+          <li><a href="#" class="hover:text-white transition">Sustainability</a></li>
+          <li><a href="#" class="hover:text-white transition">Careers</a></li>
+          <li><a href="#" class="hover:text-white transition">Press</a></li>
+          <li><a href="#" class="hover:text-white transition">Affiliates</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3 text-sm eyebrow">GET THE APP</h4>
+        <p class="text-sm text-white/50 mb-3">Download our app for exclusive offers.</p>
+        <div class="flex flex-col gap-2">
+          <a href="#" class="flex items-center gap-2 bg-white/10 hover:bg-white/20 transition rounded-lg px-3 py-2 text-[10px]">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 2c.1 1.3-.4 2.5-1.1 3.4-.8.9-2 1.6-3.2 1.5-.2-1.3.4-2.6 1.1-3.4C14.1 2.5 15.4 1.9 16.5 2z"/><path d="M20 17c-.5 1.1-.8 1.6-1.5 2.6-1 1.4-2.3 3.1-4 3.1-1.5 0-1.9-1-3.9-1s-2.5 1-3.9.9c-1.7-.1-3-1.6-3.9-3-2.7-4-3-8.7-1.3-11.2 1.2-1.8 3-2.8 4.7-2.8 1.7 0 2.8 1 4.2 1s2.2-1 4.2-.9c1.6.1 3.2.9 4.2 2.3-3.7 2.3-3.1 7.4.2 9z"/></svg>
+            App Store
+          </a>
+          <a href="#" class="flex items-center gap-2 bg-white/10 hover:bg-white/20 transition rounded-lg px-3 py-2 text-[10px]">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M3 2l17 10L3 22z"/></svg>
+            Google Play
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- mobile accordion -->
+    <div class="md:hidden">
+      <p class="text-sm text-white/45 leading-relaxed mb-4">Elegance is not about being noticed, it's about being remembered.</p>
+      <div class="flex items-center gap-2.5 mb-6">
+        <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center" aria-label="Instagram"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+        <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center" aria-label="Facebook"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.25-1.5 1.55-1.5H17V3.7C16.7 3.65 15.7 3.6 14.5 3.6c-2.4 0-4 1.45-4 4.15V10H7.8v3.1h2.7V21h3z"/></svg></a>
+        <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center" aria-label="Pinterest"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-3.6 19.3c0-.8 0-1.8.2-2.6l1.4-6c-.35-.7-.35-1.75-.35-1.75 0-1.6.95-2.8 2.1-2.8 1 0 1.5.75 1.5 1.65 0 1-.65 2.5-1 3.9-.3 1.15.6 2.1 1.75 2.1 2.1 0 3.7-2.2 3.7-5.4 0-2.8-2-4.8-4.9-4.8-3.35 0-5.3 2.5-5.3 5.1a10 10 0 006.9 9.6A10 10 0 0012 2z"/></svg></a>
+        <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center" aria-label="YouTube"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12s0-3.2-.4-4.7a2.8 2.8 0 00-2-2C17.9 5 12 5 12 5s-5.9 0-7.6.3a2.8 2.8 0 00-2 2C2 8.8 2 12 2 12s0 3.2.4 4.7a2.8 2.8 0 002 2C6.1 19 12 19 12 19s5.9 0 7.6-.3a2.8 2.8 0 002-2C22 15.2 22 12 22 12z"/></svg></a>
+        <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center" aria-label="TikTok"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.4 2.2 1.9 3.6 4 3.8v2.7c-1.4 0-2.7-.4-3.9-1.2v6.2a5.4 5.4 0 11-4.6-5.4v2.8a2.7 2.7 0 102.7 2.7V3h1.8z"/></svg></a>
+      </div>
+
+      <div class="divide-y divide-white/10 border-y border-white/10 mb-6">
+        <details class="py-3">
+          <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold text-white eyebrow">SHOP <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></summary>
+          <ul class="mt-2 space-y-2 text-sm text-white/50 pl-1"><li><a href="#">New In</a></li><li><a href="#">Women</a></li><li><a href="#">Men</a></li><li><a href="#">Dresses</a></li><li><a href="#">Shoes</a></li><li><a href="#">Bags</a></li><li><a href="#">Accessories</a></li><li><a href="#">Sale</a></li></ul>
+        </details>
+        <details class="py-3">
+          <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold text-white eyebrow">CUSTOMER CARE <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></summary>
+          <ul class="mt-2 space-y-2 text-sm text-white/50 pl-1"><li><a href="#">Track Your Order</a></li><li><a href="#">Returns &amp; Exchanges</a></li><li><a href="#">Shipping Info</a></li><li><a href="#">FAQs</a></li><li><a href="#">Size Guide</a></li></ul>
+        </details>
+        <details class="py-3">
+          <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold text-white eyebrow">ABOUT US <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></summary>
+          <ul class="mt-2 space-y-2 text-sm text-white/50 pl-1"><li><a href="#">Our Story</a></li><li><a href="#">Sustainability</a></li><li><a href="#">Careers</a></li><li><a href="#">Press</a></li></ul>
+        </details>
+        <details class="py-3">
+          <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold text-white eyebrow">GET THE APP <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></summary>
+          <p class="mt-2 text-sm text-white/50 pl-1">Download our app for exclusive offers — available on the App Store and Google Play.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="pt-4">
+      <p class="text-white font-semibold mb-2 text-sm eyebrow">WE ACCEPT</p>
+      <div class="flex items-center gap-2 flex-wrap mb-6">
+        <span class="bg-white text-[#1A1F71] text-[9px] font-bold rounded px-2 py-1.5">VISA</span>
+        <span class="bg-white text-[#EB001B] text-[9px] font-bold rounded px-2 py-1.5">MC</span>
+        <span class="bg-white text-[#2E77BC] text-[9px] font-bold rounded px-2 py-1.5">AMEX</span>
+        <span class="bg-white text-[#003087] text-[9px] font-bold rounded px-2 py-1.5">PayPal</span>
+        <span class="bg-white text-[#000] text-[9px] font-bold rounded px-2 py-1.5">Pay</span>
+        <span class="bg-white text-[#4285F4] text-[9px] font-bold rounded px-2 py-1.5">GPay</span>
+        <span class="bg-white text-[#5A31F4] text-[9px] font-bold rounded px-2 py-1.5">ShopPay</span>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-white/10 text-xs text-white/40">
+      <p>© 2026 Élégance. All Rights Reserved.</p>
+      <div class="flex items-center gap-4">
+        <a href="#" class="hover:text-white transition">Privacy Policy</a>
+        <a href="#" class="hover:text-white transition">Terms &amp; Conditions</a>
+        <a href="#" class="hover:text-white transition">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- spacer so content isn't hidden behind fixed mobile bottom nav -->
+<div class="h-16 md:hidden" aria-hidden="true"></div>
+
+<!-- ============ MOBILE BOTTOM NAV (app-style) ============ -->
+<nav class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-white border-t border-gray-100 shadow-navUp" style="padding-bottom: env(safe-area-inset-bottom);">
+  <div class="grid grid-cols-5">
+    <a href="#" class="flex flex-col items-center justify-center gap-1 py-2.5 text-brand-black">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-8 9 8M5 10v10h14V10"/></svg>
+      <span class="text-[10px] font-semibold">Home</span>
+    </a>
+    <a href="#" class="flex flex-col items-center justify-center gap-1 py-2.5 text-gray-400 hover:text-brand-black transition">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      <span class="text-[10px] font-medium">Shop</span>
+    </a>
+    <a href="#" class="flex flex-col items-center justify-center gap-1 py-2.5 text-gray-400 hover:text-brand-black transition">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg>
+      <span class="text-[10px] font-medium">Wishlist</span>
+    </a>
+    <a href="#" class="flex flex-col items-center justify-center gap-1 py-2.5 text-gray-400 hover:text-brand-black transition">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8V6a6 6 0 0112 0v2M4 8h16l-1.2 12.1a2 2 0 01-2 1.9H7.2a2 2 0 01-2-1.9L4 8z"/></svg>
+      <span class="text-[10px] font-medium">Cart</span>
+    </a>
+    <a href="#" class="flex flex-col items-center justify-center gap-1 py-2.5 text-gray-400 hover:text-brand-black transition">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+      <span class="text-[10px] font-medium">Account</span>
+    </a>
+  </div>
+</nav>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileNav = document.getElementById('mobileNav');
+  menuBtn.addEventListener('click', () => {
+    mobileNav.classList.toggle('hidden');
+    mobileNav.classList.toggle('flex');
+  });
+</script>
+
+</body>
+</html>

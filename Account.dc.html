@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+body { margin:0; background:#F4F2ED; color:#12151A; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; -webkit-font-smoothing:antialiased; }
+a { color:#1E5FD6; text-decoration:none; }
+a:hover { color:#0B1F3F; }
+input { box-sizing:border-box; }
+</style>
+</helmet>
+<dc-import name="StoreHeader" lang="{{ lang }}" active="home" cart-count="0" on-set-lang="{{ setLang }}" hint-size="100%,220px"></dc-import>
+<main dir="{{ dir }}" style="max-width:1320px; margin:0 auto; padding:clamp(16px,3vw,28px) clamp(16px,4vw,32px) 60px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif;">
+  <div style="display:flex; align-items:center; gap:16px; margin-bottom:28px; flex-wrap:wrap;">
+    <span style="width:56px; height:56px; border-radius:50%; background:#0B1F3F; color:#fff; display:flex; align-items:center; justify-content:center; font-size:20px; font-weight:900;">A</span>
+    <div>
+      <h1 style="margin:0; font-size:clamp(22px,2.8vw,32px); font-weight:900; letter-spacing:-0.02em;">{{ t.hello }}</h1>
+      <div style="font-size:13px; color:#8A857A;">amina@email.com · {{ t.memberSince }}</div>
+    </div>
+  </div>
+  <div style="display:flex; flex-wrap:wrap; gap:24px; align-items:flex-start;">
+    <aside style="flex:1 1 220px; max-width:290px; min-width:210px; background:#FDFCFA; border:1px solid #E7E3DA; border-radius:18px; padding:12px; display:flex; flex-direction:column; gap:4px;">
+      <sc-for list="{{ menu }}" as="m" hint-placeholder-count="6">
+        <div onClick="{{ m.pick }}" style="display:flex; align-items:center; justify-content:space-between; padding:12px 16px; border-radius:12px; cursor:pointer; font-size:13.5px; font-weight:{{ m.weight }}; color:{{ m.color }}; background:{{ m.bg }};" style-hover="background:#F1EEE7;">
+          <span>{{ m.label }}</span><sc-if value="{{ m.badge }}" hint-placeholder-val="{{ false }}"><span style="background:#1E5FD6; color:#fff; font-size:11px; font-weight:800; border-radius:999px; padding:2px 8px;">{{ m.badge }}</span></sc-if>
+        </div>
+      </sc-for>
+      <div style="border-top:1px solid #ECE8DF; margin:6px 12px;"></div>
+      <a href="Login.dc.html" style="display:block; padding:12px 16px; border-radius:12px; font-size:13.5px; font-weight:700; color:#B03A2E;" style-hover="background:#F2E3E0; color:#B03A2E;">{{ t.signOut }}</a>
+    </aside>
+    <div style="flex:3 1 460px; min-width:0; display:flex; flex-direction:column; gap:16px;">
+      <sc-if value="{{ tabOrders }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(170px, 1fr)); gap:12px;">
+          <sc-for list="{{ stats }}" as="s" hint-placeholder-count="3">
+            <div style="background:#FDFCFA; border:1px solid #E7E3DA; border-radius:16px; padding:20px;">
+              <div style="font-size:24px; font-weight:900; color:#1E5FD6;">{{ s.n }}</div>
+              <div style="font-size:12.5px; color:#8A857A; font-weight:600; margin-top:4px;">{{ s.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="background:#FDFCFA; border:1px solid #E7E3DA; border-radius:20px; padding:clamp(18px,3vw,26px);">
+          <div style="font-size:15px; font-weight:900; margin-bottom:16px;">{{ t.recentOrders }}</div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <sc-for list="{{ orders }}" as="o" hint-placeholder-count="4">
+              <div style="border:1px solid #ECE8DF; border-radius:14px; padding:16px 18px; display:flex; flex-wrap:wrap; gap:12px 20px; align-items:center;">
+                <div style="flex:1 1 150px; min-width:0;">
+                  <div style="font-size:13.5px; font-weight:800;">{{ o.id }}</div>
+                  <div style="font-size:12px; color:#8A857A; margin-top:2px;">{{ o.date }} · {{ o.items }}</div>
+                </div>
+                <span style="background:{{ o.bg }}; color:{{ o.fg }}; font-size:11.5px; font-weight:800; padding:5px 12px; border-radius:999px;">{{ o.status }}</span>
+                <div style="font-size:14px; font-weight:900; min-width:110px; text-align:end;">{{ o.total }}</div>
+                <a href="Track%20Order.dc.html" style="font-size:12.5px; font-weight:800;">{{ t.trackIt }}</a>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ tabProfile }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#FDFCFA; border:1px solid #E7E3DA; border-radius:20px; padding:clamp(18px,3vw,26px);">
+          <div style="font-size:15px; font-weight:900; margin-bottom:16px;">{{ t.profileTitle }}</div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px;">
+            <input value="Amina Koné" style="border:1.5px solid #E3DFD4; border-radius:12px; padding:13px 16px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:13.5px; outline:none; background:#F4F2ED; width:100%;">
+            <input value="amina@email.com" style="border:1.5px solid #E3DFD4; border-radius:12px; padding:13px 16px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:13.5px; outline:none; background:#F4F2ED; width:100%;">
+            <input value="+225 07 08 09 10" style="border:1.5px solid #E3DFD4; border-radius:12px; padding:13px 16px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:13.5px; outline:none; background:#F4F2ED; width:100%;">
+            <input placeholder="{{ t.city }}" value="Abidjan" style="border:1.5px solid #E3DFD4; border-radius:12px; padding:13px 16px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:13.5px; outline:none; background:#F4F2ED; width:100%;">
+          </div>
+          <button style="margin-top:16px; background:#12151A; color:#fff; border:none; border-radius:999px; padding:13px 28px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:13.5px; font-weight:800; cursor:pointer;" style-hover="background:#1E5FD6;">{{ t.save }}</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ tabAddresses }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:12px;">
+          <sc-for list="{{ addresses }}" as="a" hint-placeholder-count="2">
+            <div style="background:#FDFCFA; border:1.5px solid {{ a.bd }}; border-radius:18px; padding:22px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                <span style="font-size:13.5px; font-weight:900;">{{ a.label }}</span>
+                <sc-if value="{{ a.isDefault }}" hint-placeholder-val="{{ false }}"><span style="background:#E3EBFA; color:#1E5FD6; font-size:11px; font-weight:800; padding:3px 10px; border-radius:999px;">{{ t.default }}</span></sc-if>
+              </div>
+              <div style="font-size:13px; color:#5C594F; line-height:1.7;">{{ a.lines }}</div>
+              <div style="display:flex; gap:16px; margin-top:14px;">
+                <span style="font-size:12.5px; font-weight:800; color:#1E5FD6; cursor:pointer;">{{ t.edit }}</span>
+                <span style="font-size:12.5px; font-weight:800; color:#B03A2E; cursor:pointer;">{{ t.delete }}</span>
+              </div>
+            </div>
+          </sc-for>
+          <div style="border:1.5px dashed #D8D2C4; border-radius:18px; padding:22px; display:flex; align-items:center; justify-content:center; font-size:13.5px; font-weight:800; color:#8A857A; cursor:pointer; min-height:140px;" style-hover="border-color:#1E5FD6; color:#1E5FD6;">+ {{ t.addAddress }}</div>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</main>
+<dc-import name="StoreFooter" lang="{{ lang }}" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: (typeof localStorage !== 'undefined' && localStorage.getItem('nexstock-lang')) || 'en', tab: 0 };
+  renderVals() {
+    const lang = this.state.lang; const ar = lang === 'ar';
+    const f = (x) => 'CFA ' + x.toLocaleString('en-US');
+    const T = {
+      en: { hello: 'Hello, Amina', memberSince: 'Member since 2023', signOut: 'Sign out', recentOrders: 'Recent orders', trackIt: 'Track →', profileTitle: 'Profile details', city: 'City', save: 'Save changes', default: 'Default', edit: 'Edit', delete: 'Delete', addAddress: 'Add address',
+        menu: ['Orders', 'Profile', 'Addresses', 'Wishlist', 'Payment methods', 'Help center'],
+        stats: [['12', 'Total orders'], ['2', 'In transit'], [f(3860000), 'Total spent']],
+        statuses: { delivered: 'Delivered', transit: 'In transit', processing: 'Processing' },
+        addresses: [
+          { label: 'Home', lines: 'Rue des Jardins 24, Cocody\nAbidjan, Côte d\u2019Ivoire\n+225 07 08 09 10', isDefault: true },
+          { label: 'Office', lines: 'Immeuble Alpha 2000, Plateau\nAbidjan, Côte d\u2019Ivoire\n+225 05 04 03 02', isDefault: false }
+        ] },
+      ar: { hello: 'أهلاً، أمينة', memberSince: 'عضو منذ 2023', signOut: 'تسجيل الخروج', recentOrders: 'الطلبات الأخيرة', trackIt: '← تتبّع', profileTitle: 'بيانات الحساب', city: 'المدينة', save: 'حفظ التغييرات', default: 'افتراضي', edit: 'تعديل', delete: 'حذف', addAddress: 'أضف عنواناً',
+        menu: ['الطلبات', 'الملف الشخصي', 'العناوين', 'المفضلة', 'طرق الدفع', 'مركز المساعدة'],
+        stats: [['12', 'إجمالي الطلبات'], ['2', 'قيد التوصيل'], [f(3860000), 'إجمالي المشتريات']],
+        statuses: { delivered: 'تم التوصيل', transit: 'قيد التوصيل', processing: 'قيد التجهيز' },
+        addresses: [
+          { label: 'المنزل', lines: 'شارع الحدائق 24، كوكودي\nأبيدجان، ساحل العاج\n+225 07 08 09 10', isDefault: true },
+          { label: 'المكتب', lines: 'مبنى ألفا 2000، بلاتو\nأبيدجان، ساحل العاج\n+225 05 04 03 02', isDefault: false }
+        ] }
+    }[lang];
+    const menu = T.menu.map((label, i) => ({
+      label, badge: i === 0 ? '2' : false,
+      pick: () => { if (i === 3) { window.location.href = 'Wishlist.dc.html'; } else if (i === 5) { window.location.href = 'About.dc.html'; } else { this.setState({ tab: Math.min(i, 2) }); } },
+      weight: this.state.tab === i ? 800 : 600, color: this.state.tab === i ? '#1E5FD6' : '#3B3830', bg: this.state.tab === i ? '#E3EBFA' : 'transparent'
+    }));
+    const stMap = { delivered: ['#DFE8DC', '#3E5C38'], transit: ['#E3EBFA', '#1E5FD6'], processing: ['#F5E9D8', '#B07A2A'] };
+    const orders = [
+      { id: '#NX-10482', date: ar ? '22 يوليو 2026' : 'Jul 22, 2026', items: ar ? '3 منتجات' : '3 items', st: 'transit', total: f(767000) },
+      { id: '#NX-10391', date: ar ? '15 يوليو 2026' : 'Jul 15, 2026', items: ar ? 'منتج واحد' : '1 item', st: 'transit', total: f(399000) },
+      { id: '#NX-10240', date: ar ? '28 يونيو 2026' : 'Jun 28, 2026', items: ar ? 'منتجان' : '2 items', st: 'delivered', total: f(588000) },
+      { id: '#NX-10102', date: ar ? '9 يونيو 2026' : 'Jun 9, 2026', items: ar ? 'منتج واحد' : '1 item', st: 'delivered', total: f(129000) }
+    ].map(o => ({ ...o, status: T.statuses[o.st], bg: stMap[o.st][0], fg: stMap[o.st][1] }));
+    return {
+      lang, dir: ar ? 'rtl' : 'ltr', t: T, menu, orders,
+      stats: T.stats.map(s => ({ n: s[0], label: s[1] })),
+      addresses: T.addresses.map((a, i) => ({ ...a, bd: a.isDefault ? '#1E5FD6' : '#E7E3DA' })),
+      tabOrders: this.state.tab === 0, tabProfile: this.state.tab === 1, tabAddresses: this.state.tab === 2,
+      setLang: (l) => { try { localStorage.setItem('nexstock-lang', l); } catch(e) {} this.setState({ lang: l }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>
+body { margin:0; background:#F4F2ED; color:#12151A; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; -webkit-font-smoothing:antialiased; }
+a { color:#1E5FD6; text-decoration:none; }
+a:hover { color:#0B1F3F; }
+</style>
+</helmet>
+<dc-import name="StoreHeader" lang="{{ lang }}" active="deals" cart-count="{{ cartCount }}" on-set-lang="{{ setLang }}" hint-size="100%,220px"></dc-import>
+<main dir="{{ dir }}" style="max-width:1320px; margin:0 auto; padding:clamp(16px,3vw,28px) clamp(16px,4vw,32px) 60px; display:flex; flex-direction:column; gap:clamp(32px,4vw,48px); font-family:'Archivo','IBM Plex Sans Arabic',sans-serif;">
+  <div style="background:linear-gradient(118deg,#0B1F3F,#123A78); color:#fff; border-radius:24px; padding:clamp(28px,4vw,52px); display:flex; flex-wrap:wrap; align-items:center; gap:28px; position:relative; overflow:hidden;">
+    <div style="position:absolute; inset-inline-end:-80px; top:-80px; width:320px; height:320px; border-radius:50%; border:1px solid rgba(255,255,255,0.12);"></div>
+    <div style="flex:1.4 1 300px; position:relative;">
+      <div style="font-size:12px; letter-spacing:0.22em; font-weight:700; color:#7FA8E8; text-transform:uppercase; margin-bottom:14px;">{{ t.eyebrow }}</div>
+      <h1 style="margin:0 0 14px; font-size:clamp(32px,4.2vw,52px); line-height:1.04; font-weight:900; letter-spacing:-0.03em;">{{ t.heroA }} <span style="font-family:'Instrument Serif','IBM Plex Sans Arabic',serif; font-style:italic; font-weight:400; color:#8FB4F2;">{{ t.heroB }}</span></h1>
+      <p style="margin:0 0 24px; font-size:15px; line-height:1.6; color:#B9C8E2; max-width:440px; text-wrap:pretty;">{{ t.heroSub }}</p>
+      <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+        <span style="font-size:12.5px; color:#B9C8E2; font-weight:600;">{{ t.endsIn }}</span>
+        <sc-for list="{{ countdown }}" as="c" hint-placeholder-count="3">
+          <span style="background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.16); border-radius:12px; padding:10px 14px; text-align:center; min-width:58px;">
+            <span style="display:block; font-size:20px; font-weight:900;">{{ c.n }}</span>
+            <span style="display:block; font-size:10.5px; letter-spacing:0.1em; color:#8FB4F2; text-transform:uppercase;">{{ c.u }}</span>
+          </span>
+        </sc-for>
+      </div>
+    </div>
+    <div style="flex:1 1 240px; height:280px; border-radius:18px; overflow:hidden; background:rgba(255,255,255,0.06);">
+      <image-slot id="deals-hero" shape="rounded" radius="18" placeholder="Sale campaign photo"></image-slot>
+    </div>
+  </div>
+  <section>
+    <div style="display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:20px;">
+      <div>
+        <div style="font-size:11px; letter-spacing:0.2em; font-weight:700; color:#B03A2E; text-transform:uppercase; margin-bottom:6px;">{{ t.flashEyebrow }}</div>
+        <h2 style="margin:0; font-size:clamp(22px,2.6vw,30px); font-weight:900; letter-spacing:-0.02em;">{{ t.flashTitle }}</h2>
+      </div>
+      <a href="Shop.dc.html" style="font-size:13px; font-weight:700; white-space:nowrap;">{{ t.seeAll }}</a>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(210px, 1fr)); gap:14px;">
+      <sc-for list="{{ deals }}" as="p" hint-placeholder-count="8">
+        <div style="background:#FDFCFA; border:1px solid #E7E3DA; border-radius:18px; padding:12px; display:flex; flex-direction:column; gap:10px; position:relative;" style-hover="box-shadow:0 16px 40px rgba(11,31,63,0.12); transform:translateY(-4px);">
+          <span style="position:absolute; top:20px; inset-inline-start:20px; z-index:2; background:#B03A2E; color:#fff; font-size:11px; font-weight:800; padding:4px 9px; border-radius:999px;">{{ p.badge }}</span>
+          <a href="Product%20Details.dc.html" style="display:block; height:160px; border-radius:12px; overflow:hidden; background:#F1EEE7;">
+            <image-slot id="{{ p.slot }}" shape="rounded" radius="12" placeholder="{{ p.ph }}"></image-slot>
+          </a>
+          <div style="display:flex; flex-direction:column; gap:7px; padding:2px 4px 4px;">
+            <a href="Product%20Details.dc.html" style="font-size:13.5px; font-weight:700; line-height:1.35; min-height:36px; color:#12151A;">{{ p.name }}</a>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span style="font-size:15px; font-weight:900;">{{ p.priceFmt }}</span>
+              <span style="font-size:11.5px; color:#B0AA9B; text-decoration:line-through;">{{ p.oldFmt }}</span>
+            </div>
+            <div style="height:6px; background:#F1EEE7; border-radius:999px; overflow:hidden;"><span style="display:block; height:100%; width:{{ p.soldPct }}; background:linear-gradient(90deg,#B03A2E,#E07856); border-radius:999px;"></span></div>
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+              <span style="font-size:11px; color:#8A857A; font-weight:600;">{{ p.soldLabel }}</span>
+              <button onClick="{{ addToCart }}" style="border:none; background:#12151A; color:#fff; border-radius:999px; padding:8px 16px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:12px; font-weight:800; cursor:pointer;" style-hover="background:#B03A2E;">{{ t.add }}</button>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px;">
+    <sc-for list="{{ coupons }}" as="c" hint-placeholder-count="3">
+      <div style="background:{{ c.bg }}; color:{{ c.fg }}; border-radius:20px; padding:26px; display:flex; flex-direction:column; gap:10px; border:1.5px dashed {{ c.bd }};">
+        <div style="font-size:11px; letter-spacing:0.16em; font-weight:700; text-transform:uppercase; opacity:0.7;">{{ c.kind }}</div>
+        <div style="font-size:24px; font-weight:900; letter-spacing:-0.02em;">{{ c.title }}</div>
+        <div style="font-size:12.5px; opacity:0.75;">{{ c.sub }}</div>
+        <div style="margin-top:6px; display:flex; align-items:center; gap:10px;">
+          <span style="background:rgba(0,0,0,0.08); border-radius:8px; padding:7px 14px; font-size:13px; font-weight:900; letter-spacing:0.14em;">{{ c.code }}</span>
+          <span style="font-size:12px; font-weight:800; text-decoration:underline; text-underline-offset:3px; cursor:pointer;">{{ t.copy }}</span>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</main>
+<dc-import name="StoreFooter" lang="{{ lang }}" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { cart: 0, lang: (typeof localStorage !== 'undefined' && localStorage.getItem('nexstock-lang')) || 'en' };
+  renderVals() {
+    const lang = this.state.lang; const ar = lang === 'ar';
+    const f = (x) => 'CFA ' + x.toLocaleString('en-US');
+    const T = {
+      en: { eyebrow: 'Summer sale · This week only', heroA: 'Deals worth', heroB: 'waiting for.', heroSub: 'Up to 45% off tech, home and daily essentials. New flash deals every morning at 9:00.', endsIn: 'Ends in', flashEyebrow: 'Flash deals', flashTitle: 'Going fast', seeAll: 'See all →', add: 'Add', copy: 'Copy code',
+        units: ['days','hours','mins'], sold: 'sold' },
+      ar: { eyebrow: 'تخفيضات الصيف · هذا الأسبوع فقط', heroA: 'عروض', heroB: 'تستحق الانتظار.', heroSub: 'خصومات حتى 45% على التقنية والمنزل والمستلزمات اليومية. عروض خاطفة جديدة كل صباح الساعة 9:00.', endsIn: 'ينتهي خلال', flashEyebrow: 'عروض خاطفة', flashTitle: 'تنفد بسرعة', seeAll: '← عرض الكل', add: 'أضِف', copy: 'انسخ الكود',
+        units: ['يوم','ساعة','دقيقة'], sold: 'مُباع' }
+    }[lang];
+    const countdown = [['02', T.units[0]], ['14', T.units[1]], ['36', T.units[2]]].map(c => ({ n: c[0], u: c[1] }));
+    const data = [
+      { name: 'Sony WH-CH720N Headphones', price: 89000, old: 126000, badge: '-31%', sold: 78, ph: 'Headphones photo' },
+      { name: 'Apple iPhone 15 · 128GB', price: 499000, old: 579000, badge: '-14%', sold: 62, ph: 'iPhone photo' },
+      { name: 'Oppo Enco Air3 Pro Earbuds', price: 59000, old: 74000, badge: '-20%', sold: 85, ph: 'Earbuds photo' },
+      { name: 'Samsung 55" Crystal 4K TV', price: 335000, old: 429000, badge: '-22%', sold: 44, ph: 'TV photo' },
+      { name: 'Philips Air Fryer HD9270', price: 119000, old: 149000, badge: '-20%', sold: 91, ph: 'Air fryer photo' },
+      { name: 'HP Pavilion 14 · i5', price: 429000, old: 499000, badge: '-14%', sold: 37, ph: 'HP laptop photo' },
+      { name: 'Xiaomi Robot Vacuum S10', price: 165000, old: 219000, badge: '-25%', sold: 58, ph: 'Robot vacuum photo' },
+      { name: 'JBL Charge 5 Speaker', price: 105000, old: 129000, badge: '-19%', sold: 69, ph: 'Speaker photo' }
+    ];
+    const deals = data.map((p, i) => ({ ...p, slot: 'deal-' + (i + 1), priceFmt: f(p.price), oldFmt: f(p.old), soldPct: p.sold + '%', soldLabel: p.sold + '% ' + T.sold }));
+    const coupons = ar ? [
+      { kind: 'كود خصم', title: 'خصم 10,000 CFA', sub: 'على أول طلب فوق 100,000 CFA', code: 'WELCOME10', bg: '#E3EBFA', fg: '#0B1F3F', bd: '#1E5FD6' },
+      { kind: 'شحن', title: 'توصيل مجاني', sub: 'لكل الطلبات فوق 75,000 CFA', code: 'FREESHIP', bg: '#DFE8DC', fg: '#1E2B1A', bd: '#3E5C38' },
+      { kind: 'نهاية الأسبوع', title: 'خصم إضافي 5%', sub: 'على البقالة والمستلزمات، الجمعة–الأحد', code: 'FRESH5', bg: '#F5E9D8', fg: '#4A3A1A', bd: '#B07A2A' }
+    ] : [
+      { kind: 'Promo code', title: 'CFA 10,000 off', sub: 'Your first order over CFA 100,000', code: 'WELCOME10', bg: '#E3EBFA', fg: '#0B1F3F', bd: '#1E5FD6' },
+      { kind: 'Shipping', title: 'Free delivery', sub: 'All orders over CFA 75,000', code: 'FREESHIP', bg: '#DFE8DC', fg: '#1E2B1A', bd: '#3E5C38' },
+      { kind: 'Weekend', title: 'Extra 5% off', sub: 'Groceries & essentials, Fri–Sun', code: 'FRESH5', bg: '#F5E9D8', fg: '#4A3A1A', bd: '#B07A2A' }
+    ];
+    return {
+      lang, dir: ar ? 'rtl' : 'ltr', t: T, countdown, deals, coupons,
+      cartCount: this.state.cart,
+      addToCart: () => this.setState(s => ({ cart: s.cart + 1 })),
+      setLang: (l) => { try { localStorage.setItem('nexstock-lang', l); } catch(e) {} this.setState({ lang: l }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

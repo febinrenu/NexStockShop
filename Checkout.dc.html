@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>
+body { margin:0; background:#F4F2ED; color:#12151A; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; -webkit-font-smoothing:antialiased; }
+a { color:#1E5FD6; text-decoration:none; }
+a:hover { color:#0B1F3F; }
+input, select { box-sizing:border-box; }
+</style>
+</helmet>
+<dc-import name="StoreHeader" lang="{{ lang }}" active="shop" cart-count="3" on-set-lang="{{ setLang }}" hint-size="100%,220px"></dc-import>
+<main dir="{{ dir }}" style="max-width:1180px; margin:0 auto; padding:clamp(16px,3vw,28px) clamp(16px,4vw,32px) 60px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif;">
+  <div style="font-size:12.5px; color:#8A857A; margin-bottom:16px;"><a href="Cart.dc.html" style="color:#8A857A;">{{ t.cart }}</a> / <span style="color:#12151A; font-weight:600;">{{ t.checkout }}</span></div>
+  <h1 style="margin:0 0 24px; font-size:clamp(26px,3.2vw,38px); font-weight:900; letter-spacing:-0.02em;">{{ t.checkout }}</h1>
+  <div style="display:flex; gap:10px; margin-bottom:30px; flex-wrap:wrap;">
+    <sc-for list="{{ steps }}" as="s" hint-placeholder-count="3">
+      <div style="display:flex; align-items:center; gap:9px; background:{{ s.bg }}; border:1px solid {{ s.bd }}; border-radius:999px; padding:8px 16px;">
+        <span style="width:22px; height:22px; border-radius:50%; background:{{ s.dotBg }}; color:{{ s.dotFg }}; display:flex; align-items:center; justify-content:center; font-size:11.5px; font-weight:900;">{{ s.n }}</span>
+        <span style="font-size:12.5px; font-weight:800; color:{{ s.fg }};">{{ s.label }}</span>
+      </div>
+    </sc-for>
+  </div>
+  <div style="display:flex; flex-wrap:wrap; gap:24px; align-items:flex-start;">
+    <div style="flex:2 1 420px; min-width:0; display:flex; flex-direction:column; gap:16px;">
+      <div style="background:#FDFCFA; border:1px solid #E7E3DA; border-radius:20px; padding:clamp(20px,3vw,28px);">
+        <div style="font-size:15px; font-weight:900; margin-bottom:18px;">{{ t.contact }}</div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px;">
+          <input placeholder="{{ t.fullName }}" style="border:1.5px solid #E3DFD4; border-radius:12px; padding:13px 16px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:13.5px; outline:none; background:#F4F2ED; width:100%;">
+          <input placeholder="{{ t.phone }}" style="border:1.5px solid #E3DFD4; border-radius:12px; padding:13px 16px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:13.5px; outline:none; background:#F4F2ED; width:100%;">
+          <input placeholder="{{ t.email }}" style="border:1.5px solid #E3DFD4; border-radius:12px; padding:13px 16px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:13.5px; outline:none; background:#F4F2ED; width:100%; grid-column:1 / -1;">
+        </div>
+      </div>
+      <div style="background:#FDFCFA; border:1px solid #E7E3DA; border-radius:20px; padding:clamp(20px,3vw,28px);">
+        <div style="font-size:15px; font-weight:900; margin-bottom:18px;">{{ t.delivery }}</div>
+        <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:18px;">
+          <sc-for list="{{ shipOptions }}" as="o" hint-placeholder-count="2">
+            <div onClick="{{ o.pick }}" style="display:flex; align-items:center; gap:14px; border:1.5px solid {{ o.bd }}; background:{{ o.bg }}; border-radius:14px; padding:14px 16px; cursor:pointer;">
+              <span style="width:18px; height:18px; border-radius:50%; border:2px solid {{ o.ringC }}; display:flex; align-items:center; justify-content:center;"><span style="width:9px; height:9px; border-radius:50%; background:{{ o.dot }};"></span></span>
+              <div style="flex:1;">
+                <div style="font-size:13.5px; font-weight:800;">{{ o.label }}</div>
+                <div style="font-size:12px; color:#8A857A;">{{ o.sub }}</div>
+              </div>
+              <span style="font-size:13px; font-weight:900; color:{{ o.priceC }};">{{ o.price }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px;">
+          <input placeholder="{{ t.address }}" style="border:1.5px solid #E3DFD4; border-radius:12px; padding:13px 16px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:13.5px; outline:none; background:#F4F2ED; width:100%; grid-column:1 / -1;">
+          <input placeholder="{{ t.city }}" style="border:1.5px solid #E3DFD4; border-radius:12px; padding:13px 16px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:13.5px; outline:none; background:#F4F2ED; width:100%;">
+          <input placeholder="{{ t.notes }}" style="border:1.5px solid #E3DFD4; border-radius:12px; padding:13px 16px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:13.5px; outline:none; background:#F4F2ED; width:100%;">
+        </div>
+      </div>
+      <div style="background:#FDFCFA; border:1px solid #E7E3DA; border-radius:20px; padding:clamp(20px,3vw,28px);">
+        <div style="font-size:15px; font-weight:900; margin-bottom:18px;">{{ t.payment }}</div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:10px;">
+          <sc-for list="{{ payOptions }}" as="o" hint-placeholder-count="4">
+            <div onClick="{{ o.pick }}" style="border:1.5px solid {{ o.bd }}; background:{{ o.bg }}; border-radius:14px; padding:16px 14px; cursor:pointer; text-align:center;">
+              <div style="font-size:13.5px; font-weight:900; margin-bottom:3px;">{{ o.label }}</div>
+              <div style="font-size:11.5px; color:#8A857A;">{{ o.sub }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <sc-if value="{{ payCard }}" hint-placeholder-val="{{ true }}">
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:12px; margin-top:16px;">
+            <input placeholder="{{ t.cardNumber }}" style="border:1.5px solid #E3DFD4; border-radius:12px; padding:13px 16px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:13.5px; outline:none; background:#F4F2ED; width:100%; grid-column:1 / -1;">
+            <input placeholder="MM / YY" style="border:1.5px solid #E3DFD4; border-radius:12px; padding:13px 16px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:13.5px; outline:none; background:#F4F2ED; width:100%;">
+            <input placeholder="CVC" style="border:1.5px solid #E3DFD4; border-radius:12px; padding:13px 16px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:13.5px; outline:none; background:#F4F2ED; width:100%;">
+          </div>
+        </sc-if>
+      </div>
+    </div>
+    <aside style="flex:1 1 300px; max-width:420px;">
+      <div style="background:#0B1F3F; color:#fff; border-radius:22px; padding:26px;">
+        <div style="font-size:15px; font-weight:900; margin-bottom:18px;">{{ t.summary }}</div>
+        <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:18px;">
+          <sc-for list="{{ items }}" as="it" hint-placeholder-count="3">
+            <div style="display:flex; gap:12px; align-items:center;">
+              <div style="width:52px; height:52px; border-radius:10px; overflow:hidden; background:rgba(255,255,255,0.08); flex-shrink:0;">
+                <image-slot id="{{ it.slot }}" shape="rounded" radius="10" placeholder="{{ it.ph }}"></image-slot>
+              </div>
+              <div style="flex:1; min-width:0;">
+                <div style="font-size:12.5px; font-weight:700; line-height:1.3;">{{ it.name }}</div>
+                <div style="font-size:11.5px; color:#8FA6CB;">× {{ it.qty }}</div>
+              </div>
+              <span style="font-size:12.5px; font-weight:800;">{{ it.lineFmt }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="border-top:1px solid rgba(255,255,255,0.12); padding-top:16px; display:flex; flex-direction:column; gap:10px; font-size:13px;">
+          <div style="display:flex; justify-content:space-between;"><span style="color:#8FA6CB;">{{ t.subtotal }}</span><span style="font-weight:700;">{{ subtotalFmt }}</span></div>
+          <div style="display:flex; justify-content:space-between;"><span style="color:#8FA6CB;">{{ t.shipLabel }}</span><span style="font-weight:700;">{{ shipFmt }}</span></div>
+          <div style="display:flex; justify-content:space-between;"><span style="color:#8FA6CB;">{{ t.discount }}</span><span style="font-weight:700; color:#E8A0A0;">− {{ discountFmt }}</span></div>
+          <div style="border-top:1px solid rgba(255,255,255,0.12); padding-top:12px; display:flex; justify-content:space-between; align-items:baseline;">
+            <span style="font-weight:800;">{{ t.total }}</span><span style="font-size:21px; font-weight:900;">{{ totalFmt }}</span>
+          </div>
+        </div>
+        <button onClick="{{ placeOrder }}" style="width:100%; background:#1E5FD6; color:#fff; border:none; border-radius:999px; padding:16px; font-family:'Archivo','IBM Plex Sans Arabic',sans-serif; font-size:14.5px; font-weight:800; cursor:pointer; margin-top:20px;" style-hover="background:#fff; color:#0B1F3F;">{{ t.placeOrder }}</button>
+        <sc-if value="{{ ordered }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:14px; background:rgba(143,211,168,0.15); border:1px solid rgba(143,211,168,0.4); color:#8FD3A8; border-radius:12px; padding:12px 16px; font-size:12.5px; font-weight:700; text-align:center;">{{ t.orderedMsg }}</div>
+        </sc-if>
+        <div style="font-size:11.5px; color:#8FA6CB; text-align:center; margin-top:14px; line-height:1.6;">{{ t.secure }}</div>
+      </div>
+    </aside>
+  </div>
+</main>
+<dc-import name="StoreFooter" lang="{{ lang }}" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: (typeof localStorage !== 'undefined' && localStorage.getItem('nexstock-lang')) || 'en', ship: 0, pay: 0, ordered: false };
+  renderVals() {
+    const lang = this.state.lang; const ar = lang === 'ar';
+    const f = (x) => 'CFA ' + x.toLocaleString('en-US');
+    const T = {
+      en: { cart: 'Cart', checkout: 'Checkout', contact: '1 · Contact details', fullName: 'Full name', phone: 'Phone number', email: 'Email address', delivery: '2 · Delivery', address: 'Street address', city: 'City', notes: 'Delivery notes (optional)', payment: '3 · Payment', cardNumber: 'Card number', summary: 'Order summary', subtotal: 'Subtotal', shipLabel: 'Shipping', discount: 'Discount', total: 'Total', placeOrder: 'Place order', orderedMsg: '✓ Order placed — confirmation sent to your email.', secure: 'Encrypted payment · By ordering you accept our Terms & Conditions',
+        steps: ['Cart', 'Details', 'Payment'],
+        shipOpts: [['Standard delivery', '2–4 business days', 'Free'], ['Express delivery', 'Next business day before 6pm', 'CFA 8,000']],
+        payOpts: [['Card', 'Visa · Mastercard'], ['Mobile Money', 'Orange · MTN · Wave'], ['PayPal', 'Pay in one click'], ['Cash', 'Pay on delivery']] },
+      ar: { cart: 'السلة', checkout: 'إتمام الطلب', contact: '1 · بيانات التواصل', fullName: 'الاسم الكامل', phone: 'رقم الهاتف', email: 'البريد الإلكتروني', delivery: '2 · التوصيل', address: 'العنوان', city: 'المدينة', notes: 'ملاحظات التوصيل (اختياري)', payment: '3 · الدفع', cardNumber: 'رقم البطاقة', summary: 'ملخص الطلب', subtotal: 'المجموع الفرعي', shipLabel: 'الشحن', discount: 'الخصم', total: 'الإجمالي', placeOrder: 'تأكيد الطلب', orderedMsg: '✓ تم تأكيد طلبك — أُرسل التأكيد إلى بريدك الإلكتروني.', secure: 'دفع مشفّر وآمن · بتأكيد الطلب فإنك توافق على الشروط والأحكام',
+        steps: ['السلة', 'البيانات', 'الدفع'],
+        shipOpts: [['توصيل عادي', '2–4 أيام عمل', 'مجاني'], ['توصيل سريع', 'يوم العمل التالي قبل 6 مساءً', 'CFA 8,000']],
+        payOpts: [['بطاقة', 'فيزا · ماستركارد'], ['Mobile Money', 'Orange · MTN · Wave'], ['PayPal', 'ادفع بنقرة واحدة'], ['نقداً', 'الدفع عند الاستلام']] }
+    }[lang];
+    const steps = T.steps.map((label, i) => ({ label, n: i + 1, bg: i <= 1 ? '#E3EBFA' : '#FDFCFA', bd: i <= 1 ? '#BCD0F0' : '#E3DFD4', fg: i <= 1 ? '#0B1F3F' : '#8A857A', dotBg: i <= 1 ? '#1E5FD6' : '#ECE8DF', dotFg: i <= 1 ? '#fff' : '#8A857A' }));
+    const shipOptions = T.shipOpts.map((o, i) => ({ label: o[0], sub: o[1], price: o[2], priceC: i === 0 ? '#3E5C38' : '#12151A', pick: () => this.setState({ ship: i }), bd: this.state.ship === i ? '#1E5FD6' : '#E3DFD4', bg: this.state.ship === i ? '#E3EBFA' : '#F4F2ED', ringC: this.state.ship === i ? '#1E5FD6' : '#C9C3B4', dot: this.state.ship === i ? '#1E5FD6' : 'transparent' }));
+    const payOptions = T.payOpts.map((o, i) => ({ label: o[0], sub: o[1], pick: () => this.setState({ pay: i }), bd: this.state.pay === i ? '#1E5FD6' : '#E3DFD4', bg: this.state.pay === i ? '#E3EBFA' : '#F4F2ED' }));
+    const cartItems = [
+      { nameEn: 'Apple iPhone 15 · 128GB', nameAr: 'آبل آيفون 15 · ‏128GB', price: 499000, qty: 1, ph: 'iPhone photo' },
+      { nameEn: 'Apple AirPods Pro 2', nameAr: 'آبل إيربودز برو 2', price: 179000, qty: 1, ph: 'AirPods photo' },
+      { nameEn: 'Sony WH-CH720N', nameAr: 'سوني WH-CH720N', price: 89000, qty: 2, ph: 'Headphones photo' }
+    ];
+    const items = cartItems.map((it, i) => ({ slot: 'chk-' + (i + 1), ph: it.ph, name: ar ? it.nameAr : it.nameEn, qty: it.qty, lineFmt: f(it.price * it.qty) }));
+    const subtotal = cartItems.reduce((a, it) => a + it.price * it.qty, 0);
+    const shipCost = this.state.ship === 1 ? 8000 : 0;
+    const discount = 10000;
+    return {
+      lang, dir: ar ? 'rtl' : 'ltr', t: T, steps, shipOptions, payOptions, items,
+      payCard: this.state.pay === 0, ordered: this.state.ordered,
+      subtotalFmt: f(subtotal), shipFmt: shipCost === 0 ? (ar ? 'مجاني' : 'Free') : f(shipCost), discountFmt: f(discount), totalFmt: f(subtotal + shipCost - discount),
+      placeOrder: () => this.setState({ ordered: true }),
+      setLang: (l) => { try { localStorage.setItem('nexstock-lang', l); } catch(e) {} this.setState({ lang: l }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

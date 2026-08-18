@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LittleJoy — Everything for your Little Ones' Big Smiles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ['"Baloo 2"', 'sans-serif'],
+          sans: ['Poppins', 'sans-serif'],
+        },
+        colors: {
+          brand: {
+            purple: '#6C5CE7',
+            purpleDark: '#5B4BD1',
+            purpleLight: '#EDEAFB',
+            pink: '#F2617D',
+            pinkLight: '#FCE4E9',
+            peach: '#FBD7CE',
+            peachLight: '#FDEDE7',
+            yellow: '#F7B733',
+            yellowLight: '#FCEACB',
+            green: '#4CAF7D',
+            greenLight: '#DBF3E2',
+            blueLight: '#DCEEFB',
+            orangeLight: '#FBE4D0',
+            cream: '#FDF3D9',
+            navy: '#26234A',
+          },
+        },
+        boxShadow: {
+          card: '0 6px 20px -6px rgba(38, 35, 74, 0.12)',
+          cardHover: '0 14px 30px -10px rgba(38, 35, 74, 0.22)',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  body { font-family: 'Poppins', sans-serif; }
+  .font-display { font-family: 'Baloo 2', sans-serif; }
+  .logo-letter { font-family: 'Baloo 2', sans-serif; }
+  ::-webkit-scrollbar { height: 6px; width: 6px; }
+  ::-webkit-scrollbar-thumb { background: #d8d3f7; border-radius: 999px; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .decor { position: absolute; pointer-events: none; }
+  .star-rating { letter-spacing: 1px; }
+</style>
+</head>
+<body class="bg-white text-brand.navy text-[#2b2750] antialiased">
+
+<!-- ============ TOP UTILITY BAR ============ -->
+<div class="bg-brand-purpleLight text-[13px] text-[#4a4470]">
+  <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between gap-4">
+    <div class="hidden md:block w-24"></div>
+    <div class="flex items-center gap-3 mx-auto text-center">
+      <span class="hidden sm:inline">🎁</span>
+      <span class="font-medium">Welcome Offer! Get <span class="font-bold">15% OFF</span> on your first order</span>
+      <span class="bg-brand-yellow text-[#5a3d00] text-xs font-bold px-3 py-1 rounded-full">Use Code: HELLO15</span>
+    </div>
+    <div class="hidden md:flex items-center gap-4 whitespace-nowrap">
+      <a href="#" class="hover:text-brand-purple transition">Track Order</a>
+      <a href="#" class="hover:text-brand-purple transition">Help Center</a>
+      <span class="flex items-center gap-1">🇺🇸 USD
+        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex items-center gap-4 md:gap-8">
+    <button id="menuBtn" class="p-2 -ml-2 rounded-lg hover:bg-gray-100 transition shrink-0" aria-label="Open menu">
+      <svg class="w-6 h-6 text-[#2b2750]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+
+    <a href="#" class="shrink-0 leading-none">
+      <div class="font-display font-extrabold text-2xl md:text-3xl tracking-tight">
+        <span class="text-[#F2617D]">L</span><span class="text-[#F7B733]">I</span><span class="text-[#4CAF7D]">T</span><span class="text-[#4AA8E0]">T</span><span class="text-[#8B7CF0]">L</span><span class="text-[#F2617D]">E</span><span class="text-brand-purple">JOY</span>
+      </div>
+      <div class="text-[11px] text-brand-purple font-medium -mt-1 pl-0.5">for happy little ones</div>
+    </a>
+
+    <div class="hidden md:flex flex-1 max-w-xl mx-auto">
+      <div class="flex w-full rounded-full border border-gray-200 overflow-hidden shadow-sm focus-within:ring-2 focus-within:ring-brand-purple/30">
+        <input type="text" placeholder="Search for toys, baby gear, clothing..." class="w-full px-5 py-2.5 text-sm outline-none placeholder:text-gray-400" />
+        <button class="bg-brand-purple hover:bg-brand-purpleDark transition text-white px-5 flex items-center justify-center" aria-label="Search">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-3 md:gap-6 ml-auto md:ml-0 text-[11px] font-medium text-[#4a4470]">
+      <a href="#" class="hidden sm:flex flex-col items-center gap-1 hover:text-brand-purple transition">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+        Account
+      </a>
+      <a href="#" class="relative flex flex-col items-center gap-1 hover:text-brand-purple transition">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 8.6c0-2.6-2.1-4.6-4.7-4.6-1.6 0-3 .8-3.9 2-.9-1.2-2.3-2-3.9-2-2.6 0-4.7 2-4.7 4.6 0 5 8.6 10.4 8.6 10.4s8.6-5.4 8.6-10.4z"/></svg>
+        <span class="absolute -top-1.5 -right-2 bg-brand-pink text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center">2</span>
+        Wishlist
+      </a>
+      <a href="#" class="relative flex flex-col items-center gap-1 hover:text-brand-purple transition">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8V6a6 6 0 0112 0v2M4 8h16l-1.2 12.1a2 2 0 01-2 1.9H7.2a2 2 0 01-2-1.9L4 8z"/></svg>
+        <span class="absolute -top-1.5 -right-2 bg-brand-pink text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center">3</span>
+        Cart
+      </a>
+    </div>
+  </div>
+
+  <!-- mobile search -->
+  <div class="md:hidden px-4 pb-3">
+    <div class="flex w-full rounded-full border border-gray-200 overflow-hidden">
+      <input type="text" placeholder="Search for toys, baby gear..." class="w-full px-4 py-2 text-sm outline-none placeholder:text-gray-400" />
+      <button class="bg-brand-purple text-white px-4 flex items-center justify-center">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- main nav -->
+  <nav class="border-t border-gray-100">
+    <div id="mainNav" class="hidden md:flex max-w-7xl mx-auto px-4 gap-7 text-[13.5px] font-medium text-[#4a4470] overflow-x-auto no-scrollbar">
+      <a href="#" class="flex items-center gap-1.5 py-3 border-b-2 border-brand-purple text-brand-purple">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-8 9 8M5 10v10h14V10"/></svg>
+        Home
+      </a>
+      <a href="#" class="flex items-center gap-1.5 py-3 border-b-2 border-transparent hover:text-brand-purple transition">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="6" r="2.5"/><path d="M5 21c0-5 3-8 7-8s7 3 7 8"/></svg>
+        Baby Gear
+      </a>
+      <a href="#" class="flex items-center gap-1.5 py-3 border-b-2 border-transparent hover:text-brand-purple transition">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="6" r="2"/><circle cx="17" cy="6" r="2"/><circle cx="12" cy="15" r="2"/><path d="M7 8v3M17 8v3M12 17v3"/></svg>
+        Toys
+      </a>
+      <a href="#" class="flex items-center gap-1.5 py-3 border-b-2 border-transparent hover:text-brand-purple transition">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 4L4 7l3 3 2-1.5V20h6V8.5L17 10l3-3-4-3-2 2h-2L8 4z"/></svg>
+        Clothing
+      </a>
+      <a href="#" class="flex items-center gap-1.5 py-3 border-b-2 border-transparent hover:text-brand-purple transition">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20v-7a4 4 0 014-4h8a4 4 0 014 4v7M2 20h20M8 9V6a2 2 0 012-2h4a2 2 0 012 2v3"/></svg>
+        Nursery
+      </a>
+      <a href="#" class="flex items-center gap-1.5 py-3 border-b-2 border-transparent hover:text-brand-purple transition">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 4v4M9 4a2 2 0 114 0v5a3 3 0 01-3 3v6M15 6a2 2 0 012 2v10"/></svg>
+        Feeding
+      </a>
+      <a href="#" class="flex items-center gap-1.5 py-3 border-b-2 border-transparent hover:text-brand-purple transition">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6M7 12V6a2 2 0 012-2 2 2 0 012 2"/></svg>
+        Bath &amp; Care
+      </a>
+      <a href="#" class="flex items-center gap-1.5 py-3 border-b-2 border-transparent hover:text-brand-purple transition">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5.5A2.5 2.5 0 016.5 3H12v18H6.5A2.5 2.5 0 014 18.5v-13zM20 5.5A2.5 2.5 0 0017.5 3H12v18h5.5a2.5 2.5 0 002.5-2.5v-13z"/></svg>
+        Books
+      </a>
+      <a href="#" class="flex items-center gap-1.5 py-3 border-b-2 border-transparent text-brand-pink hover:opacity-80 transition">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.4 7 .7-5.3 4.7 1.6 6.9L12 17l-6.2 3.7 1.6-6.9L2.1 9.1l7-.7L12 2z"/></svg>
+        Deals
+      </a>
+    </div>
+    <!-- mobile nav -->
+    <div id="mobileNav" class="md:hidden hidden flex-col px-4 py-2 text-sm font-medium text-[#4a4470] divide-y divide-gray-100">
+      <a href="#" class="py-2.5 text-brand-purple">Home</a>
+      <a href="#" class="py-2.5">Baby Gear</a>
+      <a href="#" class="py-2.5">Toys</a>
+      <a href="#" class="py-2.5">Clothing</a>
+      <a href="#" class="py-2.5">Nursery</a>
+      <a href="#" class="py-2.5">Feeding</a>
+      <a href="#" class="py-2.5">Bath &amp; Care</a>
+      <a href="#" class="py-2.5">Books</a>
+      <a href="#" class="py-2.5 text-brand-pink">Deals</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="relative overflow-hidden bg-gradient-to-br from-brand-peachLight to-brand-peach">
+  <div class="decor top-10 left-[8%] text-2xl opacity-70">✦</div>
+  <div class="decor top-24 right-[30%] text-xl opacity-60">☁️</div>
+  <div class="decor bottom-16 left-[38%] text-lg opacity-60">✦</div>
+
+  <div class="max-w-7xl mx-auto px-4 py-14 md:py-20 grid md:grid-cols-2 gap-10 items-center relative">
+    <div>
+      <p class="flex items-center gap-2 text-[#5a5480] font-medium mb-2">Everything for your
+        <svg class="w-4 h-4 text-brand-pink" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg>
+      </p>
+      <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-[1.05] mb-5">
+        <span class="text-[#26234A]">Little Ones'</span><br/>
+        <span class="text-brand-pink">Big Smiles</span>
+      </h1>
+      <p class="text-[#5a5480] text-base md:text-lg max-w-md mb-8">Safe, quality products for every stage of your child's journey.</p>
+      <div class="flex flex-wrap items-center gap-4">
+        <a href="#popular" class="inline-flex items-center gap-2 bg-brand-purple hover:bg-brand-purpleDark transition text-white font-semibold px-7 py-3.5 rounded-full shadow-card">
+          Shop Now
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#" class="inline-flex items-center gap-2 bg-white border-2 border-[#26234A] text-[#26234A] font-semibold px-7 py-3.5 rounded-full hover:bg-[#26234A] hover:text-white transition">
+          Explore Deals
+        </a>
+      </div>
+    </div>
+
+    <div class="relative flex justify-center">
+      <div class="absolute -top-4 -right-2 md:right-6 bg-brand-purple text-white rounded-full w-28 h-28 md:w-32 md:h-32 flex flex-col items-center justify-center text-center shadow-card rotate-6 z-10">
+        <span class="text-xs font-medium">Up to</span>
+        <span class="font-display font-extrabold text-2xl md:text-3xl leading-none">40%</span>
+        <span class="text-xs font-medium">OFF</span>
+      </div>
+
+      <svg viewBox="0 0 420 340" class="w-full max-w-md drop-shadow-xl">
+        <!-- clouds -->
+        <g fill="#ffffff" opacity="0.8">
+          <ellipse cx="60" cy="50" rx="34" ry="18"/><ellipse cx="90" cy="42" rx="22" ry="14"/>
+          <ellipse cx="360" cy="90" rx="30" ry="16"/><ellipse cx="330" cy="82" rx="20" ry="12"/>
+        </g>
+        <!-- bush -->
+        <ellipse cx="55" cy="290" rx="48" ry="34" fill="#B7DDBE"/>
+        <circle cx="30" cy="270" r="10" fill="#fff" opacity="0.5"/>
+        <!-- ABC blocks -->
+        <g>
+          <rect x="330" y="230" width="46" height="46" rx="8" fill="#F2617D"/>
+          <text x="353" y="262" font-family="Baloo 2, sans-serif" font-size="24" fill="#fff" text-anchor="middle" font-weight="700">A</text>
+          <rect x="300" y="255" width="46" height="46" rx="8" fill="#4AA8E0" transform="rotate(-6 323 278)"/>
+          <text x="323" y="285" font-family="Baloo 2, sans-serif" font-size="24" fill="#fff" text-anchor="middle" font-weight="700" transform="rotate(-6 323 278)">B</text>
+          <rect x="352" y="258" width="46" height="46" rx="8" fill="#F7B733" transform="rotate(7 375 281)"/>
+          <text x="375" y="288" font-family="Baloo 2, sans-serif" font-size="24" fill="#fff" text-anchor="middle" font-weight="700" transform="rotate(7 375 281)">C</text>
+        </g>
+        <!-- wooden truck -->
+        <g>
+          <rect x="120" y="255" width="90" height="34" rx="6" fill="#F7B733"/>
+          <rect x="140" y="230" width="45" height="30" rx="6" fill="#E89A2A"/>
+          <circle cx="140" cy="292" r="13" fill="#4a3420"/><circle cx="140" cy="292" r="6" fill="#fff"/>
+          <circle cx="192" cy="292" r="13" fill="#4a3420"/><circle cx="192" cy="292" r="6" fill="#fff"/>
+        </g>
+        <!-- stacking rings -->
+        <g>
+          <rect x="215" y="285" width="16" height="14" rx="3" fill="#7a5230"/>
+          <ellipse cx="223" cy="270" rx="42" ry="14" fill="#F2617D"/>
+          <ellipse cx="223" cy="248" rx="35" ry="12" fill="#F7B733"/>
+          <ellipse cx="223" cy="228" rx="28" ry="10" fill="#4CAF7D"/>
+          <ellipse cx="223" cy="211" rx="21" ry="8" fill="#4AA8E0"/>
+          <ellipse cx="223" cy="197" rx="14" ry="6" fill="#8B7CF0"/>
+        </g>
+        <!-- teddy bear -->
+        <g>
+          <ellipse cx="300" cy="150" rx="26" ry="24" fill="#E8C39E"/>
+          <circle cx="278" cy="130" r="12" fill="#E8C39E"/>
+          <circle cx="322" cy="130" r="12" fill="#E8C39E"/>
+          <circle cx="278" cy="132" r="5" fill="#D2A776"/>
+          <circle cx="322" cy="132" r="5" fill="#D2A776"/>
+          <circle cx="290" cy="150" r="2.5" fill="#3d2b1f"/>
+          <circle cx="311" cy="150" r="2.5" fill="#3d2b1f"/>
+          <ellipse cx="300" cy="160" rx="7" ry="5" fill="#D2A776"/>
+          <path d="M295 163q5 5 10 0" stroke="#3d2b1f" stroke-width="1.5" fill="none"/>
+          <ellipse cx="300" cy="235" rx="52" ry="60" fill="#E8C39E"/>
+          <ellipse cx="300" cy="245" rx="26" ry="32" fill="#F3DAB9"/>
+          <circle cx="253" cy="225" r="17" fill="#E8C39E"/>
+          <circle cx="347" cy="225" r="17" fill="#E8C39E"/>
+          <ellipse cx="268" cy="288" rx="18" ry="14" fill="#E8C39E"/>
+          <ellipse cx="332" cy="288" rx="18" ry="14" fill="#E8C39E"/>
+          <path d="M270 205q30 -14 60 0" stroke="#7a5230" stroke-width="4" fill="none" stroke-linecap="round"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="flex items-center justify-center gap-2 pb-8">
+    <span class="w-6 h-2 rounded-full bg-brand-purple"></span>
+    <span class="w-2 h-2 rounded-full bg-white/70"></span>
+    <span class="w-2 h-2 rounded-full bg-white/70"></span>
+    <span class="w-2 h-2 rounded-full bg-white/70"></span>
+  </div>
+</section>
+
+<!-- ============ CATEGORY ICONS ============ -->
+<section class="max-w-7xl mx-auto px-4 py-10 md:py-12">
+  <div class="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-x-4 gap-y-8 text-center">
+    <a href="#" class="group flex flex-col items-center gap-2.5">
+      <div class="w-16 h-16 rounded-full bg-brand-purpleLight flex items-center justify-center text-brand-purple group-hover:scale-110 transition">
+        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="20" r="2"/><circle cx="17" cy="20" r="2"/><path d="M4 4h2l2.2 12.6a2 2 0 002 1.4H17a2 2 0 002-1.7L20 8H7"/></svg>
+      </div>
+      <span class="text-[13px] font-medium text-[#3a3560]">Baby Gear</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2.5">
+      <div class="w-16 h-16 rounded-full bg-brand-pinkLight flex items-center justify-center text-brand-pink group-hover:scale-110 transition">
+        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-5 3-8 7-8s7 3 7 8"/></svg>
+      </div>
+      <span class="text-[13px] font-medium text-[#3a3560]">Toys &amp; Games</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2.5">
+      <div class="w-16 h-16 rounded-full bg-brand-greenLight flex items-center justify-center text-brand-green group-hover:scale-110 transition">
+        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 4L4 7l3 3 2-1.5V20h6V8.5L17 10l3-3-4-3-2 2h-2L8 4z"/></svg>
+      </div>
+      <span class="text-[13px] font-medium text-[#3a3560]">Clothing</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2.5">
+      <div class="w-16 h-16 rounded-full bg-brand-yellowLight flex items-center justify-center text-[#B4790A] group-hover:scale-110 transition">
+        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20v-7a4 4 0 014-4h8a4 4 0 014 4v7M2 20h20M8 9V6a2 2 0 012-2h4a2 2 0 012 2v3"/></svg>
+      </div>
+      <span class="text-[13px] font-medium text-[#3a3560]">Nursery</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2.5">
+      <div class="w-16 h-16 rounded-full bg-brand-pinkLight flex items-center justify-center text-brand-pink group-hover:scale-110 transition">
+        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 4v4M9 4a2 2 0 114 0v5a3 3 0 01-3 3v6M15 6a2 2 0 012 2v10"/></svg>
+      </div>
+      <span class="text-[13px] font-medium text-[#3a3560]">Feeding</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2.5">
+      <div class="w-16 h-16 rounded-full bg-brand-blueLight flex items-center justify-center text-[#2E86C1] group-hover:scale-110 transition">
+        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h18M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6M7 12V6a2 2 0 012-2 2 2 0 012 2"/></svg>
+      </div>
+      <span class="text-[13px] font-medium text-[#3a3560]">Bath &amp; Care</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2.5">
+      <div class="w-16 h-16 rounded-full bg-brand-orangeLight flex items-center justify-center text-[#D2691E] group-hover:scale-110 transition">
+        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5.5A2.5 2.5 0 016.5 3H12v18H6.5A2.5 2.5 0 014 18.5v-13zM20 5.5A2.5 2.5 0 0017.5 3H12v18h5.5a2.5 2.5 0 002.5-2.5v-13z"/></svg>
+      </div>
+      <span class="text-[13px] font-medium text-[#3a3560]">Books</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2.5">
+      <div class="w-16 h-16 rounded-full bg-brand-greenLight flex items-center justify-center text-brand-green group-hover:scale-110 transition">
+        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l4 6h-3v4h5l-4 6h-4l-4-6h5V8H8l4-6z"/><path d="M12 18v4"/></svg>
+      </div>
+      <span class="text-[13px] font-medium text-[#3a3560]">Outdoor</span>
+    </a>
+    <a href="#" class="group flex flex-col items-center gap-2.5">
+      <div class="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 group-hover:scale-110 transition">
+        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg>
+      </div>
+      <span class="text-[13px] font-medium text-[#3a3560]">All Categories</span>
+    </a>
+  </div>
+</section>
+
+<!-- ============ PROMO CARDS ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-12">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+    <div class="bg-brand-purpleLight rounded-3xl p-6 flex flex-col justify-between overflow-hidden relative min-h-[220px] hover:shadow-card transition">
+      <div>
+        <h3 class="font-display font-bold text-xl text-[#26234A]">New Arrivals</h3>
+        <p class="text-sm text-[#5a5480] mt-1">Fresh picks just for you</p>
+      </div>
+      <a href="#" class="inline-flex items-center gap-1 text-sm font-semibold text-[#26234A] mt-4">Shop Now
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <svg viewBox="0 0 100 100" class="absolute -bottom-2 -right-2 w-28 h-28 opacity-95">
+        <ellipse cx="60" cy="60" rx="30" ry="26" fill="#F3DAB9"/>
+        <ellipse cx="38" cy="35" rx="10" ry="20" fill="#F3DAB9" transform="rotate(-15 38 35)"/>
+        <ellipse cx="60" cy="30" rx="10" ry="20" fill="#F3DAB9" transform="rotate(10 60 30)"/>
+        <circle cx="50" cy="55" r="4" fill="#5a4632"/><circle cx="66" cy="55" r="4" fill="#5a4632"/>
+        <ellipse cx="58" cy="65" rx="5" ry="3" fill="#e8b98f"/>
+      </svg>
+    </div>
+
+    <div class="bg-brand-yellowLight rounded-3xl p-6 flex flex-col justify-between overflow-hidden relative min-h-[220px] hover:shadow-card transition">
+      <div>
+        <h3 class="font-display font-bold text-xl text-[#7A5200]">Summer Fun</h3>
+        <p class="text-sm text-[#8a6a2a] mt-1">Outdoor toys &amp; essentials</p>
+      </div>
+      <a href="#" class="inline-flex items-center gap-1 text-sm font-semibold text-[#7A5200] mt-4">Shop Now
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <svg viewBox="0 0 100 100" class="absolute -bottom-2 -right-2 w-28 h-28">
+        <circle cx="45" cy="78" r="14" fill="none" stroke="#4a3420" stroke-width="5"/>
+        <circle cx="80" cy="78" r="14" fill="none" stroke="#4a3420" stroke-width="5"/>
+        <path d="M45 78L58 45H74M58 45L50 30" stroke="#E85D42" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path d="M45 78L74 78" stroke="#E85D42" stroke-width="5" fill="none"/>
+        <rect x="44" y="26" width="16" height="8" rx="3" fill="#4AA8E0"/>
+      </svg>
+    </div>
+
+    <div class="bg-brand-greenLight rounded-3xl p-6 flex flex-col justify-between overflow-hidden relative min-h-[220px] hover:shadow-card transition">
+      <div>
+        <h3 class="font-display font-bold text-xl text-[#1E6B44]">Nursery Must-Haves</h3>
+        <p class="text-sm text-[#3a7a55] mt-1">Create the perfect space for baby</p>
+      </div>
+      <a href="#" class="inline-flex items-center gap-1 text-sm font-semibold text-[#1E6B44] mt-4">Shop Now
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <svg viewBox="0 0 100 100" class="absolute -bottom-2 -right-2 w-28 h-28">
+        <rect x="28" y="35" width="44" height="34" rx="4" fill="none" stroke="#8a6d4a" stroke-width="4"/>
+        <path d="M28 35v-8M72 35v-8" stroke="#8a6d4a" stroke-width="4" stroke-linecap="round"/>
+        <path d="M32 78l-6 12M68 78l6 12" stroke="#8a6d4a" stroke-width="4" stroke-linecap="round"/>
+        <path d="M28 69v9M72 69v9" stroke="#8a6d4a" stroke-width="4"/>
+      </svg>
+    </div>
+
+    <div class="bg-brand-pinkLight rounded-3xl p-6 flex flex-col justify-between overflow-hidden relative min-h-[220px] hover:shadow-card transition">
+      <div>
+        <h3 class="font-display font-bold text-xl text-[#B03352]">Feeding Time</h3>
+        <p class="text-sm text-[#c25a72] mt-1">Smart choices for happy meals</p>
+      </div>
+      <a href="#" class="inline-flex items-center gap-1 text-sm font-semibold text-[#B03352] mt-4">Shop Now
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <svg viewBox="0 0 100 100" class="absolute -bottom-2 -right-2 w-28 h-28">
+        <rect x="38" y="30" width="24" height="52" rx="10" fill="#FDF6E9" stroke="#e8b98f" stroke-width="2"/>
+        <rect x="44" y="20" width="12" height="14" rx="4" fill="#e8b98f"/>
+        <path d="M32 45q8-6 16 0M32 45v18q0 6 8 6h4q8 0 8-6V45" fill="none" stroke="#e8b98f" stroke-width="3"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POPULAR PICKS ============ -->
+<section id="popular" class="max-w-7xl mx-auto px-4 pb-12">
+  <div class="flex items-center justify-between mb-6">
+    <h2 class="font-display font-bold text-2xl md:text-3xl text-[#26234A] flex items-center gap-2">
+      Popular Picks
+      <svg class="w-5 h-5 text-brand-pink" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg>
+    </h2>
+    <a href="#" class="hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-brand-purple hover:text-brand-purpleDark transition">View All Products
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+
+    <!-- Product card template x6 -->
+    <div class="group bg-white border border-gray-100 rounded-2xl p-3 hover:shadow-cardHover transition">
+      <div class="relative bg-gray-50 rounded-xl aspect-square flex items-center justify-center overflow-hidden mb-3">
+        <button class="absolute top-2 right-2 w-8 h-8 bg-white rounded-full shadow flex items-center justify-center text-gray-400 hover:text-brand-pink transition z-10" aria-label="Add to wishlist">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg>
+        </button>
+        <svg viewBox="0 0 120 120" class="w-24 h-24 group-hover:scale-105 transition">
+          <rect x="20" y="55" width="52" height="14" rx="4" fill="#3a3a3a"/>
+          <path d="M30 55V35a20 20 0 0140 0v20" fill="none" stroke="#3a3a3a" stroke-width="6"/>
+          <circle cx="32" cy="82" r="10" fill="#3a3a3a"/><circle cx="68" cy="82" r="10" fill="#3a3a3a"/>
+          <circle cx="32" cy="82" r="4" fill="#ccc"/><circle cx="68" cy="82" r="4" fill="#ccc"/>
+          <rect x="72" y="46" width="18" height="22" rx="6" fill="#F2617D"/>
+        </svg>
+      </div>
+      <h3 class="text-sm font-semibold text-[#26234A] leading-snug mb-1">Baby Stroller Comfort Ride</h3>
+      <p class="font-display font-bold text-brand-purple mb-1">$199.00</p>
+      <div class="star-rating text-amber-400 text-xs flex items-center gap-1">★★★★<span class="text-amber-200">★</span><span class="text-gray-400 font-sans ml-1">(128)</span></div>
+    </div>
+
+    <div class="group bg-white border border-gray-100 rounded-2xl p-3 hover:shadow-cardHover transition">
+      <div class="relative bg-gray-50 rounded-xl aspect-square flex items-center justify-center overflow-hidden mb-3">
+        <button class="absolute top-2 right-2 w-8 h-8 bg-white rounded-full shadow flex items-center justify-center text-gray-400 hover:text-brand-pink transition z-10" aria-label="Add to wishlist">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg>
+        </button>
+        <svg viewBox="0 0 120 120" class="w-24 h-24 group-hover:scale-105 transition">
+          <rect x="25" y="65" width="26" height="26" rx="4" fill="#F7B733"/>
+          <rect x="55" y="65" width="26" height="26" rx="4" fill="#4AA8E0"/>
+          <rect x="40" y="38" width="26" height="26" rx="4" fill="#F2617D"/>
+          <rect x="70" y="45" width="18" height="18" rx="4" fill="#4CAF7D" transform="rotate(12 79 54)"/>
+        </svg>
+      </div>
+      <h3 class="text-sm font-semibold text-[#26234A] leading-snug mb-1">Wooden Building Blocks Set</h3>
+      <p class="font-display font-bold text-brand-purple mb-1">$29.99</p>
+      <div class="star-rating text-amber-400 text-xs flex items-center gap-1">★★★★<span class="text-amber-200">★</span><span class="text-gray-400 font-sans ml-1">(86)</span></div>
+    </div>
+
+    <div class="group bg-white border border-gray-100 rounded-2xl p-3 hover:shadow-cardHover transition">
+      <div class="relative bg-gray-50 rounded-xl aspect-square flex items-center justify-center overflow-hidden mb-3">
+        <button class="absolute top-2 right-2 w-8 h-8 bg-white rounded-full shadow flex items-center justify-center text-gray-400 hover:text-brand-pink transition z-10" aria-label="Add to wishlist">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg>
+        </button>
+        <svg viewBox="0 0 120 120" class="w-24 h-24 group-hover:scale-105 transition">
+          <ellipse cx="60" cy="55" rx="24" ry="20" fill="#B9C0C6"/>
+          <circle cx="42" cy="42" r="9" fill="#B9C0C6"/><circle cx="78" cy="42" r="9" fill="#B9C0C6"/>
+          <ellipse cx="60" cy="80" rx="20" ry="18" fill="#B9C0C6"/>
+          <path d="M60 60q14 4 12 22" stroke="#9BA3AA" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <circle cx="50" cy="50" r="2.5" fill="#333"/><circle cx="66" cy="50" r="2.5" fill="#333"/>
+        </svg>
+      </div>
+      <h3 class="text-sm font-semibold text-[#26234A] leading-snug mb-1">Soft Plush Elephant</h3>
+      <p class="font-display font-bold text-brand-purple mb-1">$18.99</p>
+      <div class="star-rating text-amber-400 text-xs flex items-center gap-1">★★★★<span class="text-amber-200">★</span><span class="text-gray-400 font-sans ml-1">(112)</span></div>
+    </div>
+
+    <div class="group bg-white border border-gray-100 rounded-2xl p-3 hover:shadow-cardHover transition">
+      <div class="relative bg-gray-50 rounded-xl aspect-square flex items-center justify-center overflow-hidden mb-3">
+        <button class="absolute top-2 right-2 w-8 h-8 bg-white rounded-full shadow flex items-center justify-center text-gray-400 hover:text-brand-pink transition z-10" aria-label="Add to wishlist">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg>
+        </button>
+        <svg viewBox="0 0 120 120" class="w-24 h-24 group-hover:scale-105 transition">
+          <path d="M35 50h20v40a10 10 0 01-20 0z" fill="#F6C9BE"/>
+          <path d="M50 50h20v40a10 10 0 01-20 0z" fill="#AFD8E8"/>
+          <path d="M65 50h20v40a10 10 0 01-20 0z" fill="#F7DFA0"/>
+          <rect x="30" y="42" width="60" height="10" rx="5" fill="#e9e3d8"/>
+        </svg>
+      </div>
+      <h3 class="text-sm font-semibold text-[#26234A] leading-snug mb-1">Baby Romper Set (Pack of 3)</h3>
+      <p class="font-display font-bold text-brand-purple mb-1">$24.99</p>
+      <div class="star-rating text-amber-400 text-xs flex items-center gap-1">★★★★<span class="text-amber-200">★</span><span class="text-gray-400 font-sans ml-1">(78)</span></div>
+    </div>
+
+    <div class="group bg-white border border-gray-100 rounded-2xl p-3 hover:shadow-cardHover transition">
+      <div class="relative bg-gray-50 rounded-xl aspect-square flex items-center justify-center overflow-hidden mb-3">
+        <button class="absolute top-2 right-2 w-8 h-8 bg-white rounded-full shadow flex items-center justify-center text-gray-400 hover:text-brand-pink transition z-10" aria-label="Add to wishlist">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg>
+        </button>
+        <svg viewBox="0 0 120 120" class="w-24 h-24 group-hover:scale-105 transition">
+          <ellipse cx="45" cy="72" rx="20" ry="10" fill="#B9CBB6"/>
+          <rect x="30" y="45" width="30" height="24" rx="10" fill="#B9CBB6"/>
+          <circle cx="80" cy="60" r="16" fill="#D7DED2"/>
+          <rect x="70" y="50" width="20" height="8" rx="4" fill="#B9CBB6"/>
+        </svg>
+      </div>
+      <h3 class="text-sm font-semibold text-[#26234A] leading-snug mb-1">Silicone Feeding Set</h3>
+      <p class="font-display font-bold text-brand-purple mb-1">$21.99</p>
+      <div class="star-rating text-amber-400 text-xs flex items-center gap-1">★★★★<span class="text-amber-200">★</span><span class="text-gray-400 font-sans ml-1">(97)</span></div>
+    </div>
+
+    <div class="group bg-white border border-gray-100 rounded-2xl p-3 hover:shadow-cardHover transition">
+      <div class="relative bg-gray-50 rounded-xl aspect-square flex items-center justify-center overflow-hidden mb-3">
+        <button class="absolute top-2 right-2 w-8 h-8 bg-white rounded-full shadow flex items-center justify-center text-gray-400 hover:text-brand-pink transition z-10" aria-label="Add to wishlist">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg>
+        </button>
+        <svg viewBox="0 0 120 120" class="w-24 h-24 group-hover:scale-105 transition">
+          <path d="M30 40q30-14 60 0" stroke="#9BA3AA" stroke-width="4" fill="none"/>
+          <circle cx="35" cy="55" r="8" fill="#DCEEFB"/>
+          <path d="M31 55l3 4 5-6" stroke="#4AA8E0" stroke-width="2" fill="none"/>
+          <circle cx="60" cy="65" r="8" fill="#FCE4E9"/>
+          <path d="M60 60v10M56 65h8" stroke="#F2617D" stroke-width="2"/>
+          <circle cx="85" cy="55" r="8" fill="#FCEACB"/>
+          <path d="M80 55l10 0" stroke="#F7B733" stroke-width="2"/>
+        </svg>
+      </div>
+      <h3 class="text-sm font-semibold text-[#26234A] leading-snug mb-1">Musical Crib Mobile</h3>
+      <p class="font-display font-bold text-brand-purple mb-1">$34.99</p>
+      <div class="star-rating text-amber-400 text-xs flex items-center gap-1">★★★★<span class="text-amber-200">★</span><span class="text-gray-400 font-sans ml-1">(63)</span></div>
+    </div>
+  </div>
+
+  <a href="#" class="sm:hidden mt-6 flex items-center justify-center gap-1 text-sm font-semibold text-brand-purple">View All Products
+    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </a>
+</section>
+
+<!-- ============ FEATURES BAR ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-12">
+  <div class="bg-brand-purple rounded-3xl border-2 border-dashed border-white/40 px-6 md:px-10 py-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-white">
+      <div class="flex items-center gap-3">
+        <svg class="w-9 h-9 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg>
+        <div>
+          <p class="font-semibold text-sm">Free Shipping</p>
+          <p class="text-xs text-white/75">On orders over $75</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <svg class="w-9 h-9 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+        <div>
+          <p class="font-semibold text-sm">Safe Payments</p>
+          <p class="text-xs text-white/75">100% secure checkout</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <svg class="w-9 h-9 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4v6h6M20 20v-6h-6"/><path d="M5.5 15a8 8 0 0013.9 3.5M18.5 9A8 8 0 004.6 5.5"/></svg>
+        <div>
+          <p class="font-semibold text-sm">Easy Returns</p>
+          <p class="text-xs text-white/75">30 days return policy</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <svg class="w-9 h-9 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 16v-3a8 8 0 0116 0v3"/><rect x="2.5" y="15" width="5" height="6" rx="2"/><rect x="16.5" y="15" width="5" height="6" rx="2"/></svg>
+        <div>
+          <p class="font-semibold text-sm">24/7 Support</p>
+          <p class="text-xs text-white/75">We're here to help</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWSLETTER ============ -->
+<section class="relative overflow-hidden bg-brand-cream">
+  <div class="decor top-6 left-[6%] text-xl">⭐</div>
+  <div class="decor bottom-8 left-[20%] text-lg">💛</div>
+  <div class="decor top-10 right-[22%] text-lg">⭐</div>
+  <div class="decor bottom-6 right-[8%] text-xl">💜</div>
+
+  <div class="max-w-7xl mx-auto px-4 py-12 grid md:grid-cols-2 gap-8 items-center">
+    <div class="flex items-center gap-4">
+      <div class="w-14 h-14 rounded-2xl bg-brand-purple/10 flex items-center justify-center text-brand-purple shrink-0">
+        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7l9 6 9-6M4 5h16a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1z"/></svg>
+      </div>
+      <div>
+        <h3 class="font-display font-bold text-xl md:text-2xl text-[#26234A]">Join the LittleJoy Family!</h3>
+        <p class="text-sm text-[#5a5480] mt-1">Subscribe for exclusive offers, parenting tips and new arrivals.</p>
+      </div>
+    </div>
+    <form class="flex w-full max-w-md ml-auto gap-3" onsubmit="event.preventDefault(); this.reset(); alert('Thanks for subscribing!');">
+      <input type="email" required placeholder="Enter your email address" class="flex-1 px-5 py-3 rounded-full border border-gray-200 outline-none focus:ring-2 focus:ring-brand-purple/30 text-sm" />
+      <button class="bg-brand-purple hover:bg-brand-purpleDark transition text-white font-semibold px-7 py-3 rounded-full shrink-0">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="relative bg-brand-purple text-purple-100 pt-16 pb-8 overflow-hidden">
+  <svg class="absolute top-0 left-0 w-full h-10 md:h-14" viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path d="M0 30 Q 180 0 360 30 T 720 30 T 1080 30 T 1440 30 V60 H0 Z" fill="#6C5CE7"/>
+    <path d="M0 30 Q 180 0 360 30 T 720 30 T 1080 30 T 1440 30" fill="none" stroke="#7d6ef2" stroke-width="2"/>
+  </svg>
+
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="grid md:grid-cols-5 gap-10 pb-10 border-b border-white/15">
+      <div class="md:col-span-1">
+        <div class="font-display font-extrabold text-2xl text-white">LITTLE<span class="text-brand-yellow">JOY</span></div>
+        <div class="text-[11px] text-purple-200 -mt-1 mb-3">for happy little ones</div>
+        <p class="text-sm text-purple-200 leading-relaxed mb-4">Your one-stop shop for everything your little one needs. Quality, safety and happiness, always.</p>
+        <div class="flex items-center gap-3">
+          <a href="#" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition" aria-label="Facebook">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.25-1.5 1.55-1.5H17V3.7C16.7 3.65 15.7 3.6 14.5 3.6c-2.4 0-4 1.45-4 4.15V10H7.8v3.1h2.7V21h3z"/></svg>
+          </a>
+          <a href="#" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition" aria-label="Instagram">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor"/></svg>
+          </a>
+          <a href="#" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition" aria-label="Pinterest">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-3.6 19.3c0-.8 0-1.8.2-2.6l1.4-6s-.35-.7-.35-1.75c0-1.6.95-2.8 2.1-2.8 1 0 1.5.75 1.5 1.65 0 1-.65 2.5-1 3.9-.3 1.15.6 2.1 1.75 2.1 2.1 0 3.7-2.2 3.7-5.4 0-2.8-2-4.8-4.9-4.8-3.35 0-5.3 2.5-5.3 5.1 0 1 .4 2.1.9 2.7.1.1.1.2.07.35l-.3 1.2c-.05.2-.15.24-.35.14-1.3-.6-2.1-2.5-2.1-4 0-3.3 2.4-6.3 6.9-6.3 3.6 0 6.4 2.6 6.4 6 0 3.6-2.25 6.5-5.4 6.5-1.05 0-2.05-.55-2.4-1.2l-.65 2.5c-.25.9-.9 2.05-1.35 2.75A10 10 0 1012 2z"/></svg>
+          </a>
+          <a href="#" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition" aria-label="YouTube">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12s0-3.2-.4-4.7a2.8 2.8 0 00-2-2C17.9 5 12 5 12 5s-5.9 0-7.6.3a2.8 2.8 0 00-2 2C2 8.8 2 12 2 12s0 3.2.4 4.7a2.8 2.8 0 002 2C6.1 19 12 19 12 19s5.9 0 7.6-.3a2.8 2.8 0 002-2C22 15.2 22 12 22 12z"/><path d="M10 9.5v5l4.5-2.5z" fill="#6C5CE7"/></svg>
+          </a>
+          <a href="#" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition" aria-label="TikTok">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.4 2.2 1.9 3.6 4 3.8v2.7c-1.4 0-2.7-.4-3.9-1.2v6.2a5.4 5.4 0 11-4.6-5.4v2.8a2.7 2.7 0 102.7 2.7V3h1.8z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-white font-semibold mb-4">Shop</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="#" class="hover:text-white transition">All Categories</a></li>
+          <li><a href="#" class="hover:text-white transition">New Arrivals</a></li>
+          <li><a href="#" class="hover:text-white transition">Best Sellers</a></li>
+          <li><a href="#" class="hover:text-white transition">Deals</a></li>
+          <li><a href="#" class="hover:text-white transition">Gift Cards</a></li>
+          <li><a href="#" class="hover:text-white transition">Brands</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-white font-semibold mb-4">Customer Care</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="#" class="hover:text-white transition">Track Your Order</a></li>
+          <li><a href="#" class="hover:text-white transition">Returns &amp; Exchanges</a></li>
+          <li><a href="#" class="hover:text-white transition">Shipping Info</a></li>
+          <li><a href="#" class="hover:text-white transition">FAQs</a></li>
+          <li><a href="#" class="hover:text-white transition">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-white font-semibold mb-4">About Us</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="#" class="hover:text-white transition">Our Story</a></li>
+          <li><a href="#" class="hover:text-white transition">Blog</a></li>
+          <li><a href="#" class="hover:text-white transition">Careers</a></li>
+          <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+          <li><a href="#" class="hover:text-white transition">Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-white font-semibold mb-4">Payment Methods</h4>
+        <div class="grid grid-cols-2 gap-2">
+          <span class="bg-white text-[#1A1F71] text-[11px] font-bold rounded-md px-3 py-2 text-center">VISA</span>
+          <span class="bg-white text-[#EB001B] text-[11px] font-bold rounded-md px-3 py-2 text-center">Mastercard</span>
+          <span class="bg-white text-[#2E77BC] text-[11px] font-bold rounded-md px-3 py-2 text-center">AMEX</span>
+          <span class="bg-white text-[#003087] text-[11px] font-bold rounded-md px-3 py-2 text-center">PayPal</span>
+          <span class="bg-white text-[#000] text-[11px] font-bold rounded-md px-3 py-2 text-center">Apple Pay</span>
+          <span class="bg-white text-[#4285F4] text-[11px] font-bold rounded-md px-3 py-2 text-center">G Pay</span>
+        </div>
+        <span class="mt-2 inline-block bg-white text-[#5A31F4] text-[11px] font-bold rounded-md px-3 py-2 text-center">Shop Pay</span>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-6 text-xs text-purple-200">
+      <p>© 2026 LittleJoy. All Rights Reserved.</p>
+      <p class="flex items-center gap-1.5">Designed with
+        <svg class="w-3.5 h-3.5 text-brand-pink" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.8-10-9.3C.5 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5 4 3.5 7.7C21.5 16.2 12 21 12 21z"/></svg>
+        for little ones and their families
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileNav = document.getElementById('mobileNav');
+  menuBtn.addEventListener('click', () => {
+    mobileNav.classList.toggle('hidden');
+    mobileNav.classList.toggle('flex');
+  });
+</script>
+
+</body>
+</html>
