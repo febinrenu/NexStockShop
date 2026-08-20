@@ -1,36 +1,42 @@
 # Person C Pending Items Tracker
 
-This document outlines verified pending tasks, missing backend APIs, and external team dependencies for the NexStockShop project from the perspective of Person C (Dashboards & AI Lead).
+This document tracks outstanding items, missing APIs, and mock boundaries for the NexStockShop dashboard integrations.
 
 ---
 
 ## 1. Missing Backend APIs (Person A Dependencies)
-The following endpoints are currently missing from the Laravel API codebase (verified by inspecting `routes/tenant.php`, `routes/central.php`, and `docs/api/openapi.json`):
+The following central and tenant administration endpoints are currently unavailable in the Laravel codebase:
 
 ### Tenant Admin (Seller) API Layer
-*   **Product Write Actions**: Missing endpoints for creating (`POST /products`), updating (`PUT /products/{id}`), and deleting (`DELETE /products/{id}`) product items. Currently only public GET catalog reads are available.
-*   **Inventory Adjustments**: Missing endpoints to update variant stock levels (e.g. `PATCH /inventory/{variant_id}`).
-*   **Order Fulfillment**: Missing admin order list (`GET /orders`) and shipment tracking updates (`PATCH /orders/{order_id}/status`) under the `auth:tenant` guard.
-*   **Settings Editor**: Missing write endpoint for updating tenant settings (e.g., `PATCH /settings` or `POST /settings/branding`) to save colors and theme templates.
-*   **Analytics reporting**: Missing endpoints to fetch MRR, revenue trends, status distribution, and top product counts.
+*   **Product Write Actions**: Missing `POST /products`, `PUT /products/{id}`, and `DELETE /products/{id}` endpoints.
+*   **Inventory Adjustments**: Missing `PATCH /inventory/{variant_id}` endpoints to modify variant stock count.
+*   **Order Fulfillment Console**: Missing `GET /orders` query and `PATCH /orders/{id}/status` transition endpoints under `auth:tenant`.
+*   **Settings Branding Persistence**: Missing `PATCH /settings` write endpoints for tenant branding.
+*   **Analytics Aggregates**: Missing endpoints to fetch sales metrics and revenue summaries.
 
 ### Platform Super-Admin API Layer
-*   **Tenant Control**: Missing endpoints to list, retrieve details, and modify/deactivate tenant records (`GET/POST/PATCH /central/tenants`).
-*   **Subscription Plan CRUD**: Missing endpoints to manage billing tiers (`GET/POST/PUT /central/plans`).
+*   **Tenant Administration**: Missing `GET/POST/PATCH /central/tenants` endpoints to query and suspend/activate tenants.
+*   **Billing Tiers CRUD**: Missing `GET/POST/PUT /central/plans` endpoints to query and update pricing details.
 
 ---
 
-## 2. Person C Remaining Tasks
-The following tasks are assigned to Person C and will be implemented in subsequent phases:
+## 2. Features Currently Implemented with Mocks
+To maintain full front-end diagnostic utility despite missing APIs, the following operations are mock-implemented:
 
-*   **Phase 3: Tenant Onboarding Wizard**: Build the step-by-step registration Next.js portal pages using the existing backend endpoints (`POST /central/signup`, `/onboarding/{tenant}/theme`, `/onboarding/{tenant}/go-live`).
-*   **Phase 4: Platform Super-Admin UI**: Create pages for platform settings (live integration) and review moderation queue (live integration), alongside mock layouts for tenant list and subscription tier controls.
+*   **Seller CRUD Mutations**: Product creation, editing, and deactivation are managed inside `seller-service.ts` in-memory mock store.
+*   **Inventory Adjustments**: Changing stock quantities writes to local memory.
+*   **Order Fulfillment transitions**: Shipping orders and tracking entries persist in-session.
+*   **Onboarding Go-Live Bypass**: Since new databases contain 0 products, the real `/go-live` check will fail. The onboarding wizard displays a clearly labeled "Demo/Development Bypass" option to proceed to the Seller dashboard.
+*   **Platform tenants, plans, and billing listings**: Managed inside `admin-service.ts` mock databases.
+
+---
+
+## 3. Remaining Frontend / Integration Work (Person C)
 *   **Phase 5: AI / LLM Integrations**: Implement the LLM service layer (e.g. Gemini/OpenAI helper prompts) to automate theme generation and write product descriptions.
-*   **Phase 6: API Integration & Testing**: Remove client-side mock overrides and connect all UI controls to the live Laravel endpoints once delivered by Person A. Implement frontend integration tests.
+*   **Phase 6: Live API Integration**: Connect mock layers directly to Laravel controllers and remove mock overrides once endpoints are finalized by Person A.
 
 ---
 
-## 3. Verified External Team Dependencies
-*   **Person A (Backend lead)**: Implement the missing write, update, and statistics APIs listed in Section 1.
-*   **Person B (Storefront lead)**: Initialize and build out the customer-facing storefront Next.js application, utilizing the mockup assets and static templates (`themes/` and `nexstock-functioning-site/`) as design criteria.
-*   **Person D (Full-stack / DevOps)**: Establish subdomain routing parameters so that tenant dashboard requests correctly identify the tenant via the host headers (e.g. `acme.localhost`).
+## 4. Dependencies Genuinely Blocked (Unresolved)
+*   **Subdomain routing setup (Person D)**: Connecting Axios credentials dynamically requires host subdomain header resolution (e.g. `acme.localhost`) on localhost.
+*   **Stripe payment webhook verification (Person A/D)**: Platform subscription checkout (`POST /central/billing/subscribe`) returns a Stripe Checkout URL that requires live Stripe configurations.
