@@ -78,6 +78,28 @@ instead of duplicated columns per language.
 **Multi-currency.** Prices are a currency code plus a minor-unit integer
 amount — never a float — stored per product variant per currency.
 
+**Seller-admin dashboard API.** Beyond the public catalog reads and the
+customer-guard "my own orders" endpoints, `auth:tenant` gets a real
+management surface: product CRUD (`POST/PUT/DELETE /products`), stock
+adjustments (`PATCH /inventory/{variant}`), branding settings
+(`PATCH /settings`, gated behind the `settings.manage` permission —
+owner-only, same pattern as `staff.invite`), and store-wide order
+management + sales analytics under `/seller/...`
+(`GET /seller/orders`, `PATCH /seller/orders/{order}/status`,
+`GET /seller/analytics/summary`). Seller order management lives under
+`/seller/orders` rather than `/orders` because that path is already the
+customer guard's "my own orders" endpoint — Laravel can't route the same
+method+path to two different guards, so a distinct prefix keeps them
+from colliding. Suspending a tenant (see below) isn't cosmetic: the
+`EnsureTenantIsActive` middleware blocks *all* of that tenant's API,
+storefront included, the moment `status` flips to `suspended`.
+
+**Platform-admin management API.** `auth:platform` can list and
+suspend/activate tenants (`GET /central/tenants`,
+`PATCH /central/tenants/{tenant}`) and manage subscription plan tiers
+(`GET/POST/PUT /central/plans`) — the "tenant list/suspend, plan CRUD"
+line from §3 of the Person A plan.
+
 **Billing.** `POST /central/billing/subscribe` creates a Stripe Checkout
 session for a tenant/plan pair and an `incomplete` `Subscription` row;
 `POST /central/billing/webhook` (called by Stripe, verified by signature —
@@ -90,16 +112,29 @@ assert the full webhook state-machine (checkout completed → active,
 payment failed → past_due, subscription deleted → cancelled) without a
 real network call.
 
+**Going live with real Stripe.** The code path is complete and fully
+tested against a mocked `PaymentGateway`, but nothing in this repo can
+create real Stripe API credentials — that's an operational step, not a
+code change. Whoever owns the Stripe account needs to: create a Stripe
+account/product if one doesn't exist, set real `STRIPE_SECRET` and
+`STRIPE_WEBHOOK_SECRET` values in `.env` (see `.env.example`), and
+register `POST /api/v1/central/billing/webhook` as the webhook endpoint
+URL in the Stripe dashboard for the events `checkout.session.completed`,
+`invoice.paid`, `invoice.payment_failed`, and
+`customer.subscription.deleted`.
+
 ## Directory layout
 
 ```
 app/Models/Central/      Tenant, Domain, Plan, Subscription, PlatformAdmin, PlatformSetting, ModerationFlag
 app/Models/Tenant/       Everything else — catalog, cart, checkout, orders, customer, reviews, newsletter
-app/Http/Controllers/Central/   Signup/onboarding, platform-admin auth, platform settings, moderation queue
-app/Http/Controllers/Tenant/    Tenant/customer auth, catalog, search, cart, checkout, orders, wishlist, reviews, newsletter
+app/Http/Controllers/Central/   Signup/onboarding, platform-admin auth, platform settings, moderation queue, tenant management, plans
+app/Http/Controllers/Tenant/    Tenant/customer auth, catalog, search, cart, checkout, orders, wishlist, reviews, newsletter, seller-admin CRUD/inventory/orders/analytics
+app/Http/Middleware/EnsureTenantIsActive.php  Blocks a suspended tenant's entire API — gives real effect to a platform admin's suspend action
 routes/central.php              Central (platform) API — loaded once, host-agnostic prefix /api/v1/central
 routes/tenant.php               Tenant API entrypoint — auto-loaded by TenancyServiceProvider with tenancy middleware
-routes/tenant/commerce.php      The commerce endpoint surface, require()'d from routes/tenant.php
+routes/tenant/commerce.php      The public/customer commerce endpoint surface, require()'d from routes/tenant.php
+routes/tenant/seller.php        The seller-admin (auth:tenant) management surface, require()'d from routes/tenant.php
 database/migrations/            Central migrations (tenants, domains, plans, subscriptions, platform_settings, moderation_flags, ...)
 database/migrations/tenant/     Tenant migrations (catalog, cart, checkout, orders, customer, newsletter, ...)
 docs/api/openapi.json           Committed OpenAPI contract (regenerate with `php artisan scramble:export --path=docs/api/openapi.json`)
