@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Feature\Tenant;
 
 use App\Models\Central\ModerationFlag;
+use App\Models\Tenant\Customer;
 use App\Models\Tenant\Review;
 use Tests\TenantTestCase;
 
@@ -60,5 +61,31 @@ class ReviewTest extends TenantTestCase
         $this->assertNotNull($flag);
         $this->assertSame('pending', $flag->status);
         $this->assertSame($this->tenant->id, $flag->tenant_id);
+    }
+
+    public function test_index_only_returns_approved_reviews(): void
+    {
+        $seeded = $this->seedProduct();
+
+        $this->inTenant(function () use ($seeded) {
+            $customer = Customer::create([
+                'name' => 'Reviewer', 'email' => 'reviewer@example.com', 'password' => 'password123',
+            ]);
+            Review::create([
+                'product_id' => $seeded['product']->id, 'customer_id' => $customer->id,
+                'rating' => 5, 'title' => 'Great', 'body' => 'Loved it.', 'status' => 'approved',
+            ]);
+            Review::create([
+                'product_id' => $seeded['product']->id, 'customer_id' => $customer->id,
+                'rating' => 1, 'title' => 'Still waiting', 'body' => 'Not approved yet.', 'status' => 'pending',
+            ]);
+        });
+
+        $response = $this->getJson($this->tenantUrl("/api/v1/products/{$seeded['product']->id}/reviews"));
+
+        $response->assertOk();
+        $this->assertCount(1, $response->json('data'));
+        $this->assertSame('Great', $response->json('data.0.title'));
+        $this->assertSame('Reviewer', $response->json('data.0.customer.name'));
     }
 }

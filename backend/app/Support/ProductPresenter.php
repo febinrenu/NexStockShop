@@ -38,6 +38,7 @@ class ProductPresenter
             'description' => $translation?->description,
             'category_id' => $product->category_id,
             'brand_id' => $product->brand_id,
+            'image_url' => $variant?->image_url,
             'price' => $price ? [
                 'currency' => $price->currency,
                 'amount_minor' => $price->amount_minor,
@@ -48,6 +49,7 @@ class ProductPresenter
                 'id' => $v->id,
                 'sku' => $v->sku,
                 'attributes' => $v->attributes,
+                'image_url' => $v->image_url,
                 'is_default' => $v->is_default,
                 'in_stock' => $v->inventoryLevel?->inStock() ?? false,
                 'price' => optional($v->priceIn($currency), fn ($p) => [

@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
 {
-    protected $fillable = ['parent_id', 'slug', 'is_active', 'sort_order'];
+    protected $fillable = ['parent_id', 'slug', 'image_url', 'is_active', 'sort_order'];
 
     protected function casts(): array
     {

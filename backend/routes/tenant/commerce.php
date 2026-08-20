@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Tenant\AddressController;
 use App\Http\Controllers\Tenant\BrandController;
 use App\Http\Controllers\Tenant\CartController;
 use App\Http\Controllers\Tenant\CategoryController;
@@ -33,6 +34,7 @@ Route::get('/settings', [TenantSettingsController::class, 'show']);
 // --- Catalog (public) ---
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{product}', [ProductController::class, 'show']);
+Route::get('/products/{product}/reviews', [ReviewController::class, 'index']);
 Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/brands', [BrandController::class, 'index']);
 Route::get('/search', [SearchController::class, 'index']);
@@ -67,4 +69,12 @@ Route::middleware('auth:customer')->group(function () {
     Route::delete('/wishlist/{itemId}', [WishlistController::class, 'destroy']);
 
     Route::post('/reviews', [ReviewController::class, 'store']);
+
+    // Saved addresses (auth:customer only — guest checkout completes fine
+    // without a persisted address, see CheckoutController; a guest
+    // shopper's address fields are display-only on the frontend).
+    Route::get('/me/addresses', [AddressController::class, 'index']);
+    Route::post('/me/addresses', [AddressController::class, 'store']);
+    Route::patch('/me/addresses/{address}', [AddressController::class, 'update']);
+    Route::delete('/me/addresses/{address}', [AddressController::class, 'destroy']);
 });

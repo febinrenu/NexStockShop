@@ -35,6 +35,7 @@ class SellerProductTest extends TenantTestCase
         $response->assertCreated();
         $this->assertSame('New Product', $response->json('name'));
         $this->assertSame(1999, $response->json('price.amount_minor'));
+        $this->assertSame('https://example.com/photo.jpg', $response->json('image_url'));
 
         $this->inTenant(function () {
             $this->assertSame(1, Product::count());
@@ -95,6 +96,7 @@ class SellerProductTest extends TenantTestCase
                 [
                     'sku' => 'SKU-NEW-1-V1',
                     'is_default' => true,
+                    'image_url' => 'https://example.com/photo.jpg',
                     'prices' => [['currency' => 'USD', 'amount_minor' => 1999]],
                     'inventory' => ['quantity_available' => 5],
                 ],

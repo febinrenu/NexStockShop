@@ -80,6 +80,7 @@ class ProductController extends Controller
             'variants' => ['required', 'array', 'min:1'],
             'variants.*.sku' => ['required', 'string', 'max:255', 'distinct', 'unique:product_variants,sku'],
             'variants.*.attributes' => ['nullable', 'array'],
+            'variants.*.image_url' => ['nullable', 'url', 'max:2048'],
             'variants.*.is_default' => ['sometimes', 'boolean'],
             'variants.*.prices' => ['required', 'array', 'min:1'],
             'variants.*.prices.*.currency' => ['required', 'string', 'size:3'],
@@ -105,6 +106,7 @@ class ProductController extends Controller
                 $variant = $product->variants()->create([
                     'sku' => $variantData['sku'],
                     'attributes' => $variantData['attributes'] ?? null,
+                    'image_url' => $variantData['image_url'] ?? null,
                     'is_default' => $variantData['is_default'] ?? false,
                 ]);
 

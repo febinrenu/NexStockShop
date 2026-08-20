@@ -23,6 +23,7 @@ class CategoryController extends Controller
                 'id' => $c->id,
                 'parent_id' => $c->parent_id,
                 'slug' => $c->slug,
+                'image_url' => $c->image_url,
                 'name' => $c->translation($locale)?->name,
                 'description' => $c->translation($locale)?->description,
             ]);
