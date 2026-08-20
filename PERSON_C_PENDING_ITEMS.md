@@ -8,32 +8,27 @@ This document tracks outstanding items, missing APIs, and mock boundaries for th
 The following central and tenant administration endpoints are currently unavailable in the Laravel codebase:
 
 ### Tenant Admin (Seller) API Layer
-*   **Product Write Actions**: Missing `POST /products`, `PUT /products/{id}`, and `DELETE /products/{id}` endpoints.
-*   **Inventory Adjustments**: Missing `PATCH /inventory/{variant_id}` endpoints to modify variant stock count.
-*   **Order Fulfillment Console**: Missing `GET /orders` query and `PATCH /orders/{id}/status` transition endpoints under `auth:tenant`.
-*   **Settings Branding Persistence**: Missing `PATCH /settings` write endpoints for tenant branding.
-*   **Analytics Aggregates**: Missing endpoints to fetch sales metrics and revenue summaries.
+*   **Order Fulfillment Tracking**: Missing patch parameters to update tracking number or shipping provider (status patch `PATCH /seller/orders/{order}/status` only accepts status and note).
+*   **Analytics Historical Timelines**: Missing bucketed analytics timeline metrics for visual growth charts.
 
 ### Platform Super-Admin API Layer
-*   **Tenant Administration**: Missing `GET/POST/PATCH /central/tenants` endpoints to query and suspend/activate tenants.
-*   **Billing Tiers CRUD**: Missing `GET/POST/PUT /central/plans` endpoints to query and update pricing details.
+*   **Platform Billing Logs**: Missing index lists endpoints for subscription billing invoices.
+*   **Plan Delete**: Missing plans deletion endpoint.
 
 ---
 
 ## 2. Features Currently Implemented with Mocks
 To maintain full front-end diagnostic utility despite missing APIs, the following operations are mock-implemented:
 
-*   **Seller CRUD Mutations**: Product creation, editing, and deactivation are managed inside `seller-service.ts` in-memory mock store.
-*   **Inventory Adjustments**: Changing stock quantities writes to local memory.
-*   **Order Fulfillment transitions**: Shipping orders and tracking entries persist in-session.
+*   **Order Tracking Persistence**: Tracking carrier metadata updates persist in front-end context state.
+*   **Analytics Charts**: Bucketed metrics for historical growth timelines and fulfillment status distribution charts use isolated mock sets.
+*   **Platform Invoices**: Invoice log listing grids under `/admin/billing` query local memory.
 *   **Onboarding Go-Live Bypass**: Since new databases contain 0 products, the real `/go-live` check will fail. The onboarding wizard displays a clearly labeled "Demo/Development Bypass" option to proceed to the Seller dashboard.
-*   **Platform tenants, plans, and billing listings**: Managed inside `admin-service.ts` mock databases.
 
 ---
 
 ## 3. Remaining Frontend / Integration Work (Person C)
-*   **Phase 5: AI / LLM Integrations**: Implement the LLM service layer (e.g. Gemini/OpenAI helper prompts) to automate theme generation and write product descriptions.
-*   **Phase 6: Live API Integration**: Connect mock layers directly to Laravel controllers and remove mock overrides once endpoints are finalized by Person A.
+*   **Phase 5: AI / LLM Integrations**: Implement the LLM service layer (e.g. Gemini/OpenAI helper prompts) to automate theme generation and write product descriptions. (Awaiting employer confirmation of LLM parameters).
 
 ---
 

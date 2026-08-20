@@ -12,6 +12,7 @@ export default function AdminTenantsPage() {
   const [tenants, setTenants] = useState<PlatformTenant[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
+  const [actioningId, setActioningId] = useState<string | null>(null);
 
   const fetchTenants = React.useCallback(async (isMounted: boolean) => {
     try {
@@ -45,6 +46,19 @@ export default function AdminTenantsPage() {
     };
   }, [fetchTenants]);
 
+  const handleToggleStatus = async (tenantId: string, nextStatus: 'active' | 'suspended') => {
+    try {
+      setActioningId(tenantId);
+      const updated = await adminService.updateTenantStatus(tenantId, nextStatus);
+      setTenants(prev => prev.map(t => t.id === tenantId ? updated : t));
+    } catch (e) {
+      console.error(e);
+      alert('Failed to update tenant status.');
+    } finally {
+      setActioningId(null);
+    }
+  };
+
   const filteredTenants = tenants.filter(t => 
     t.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
     t.domain.toLowerCase().includes(searchTerm.toLowerCase())
@@ -74,7 +88,7 @@ export default function AdminTenantsPage() {
       {/* Info Warning Banner */}
       <div className="bg-blue-500/10 border border-blue-500/30 text-blue-300 p-3 rounded-lg flex items-center gap-2 text-xs">
         <AlertCircle className="h-4 w-4 flex-shrink-0" />
-        <span>Central Tenant Control and status update APIs are currently under development (Person A dependency). Showing mock list.</span>
+        <span>Central Tenant Control and suspend/activate status update APIs are integrated. Tenant database resolution happens dynamically on domain routing.</span>
       </div>
 
       {/* Search Filter Row */}
@@ -112,6 +126,7 @@ export default function AdminTenantsPage() {
                   <th className="px-6 py-3 text-right">MRR contribution</th>
                   <th className="px-6 py-3 text-center">Status</th>
                   <th className="px-6 py-3 text-right">Created Date</th>
+                  <th className="px-6 py-3 text-center">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-150 text-sm">
@@ -124,6 +139,27 @@ export default function AdminTenantsPage() {
                       <StatusBadge status={t.status.toUpperCase()} type={getStatusBadgeType(t.status)} />
                     </td>
                     <td className="px-6 py-4 text-right text-gray-500 text-xs">{t.created_at}</td>
+                    <td className="px-6 py-4 text-center">
+                      {t.status === 'active' ? (
+                        <button
+                          onClick={() => handleToggleStatus(t.id, 'suspended')}
+                          disabled={actioningId === t.id}
+                          className="text-xs text-red-650 hover:text-red-800 font-bold border border-red-200 hover:border-red-400 bg-red-50 hover:bg-red-100/50 px-2.5 py-1 rounded transition-colors"
+                        >
+                          {actioningId === t.id ? 'Suspending...' : 'Suspend'}
+                        </button>
+                      ) : t.status === 'suspended' ? (
+                        <button
+                          onClick={() => handleToggleStatus(t.id, 'active')}
+                          disabled={actioningId === t.id}
+                          className="text-xs text-emerald-650 hover:text-emerald-800 font-bold border border-emerald-200 hover:border-emerald-400 bg-emerald-50 hover:bg-emerald-100/50 px-2.5 py-1 rounded transition-colors"
+                        >
+                          {actioningId === t.id ? 'Activating...' : 'Activate'}
+                        </button>
+                      ) : (
+                        <span className="text-gray-400 text-xs">-</span>
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>

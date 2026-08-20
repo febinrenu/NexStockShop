@@ -54,7 +54,7 @@ export default function AdminPlansPage() {
       {/* Info Warning Banner */}
       <div className="bg-blue-500/10 border border-blue-500/30 text-blue-300 p-3 rounded-lg flex items-center gap-2 text-xs">
         <AlertCircle className="h-4 w-4 flex-shrink-0" />
-        <span>Central Billing Plans CRUD APIs are currently unavailable (Person A dependency). Showing mock listings.</span>
+        <span>Central Billing Plans GET API is integrated. Pricing plans details are fetched dynamically from central database.</span>
       </div>
 
       {/* Data display */}
