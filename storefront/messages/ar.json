@@ -1,0 +1,152 @@
+{
+  "nav": {
+    "shop": "المتجر",
+    "brands": "العلامات التجارية",
+    "deals": "العروض",
+    "about": "من نحن",
+    "help": "المساعدة",
+    "search": "ابحث عن منتجات…",
+    "cart": "السلة",
+    "wishlist": "المفضلة",
+    "account": "حسابي",
+    "login": "تسجيل الدخول",
+    "logout": "تسجيل الخروج",
+    "register": "إنشاء حساب",
+    "trackOrder": "تتبع الطلب"
+  },
+  "footer": {
+    "newsletterTitle": "ابق على اطلاع",
+    "newsletterBody": "احصل على أحدث المنتجات والعروض في بريدك الإلكتروني.",
+    "emailPlaceholder": "بريدك الإلكتروني",
+    "subscribe": "اشترك",
+    "subscribeSuccess": "تم الاشتراك بنجاح!",
+    "rights": "جميع الحقوق محفوظة."
+  },
+  "home": {
+    "shopNow": "تسوق الآن",
+    "featured": "منتجات مميزة",
+    "categories": "تسوق حسب الفئة",
+    "newArrivals": "وصل حديثاً"
+  },
+  "shop": {
+    "title": "المتجر",
+    "filters": "الفلاتر",
+    "category": "الفئة",
+    "brand": "العلامة التجارية",
+    "sort": "ترتيب حسب",
+    "sortNewest": "الأحدث",
+    "sortSku": "رمز المنتج",
+    "allCategories": "كل الفئات",
+    "allBrands": "كل العلامات التجارية",
+    "noResults": "لا توجد منتجات مطابقة لهذه الفلاتر.",
+    "resultsCount": "{count, plural, =0 {لا توجد منتجات} one {منتج واحد} other {# منتجات}}"
+  },
+  "product": {
+    "addToCart": "أضف إلى السلة",
+    "outOfStock": "غير متوفر",
+    "inStock": "متوفر",
+    "description": "الوصف",
+    "reviews": "التقييمات",
+    "writeReview": "أضف تقييماً",
+    "relatedProducts": "قد يعجبك أيضاً",
+    "quantity": "الكمية",
+    "sku": "رمز المنتج"
+  },
+  "cart": {
+    "title": "سلة التسوق",
+    "empty": "سلتك فارغة.",
+    "continueShopping": "متابعة التسوق",
+    "subtotal": "المجموع الفرعي",
+    "checkout": "إتمام الشراء",
+    "remove": "إزالة",
+    "quantity": "الكمية"
+  },
+  "checkout": {
+    "title": "إتمام الشراء",
+    "stepAddress": "العنوان",
+    "stepShipping": "الشحن",
+    "stepPayment": "الدفع",
+    "stepConfirm": "التأكيد",
+    "shippingAddress": "عنوان الشحن",
+    "fullName": "الاسم الكامل",
+    "line1": "العنوان - السطر الأول",
+    "line2": "العنوان - السطر الثاني (اختياري)",
+    "city": "المدينة",
+    "country": "الدولة",
+    "postalCode": "الرمز البريدي",
+    "phone": "رقم الهاتف",
+    "shippingMethod": "طريقة الشحن",
+    "standard": "عادي",
+    "express": "سريع",
+    "paymentMethod": "طريقة الدفع",
+    "cardOnFile": "البطاقة المسجلة",
+    "placeOrder": "تأكيد الطلب",
+    "orderPlaced": "تم تأكيد الطلب!",
+    "orderNumber": "رقم الطلب",
+    "continue": "متابعة",
+    "back": "رجوع"
+  },
+  "auth": {
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "name": "الاسم الكامل",
+    "loginTitle": "تسجيل الدخول إلى حسابك",
+    "registerTitle": "إنشاء حساب جديد",
+    "noAccount": "ليس لديك حساب؟",
+    "haveAccount": "لديك حساب بالفعل؟",
+    "loginCta": "تسجيل الدخول",
+    "registerCta": "إنشاء حساب",
+    "invalidCredentials": "بيانات الدخول غير صحيحة."
+  },
+  "account": {
+    "title": "حسابي",
+    "profile": "الملف الشخصي",
+    "orders": "الطلبات",
+    "wishlist": "المفضلة",
+    "save": "حفظ التغييرات",
+    "noOrders": "لم تقم بأي طلبات بعد."
+  },
+  "wishlist": {
+    "title": "قائمة المفضلة",
+    "empty": "قائمة المفضلة فارغة.",
+    "moveToCart": "أضف إلى السلة",
+    "remove": "إزالة"
+  },
+  "orders": {
+    "title": "طلباتك",
+    "orderNumber": "الطلب رقم {number}",
+    "placedOn": "تم الطلب في {date}",
+    "status": "الحالة",
+    "total": "الإجمالي",
+    "viewDetails": "عرض التفاصيل",
+    "trackTitle": "تتبع طلبك",
+    "trackLookup": "البحث عن طلب",
+    "trackHistory": "سجل الحالة"
+  },
+  "reviews": {
+    "rating": "التقييم",
+    "comment": "التعليق",
+    "submit": "إرسال التقييم"
+  },
+  "deals": {
+    "title": "العروض",
+    "subtitle": "عروض لفترة محدودة، تُحدَّث يومياً."
+  },
+  "brands": {
+    "title": "العلامات التجارية"
+  },
+  "about": {
+    "title": "من نحن"
+  },
+  "help": {
+    "title": "المساعدة والأسئلة الشائعة"
+  },
+  "common": {
+    "loading": "جارٍ التحميل…",
+    "error": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+    "retry": "إعادة المحاولة",
+    "close": "إغلاق",
+    "currency": "العملة"
+  }
+}

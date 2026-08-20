@@ -1,0 +1,1044 @@
+{
+  "aurumeclat": {
+    "slug": "aurumeclat",
+    "name": "Aurumeclat",
+    "niche": "Luxury jewelry & fine goods",
+    "fonts": {
+      "serif": [
+        "Playfair Display",
+        "serif"
+      ],
+      "sans": [
+        "Inter",
+        "sans-serif"
+      ]
+    },
+    "colors": {
+      "black": "#0F0D0A",
+      "charcoal": "#1B1712",
+      "gold": "#C9A15B",
+      "goldDark": "#AD8748",
+      "cream": "#F3ECDD",
+      "burgundy": "#3D1A24",
+      "burgundyLight": "#4E2530"
+    },
+    "shadows": {
+      "card": "0 4px 18px -6px rgba(0,0,0,0.35)",
+      "cardHover": "0 16px 34px -10px rgba(0,0,0,0.5)",
+      "navUp": "0 -4px 16px -6px rgba(0,0,0,0.4)"
+    },
+    "surface": "#0F0D0A",
+    "ink": "#EDE6D6",
+    "scrollbarThumb": "#4a3f2d",
+    "primary": "#C9A15B",
+    "primaryDark": "#AD8748",
+    "accent": "#3D1A24",
+    "roleKeys": {
+      "primary": "gold",
+      "primaryDark": "goldDark",
+      "accent": "burgundy"
+    }
+  },
+  "casanest": {
+    "slug": "casanest",
+    "name": "Casanest",
+    "niche": "Home & furniture",
+    "fonts": {
+      "serif": [
+        "Playfair Display",
+        "serif"
+      ],
+      "sans": [
+        "Inter",
+        "sans-serif"
+      ]
+    },
+    "colors": {
+      "olive": "#57633F",
+      "oliveDark": "#414A2F",
+      "cream": "#F4EEE2",
+      "creamDark": "#EAE1CE",
+      "brown": "#3B2E22",
+      "rust": "#A8472E",
+      "charcoal": "#242219"
+    },
+    "shadows": {
+      "card": "0 4px 16px -6px rgba(36, 34, 25, 0.12)",
+      "cardHover": "0 14px 30px -10px rgba(36, 34, 25, 0.22)",
+      "navUp": "0 -4px 14px -6px rgba(36,34,25,0.14)"
+    },
+    "surface": "#F4EEE2",
+    "ink": "#2B2417",
+    "scrollbarThumb": "#d9cfb8",
+    "primary": "#57633F",
+    "primaryDark": "#414A2F",
+    "accent": "#A8472E",
+    "roleKeys": {
+      "primary": "olive",
+      "primaryDark": "oliveDark",
+      "accent": "rust"
+    }
+  },
+  "elegance": {
+    "slug": "elegance",
+    "name": "Elegance",
+    "niche": "Fashion & beauty",
+    "fonts": {
+      "serif": [
+        "Playfair Display",
+        "serif"
+      ],
+      "sans": [
+        "Inter",
+        "sans-serif"
+      ]
+    },
+    "colors": {
+      "black": "#111111",
+      "gold": "#C9A15B",
+      "goldDark": "#AD8748",
+      "cream": "#F3ECDD"
+    },
+    "shadows": {
+      "card": "0 4px 16px -6px rgba(17,17,17,0.10)",
+      "cardHover": "0 14px 30px -10px rgba(17,17,17,0.20)",
+      "navUp": "0 -4px 14px -6px rgba(17,17,17,0.14)"
+    },
+    "surface": "#FFFFFF",
+    "ink": "#171310",
+    "scrollbarThumb": "#e2d6c2",
+    "primary": "#C9A15B",
+    "primaryDark": "#AD8748",
+    "accent": "#C9A15B",
+    "roleKeys": {
+      "primary": "gold",
+      "primaryDark": "goldDark",
+      "accent": "gold"
+    }
+  },
+  "freshcart": {
+    "slug": "freshcart",
+    "name": "Freshcart",
+    "niche": "Grocery & fresh food delivery",
+    "fonts": {
+      "sans": [
+        "Poppins",
+        "sans-serif"
+      ]
+    },
+    "colors": {
+      "greenDark": "#145C36",
+      "green": "#1F9D55",
+      "greenDark2": "#177A43",
+      "greenLight": "#EAF6EC",
+      "orange": "#F0800F",
+      "orangeLight": "#FDEEDD",
+      "cream": "#FBF1D6",
+      "red": "#E5484D"
+    },
+    "shadows": {
+      "card": "0 4px 14px -4px rgba(20, 60, 36, 0.10)",
+      "cardHover": "0 12px 26px -8px rgba(20, 60, 36, 0.18)",
+      "navUp": "0 -4px 14px -6px rgba(20,60,36,0.12)"
+    },
+    "surface": "#FFFFFF",
+    "ink": "#152B1D",
+    "scrollbarThumb": "#cfe6d2",
+    "primary": "#1F9D55",
+    "primaryDark": "#145C36",
+    "accent": "#E5484D",
+    "roleKeys": {
+      "primary": "green",
+      "primaryDark": "greenDark",
+      "accent": "red"
+    }
+  },
+  "futurex": {
+    "slug": "futurex",
+    "name": "Futurex",
+    "niche": "Consumer electronics & tech",
+    "fonts": {
+      "sans": [
+        "Inter",
+        "sans-serif"
+      ]
+    },
+    "colors": {
+      "navy": "#12142E",
+      "navyLight": "#1C1F42",
+      "purple": "#6D3FE0",
+      "purpleDark": "#5A32C4",
+      "purpleLight": "#EFE9FC",
+      "blue": "#DCEEFB",
+      "mint": "#D2F3E8",
+      "peach": "#FBE0C8"
+    },
+    "shadows": {
+      "card": "0 4px 14px -4px rgba(18, 20, 46, 0.10)",
+      "cardHover": "0 12px 26px -8px rgba(18, 20, 46, 0.18)",
+      "navUp": "0 -4px 14px -6px rgba(18,20,46,0.14)"
+    },
+    "surface": "#FFFFFF",
+    "ink": "#12142E",
+    "scrollbarThumb": "#d7d0ee",
+    "primary": "#6D3FE0",
+    "primaryDark": "#5A32C4",
+    "accent": "#DCEEFB",
+    "roleKeys": {
+      "primary": "purple",
+      "primaryDark": "purpleDark",
+      "accent": "blue"
+    }
+  },
+  "generalhub": {
+    "slug": "generalhub",
+    "name": "Generalhub",
+    "niche": "General marketplace",
+    "fonts": {
+      "sans": [
+        "Inter",
+        "sans-serif"
+      ]
+    },
+    "colors": {
+      "blue": "#2857E0",
+      "blueDark": "#1D45BD",
+      "blueLight": "#EAF1FE",
+      "navy": "#141F38",
+      "navy2": "#1B2A4D",
+      "red": "#E5484D",
+      "orange": "#F5A623",
+      "green": "#1CB672",
+      "pink": "#FBD7DF",
+      "teal": "#CFEDE8",
+      "tealDark": "#1E7A6C",
+      "beige": "#F7E9D2",
+      "beigeDark": "#9C6B2E"
+    },
+    "shadows": {
+      "card": "0 4px 14px -4px rgba(20, 31, 56, 0.10)",
+      "cardHover": "0 12px 26px -8px rgba(20, 31, 56, 0.18)"
+    },
+    "surface": "#FFFFFF",
+    "ink": "#1E2536",
+    "scrollbarThumb": "#d7e0ee",
+    "primary": "#2857E0",
+    "primaryDark": "#1D45BD",
+    "accent": "#1CB672",
+    "roleKeys": {
+      "primary": "blue",
+      "primaryDark": "blueDark",
+      "accent": "green"
+    }
+  },
+  "homeluxe": {
+    "slug": "homeluxe",
+    "name": "Homeluxe",
+    "niche": "Home d\u00e9cor, upscale",
+    "fonts": {
+      "serif": [
+        "Playfair Display",
+        "serif"
+      ],
+      "sans": [
+        "Inter",
+        "sans-serif"
+      ]
+    },
+    "colors": {
+      "green": "#1D3226",
+      "greenDark": "#14231A",
+      "terracotta": "#BC6239",
+      "terracottaDark": "#A04F2C",
+      "tan": "#C9A15B",
+      "cream": "#F3EDE0"
+    },
+    "shadows": {
+      "card": "0 4px 16px -6px rgba(20, 35, 26, 0.12)",
+      "cardHover": "0 14px 30px -10px rgba(20, 35, 26, 0.20)",
+      "navUp": "0 -4px 14px -6px rgba(20,35,26,0.14)"
+    },
+    "surface": "#FFFFFF",
+    "ink": "#22261F",
+    "scrollbarThumb": "#d9cfb8",
+    "primary": "#1D3226",
+    "primaryDark": "#14231A",
+    "accent": "#BC6239",
+    "roleKeys": {
+      "primary": "green",
+      "primaryDark": "greenDark",
+      "accent": "terracotta"
+    }
+  },
+  "littlejoy": {
+    "slug": "littlejoy",
+    "name": "Littlejoy",
+    "niche": "Kids & toys",
+    "fonts": {
+      "display": [
+        "Baloo 2",
+        "sans-serif"
+      ],
+      "sans": [
+        "Poppins",
+        "sans-serif"
+      ]
+    },
+    "colors": {
+      "purple": "#6C5CE7",
+      "purpleDark": "#5B4BD1",
+      "purpleLight": "#EDEAFB",
+      "pink": "#F2617D",
+      "pinkLight": "#FCE4E9",
+      "peach": "#FBD7CE",
+      "peachLight": "#FDEDE7",
+      "yellow": "#F7B733",
+      "yellowLight": "#FCEACB",
+      "green": "#4CAF7D",
+      "greenLight": "#DBF3E2",
+      "blueLight": "#DCEEFB",
+      "orangeLight": "#FBE4D0",
+      "cream": "#FDF3D9",
+      "navy": "#26234A"
+    },
+    "shadows": {
+      "card": "0 6px 20px -6px rgba(38, 35, 74, 0.12)",
+      "cardHover": "0 14px 30px -10px rgba(38, 35, 74, 0.22)"
+    },
+    "surface": "#FFFFFF",
+    "ink": "#2b2750",
+    "scrollbarThumb": "#d8d3f7",
+    "primary": "#6C5CE7",
+    "primaryDark": "#5B4BD1",
+    "accent": "#F2617D",
+    "roleKeys": {
+      "primary": "purple",
+      "primaryDark": "purpleDark",
+      "accent": "pink"
+    }
+  },
+  "marketly": {
+    "slug": "marketly",
+    "name": "Marketly",
+    "niche": "General / multi-vendor marketplace",
+    "fonts": {
+      "sans": [
+        "Inter",
+        "sans-serif"
+      ]
+    },
+    "colors": {
+      "purple": "#6D28D9",
+      "purpleDark": "#5522AD",
+      "purpleDeep": "#3B1D6E",
+      "pink": "#E0459E",
+      "pinkDark": "#C7368A",
+      "indigo": "#181530",
+      "indigoLight": "#211D42"
+    },
+    "shadows": {
+      "card": "0 4px 14px -4px rgba(24, 21, 48, 0.10)",
+      "cardHover": "0 12px 26px -8px rgba(24, 21, 48, 0.18)",
+      "navUp": "0 -4px 14px -6px rgba(24,21,48,0.14)"
+    },
+    "surface": "#FFFFFF",
+    "ink": "#181530",
+    "scrollbarThumb": "#d9c9ee",
+    "primary": "#E0459E",
+    "primaryDark": "#C7368A",
+    "accent": "#6D28D9",
+    "roleKeys": {
+      "primary": "pink",
+      "primaryDark": "pinkDark",
+      "accent": "purple"
+    }
+  },
+  "marketverse": {
+    "slug": "marketverse",
+    "name": "Marketverse",
+    "niche": "General / multi-vendor marketplace",
+    "fonts": {
+      "sans": [
+        "Inter",
+        "sans-serif"
+      ]
+    },
+    "colors": {
+      "purple": "#5B2C9E",
+      "purpleDark": "#471F80",
+      "purpleLight": "#F3EEFB",
+      "orange": "#EE6C1F",
+      "gold": "#F0C647",
+      "red": "#DC2626",
+      "green": "#1CB672"
+    },
+    "shadows": {
+      "card": "0 4px 14px -4px rgba(60, 30, 110, 0.10)",
+      "cardHover": "0 12px 26px -8px rgba(60, 30, 110, 0.18)",
+      "navUp": "0 -4px 14px -6px rgba(60,30,110,0.14)"
+    },
+    "surface": "#FFFFFF",
+    "ink": "#1E1233",
+    "scrollbarThumb": "#d9cdf0",
+    "primary": "#EE6C1F",
+    "primaryDark": "#C35819",
+    "accent": "#5B2C9E",
+    "roleKeys": {
+      "primary": "orange",
+      "primaryDark": "orange",
+      "accent": "purple"
+    }
+  },
+  "medisphere": {
+    "slug": "medisphere",
+    "name": "Medisphere",
+    "niche": "Health & pharmacy",
+    "fonts": {
+      "sans": [
+        "Inter",
+        "sans-serif"
+      ]
+    },
+    "colors": {
+      "teal": "#0E8074",
+      "tealDark": "#0A6459",
+      "tealDeep": "#0B2B28",
+      "tealLight": "#E6F5F3",
+      "green": "#EAF7EE",
+      "red": "#DC2626",
+      "blue": "#EAF2FB"
+    },
+    "shadows": {
+      "card": "0 4px 14px -4px rgba(11, 43, 40, 0.10)",
+      "cardHover": "0 12px 26px -8px rgba(11, 43, 40, 0.18)",
+      "navUp": "0 -4px 14px -6px rgba(11,43,40,0.14)"
+    },
+    "surface": "#FFFFFF",
+    "ink": "#122421",
+    "scrollbarThumb": "#cdeae5",
+    "primary": "#0E8074",
+    "primaryDark": "#0A6459",
+    "accent": "#DC2626",
+    "roleKeys": {
+      "primary": "teal",
+      "primaryDark": "tealDark",
+      "accent": "red"
+    }
+  },
+  "naturae": {
+    "slug": "naturae",
+    "name": "Naturae",
+    "niche": "Organic, wellness & natural products",
+    "fonts": {
+      "serif": [
+        "Playfair Display",
+        "serif"
+      ],
+      "sans": [
+        "Inter",
+        "sans-serif"
+      ]
+    },
+    "colors": {
+      "green": "#2B3524",
+      "greenDark": "#1C2318",
+      "greenLight": "#E9EBE2",
+      "cream": "#F3EDE2",
+      "tan": "#DAD0BF"
+    },
+    "shadows": {
+      "card": "0 4px 16px -6px rgba(28, 35, 24, 0.10)",
+      "cardHover": "0 14px 30px -10px rgba(28, 35, 24, 0.18)",
+      "navUp": "0 -4px 14px -6px rgba(28,35,24,0.14)"
+    },
+    "surface": "#FFFFFF",
+    "ink": "#242018",
+    "scrollbarThumb": "#d9cfc0",
+    "primary": "#2B3524",
+    "primaryDark": "#1C2318",
+    "accent": "#DAD0BF",
+    "roleKeys": {
+      "primary": "green",
+      "primaryDark": "greenDark",
+      "accent": "tan"
+    }
+  },
+  "naturel": {
+    "slug": "naturel",
+    "name": "Naturel",
+    "niche": "Organic, wellness & natural products",
+    "fonts": {
+      "serif": [
+        "Playfair Display",
+        "serif"
+      ],
+      "sans": [
+        "Inter",
+        "sans-serif"
+      ]
+    },
+    "colors": {
+      "green": "#2C4028",
+      "greenDark": "#1A2818",
+      "olive": "#5C6B3F",
+      "tan": "#CBA46C",
+      "tanDark": "#B78E52",
+      "cream": "#F3EDE0"
+    },
+    "shadows": {
+      "card": "0 4px 16px -6px rgba(26, 40, 24, 0.12)",
+      "cardHover": "0 14px 30px -10px rgba(26, 40, 24, 0.20)",
+      "navUp": "0 -4px 14px -6px rgba(26,40,24,0.14)"
+    },
+    "surface": "#FFFFFF",
+    "ink": "#1E2419",
+    "scrollbarThumb": "#d9cfb8",
+    "primary": "#2C4028",
+    "primaryDark": "#1A2818",
+    "accent": "#CBA46C",
+    "roleKeys": {
+      "primary": "green",
+      "primaryDark": "greenDark",
+      "accent": "tan"
+    }
+  },
+  "naturia": {
+    "slug": "naturia",
+    "name": "Naturia",
+    "niche": "Organic, wellness & natural products",
+    "fonts": {
+      "serif": [
+        "Playfair Display",
+        "serif"
+      ],
+      "sans": [
+        "Inter",
+        "sans-serif"
+      ]
+    },
+    "colors": {
+      "green": "#3A5233",
+      "greenDark": "#2C4028",
+      "greenLight": "#E8F0E3",
+      "cream": "#F3EDE0",
+      "tan": "#EDDDC4",
+      "peach": "#F3DFC9"
+    },
+    "shadows": {
+      "card": "0 4px 16px -6px rgba(44, 64, 40, 0.12)",
+      "cardHover": "0 14px 30px -10px rgba(44, 64, 40, 0.20)",
+      "navUp": "0 -4px 14px -6px rgba(44,64,40,0.14)"
+    },
+    "surface": "#FFFFFF",
+    "ink": "#22261F",
+    "scrollbarThumb": "#d9cfb8",
+    "primary": "#3A5233",
+    "primaryDark": "#2C4028",
+    "accent": "#EDDDC4",
+    "roleKeys": {
+      "primary": "green",
+      "primaryDark": "greenDark",
+      "accent": "tan"
+    }
+  },
+  "nexora": {
+    "slug": "nexora",
+    "name": "Nexora",
+    "niche": "Tech & electronics",
+    "fonts": {
+      "sans": [
+        "Inter",
+        "sans-serif"
+      ]
+    },
+    "colors": {
+      "navy": "#1B1F4B",
+      "navyLight": "#282C63",
+      "orange": "#F0800F",
+      "orangeDark": "#D66E0A",
+      "orangeLight": "#FDEEDD",
+      "purple": "#6B4FD6"
+    },
+    "shadows": {
+      "card": "0 4px 14px -4px rgba(27, 31, 75, 0.10)",
+      "cardHover": "0 12px 26px -8px rgba(27, 31, 75, 0.18)",
+      "navUp": "0 -4px 14px -6px rgba(27,31,75,0.14)"
+    },
+    "surface": "#FFFFFF",
+    "ink": "#181B3A",
+    "scrollbarThumb": "#d7d5ee",
+    "primary": "#1B1F4B",
+    "primaryDark": "#282C63",
+    "accent": "#F0800F",
+    "roleKeys": {
+      "primary": "navy",
+      "primaryDark": "navyLight",
+      "accent": "orange"
+    }
+  },
+  "novatech": {
+    "slug": "novatech",
+    "name": "Novatech",
+    "niche": "Tech & electronics",
+    "fonts": {
+      "sans": [
+        "Inter",
+        "sans-serif"
+      ]
+    },
+    "colors": {
+      "navy": "#12142E",
+      "navyLight": "#1C1F42",
+      "purple": "#6D3FE0",
+      "purpleDark": "#5A32C4",
+      "purpleLight": "#EFE9FC",
+      "blue": "#2E77E0"
+    },
+    "shadows": {
+      "card": "0 4px 14px -4px rgba(18, 20, 46, 0.10)",
+      "cardHover": "0 12px 26px -8px rgba(18, 20, 46, 0.18)",
+      "navUp": "0 -4px 14px -6px rgba(18,20,46,0.14)"
+    },
+    "surface": "#FFFFFF",
+    "ink": "#12142E",
+    "scrollbarThumb": "#d7d0ee",
+    "primary": "#6D3FE0",
+    "primaryDark": "#5A32C4",
+    "accent": "#2E77E0",
+    "roleKeys": {
+      "primary": "purple",
+      "primaryDark": "purpleDark",
+      "accent": "blue"
+    }
+  },
+  "paperloom": {
+    "slug": "paperloom",
+    "name": "Paperloom",
+    "niche": "Stationery, books & crafts",
+    "fonts": {
+      "serif": [
+        "Playfair Display",
+        "serif"
+      ],
+      "sans": [
+        "Inter",
+        "sans-serif"
+      ]
+    },
+    "colors": {
+      "navy": "#1F2E3D",
+      "rust": "#BC5B39",
+      "rustDark": "#9C4A2D",
+      "green": "#3C5040",
+      "greenDark": "#2C3B30",
+      "greenLight": "#EDF1E8",
+      "cream": "#F6F0E3",
+      "tan": "#E8D9BE",
+      "peach": "#F3D9B8",
+      "footer": "#8A4A2F"
+    },
+    "shadows": {
+      "card": "0 4px 16px -6px rgba(31, 46, 61, 0.12)",
+      "cardHover": "0 14px 30px -10px rgba(31, 46, 61, 0.22)",
+      "navUp": "0 -4px 14px -6px rgba(31,46,61,0.14)"
+    },
+    "surface": "#F6F0E3",
+    "ink": "#251C14",
+    "scrollbarThumb": "#ddd0b8",
+    "primary": "#BC5B39",
+    "primaryDark": "#9C4A2D",
+    "accent": "#3C5040",
+    "roleKeys": {
+      "primary": "rust",
+      "primaryDark": "rustDark",
+      "accent": "green"
+    }
+  },
+  "pawluxe": {
+    "slug": "pawluxe",
+    "name": "Pawluxe",
+    "niche": "Pet products",
+    "fonts": {
+      "sans": [
+        "Inter",
+        "sans-serif"
+      ],
+      "display": [
+        "Baloo 2",
+        "sans-serif"
+      ]
+    },
+    "colors": {
+      "mint": "#8FD4C4",
+      "mintDark": "#5FB39F",
+      "mintLight": "#E4F5F0",
+      "coral": "#E8604A",
+      "coralDark": "#CE4C37",
+      "navy": "#1A2332",
+      "yellow": "#F5D26B",
+      "pink": "#F2B8AE"
+    },
+    "shadows": {
+      "card": "0 4px 14px -4px rgba(26, 35, 50, 0.10)",
+      "cardHover": "0 12px 26px -8px rgba(26, 35, 50, 0.18)",
+      "navUp": "0 -4px 14px -6px rgba(26,35,50,0.14)"
+    },
+    "surface": "#FFFFFF",
+    "ink": "#1A2332",
+    "scrollbarThumb": "#cdeae1",
+    "primary": "#E8604A",
+    "primaryDark": "#CE4C37",
+    "accent": "#8FD4C4",
+    "roleKeys": {
+      "primary": "coral",
+      "primaryDark": "coralDark",
+      "accent": "mint"
+    }
+  },
+  "shopiq": {
+    "slug": "shopiq",
+    "name": "Shopiq",
+    "niche": "General smart-shopping marketplace",
+    "fonts": {
+      "sans": [
+        "Inter",
+        "sans-serif"
+      ],
+      "display": [
+        "Poppins",
+        "sans-serif"
+      ]
+    },
+    "colors": {
+      "yellow": "#F2C231",
+      "yellowDark": "#DDA916",
+      "pink": "#EC5A87",
+      "pinkDark": "#D6436F",
+      "teal": "#1F9E96",
+      "purple": "#5B3FC9",
+      "purpleDark": "#4930A8",
+      "navy": "#141B3D"
+    },
+    "shadows": {
+      "card": "0 4px 14px -4px rgba(20, 27, 61, 0.10)",
+      "cardHover": "0 12px 26px -8px rgba(20, 27, 61, 0.18)",
+      "navUp": "0 -4px 14px -6px rgba(20,27,61,0.14)"
+    },
+    "surface": "#FFFFFF",
+    "ink": "#141B3D",
+    "scrollbarThumb": "#e2c9d2",
+    "primary": "#F2C231",
+    "primaryDark": "#DDA916",
+    "accent": "#5B3FC9",
+    "roleKeys": {
+      "primary": "yellow",
+      "primaryDark": "yellowDark",
+      "accent": "purple"
+    }
+  },
+  "technova": {
+    "slug": "technova",
+    "name": "Technova",
+    "niche": "Tech & electronics",
+    "fonts": {
+      "sans": [
+        "Inter",
+        "sans-serif"
+      ]
+    },
+    "colors": {
+      "blue": "#1D5FE0",
+      "blueDark": "#1747B3",
+      "blueLight": "#EEF3FF",
+      "navy": "#0E1B33",
+      "navy2": "#16233F",
+      "red": "#DC2626"
+    },
+    "shadows": {
+      "card": "0 4px 14px -4px rgba(14, 27, 51, 0.10)",
+      "cardHover": "0 12px 26px -8px rgba(14, 27, 51, 0.18)"
+    },
+    "surface": "#FFFFFF",
+    "ink": "#111827",
+    "scrollbarThumb": "#d7e0ee",
+    "primary": "#1D5FE0",
+    "primaryDark": "#1747B3",
+    "accent": "#DC2626",
+    "roleKeys": {
+      "primary": "blue",
+      "primaryDark": "blueDark",
+      "accent": "red"
+    }
+  },
+  "terraco": {
+    "slug": "terraco",
+    "name": "Terraco",
+    "niche": "Home & garden / outdoor living",
+    "fonts": {
+      "serif": [
+        "Playfair Display",
+        "serif"
+      ],
+      "sans": [
+        "Inter",
+        "sans-serif"
+      ]
+    },
+    "colors": {
+      "green": "#2C4028",
+      "greenDark": "#1A2818",
+      "tan": "#D9C9A8",
+      "tanDark": "#C2AC80",
+      "cream": "#F3EDE0",
+      "black": "#161613"
+    },
+    "shadows": {
+      "card": "0 4px 16px -6px rgba(26, 40, 24, 0.12)",
+      "cardHover": "0 14px 30px -10px rgba(26, 40, 24, 0.20)",
+      "navUp": "0 -4px 14px -6px rgba(26,40,24,0.14)"
+    },
+    "surface": "#FFFFFF",
+    "ink": "#1E2419",
+    "scrollbarThumb": "#d9cfb8",
+    "primary": "#2C4028",
+    "primaryDark": "#1A2818",
+    "accent": "#D9C9A8",
+    "roleKeys": {
+      "primary": "green",
+      "primaryDark": "greenDark",
+      "accent": "tan"
+    }
+  },
+  "trailpeak": {
+    "slug": "trailpeak",
+    "name": "Trailpeak",
+    "niche": "Outdoor & adventure gear",
+    "fonts": {
+      "sans": [
+        "Inter",
+        "sans-serif"
+      ],
+      "display": [
+        "Archivo Black",
+        "sans-serif"
+      ]
+    },
+    "colors": {
+      "green": "#16261B",
+      "greenLight": "#213827",
+      "orange": "#BF5F2A",
+      "orangeDark": "#A54F22",
+      "cream": "#F1EBDD",
+      "black": "#141414"
+    },
+    "shadows": {
+      "card": "0 4px 14px -4px rgba(20, 20, 20, 0.10)",
+      "cardHover": "0 12px 26px -8px rgba(20, 20, 20, 0.18)",
+      "navUp": "0 -4px 14px -6px rgba(20,20,20,0.14)"
+    },
+    "surface": "#FFFFFF",
+    "ink": "#181A16",
+    "scrollbarThumb": "#d9cfb8",
+    "primary": "#BF5F2A",
+    "primaryDark": "#A54F22",
+    "accent": "#16261B",
+    "roleKeys": {
+      "primary": "orange",
+      "primaryDark": "orangeDark",
+      "accent": "green"
+    }
+  },
+  "urbana": {
+    "slug": "urbana",
+    "name": "Urbana",
+    "niche": "Urban fashion & apparel",
+    "fonts": {
+      "serif": [
+        "Playfair Display",
+        "serif"
+      ],
+      "sans": [
+        "Inter",
+        "sans-serif"
+      ]
+    },
+    "colors": {
+      "black": "#0D0D0D",
+      "green": "#1F3327",
+      "greenDark": "#162419",
+      "tan": "#CBA46C",
+      "tanDark": "#B78E52",
+      "cream": "#F3EDE0"
+    },
+    "shadows": {
+      "card": "0 4px 16px -6px rgba(13, 13, 13, 0.12)",
+      "cardHover": "0 14px 30px -10px rgba(13, 13, 13, 0.20)",
+      "navUp": "0 -4px 14px -6px rgba(13,13,13,0.14)"
+    },
+    "surface": "#FFFFFF",
+    "ink": "#1A1A16",
+    "scrollbarThumb": "#d9cfb8",
+    "primary": "#1F3327",
+    "primaryDark": "#162419",
+    "accent": "#CBA46C",
+    "roleKeys": {
+      "primary": "green",
+      "primaryDark": "greenDark",
+      "accent": "tan"
+    }
+  },
+  "veloura": {
+    "slug": "veloura",
+    "name": "Veloura",
+    "niche": "Luxury fashion & beauty",
+    "fonts": {
+      "serif": [
+        "Playfair Display",
+        "serif"
+      ],
+      "sans": [
+        "Inter",
+        "sans-serif"
+      ]
+    },
+    "colors": {
+      "mauve": "#6E2A47",
+      "mauveDark": "#571F38",
+      "gold": "#C9A15B",
+      "blush": "#FBEDE8",
+      "pink": "#F3D4DB",
+      "pinkDark": "#E9B9C4",
+      "cream": "#FDF6F0"
+    },
+    "shadows": {
+      "card": "0 4px 16px -6px rgba(110, 42, 71, 0.14)",
+      "cardHover": "0 14px 30px -10px rgba(110, 42, 71, 0.24)",
+      "navUp": "0 -4px 14px -6px rgba(110,42,71,0.14)"
+    },
+    "surface": "#FDF6F0",
+    "ink": "#2E1A22",
+    "scrollbarThumb": "#eccdd6",
+    "primary": "#6E2A47",
+    "primaryDark": "#571F38",
+    "accent": "#C9A15B",
+    "roleKeys": {
+      "primary": "mauve",
+      "primaryDark": "mauveDark",
+      "accent": "gold"
+    }
+  },
+  "verdeliving": {
+    "slug": "verdeliving",
+    "name": "Verdeliving",
+    "niche": "Eco / sustainable living",
+    "fonts": {
+      "serif": [
+        "Playfair Display",
+        "serif"
+      ],
+      "sans": [
+        "Inter",
+        "sans-serif"
+      ]
+    },
+    "colors": {
+      "olive": "#54633C",
+      "oliveDark": "#3F4A2F",
+      "oliveLight": "#EDEEE4",
+      "cream": "#F3EDE2",
+      "tan": "#EAE1CE",
+      "footer": "#1E2318"
+    },
+    "shadows": {
+      "card": "0 4px 16px -6px rgba(30, 35, 24, 0.12)",
+      "cardHover": "0 14px 30px -10px rgba(30, 35, 24, 0.20)",
+      "navUp": "0 -4px 14px -6px rgba(30,35,24,0.14)"
+    },
+    "surface": "#FFFFFF",
+    "ink": "#242018",
+    "scrollbarThumb": "#d9cfb8",
+    "primary": "#54633C",
+    "primaryDark": "#3F4A2F",
+    "accent": "#EAE1CE",
+    "roleKeys": {
+      "primary": "olive",
+      "primaryDark": "oliveDark",
+      "accent": "tan"
+    }
+  },
+  "voguelane": {
+    "slug": "voguelane",
+    "name": "Voguelane",
+    "niche": "Urban fashion & apparel",
+    "fonts": {
+      "serif": [
+        "Playfair Display",
+        "serif"
+      ],
+      "sans": [
+        "Inter",
+        "sans-serif"
+      ]
+    },
+    "colors": {
+      "black": "#171310",
+      "cream": "#F4EDE2",
+      "creamDark": "#E9DCC6",
+      "gold": "#C9A15B",
+      "blush": "#F3DBD3",
+      "blushDark": "#E9C3B8",
+      "red": "#B33A2E",
+      "taupe": "#8C7C67"
+    },
+    "shadows": {
+      "card": "0 4px 16px -6px rgba(23, 19, 16, 0.10)",
+      "cardHover": "0 14px 30px -10px rgba(23, 19, 16, 0.20)"
+    },
+    "surface": "#FFFFFF",
+    "ink": "#171310",
+    "scrollbarThumb": "#e2d6c2",
+    "primary": "#171310",
+    "primaryDark": "#120F0D",
+    "accent": "#C9A15B",
+    "roleKeys": {
+      "primary": "black",
+      "primaryDark": "black",
+      "accent": "gold"
+    }
+  },
+  "zanova": {
+    "slug": "zanova",
+    "name": "Zanova",
+    "niche": "General smart-shopping marketplace",
+    "fonts": {
+      "sans": [
+        "Inter",
+        "sans-serif"
+      ]
+    },
+    "colors": {
+      "yellow": "#F2C230",
+      "yellowDark": "#DDA916",
+      "black": "#0D0D14",
+      "blackLight": "#17171F",
+      "purple": "#7C3FE0",
+      "purpleDark": "#6529C9"
+    },
+    "shadows": {
+      "card": "0 4px 14px -4px rgba(13, 13, 20, 0.10)",
+      "cardHover": "0 12px 26px -8px rgba(13, 13, 20, 0.18)",
+      "navUp": "0 -4px 14px -6px rgba(13,13,20,0.14)"
+    },
+    "surface": "#FFFFFF",
+    "ink": "#0D0D14",
+    "scrollbarThumb": "#eddba6",
+    "primary": "#F2C230",
+    "primaryDark": "#DDA916",
+    "accent": "#0D0D14",
+    "roleKeys": {
+      "primary": "yellow",
+      "primaryDark": "yellowDark",
+      "accent": "black"
+    }
+  }
+}
