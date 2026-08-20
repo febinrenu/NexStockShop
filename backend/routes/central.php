@@ -5,8 +5,10 @@ declare(strict_types=1);
 use App\Http\Controllers\Central\AuthController;
 use App\Http\Controllers\Central\BillingController;
 use App\Http\Controllers\Central\ModerationController;
+use App\Http\Controllers\Central\PlanController;
 use App\Http\Controllers\Central\PlatformSettingController;
 use App\Http\Controllers\Central\SignupController;
+use App\Http\Controllers\Central\TenantManagementController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,5 +46,17 @@ Route::prefix('api/v1/central')->group(function () {
 
         Route::get('/platform/moderation-queue', [ModerationController::class, 'index']);
         Route::post('/platform/moderation-queue/{flag}/action', [ModerationController::class, 'action']);
+
+        // Tenant management (§3: "tenant list/suspend") — 'active'/'suspended'
+        // only; a tenant becomes 'pending' via signup and 'active' via
+        // go-live, neither of which is this endpoint's job.
+        Route::get('/tenants', [TenantManagementController::class, 'index']);
+        Route::get('/tenants/{tenant}', [TenantManagementController::class, 'show']);
+        Route::patch('/tenants/{tenant}', [TenantManagementController::class, 'update']);
+
+        // Plan / billing-tier management (§3: "plan CRUD").
+        Route::get('/plans', [PlanController::class, 'index']);
+        Route::post('/plans', [PlanController::class, 'store']);
+        Route::put('/plans/{plan}', [PlanController::class, 'update']);
     });
 });

@@ -9,7 +9,12 @@ use App\Models\Tenant\Product;
 use App\Support\Localization;
 use App\Support\ProductPresenter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
+/**
+ * Public catalog reads (index/show) plus seller-admin write operations
+ * (store/update/destroy — auth:tenant, see routes/tenant/seller.php).
+ */
 class ProductController extends Controller
 {
     public function index(Request $request)
@@ -57,5 +62,111 @@ class ProductController extends Controller
         $product->load(['translations', 'variants.prices', 'variants.inventoryLevel', 'discounts']);
 
         return response()->json(ProductPresenter::present($product, $locale, $currency));
+    }
+
+    public function store(Request $request)
+    {
+        $data = $request->validate([
+            'sku' => ['required', 'string', 'max:255', 'unique:products,sku'],
+            'slug' => ['required', 'string', 'max:255', 'unique:products,slug'],
+            'category_id' => ['nullable', 'integer', 'exists:categories,id'],
+            'brand_id' => ['nullable', 'integer', 'exists:brands,id'],
+            'status' => ['sometimes', 'in:draft,active,archived'],
+            'is_featured' => ['sometimes', 'boolean'],
+            'translations' => ['required', 'array', 'min:1'],
+            'translations.*.locale' => ['required', 'string', 'max:8'],
+            'translations.*.name' => ['required', 'string', 'max:255'],
+            'translations.*.description' => ['nullable', 'string'],
+            'variants' => ['required', 'array', 'min:1'],
+            'variants.*.sku' => ['required', 'string', 'max:255', 'distinct', 'unique:product_variants,sku'],
+            'variants.*.attributes' => ['nullable', 'array'],
+            'variants.*.is_default' => ['sometimes', 'boolean'],
+            'variants.*.prices' => ['required', 'array', 'min:1'],
+            'variants.*.prices.*.currency' => ['required', 'string', 'size:3'],
+            'variants.*.prices.*.amount_minor' => ['required', 'integer', 'min:0'],
+            'variants.*.inventory.quantity_available' => ['sometimes', 'integer', 'min:0'],
+        ]);
+
+        $product = DB::transaction(function () use ($data) {
+            $product = Product::create([
+                'category_id' => $data['category_id'] ?? null,
+                'brand_id' => $data['brand_id'] ?? null,
+                'sku' => $data['sku'],
+                'slug' => $data['slug'],
+                'status' => $data['status'] ?? 'draft',
+                'is_featured' => $data['is_featured'] ?? false,
+            ]);
+
+            foreach ($data['translations'] as $translation) {
+                $product->translations()->create($translation);
+            }
+
+            foreach ($data['variants'] as $variantData) {
+                $variant = $product->variants()->create([
+                    'sku' => $variantData['sku'],
+                    'attributes' => $variantData['attributes'] ?? null,
+                    'is_default' => $variantData['is_default'] ?? false,
+                ]);
+
+                foreach ($variantData['prices'] as $price) {
+                    $variant->prices()->create($price);
+                }
+
+                $variant->inventoryLevel()->create([
+                    'quantity_available' => $variantData['inventory']['quantity_available'] ?? 0,
+                ]);
+            }
+
+            return $product;
+        });
+
+        $product->load(['translations', 'variants.prices', 'variants.inventoryLevel', 'discounts']);
+        $locale = Localization::resolve($request);
+        $currency = $request->query('currency', tenant('default_currency') ?? 'USD');
+
+        return response()->json(ProductPresenter::present($product, $locale, $currency), 201);
+    }
+
+    public function update(Request $request, Product $product)
+    {
+        $data = $request->validate([
+            'sku' => ['sometimes', 'string', 'max:255', 'unique:products,sku,'.$product->id],
+            'slug' => ['sometimes', 'string', 'max:255', 'unique:products,slug,'.$product->id],
+            'category_id' => ['sometimes', 'nullable', 'integer', 'exists:categories,id'],
+            'brand_id' => ['sometimes', 'nullable', 'integer', 'exists:brands,id'],
+            'status' => ['sometimes', 'in:draft,active,archived'],
+            'is_featured' => ['sometimes', 'boolean'],
+            'translations' => ['sometimes', 'array', 'min:1'],
+            'translations.*.locale' => ['required_with:translations', 'string', 'max:8'],
+            'translations.*.name' => ['required_with:translations', 'string', 'max:255'],
+            'translations.*.description' => ['nullable', 'string'],
+        ]);
+
+        $translations = $data['translations'] ?? null;
+        unset($data['translations']);
+
+        DB::transaction(function () use ($product, $data, $translations) {
+            $product->update($data);
+
+            foreach ($translations ?? [] as $translation) {
+                $product->translations()->updateOrCreate(
+                    ['locale' => $translation['locale']],
+                    ['name' => $translation['name'], 'description' => $translation['description'] ?? null],
+                );
+            }
+        });
+
+        $product->load(['translations', 'variants.prices', 'variants.inventoryLevel', 'discounts']);
+        $locale = Localization::resolve($request);
+        $currency = $request->query('currency', tenant('default_currency') ?? 'USD');
+
+        return response()->json(ProductPresenter::present($product, $locale, $currency));
+    }
+
+    public function destroy(Product $product)
+    {
+        $product->delete();
+
+        return response()->json(null, 204);
     }
 }

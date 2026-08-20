@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Tenant\AuthController;
 use App\Http\Controllers\Tenant\CustomerAuthController;
+use App\Http\Middleware\EnsureTenantIsActive;
 use Illuminate\Support\Facades\Route;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
 use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
@@ -25,6 +26,7 @@ Route::middleware([
     'api',
     InitializeTenancyByDomain::class,
     PreventAccessFromCentralDomains::class,
+    EnsureTenantIsActive::class,
 ])->prefix('api/v1')->group(function () {
 
     // --- Tenant admin / seller-staff auth (guard: tenant) ---
@@ -48,4 +50,5 @@ Route::middleware([
     });
 
     require __DIR__.'/tenant/commerce.php';
+    require __DIR__.'/tenant/seller.php';
 });

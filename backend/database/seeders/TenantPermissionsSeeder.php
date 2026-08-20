@@ -19,10 +19,11 @@ class TenantPermissionsSeeder extends Seeder
     public function run(): void
     {
         $inviteStaff = Permission::firstOrCreate(['name' => 'staff.invite', 'guard_name' => 'tenant']);
+        $manageSettings = Permission::firstOrCreate(['name' => 'settings.manage', 'guard_name' => 'tenant']);
 
         $owner = Role::firstOrCreate(['name' => 'owner', 'guard_name' => 'tenant']);
         Role::firstOrCreate(['name' => 'staff', 'guard_name' => 'tenant']);
 
-        $owner->givePermissionTo($inviteStaff);
+        $owner->givePermissionTo([$inviteStaff, $manageSettings]);
     }
 }
