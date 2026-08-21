@@ -1,0 +1,152 @@
+{
+  "nav": {
+    "shop": "Shop",
+    "brands": "Brands",
+    "deals": "Deals",
+    "about": "About",
+    "help": "Help",
+    "search": "Search products…",
+    "cart": "Cart",
+    "wishlist": "Wishlist",
+    "account": "Account",
+    "login": "Sign In",
+    "logout": "Sign Out",
+    "register": "Create Account",
+    "trackOrder": "Track Order"
+  },
+  "footer": {
+    "newsletterTitle": "Stay in the loop",
+    "newsletterBody": "Get new arrivals and deals in your inbox.",
+    "emailPlaceholder": "Your email address",
+    "subscribe": "Subscribe",
+    "subscribeSuccess": "You're subscribed!",
+    "rights": "All rights reserved."
+  },
+  "home": {
+    "shopNow": "Shop Now",
+    "featured": "Featured Products",
+    "categories": "Shop by Category",
+    "newArrivals": "New Arrivals"
+  },
+  "shop": {
+    "title": "Shop",
+    "filters": "Filters",
+    "category": "Category",
+    "brand": "Brand",
+    "sort": "Sort by",
+    "sortNewest": "Newest",
+    "sortSku": "SKU",
+    "allCategories": "All categories",
+    "allBrands": "All brands",
+    "noResults": "No products match these filters.",
+    "resultsCount": "{count, plural, =0 {No products} one {1 product} other {# products}}"
+  },
+  "product": {
+    "addToCart": "Add to Cart",
+    "outOfStock": "Out of Stock",
+    "inStock": "In Stock",
+    "description": "Description",
+    "reviews": "Reviews",
+    "writeReview": "Write a Review",
+    "relatedProducts": "You may also like",
+    "quantity": "Quantity",
+    "sku": "SKU"
+  },
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty.",
+    "continueShopping": "Continue Shopping",
+    "subtotal": "Subtotal",
+    "checkout": "Proceed to Checkout",
+    "remove": "Remove",
+    "quantity": "Qty"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "stepAddress": "Address",
+    "stepShipping": "Shipping",
+    "stepPayment": "Payment",
+    "stepConfirm": "Confirmation",
+    "shippingAddress": "Shipping Address",
+    "fullName": "Full Name",
+    "line1": "Address Line 1",
+    "line2": "Address Line 2 (optional)",
+    "city": "City",
+    "country": "Country",
+    "postalCode": "Postal Code",
+    "phone": "Phone",
+    "shippingMethod": "Shipping Method",
+    "standard": "Standard",
+    "express": "Express",
+    "paymentMethod": "Payment Method",
+    "cardOnFile": "Card on file",
+    "placeOrder": "Place Order",
+    "orderPlaced": "Order placed!",
+    "orderNumber": "Order number",
+    "continue": "Continue",
+    "back": "Back"
+  },
+  "auth": {
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "name": "Full Name",
+    "loginTitle": "Sign in to your account",
+    "registerTitle": "Create your account",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "loginCta": "Sign In",
+    "registerCta": "Create Account",
+    "invalidCredentials": "Those credentials don't look right."
+  },
+  "account": {
+    "title": "My Account",
+    "profile": "Profile",
+    "orders": "Orders",
+    "wishlist": "Wishlist",
+    "save": "Save Changes",
+    "noOrders": "You haven't placed any orders yet."
+  },
+  "wishlist": {
+    "title": "Your Wishlist",
+    "empty": "Your wishlist is empty.",
+    "moveToCart": "Add to Cart",
+    "remove": "Remove"
+  },
+  "orders": {
+    "title": "Your Orders",
+    "orderNumber": "Order #{number}",
+    "placedOn": "Placed on {date}",
+    "status": "Status",
+    "total": "Total",
+    "viewDetails": "View Details",
+    "trackTitle": "Track Your Order",
+    "trackLookup": "Look up an order",
+    "trackHistory": "Status History"
+  },
+  "reviews": {
+    "rating": "Rating",
+    "comment": "Comment",
+    "submit": "Submit Review"
+  },
+  "deals": {
+    "title": "Deals",
+    "subtitle": "Limited-time offers, updated daily."
+  },
+  "brands": {
+    "title": "Brands"
+  },
+  "about": {
+    "title": "About Us"
+  },
+  "help": {
+    "title": "Help & FAQ"
+  },
+  "common": {
+    "loading": "Loading…",
+    "error": "Something went wrong. Please try again.",
+    "retry": "Retry",
+    "close": "Close",
+    "currency": "Currency"
+  }
+}

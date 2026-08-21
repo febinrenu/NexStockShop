@@ -1,0 +1,32 @@
+// Auto-generated from theme-registry.raw.json.
+export const THEME_LIST = {
+  aurumeclat: { slug: "aurumeclat", name: "Aurumeclat", niche: "Luxury jewelry & fine goods" },
+  casanest: { slug: "casanest", name: "Casanest", niche: "Home & furniture" },
+  elegance: { slug: "elegance", name: "Elegance", niche: "Fashion & beauty" },
+  freshcart: { slug: "freshcart", name: "Freshcart", niche: "Grocery & fresh food delivery" },
+  futurex: { slug: "futurex", name: "Futurex", niche: "Consumer electronics & tech" },
+  generalhub: { slug: "generalhub", name: "Generalhub", niche: "General marketplace" },
+  homeluxe: { slug: "homeluxe", name: "Homeluxe", niche: "Home décor, upscale" },
+  littlejoy: { slug: "littlejoy", name: "Littlejoy", niche: "Kids & toys" },
+  marketly: { slug: "marketly", name: "Marketly", niche: "General / multi-vendor marketplace" },
+  marketverse: { slug: "marketverse", name: "Marketverse", niche: "General / multi-vendor marketplace" },
+  medisphere: { slug: "medisphere", name: "Medisphere", niche: "Health & pharmacy" },
+  naturae: { slug: "naturae", name: "Naturae", niche: "Organic, wellness & natural products" },
+  naturel: { slug: "naturel", name: "Naturel", niche: "Organic, wellness & natural products" },
+  naturia: { slug: "naturia", name: "Naturia", niche: "Organic, wellness & natural products" },
+  nexora: { slug: "nexora", name: "Nexora", niche: "Tech & electronics" },
+  novatech: { slug: "novatech", name: "Novatech", niche: "Tech & electronics" },
+  paperloom: { slug: "paperloom", name: "Paperloom", niche: "Stationery, books & crafts" },
+  pawluxe: { slug: "pawluxe", name: "Pawluxe", niche: "Pet products" },
+  shopiq: { slug: "shopiq", name: "Shopiq", niche: "General smart-shopping marketplace" },
+  technova: { slug: "technova", name: "Technova", niche: "Tech & electronics" },
+  terraco: { slug: "terraco", name: "Terraco", niche: "Home & garden / outdoor living" },
+  trailpeak: { slug: "trailpeak", name: "Trailpeak", niche: "Outdoor & adventure gear" },
+  urbana: { slug: "urbana", name: "Urbana", niche: "Urban fashion & apparel" },
+  veloura: { slug: "veloura", name: "Veloura", niche: "Luxury fashion & beauty" },
+  verdeliving: { slug: "verdeliving", name: "Verdeliving", niche: "Eco / sustainable living" },
+  voguelane: { slug: "voguelane", name: "Voguelane", niche: "Urban fashion & apparel" },
+  zanova: { slug: "zanova", name: "Zanova", niche: "General smart-shopping marketplace" },
+} as const;
+
+export type ThemeSlug = keyof typeof THEME_LIST;

@@ -1,0 +1,69 @@
+@import "tailwindcss";
+@import "../styles/theme-tokens.css";
+
+/*
+ * Fallback values so components render sanely before a [data-theme]
+ * attribute is applied (e.g. central marketing pages that aren't
+ * tenant-scoped). The layout sets data-theme on <html> per request based
+ * on the tenant's branding.theme from GET /api/v1/settings.
+ *
+ * Scoped to :root:not([data-theme]) rather than plain :root — both
+ * selectors match <html> with equal specificity, and this rule comes
+ * after theme-tokens.css's [data-theme="..."] blocks in source order, so
+ * an unscoped :root here would win the cascade and silently override
+ * every theme's tokens regardless of which one was active (caught by
+ * actually loading the app in a browser — the theme looked identical to
+ * the fallback for every tenant until this was scoped correctly).
+ */
+:root:not([data-theme]) {
+  --theme-primary: #171717;
+  --theme-primary-dark: #0a0a0a;
+  --theme-accent: #6d3fe0;
+  --theme-surface: #ffffff;
+  --theme-surface-alt: #f7f7f7;
+  --theme-ink: #171717;
+  --theme-ink-muted: #6b6b6b;
+  --theme-scrollbar: #d4d4d4;
+  --theme-shadow-card: 0 4px 14px -4px rgba(0, 0, 0, 0.1);
+  --theme-shadow-card-hover: 0 12px 26px -8px rgba(0, 0, 0, 0.18);
+  --theme-shadow-nav-up: 0 -4px 14px -6px rgba(0, 0, 0, 0.14);
+  --theme-font-body: var(--font-inter);
+  --theme-font-display: var(--font-inter);
+}
+
+@theme inline {
+  --color-primary: var(--theme-primary);
+  --color-primary-dark: var(--theme-primary-dark);
+  --color-accent: var(--theme-accent);
+  --color-surface: var(--theme-surface);
+  --color-surface-alt: var(--theme-surface-alt);
+  --color-ink: var(--theme-ink);
+  --color-ink-muted: var(--theme-ink-muted);
+  --shadow-card: var(--theme-shadow-card);
+  --shadow-card-hover: var(--theme-shadow-card-hover);
+  --shadow-nav-up: var(--theme-shadow-nav-up);
+  --font-body: var(--theme-font-body);
+  --font-display: var(--theme-font-display);
+}
+
+body {
+  background: var(--theme-surface);
+  color: var(--theme-ink);
+  font-family: var(--theme-font-body);
+}
+
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--theme-scrollbar);
+  border-radius: 999px;
+}
+
+/* RTL: flip anything using the (rare) physical-direction utilities.
+   Everywhere else in this app uses logical properties (ps-/pe-/ms-/me-/
+   text-start/text-end/etc.) precisely so this block stays this small. */
+[dir="rtl"] .flip-rtl {
+  transform: scaleX(-1);
+}
