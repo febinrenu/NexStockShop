@@ -6,11 +6,29 @@ namespace App\Http\Controllers\Tenant;
 
 use App\Http\Controllers\Controller;
 use App\Models\Central\ModerationFlag;
+use App\Models\Tenant\Product;
 use App\Models\Tenant\Review;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
+    /**
+     * Public — approved reviews only. A submitted review starts 'pending'
+     * (see store()) and only ever becomes visible here once a platform
+     * moderator actions its ModerationFlag to 'approved'; 'pending' and
+     * 'rejected' reviews never appear in this listing.
+     */
+    public function index(Request $request, Product $product)
+    {
+        $reviews = $product->reviews()
+            ->where('status', 'approved')
+            ->with('customer:id,name')
+            ->latest()
+            ->paginate((int) $request->query('per_page', 10));
+
+        return response()->json($reviews);
+    }
+
     public function store(Request $request)
     {
         $data = $request->validate([
