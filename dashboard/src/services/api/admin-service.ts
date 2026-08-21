@@ -258,15 +258,130 @@ export const adminService = {
     }
   },
 
-  // --- Mock Platforms views ---
+  // --- Live central platform integrations ---
   async getTenantsList(): Promise<PlatformTenant[]> {
-    await new Promise((resolve) => setTimeout(resolve, 200));
-    return mockTenants;
+    if (isPlatformOffline) {
+      return mockTenants;
+    }
+
+    try {
+      const response = await apiClient.get('/central/tenants');
+      interface ApiTenant {
+        id: string;
+        name: string;
+        status: 'pending' | 'active' | 'suspended';
+        created_at: string;
+        domains?: { domain: string }[];
+        subscription?: {
+          plan?: {
+            price_cents: number;
+          };
+        };
+      }
+
+      const backendTenants = (response.data?.data || []) as ApiTenant[];
+      return backendTenants.map((t) => {
+        const domain = t.domains?.[0]?.domain || `${t.id}.trippleshop.test`;
+        const mrr = t.subscription?.plan ? t.subscription.plan.price_cents / 100 : 0;
+        return {
+          id: t.id,
+          name: t.name,
+          domain,
+          status: t.status,
+          mrr,
+          created_at: t.created_at ? t.created_at.split('T')[0] : '',
+        };
+      });
+    } catch (e) {
+      const err = e as { response?: unknown; request?: unknown };
+      const isNetworkError = !err.response && err.request;
+      if (isNetworkError) {
+        isPlatformOffline = true;
+        console.warn('Central Platform API server is offline. Falling back to platform mock tenants.');
+      } else {
+        console.error('Failed to retrieve tenants list:', e);
+      }
+      return mockTenants;
+    }
+  },
+
+  async updateTenantStatus(tenantId: string, status: 'active' | 'suspended'): Promise<PlatformTenant> {
+    if (isPlatformOffline) {
+      let updatedTenant: PlatformTenant | null = null;
+      mockTenants.forEach((t, i) => {
+        if (t.id === tenantId) {
+          mockTenants[i].status = status;
+          updatedTenant = mockTenants[i];
+        }
+      });
+      if (!updatedTenant) throw new Error('Tenant not found');
+      return updatedTenant;
+    }
+
+    try {
+      const response = await apiClient.patch(`/central/tenants/${tenantId}`, { status });
+      const t = response.data;
+      const domain = t.domains?.[0]?.domain || `${t.id}.trippleshop.test`;
+      const mrr = t.subscription?.plan ? t.subscription.plan.price_cents / 100 : 0;
+      return {
+        id: t.id,
+        name: t.name,
+        domain,
+        status: t.status,
+        mrr,
+        created_at: t.created_at ? t.created_at.split('T')[0] : '',
+      };
+    } catch (e) {
+      const err = e as { response?: unknown; request?: unknown };
+      const isNetworkError = !err.response && err.request;
+      if (isNetworkError) {
+        isPlatformOffline = true;
+        console.warn('Central Platform API server is offline. Updating tenant in mock database.');
+        let updatedTenant: PlatformTenant | null = null;
+        mockTenants.forEach((t, i) => {
+          if (t.id === tenantId) {
+            mockTenants[i].status = status;
+            updatedTenant = mockTenants[i];
+          }
+        });
+        if (!updatedTenant) throw new Error('Tenant not found');
+        return updatedTenant;
+      }
+      throw e;
+    }
   },
 
   async getPlansList(): Promise<SubscriptionPlan[]> {
-    await new Promise((resolve) => setTimeout(resolve, 200));
-    return mockPlans;
+    if (isPlatformOffline) {
+      return mockPlans;
+    }
+
+    try {
+      const response = await apiClient.get('/central/plans');
+      const backendPlans = (response.data || []) as SubscriptionPlan[];
+      return backendPlans.map((p) => ({
+        id: p.id,
+        name: p.name,
+        slug: p.slug,
+        price_cents: p.price_cents,
+        currency: p.currency,
+        billing_interval: p.billing_interval,
+        product_limit: p.product_limit,
+        staff_limit: p.staff_limit,
+        feature_flags: p.feature_flags || {},
+        is_active: !!p.is_active,
+      }));
+    } catch (e) {
+      const err = e as { response?: unknown; request?: unknown };
+      const isNetworkError = !err.response && err.request;
+      if (isNetworkError) {
+        isPlatformOffline = true;
+        console.warn('Central Platform API server is offline. Falling back to mock pricing plans.');
+      } else {
+        console.error('Failed to retrieve central plans list:', e);
+      }
+      return mockPlans;
+    }
   },
 
   async getBillingLogs(): Promise<BillingInvoice[]> {
